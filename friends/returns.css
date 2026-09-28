@@ -1,0 +1,51 @@
+/* === returns.css (RMA Portal Styling) === */
+
+/* Standard styles used from shop.css (e.g., btn-main, body, background) */
+
+.returns-main-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    min-height: 100vh;
+    background-color: var(--bg-primary); /* Use main shop background */
+}
+
+.returns-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--bg-card);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.card-title-lg {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+/* Form inputs styling for dark/light mode */
+.returns-card .form-control, 
+.returns-card .form-select {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+.returns-card .form-control:focus,
+.returns-card .form-select:focus {
+    background-color: var(--bg-secondary);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.25rem rgba(230, 195, 78, 0.2);
+}
+
+/* Success and Error messages */
+#rma-success-card .fs-4 {
+    color: var(--text-primary);
+}
+#rma-success-card .text-success {
+    color: #28a745 !important; /* Ensure green success icon */
+}

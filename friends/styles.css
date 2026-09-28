@@ -1,0 +1,1027 @@
+/* --- ÉBÈNE & OR THEME (DARK-FIRST) --- */
+:root {
+  /* Default Dark Theme - High-fashion, high-contrast */
+  --primary-bg: #0A0A0A; /* Deep Charcoal, almost black */
+  --secondary-bg: #19141D; /* Sophisticated deep eggplant/purple-charcoal */
+  --card-bg: #212121;
+  --primary-text: #f5f5f5;
+  --secondary-text: #a9a9a9;
+  --accent-color: #E6C34E; /* Vibrant Gold */
+  --accent-color-hover: #D4AF37;
+  --accent-color-light: rgba(230, 195, 78, 0.08);
+  --border-color: #333333;
+  --font-primary: 'Playfair Display', serif;
+  --font-secondary: 'Inter', sans-serif;
+  --success-color: #28a745;
+}
+body.light-mode {
+  /* Optional Light Theme Override */
+  --primary-bg: #fdfdfd;
+  --secondary-bg: #F8F7FA; /* A soft, warm off-white */
+  --card-bg: #ffffff;
+  --primary-text: #222222;
+  --secondary-text: #5a5a5a;
+  --border-color: #e0e0e0;
+}
+html { scroll-behavior: smooth; }
+body { background-color: var(--primary-bg); font-family: var(--font-secondary); color: var(--primary-text); transition: background-color 0.4s ease, color 0.4s ease; }
+section { padding: 100px 0; }
+section.bg-alt { background-color: var(--secondary-bg); }
+.section-title { font-family: var(--font-primary); text-align: center; font-weight: 700; margin-bottom: 3.5rem; color: var(--primary-text); font-size: clamp(2.2rem, 5vw, 3rem); position: relative; }
+.section-title::after { content: ''; position: absolute; left: 50%; bottom: -15px; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--accent-color); border-radius: 2px; }
+a { color: var(--accent-color); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--accent-color-hover); }
+.text-muted { color: var(--secondary-text) !important; }
+
+/* NAVBAR & THEME TOGGLE */
+.navbar { background: rgba(10, 10, 10, 0.75); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-color); padding: 0.75rem 0; transition: background-color 0.4s, border-color 0.4s; }
+body.light-mode .navbar { background: rgba(255, 255, 255, 0.75); }
+.navbar-brand-name { font-family: var(--font-primary); font-size: 1.5rem; color: var(--primary-text); transition: color 0.4s; margin-left: 1rem; }
+.navbar-profile-pic { width: 48px; height: 48px; object-fit: cover; border-radius: 50%; border: 2px solid var(--accent-color); padding: 2px; }
+.navbar-collapse { flex-grow: 0; }
+.navbar .nav-link { color: var(--secondary-text); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; position: relative; padding: 0.5rem 1rem; }
+.navbar .nav-link:hover, .navbar .nav-link.active { color: var(--primary-text); }
+.navbar .nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+.navbar .nav-link:hover::after, .navbar .nav-link.active::after { width: 100%; }
+.navbar-toggler { border-color: rgba(255,255,255,0.2); }
+.navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(245, 245, 245, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+body.light-mode .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(34, 34, 34, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+
+.theme-toggle-label { width: 50px; height: 26px; background-color: #444; display: flex; align-items: center; justify-content: space-between; border-radius: 50px; padding: 5px; cursor: pointer; position: relative; }
+.theme-toggle-label .theme-ball { width: 18px; height: 18px; background-color: white; position: absolute; top: 4px; left: 4px; border-radius: 50%; transition: transform 0.3s ease; }
+.theme-checkbox:checked + .theme-toggle-label .theme-ball { transform: translateX(24px); }
+.theme-toggle-label .fa-moon { color: #f1c40f; font-size: 0.8rem; }
+.theme-toggle-label .fa-sun { color: #f39c12; font-size: 0.9rem; }
+.theme-checkbox { opacity: 0; position: absolute; }
+body.light-mode .theme-toggle-label { background-color: var(--secondary-bg); border: 1px solid var(--border-color); }
+
+/* HERO SECTION */
+.hero-section { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://res.cloudinary.com/doxabh7af/image/upload/v1756399695/elegance_redefined_hzsez8.png') no-repeat center center/cover; position: relative; }
+.hero-title { font-family: var(--font-primary); font-size: clamp(2.5rem, 6vw, 4.5rem); color: white; line-height: 1.2; }
+.hero-title .highlight { color: var(--accent-color); }
+.hero-subtitle { color: rgba(255, 255, 255, 0.85); font-size: clamp(1.1rem, 3vw, 1.5rem); min-height: 40px; }
+.btn-hero-cta { background-color: var(--accent-color); color: var(--primary-bg); font-family: var(--font-primary); font-weight: 700; padding: 0.8rem 2.5rem; border-radius: 50px; transition: all 0.3s ease; border: 2px solid var(--accent-color); }
+.btn-hero-cta:hover { background-color: transparent; color: var(--accent-color); transform: translateY(-3px); }
+
+/* ABOUT & SOCIAL ICONS */
+.about-image { border-radius: 8px; box-shadow: 10px 10px 0 var(--accent-color-light); border: 1px solid var(--border-color); }
+.about-headline { font-family: var(--font-primary); font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary-text); }
+.about-me-text-wrapper { max-height: 120px; overflow: hidden; transition: max-height 0.5s ease-out; position: relative; }
+.about-me-text-wrapper.expanded { max-height: 500px; }
+.btn-read-more { font-weight: 600; padding: 0; text-decoration: none; display: inline-flex; align-items: center; background: none; border: none; color: var(--accent-color); }
+.btn-read-more i { transition: transform 0.3s; }
+.btn-read-more.expanded i { transform: rotate(180deg); }
+.btn-social-icon { background-color: transparent; color: var(--secondary-text); border: 1px solid var(--border-color); width: 45px; height: 45px; border-radius: 50%; font-size: 1.1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; }
+.btn-social-icon:hover { background-color: var(--accent-color); color: var(--primary-bg); border-color: var(--accent-color); transform: translateY(-3px); }
+
+/* STATS SECTION */
+#portfolio-stats { padding: 80px 0; }
+.stat-number { font-family: var(--font-primary); font-weight: 700; font-size: 3rem; color: var(--accent-color); }
+.stat-label { font-size: 0.9rem; color: var(--secondary-text); text-transform: uppercase; letter-spacing: 1px; }
+.stat-divider { height: 40px; width: 1.5px; background-color: var(--border-color); }
+
+/* SERVICES & CREATIONS CARDS */
+.service-card { cursor: pointer; text-decoration: none; color: var(--primary-text); display: flex; flex-direction: column; height: 100%; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; background-color: var(--card-bg); box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: all 0.3s ease-out; }
+.creation-card { text-decoration: none; color: var(--primary-text); display: flex; flex-direction: column; height: 100%; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; background-color: var(--card-bg); box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: all 0.3s ease-out; }
+.service-card:hover, .creation-card:hover { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-color: var(--accent-color); }
+.service-card { padding: 2rem; text-align: center; }
+.service-icon { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem; transition: transform 0.3s; }
+.service-card:hover .service-icon { transform: scale(1.1); }
+.service-title { font-family: var(--font-primary); font-size: 1.25rem; }
+.creation-image { width: 100%; height: 300px; object-fit: cover; }
+.creation-body { padding: 1.5rem; flex-grow: 1; }
+.creation-title { font-family: var(--font-primary); font-size: 1.3rem; }
+
+/* GUESTBOOK */
+.guestbook-form-wrapper { background-color: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); }
+.guestbook-form-wrapper .form-control { background-color: var(--primary-bg); border-color: var(--border-color); color: var(--primary-text); }
+.guestbook-form-wrapper .form-control:focus { background-color: var(--secondary-bg); border-color: var(--accent-color); box-shadow: none; color: var(--primary-text); }
+.guestbook-form-wrapper .form-control::placeholder { color: var(--secondary-text); }
+.btn-submit-guestbook { background-color: var(--accent-color); color: var(--primary-bg); font-weight: 600; border-radius: 8px; padding: 0.6rem 1.5rem; border: none; transition: all 0.3s; }
+.btn-submit-guestbook:hover { filter: brightness(1.1); }
+.recent-visitors-title { font-family: var(--font-primary); }
+.guestbook-entry { background-color: transparent; border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 3px solid var(--accent-color); }
+.guestbook-entry .guest-name { font-family: var(--font-primary); font-weight: 700; color: var(--accent-color); }
+.guestbook-entry .guest-date { color: var(--secondary-text); font-size: 0.9rem; }
+
+/* CONTACT SECTION & SMALL ICONS */
+.contact-modal-content { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; text-align: center; overflow: hidden; }
+.contact-modal-content .modal-header { border-bottom: 1px solid var(--border-color); }
+.contact-modal-content .modal-header .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+body.light-mode .contact-modal-content .modal-header .btn-close { filter: none; }
+.contact-modal-content .modal-body { padding: 1.5rem; }
+.contact-modal-icon-wrapper { width: 60px; height: 60px; margin: 0 auto 1.25rem; background: linear-gradient(145deg, var(--accent-color), var(--accent-color-hover)); color: var(--primary-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
+.contact-modal-title { font-family: var(--font-primary); color: var(--primary-text); }
+.contact-modal-text { color: var(--secondary-text); }
+#portfolioContactForm .form-control { text-align: left; background-color: var(--secondary-bg); border-color: var(--border-color); color: var(--primary-text); }
+#portfolioContactForm .form-control:focus { background-color: var(--primary-bg); border-color: var(--accent-color); box-shadow: none; }
+#portfolioContactForm .form-control::placeholder { color: var(--secondary-text); }
+.contact-modal-actions { margin-top: 1rem; }
+.btn-submit-contact { background-color: var(--accent-color); color: var(--primary-bg); font-weight: 600; width: 100%; padding: 0.75rem; border: none; border-radius: 8px; }
+.btn-contact-cancel { font-size: 0.85rem; text-decoration: none; margin-top: 0.75rem; color: var(--secondary-text); }
+.success-icon-wrapper { background: var(--success-color); color: white; }
+.btn-social-icon-small { background-color: transparent; color: var(--secondary-text); border: 1px solid var(--border-color); width: 40px; height: 40px; border-radius: 50%; font-size: 1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.btn-social-icon-small:hover { background-color: var(--accent-color); color: var(--primary-bg); border-color: var(--accent-color); transform: translateY(-3px); }
+
+/* INSIDER SECTION STYLES */
+#insider { padding: 80px 0; background-color: var(--primary-bg); }
+.insider-card { background-color: var(--card-bg); padding: 2.5rem 3rem; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.insider-title { font-family: var(--font-primary); font-size: 2.2rem; color: var(--primary-text); }
+.insider-text { font-size: 1.1rem; max-width: 90%; }
+.insider-button-group { display: inline-block; vertical-align: top; }
+@media (min-width: 992px) { .insider-button-group { display: block; } }
+.btn-insider-account { background-color: transparent; border: 2px solid var(--accent-color); color: var(--accent-color); font-weight: 600; padding: 0.6rem 1.8rem; border-radius: 50px; text-decoration: none; transition: all 0.3s ease; }
+.btn-insider-account:hover { background-color: var(--accent-color); color: var(--primary-bg); transform: translateY(-3px); }
+.insider-account-name { color: var(--secondary-text); font-size: 0.85rem; margin-top: 0.5rem; }
+
+/* *** NEW: SERVICE MODAL LIST STYLES *** */
+.service-class-list a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--primary-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s, color 0.3s;
+  text-align: left;
+}
+.service-class-list a:last-child {
+  border-bottom: none;
+}
+.service-class-list a:hover {
+  background-color: var(--accent-color-light);
+  color: var(--accent-color);
+}
+.service-class-list a::after {
+    content: '\f061'; /* Font Awesome arrow-right icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    float: right;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.service-class-list a:hover::after {
+    opacity: 1;
+}
+
+/* FOOTER */
+footer { background-color: var(--secondary-bg); color: var(--secondary-text); }
+footer .text-white-50 { color: var(--secondary-text) !important; opacity: 0.7; }
+
+/* OFF-CANVAS & FABs */
+.offcanvas { background-color: var(--card-bg); color: var(--primary-text); border-left: 1px solid var(--border-color); }
+.offcanvas-header { border-bottom: 1px solid var(--border-color); }
+.offcanvas-title { color: var(--primary-text); font-family: var(--font-primary); }
+.offcanvas-header .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+body.light-mode .offcanvas-header .btn-close { filter: none; }
+.offcanvas-profile-pic { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-color); cursor: pointer; }
+.offcanvas-nav .nav-link { color: var(--secondary-text); padding: 0.75rem 1rem; border-radius: 6px; font-weight: 500; }
+.offcanvas-nav .nav-link:hover { background-color: var(--accent-color-light); color: var(--primary-text); }
+.btn-social-icon-offcanvas { font-size: 1.2rem; color: var(--secondary-text); padding: 0.5rem; transition: color 0.3s; }
+.btn-social-icon-offcanvas:hover { color: var(--accent-color); }
+.btn-primary-offcanvas { background: var(--accent-color); color: var(--primary-bg); font-weight: 600; text-decoration: none; padding: 0.75rem; border-radius: 8px; transition: filter 0.3s; }
+.btn-primary-offcanvas:hover { color: var(--primary-bg); filter: brightness(1.1); }
+
+.fab { display: none; align-items: center; justify-content: center; position: fixed; bottom: 20px; width: 50px; height: 50px; border-radius: 50%; color: var(--primary-bg); border: none; font-size: 1.2rem; z-index: 1030; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.3s ease; }
+#backToTopBtn { right: 20px; background-color: var(--accent-color); }
+.fab-portfolio-share { right: 80px; background-color: #555; }
+.fab-portfolio-like { right: 140px; background-color: #555; }
+.fab-portfolio-like.liked { background-color: #e03131; color: white; transform: scale(1.1); }
+.fab:hover { transform: translateY(-3px); filter: brightness(1.1); }
+
+/* TOAST NOTIFICATION */
+.toast { background-color: var(--card-bg); color: var(--primary-text); border: 1px solid var(--border-color); }
+.toast-header { background-color: var(--secondary-bg); color: var(--primary-text); border-bottom: 1px solid var(--border-color); }
+.toast-header .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+body.light-mode .toast-header .btn-close { filter: none; }
+/* =================================================================== */
+/* == FINAL RESPONSIVE & LAYOUT FIXES (BY THE 10-YEAR GENIUS) == */
+/* =================================================================== */
+
+/* 1. THE DEFINITIVE FIX: PREVENT LAYOUT SHIFT & WHITE SPACE */
+/* This is the magic bullet. It prevents the <body> from shifting horizontally when the off-canvas menu is open, which eliminates the unwanted "white space" on the left. */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* 2. Z-INDEX & BACKDROP FIXES */
+/* Ensures the navbar is on top of content but BELOW modals and their backdrops. */
+.navbar {
+  z-index: 1045; 
+}
+/* This makes the modal backdrop solid, hiding the busy background completely when a modal is open. */
+.modal-backdrop.show {
+    opacity: 1 !important;
+    background-color: var(--primary-bg);
+}
+
+/* 3. OFF-CANVAS MENU STYLING FIX */
+/* This correctly styles the links and icons inside your slide-out menu for a clean, professional appearance. */
+.offcanvas-nav .nav-link { 
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+.offcanvas-nav .nav-link:hover { 
+  background-color: var(--accent-color-light); 
+  color: var(--primary-text); 
+}
+.offcanvas-nav .nav-link .bi {
+  font-size: 1.2rem;
+  width: 35px; /* Gives icons consistent spacing */
+  color: var(--accent-color);
+}
+
+/* 4. CORE MOBILE RESPONSIVENESS (MEDIA QUERIES) */
+@media (max-width: 991.98px) {
+  /* Aligns the theme toggle properly in the collapsed mobile menu */
+  .navbar-collapse .theme-toggle-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* Reduces padding on sections for better mobile spacing */
+  section {
+    padding: 70px 15px; /* Added horizontal padding */
+  }
+  
+  /* Repositions the Floating Action Buttons for smaller screens */
+  #backToTopBtn { right: 15px; }
+  .fab-portfolio-share { right: 70px; }
+  .fab-portfolio-like { right: 125px; }
+
+  /* Ensures all FABs are correctly displayed and sized */
+  #backToTopBtn, .fab-portfolio-share, .fab-portfolio-like {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease, background-color 0.3s;
+  }
+  body.dark-mode #backToTopBtn, 
+  body.dark-mode .fab-portfolio-share, 
+  body.dark-mode .fab-portfolio-like { 
+    border: 1px solid var(--border-color);
+  }
+}
+/*
+==========================================================================
+  DEFINITIVE DARK MODE FIXES for BOOTSTRAP COMPONENTS
+==========================================================================
+*/
+body.dark-mode {
+  /*
+  --- CORE BOOTSTRAP VARIABLE OVERRIDES ---
+  This is the key. We are telling Bootstrap's components to use YOUR
+  theme variables whenever the .dark-mode class is active.
+  */
+  --bs-body-bg: var(--primary-bg);
+  --bs-body-color: var(--primary-text);
+  --bs-border-color: var(--border-color);
+
+  /* --- FIX 1: OFF-CANVAS MENU --- */
+  --bs-offcanvas-bg: var(--card-bg);
+  --bs-offcanvas-color: var(--primary-text);
+  --bs-offcanvas-header-border-color: var(--border-color);
+
+  /* Ensures links and icons inside have the right color */
+  .offcanvas-body .nav-link,
+  .offcanvas-body h6 {
+    color: var(--primary-text);
+  }
+  .offcanvas-body .text-muted,
+  .offcanvas-body .btn-social-icon-offcanvas {
+    color: var(--secondary-text);
+  }
+  .offcanvas-nav .nav-link:hover {
+    background-color: var(--accent-color-light);
+    color: var(--accent-color);
+  }
+  
+  /* --- FIX 2: ALL BOOTSTRAP MODALS (including Contact Modal) --- */
+  --bs-modal-bg: var(--card-bg);
+  --bs-modal-header-border-color: var(--border-color);
+
+  /* Fixes the close 'X' button on all modals and offcanvas */
+  .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+  }
+
+  /* Fix form elements inside the contact modal */
+  .contact-modal-content .form-control {
+    background-color: var(--secondary-bg);
+    color: var(--primary-text);
+    border-color: var(--border-color);
+  }
+  .contact-modal-content .form-control::placeholder {
+    color: var(--secondary-text);
+  }
+  .contact-modal-content .btn-contact-cancel {
+    color: var(--secondary-text);
+  }
+  .contact-modal-content .btn-contact-cancel:hover {
+    color: var(--primary-text);
+  }
+  
+  /* --- FIX 3: THE CUSTOM "SERVICES" MODAL --- */
+  /*
+    I see a custom modal in your last screenshot ("Custom Tailoring Classes").
+    That is not a standard Bootstrap modal. To fix it, you need to add the
+    class "custom-dark-modal" to its main container div in your HTML.
+    Then this CSS will style it correctly for dark mode.
+  */
+  .custom-dark-modal {
+    background-color: var(--card-bg) !important; /* !important to override potential inline styles */
+    color: var(--primary-text) !important;
+    border: 1px solid var(--border-color);
+  }
+  .custom-dark-modal a, /* Assuming the list items are links */
+  .custom-dark-modal div { /* Or divs */
+    color: var(--primary-text);
+    border-bottom: 1px solid var(--border-color);
+  }
+  .custom-dark-modal a:hover,
+  .custom-dark-modal div:hover {
+      background-color: var(--secondary-bg);
+  }
+}
+/* =================================================================== */
+/* = FINAL, COMPLETE STYLES FOR DOUBTS SESSION SECTION & MODAL       = */
+/* =================================================================== */
+
+/* Makes the section background transparent, so it correctly shows the dark background in dark mode. */
+#doubts-session {
+    background-color: transparent;
+}
+
+/* General styles for the modal to match your screenshot */
+#doubtsModal .contact-modal-content {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+}
+#doubtsModal .modal-body {
+    padding: 2.5rem;
+}
+#doubtsModal .form-control {
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    color: var(--primary-text);
+    padding: 0.9rem;
+    border-radius: 8px;
+}
+#doubtsModal .form-control:focus {
+    background-color: var(--card-bg);
+    border-color: var(--accent-color);
+    box-shadow: none;
+}
+#doubtsModal .btn-submit-contact {
+    background-color: var(--accent-color);
+    color: #1a1a1a;
+    font-weight: 700;
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+}
+#doubtsModal .btn-social-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--secondary-bg);
+    border-color: var(--border-color);
+}
+
+/* THE KEY DARK MODE FIXES */
+body.dark-mode #doubtsModal .form-control {
+    background-color: var(--primary-bg); /* Dark input fields */
+}
+body.dark-mode #doubtsModal .form-control::placeholder {
+    color: var(--secondary-text); /* Light gray placeholder text */
+    opacity: 0.8;
+}
+/* --- START: CSS FOR DOUBT SESSION & MODAL --- */
+
+/* DOUBT SESSION CTA SECTION */
+#doubt-session {
+  background-color: var(--primary-bg); /* Use primary background color */
+}
+
+/* DOUBT SESSION MODAL STYLING */
+.doubt-modal-content {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  text-align: center;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+.doubt-modal-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.25rem;
+  background-color: var(--accent-color);
+  color: var(--dark-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.doubt-modal-title {
+  font-family: var(--font-primary);
+  color: var(--primary-text);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.doubt-modal-text {
+  color: var(--secondary-text);
+  margin-bottom: 1.5rem;
+}
+
+.doubt-modal-separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--secondary-text);
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+.doubt-modal-separator::before,
+.doubt-modal-separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+.doubt-modal-separator:not(:empty)::before {
+  margin-right: .5em;
+}
+.doubt-modal-separator:not(:empty)::after {
+  margin-left: .5em;
+}
+
+#doubtSessionForm .form-control {
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  color: var(--primary-text);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+}
+
+#doubtSessionForm .form-control:focus {
+  background-color: var(--primary-bg);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 0.25rem var(--accent-color-light);
+}
+
+.doubt-modal-actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-submit-doubt {
+  background-color: var(--accent-color);
+  color: var(--dark-bg);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  width: 100%;
+  border: none;
+  transition: all 0.3s ease;
+}
+.btn-submit-doubt:hover {
+    background-color: var(--accent-color-hover);
+    transform: translateY(-2px);
+}
+
+.btn-doubt-cancel {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--secondary-text);
+  margin-top: 1rem;
+}
+
+/* --- DARK MODE FIXES FOR MODAL --- */
+/* This is the key part for your request */
+
+body.dark-mode #doubtSessionForm .form-control {
+  background-color: #222222; /* Slightly different from primary bg for contrast */
+  border-color: #3a3a3a;
+  color: var(--primary-text);
+}
+
+body.dark-mode #doubtSessionForm .form-control:focus {
+  background-color: #1a1a1a;
+}
+
+/* FIX FOR PLACEHOLDERS IN DARK MODE */
+body.dark-mode #doubtSessionForm .form-control::placeholder {
+  color: var(--secondary-text);
+  opacity: 0.6; /* Lower opacity for subtlety */
+}
+
+/* --- END: CSS FOR DOUBT SESSION & MODAL --- */
+
+/* --- FINAL & DELUXE "WOW" PRELOADER STYLES (with Animated Ring) --- */
+
+/* This class on the body prevents the page from being scrollable while the preloader is visible */
+body.preloading {
+  overflow: hidden;
+}
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* These are the two panels that act as curtains */
+.preloader-curtain {
+  position: absolute;
+  top: 0;
+  width: 50.1%;
+  height: 100%;
+  background-color: var(--primary-bg); /* Seamlessly integrates with your Light/Dark mode! */
+  transition: transform 1.2s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.preloader-curtain.left {
+  left: 0;
+}
+
+.preloader-curtain.right {
+  right: 0;
+}
+
+/* This container holds and centers your logo AND the new ring */
+.preloader-logo-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  z-index: 10000;
+}
+
+.preloader-logo-container img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent-color);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- NEW STYLES FOR THE ROTATING RING --- */
+.preloader-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;  /* Slightly larger than the 90px logo */
+  height: 110px;
+  border-radius: 50%;
+  /* Creates the ring with only the top part colored */
+  border: 3px solid transparent;
+  border-top-color: var(--accent-color); /* Uses your theme's gold color! */
+  /* This applies the spinning animation */
+  animation: spin 1s linear infinite;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+/* The new keyframe animation that creates the spin */
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+/* --- END OF NEW RING STYLES --- */
+
+
+/* This is what happens when the 'loaded' class is added by the JavaScript */
+
+#preloader.loaded .preloader-curtain.left {
+  transform: translateX(-100%);
+}
+
+#preloader.loaded .preloader-curtain.right {
+  transform: translateX(100%);
+}
+
+#preloader.loaded .preloader-logo-container {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.75);
+}
+
+/* We also need to hide the ring when the reveal happens */
+#preloader.loaded .preloader-ring {
+  opacity: 0;
+}
+/* --- DYNAMIC & CREATIVE RS SISTERS BRAND NAME --- */
+.navbar-brand-container {
+  display: flex;
+  align-items: baseline; /* Aligns 'RS' and 'Sisters' nicely */
+  margin-left: 0.75rem;
+}
+
+.navbar-brand-initials {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1;
+  letter-spacing: -2px;
+  
+  /* The Gradient Magic */
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  
+  /* Animation */
+  animation: brandGradientShimmer 8s ease-in-out infinite;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.navbar-brand:hover .navbar-brand-initials {
+  transform: scale(1.1); /* Fun hover effect */
+}
+
+/* --- Gradient Definitions for Light vs. Dark Mode --- */
+
+/* Light Mode Gradient (Elegant Gold & Charcoal) */
+.navbar-brand-initials {
+  background-image: linear-gradient(110deg, 
+    var(--accent-color), 
+    #4a4a4a, 
+    var(--primary-text), 
+    var(--accent-color)
+  );
+}
+
+/* Dark Mode Gradient (Luminous Gold & Silver) */
+body.dark-mode .navbar-brand-initials {
+  background-image: linear-gradient(110deg, 
+    #FFD700, /* Brighter Gold */
+    #EAEAEA, /* Light Silver */
+    #BFBFBF, /* Darker Silver */
+    #FFD700
+  );
+}
+
+/* Full "Sisters" Name Styling (for desktop) */
+.navbar-brand-fullname {
+  font-family: var(--font-secondary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--secondary-text);
+  margin-left: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+/* Remove original navbar brand name style to avoid conflicts */
+.navbar-brand-name {
+  display: none; /* Hide the old span completely */
+}
+
+/* Animation Keyframes */
+@keyframes brandGradientShimmer {
+  0% { background-position: 0% center; }
+  50% { background-position: -200% center; }
+  100% { background-position: 0% center; }
+}
+
+/* === "MY SHOP" PROMOTIONAL SECTION (FINAL) === */
+.my-shop-section {
+    background-color: var(--secondary-bg);
+    padding: 100px 0;
+}
+
+.my-shop-section .section-title {
+    text-align: left;
+}
+.my-shop-section .section-title::after {
+    left: 0;
+    transform: translateX(0); /* Align underline to the left */
+}
+
+.my-shop-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.my-shop-features {
+    list-style: none;
+    padding-left: 0;
+}
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: var(--primary-text);
+}
+.feature-item i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.my-shop-image-wrapper {
+    position: relative;
+    padding-top: 100%; /* Creates a 1:1 aspect ratio square container */
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.my-shop-image-link {
+    display: block;
+    position: absolute;
+    inset: 0;
+}
+
+.my-shop-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.4s ease;
+}
+.my-shop-image-link:hover .my-shop-image {
+    transform: scale(1.05);
+}
+
+/* The magic for dark mode */
+body:not(.light-mode) .my-shop-image {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* Make sure the "Enter The Shop" button is not full-width */
+.my-shop-section .btn-hero-cta {
+    width: auto;
+}
+
+/* === TESTIMONIALS CAROUSEL STYLES (WOW FACTOR) === */
+
+/* Overrides the parent scroll container to enable natural touch scrolling */
+#testimonials-section .horizontal-scroll-container {
+    overflow-x: auto !important; /* Re-enables horizontal scrolling by touch/mouse */
+    overflow-y: hidden;
+    /* Optional: Add smooth scrolling behavior for better trackpad/scroll wheel feel */
+    scroll-behavior: smooth;
+    
+    /* Ensure scrollbar remains hidden on most modern browsers */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+#testimonials-section .horizontal-scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* The actual scrolling row */
+.marquee-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.5rem; /* 1.5rem gap matches your product carousels */
+    padding-left: 5vw; 
+    padding-right: 5vw;
+    will-change: transform; /* Performance optimization for animation */
+}
+
+/* Start the animation only when the class is added by JS */
+.marquee-row.animated-scroll {
+    animation: scroll-testimonials 40s linear infinite; /* Slow, smooth 90-second loop */
+}
+.marquee-row.animated-scroll:hover {
+    animation-play-state: paused; /* Pause on hover for readability */
+}
+
+/* Individual Testimonial Card */
+.testimonial-card-wrapper {
+    /* Fixed width to control scroll speed and layout */
+    flex: 0 0 90%; 
+    max-width: 350px; 
+    padding: 0.25rem;
+}
+
+@media (min-width: 768px) {
+    .testimonial-card-wrapper {
+        flex: 0 0 45%; 
+        max-width: 400px;
+    }
+}
+
+@media (min-width: 1200px) {
+     .testimonial-card-wrapper {
+        flex: 0 0 30%; 
+        max-width: 400px;
+    }
+}
+
+.testimonial-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+.testimonial-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 20px rgba(230, 195, 78, 0.2);
+}
+
+/* Author and Affiliation Header */
+.author-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+.author-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-color);
+    margin-right: 1rem;
+}
+.author-name {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-text);
+    margin-bottom: 0;
+}
+.author-affiliation {
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+    margin-bottom: 0;
+}
+
+/* Star Rating */
+.star-rating {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+/* Comment Text */
+.comment-text {
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--primary-text);
+    flex-grow: 1; /* Pushes the logo to the bottom */
+}
+
+/* --- YOUTUBE ICON STYLES FIX (The Wow Element) --- */
+.source-logo-container {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    text-align: right;
+}
+.source-link-icon {
+    font-size: 1.8rem;
+    color: #FF0000; /* Standard YouTube Red */
+    opacity: 0.85;
+    transition: transform 0.2s ease, opacity 0.2s;
+}
+.source-link-icon:hover {
+    color: #E60000;
+    opacity: 1;
+    transform: scale(1.1);
+}
+/* FIX: Target the icon in the dark mode environment and force its color to be white, 
+   relying on the parent link to apply red to the overall element. */
+body.dark-mode .source-link-icon i {
+    color: white !important; /* Force the inner play button to be white */
+    text-shadow: 0 0 1px #FF0000; /* Add a tiny shadow if needed for contrast against the red */
+}
+
+/* === GOLDEN TICKET SHOP INVITATION STYLES (WOW EFFECT) === */
+
+/* 1. Modal Styles */
+.shop-invitation-modal-content {
+    background-color: var(--card-bg);
+    border: 3px solid var(--accent-color); /* Gold border for "Golden Ticket" look */
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+.modal-logo-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-color);
+}
+.shop-invitation-title {
+    font-family: var(--font-primary);
+    font-size: 1.8rem;
+    color: var(--accent-color);
+}
+.shop-invitation-text {
+    color: var(--secondary-text);
+}
+.shop-invitation-close-btn {
+    filter: invert(1) grayscale(100%) brightness(200%); /* White 'x' on dark background */
+}
+body.light-mode .shop-invitation-close-btn {
+    filter: none; /* Black 'x' on light background */
+}
+
+/* 2. Persistent FAB (Bottom Left) */
+.fab-shop-invitation {
+    left: 20px; /* Position on the left */
+    bottom: 20px;
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    font-size: 1.4rem;
+    animation: pulse-breathing 2.5s infinite ease-in-out; /* The subtle breathing effect */
+}
+.fab-shop-invitation i {
+    color: var(--primary-bg);
+}
+
+/* 3. Flying Logo Element Styling */
+#flyingShopLogo {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-color);
+    z-index: 9998; /* Below the modal, above everything else */
+    pointer-events: none; /* Cannot be clicked during flight */
+
+    
+}
+
+/* 4. Animation Keyframes (The Wow Factor) */
+
+/* Breathing Pulse and Vertical Float for the permanent FAB (More "Alive") */
+@keyframes pulse-breathing {
+    0% { 
+        transform: translateY(0) scale(1); 
+        box-shadow: 0 0 0 0 rgba(230, 195, 78, 0.4); 
+    }
+    50% { 
+        transform: translateY(-5px) scale(1.03); /* Subtle upward float */
+        box-shadow: 0 0 15px 5px rgba(230, 195, 78, 0.6); 
+    }
+    100% { 
+        transform: translateY(0) scale(1); 
+        box-shadow: 0 0 0 0 rgba(230, 195, 78, 0.4); 
+    }
+}
+
+/* Modal Animation (Smoother and more elegant) */
+@keyframes modal-fade-in {
+    0% { transform: translateY(20px) scale(0.9); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Apply the new smooth animation */
+#goldenTicketModal.show .modal-content {
+    animation: modal-fade-in 0.5s ease-out forwards; /* Slower 0.5s duration */
+}
+
+/* Apply burst animation to the modal content when it opens */
+#goldenTicketModal.show .modal-content {
+    animation: modal-burst 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* Note: The 'flying' keyframe will be defined dynamically by JavaScript
+   to ensure the start and end points are calculated accurately.
+   We just define the general flight appearance here: */
+
+/* Example Flight (The JS will insert the translation values) */
+/* @keyframes golden-flight { ... } */
+
+/* === CONFETTI BURST STYLES === */
+#confetti-canvas {
+    transition: opacity 0.3s ease-out;
+}
+#confetti-canvas.active {
+    opacity: 1;
+}
+
+

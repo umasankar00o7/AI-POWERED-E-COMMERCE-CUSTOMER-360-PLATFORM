@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice & Certificate - RS Sisters</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="invoice.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght=400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    
+
+    <!-- Main Content Wrapper -->
+    <div id="pdf-content-wrapper">
+        
+        <!-- INVOICE CARD 1: Invoice Details -->
+        <div class="invoice-page-container" id="invoice-content-card">
+            
+            <div class="invoice-header">
+                <div>
+                    <!-- New logo treatment: clean circle -->
+                    <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1755833875/updated_ryz5ty.png" alt="RS Sisters Logo" class="invoice-logo-circle">
+                </div>
+                <div style="text-align: right;">
+                    <!-- INVOICE is now the main heading, taking the larger size -->
+                    <h1 class="invoice-main-title" style="margin-bottom: 0;">INVOICE</h1>
+                    <!-- RS Sisters is now the secondary heading, smaller and premium colored -->
+                    <h1 class="rs-brand-title" style="margin-top: 0; line-height: 1.2;">RS Sisters</h1>
+                    <small>ID: <strong id="invoice-number"></strong></small>
+                </div>
+            </div>
+
+            <!-- Invoice Date & Details -->
+            <p style="text-align: right; margin-bottom: 20px; font-size: 13px;">
+                Date: <strong id="invoice-date"></strong><br>
+                Reference: <strong id="order-ref"></strong>
+            </p>
+
+            <!-- ADDRESS SECTION (Two-Column Layout) -->
+            <div class="address-section">
+                <div class="address-box">
+                    <strong>FROM (RS Sisters)</strong>
+                    <p>
+                        RS Sisters Boutique<br>
+                        Duvvada, Visakhapatnam<br>
+                        Phone: +91 78933 16959
+                    </p>
+                </div>
+                <div class="address-box">
+                    <strong>BILL TO / SHIP TO</strong>
+                    <p id="customer-info"></p>
+                </div>
+            </div>
+            
+            <p style="font-size: 13px; margin-bottom: 20px;">
+                Tracking ID: <strong><span id="tracking-id">N/A</span></strong>
+            </p>
+
+            <!-- Product Table -->
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50px;"></th>
+                        <th>Product Details (SKU)</th>
+                        <th style="width: 70px;">Price</th>
+                        <th style="width: 50px;">Qty</th>
+                        <th style="width: 80px; text-align: right;">Total</th>
+                    </tr>
+                </thead>
+                <tbody id="product-list-body">
+                    <!-- Dynamic product rows go here -->
+                </tbody>
+            </table>
+
+            <!-- Totals Summary -->
+            <table class="product-table total-summary">
+                <tbody>
+                    <tr><th>Subtotal</th><td></td><td id="subtotal"></td></tr>
+                    <tr><th>Shipping</th><td></td><td id="shipping">₹0</td></tr>
+                    <tr class="totals-row"><th>GRAND TOTAL</th><td></td><td id="grand-total"></td></tr>
+                </tbody>
+            </table>
+            
+             <p class="text-secondary" style="font-size: 11px; margin-top: 15px; color: #777;">
+                * This document serves as a proof of purchase. All prices included.
+             </p>
+
+        </div> 
+        <!-- END OF INVOICE CARD 1 -->
+
+        <!-- CERTIFICATE OF AUTHENTICITY & GUIDELINES (Second Page/Card) -->
+        <!-- FIX: This card will now act as a mandatory second page in the PDF -->
+        <div class="invoice-page-container" id="certificate-card" style="margin-top: 30px;">
+            
+            <h2 class="coa-header rs-accent" style="margin-top: 0;">CERTIFICATE OF AUTHENTICITY</h2>
+            
+           <p style="text-align: center; font-size: 14px; color: #333; margin: 20px 0 30px 0;">
+                We certify that the item(s) are genuine, meticulously handcrafted, and passed our 6-point quality check.
+            </p>
+
+            <div class="coa-section">
+                <strong><i class="bi bi-shield-check"></i> TRUST POINTS & GUARANTEE</strong>
+                <div class="trust-point"><i class="bi bi-star-fill rs-accent"></i> <strong>Quality Assurance:</strong> Handcrafted in India using anti-tarnish, hypoallergenic materials.</div>
+                <div class="trust-point"><i class="bi bi-truck rs-accent"></i> <strong>Verifiable Dispatch:</strong> Shipment verified under Order Ref <strong id="coa-order-ref"></strong>.</div>
+                <div class="trust-point"><i class="bi bi-patch-question-fill rs-accent"></i> <strong>Support:</strong> Direct designer support available on WhatsApp for any care queries.</div>
+            </div>
+
+            <div class="coa-section">
+                <strong>JEWELLERY CARE & HANDLING</strong>
+                <div class="trust-point"><i class="bi bi-water"></i> Avoid exposure to moisture, perfume, and harsh chemicals. Store in an airtight container when not in use.</div>
+                <div class="trust-point"><i class="bi bi-clock-history"></i> Our pieces are designed for longevity. With proper care, they will maintain their shine for years.</div>
+            </div>
+
+
+            <div class="coa-seal-area">
+                <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1751815308/signature_placeholder.png" alt="Authorized Signature" class="coa-signature">
+                <p style="margin-top: 5px; font-size: 12px; color: #555;">Authorized Signature, RS Sisters</p>
+                <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1751815308/gold_seal_placeholder.png" alt="Digital Seal" class="coa-digital-seal">
+            </div>
+
+           <div class="thank-you-message-box">
+                <!-- 1. Primary Text (The biggest "Thank You" - remains centered) -->
+                <h3 style="text-align: center; margin-bottom: 0;">Thank You!</h3>
+                
+                <!-- 2. Secondary Line (Now positioned right below the primary text) -->
+                <p style="text-align: center;">
+                    <span class="rs-accent-line">— For choosing RS Sisters —</span>
+                </p>
+
+                <p style="margin-top: 10px; font-weight: 500;">
+                    We appreciate you supporting our craft and trust you will enjoy your timeless piece.
+                </p>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/style_rack_jewellery?igsh=MWwxOWcwaDd3N3ZsMg%3D%3D&utm_source=qr"><i class="bi bi-instagram"></i></a>
+                <a href="https://wa.me/7893316959"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://youtube.com/@the_world_of_rssisters?si=jh3ZUqgU_TEgLD9G"><i class="bi bi-youtube"></i></a>
+            </div>
+
+        </div>
+        <!-- END OF CERTIFICATE CARD 2 -->
+         <!-- === NEW DOWNLOAD BUTTON CONTAINER (BOTTOM) === -->
+        <div class="controls-bar-bottom" style="text-align: center; margin: 30px 0;">
+             <button id="download-pdf-btn" style="
+                padding: 10px 25px; 
+                background-color: #E6C34E; 
+                color: #333; 
+                border: none; 
+                border-radius: 6px; 
+                font-weight: 600; 
+                cursor: pointer;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                transition: background-color 0.3s;
+            ">
+                <i class="bi bi-file-earmark-arrow-down me-2"></i> Download PDF Invoice & Certificate
+            </button>
+        </div>
+        <!-- === END OF BOTTOM BUTTON CONTAINER === -->
+    </div>
+    
+    <!-- JS Libraries (Keep the same) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+    <!-- === INVOICE LOGIC SCRIPT (Dynamic Data Fetching and PDF Generation) === -->
+    <script>
+        const firebaseConfig = { apiKey: "AIzaSyDnS_o6asJeO6J6eUTZA7f3ONfmUJK6t_g", authDomain: "jewellery-308b1.firebaseapp.com", projectId: "jewellery-308b1", storageBucket: "jewellery-308b1.appspot.com", messagingSenderId: "275610166334", appId: "1:275610166334:web:5290beefa8cadae4415d6f" };
+        if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+        const db = firebase.firestore();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const invoiceId = params.get('id');
+            
+            if (invoiceId) {
+                fetchInvoiceData(invoiceId);
+            } else {
+                document.getElementById('pdf-content-wrapper').innerHTML = `<h2 style="text-align:center;">Error: Invoice ID Missing.</h2>`;
+            }
+
+            // --- FIX 1: Delay PDF generation until images are ready ---
+            document.getElementById('download-pdf-btn').addEventListener('click', () => {
+                // Hide the button and show a loading spinner if desired, then proceed with the delay
+                
+                // Wait for a small delay to ensure all Cloudinary images have time to render
+                setTimeout(() => {
+                    generatePDF();
+                }, 500); // 500ms delay for image rendering
+            });
+        });
+
+       function generatePDF() {
+             const element = document.getElementById('pdf-content-wrapper');
+             const invoiceNum = document.getElementById('invoice-number').textContent;
+             
+             // Ensure all images are fully loaded before generating PDF
+             Promise.all(Array.from(document.images).filter(img => !img.complete).map(img => new Promise(resolve => { img.onload = img.onerror = resolve; }))).then(() => {
+
+                // Configuration for clean PDF output (CRITICAL FIX FOR CLIPPING)
+                html2pdf(element, {
+                    margin: 5, // REDUCED MARGIN: Give more space to the content area (was 10)
+                    filename: `Invoice_${invoiceNum}.pdf`,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { 
+                        scale: 2, 
+                        logging: false,
+                        useCORS: true, 
+                        scrollY: 0, 
+                        scrollX: 0,
+                        width: 794 // CRITICAL: Tell canvas to capture exactly A4 width
+                    },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                });
+             });
+        }
+
+        async function fetchInvoiceData(invoiceId) {
+            try {
+                const doc = await db.collection('invoices').doc(invoiceId).get();
+                if (!doc.exists) {
+                    document.getElementById('pdf-content-wrapper').innerHTML = `<h2 style="text-align:center;">Invoice Not Found or Invalid ID.</h2>`;
+                    return;
+                }
+                const invoice = doc.data();
+                renderInvoice(invoice, doc.id);
+
+            } catch (error) {
+                console.error("Error fetching invoice:", error);
+                document.getElementById('pdf-content-wrapper').innerHTML = `<h2 style="text-align:center;">Error loading invoice data.</h2>`;
+            }
+        }
+
+        function renderInvoice(invoiceData, invoiceId) {
+            let subtotal = 0;
+            const items = invoiceData.items || [];
+
+            // --- RENDER INVOICE DETAILS ---
+            document.getElementById('invoice-number').textContent = invoiceId.toUpperCase().substring(0, 10);
+            document.getElementById('order-ref').textContent = invoiceData.orderRef || invoiceId.toUpperCase();
+            document.getElementById('coa-order-ref').textContent = invoiceData.orderRef || invoiceId.toUpperCase();
+            document.getElementById('tracking-id').textContent = invoiceData.trackingId || 'To be updated via WhatsApp';
+            
+            const date = invoiceData.createdAt?.toDate() ? invoiceData.createdAt.toDate().toLocaleDateString() : new Date().toLocaleDateString();
+            document.getElementById('invoice-date').textContent = date;
+
+            // Customer Info
+            document.getElementById('customer-info').innerHTML = `
+                ${invoiceData.customerName}<br>
+                ${invoiceData.customerPhone}<br>
+                ${invoiceData.customerEmail || 'N/A'}<br>
+                ${invoiceData.shippingAddress.address}, ${invoiceData.shippingAddress.city}, ${invoiceData.shippingAddress.pincode}
+            `;
+
+            // Product List
+            const productListHTML = items.map(item => {
+                const itemPrice = item.price || 0;
+                const itemQty = item.qty || 1;
+                const itemTotal = itemPrice * itemQty;
+                subtotal += itemTotal;
+
+                return `
+                    <tr>
+                        <td class="product-image-cell"><img src="${item.imageUrl || 'https://via.placeholder.com/40'}" alt="${item.name}" crossorigin="anonymous"></td>
+                        <td>
+                            <strong>${item.name}</strong>
+                            <br><small class="text-secondary">SKU: ${item.id || 'N/A'}</small>
+                        </td>
+                        <td style="text-align: center;">₹${itemPrice.toLocaleString()}</td>
+                        <td style="text-align: center;">${itemQty}</td>
+                        <td style="text-align: right;">₹${itemTotal.toLocaleString()}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            document.getElementById('product-list-body').innerHTML = productListHTML;
+            
+            // Totals
+            const grandTotal = subtotal + (invoiceData.shippingCost || 0);
+
+            document.getElementById('subtotal').textContent = `₹${subtotal.toLocaleString()}`;
+            document.getElementById('grand-total').textContent = `₹${grandTotal.toLocaleString()}`;
+            document.getElementById('shipping').textContent = `₹${(invoiceData.shippingCost || 0).toLocaleString()}`;
+
+
+            // Show the download button now that data is loaded
+            document.getElementById('download-pdf-btn').style.display = 'inline-block';
+        }
+    </script>
+</body>
+</html>

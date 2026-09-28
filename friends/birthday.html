@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday Chinnu!</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+        :root { --gold: #ffd700; --pink: #ff4757; --bg: #0a0a0a; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+        body, html { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; overflow: hidden; height: 100vh; width: 100vw; }
+
+        /* 1. AUTO PRELOADER */
+        #preloader { position: fixed; inset: 0; background: #000; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .handshake-icon { font-size: 80px; animation: shake 1.2s infinite ease-in-out; }
+        @keyframes shake { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(10deg); } }
+        .loading-bar { width: 150px; height: 2px; background: #333; margin-top: 20px; position: relative; overflow: hidden; }
+        .loading-bar::after { content: ''; position: absolute; left: -100%; width: 100%; height: 100%; background: var(--gold); animation: load 2s forwards; }
+        @keyframes load { to { left: 0; } }
+
+        /* 2. THE ROPE SCENE */
+        #rope-scene { display: none; position: fixed; inset: 0; z-index: 9000; background: #111; }
+        .rope-container { position: absolute; top: -100px; left: 50%; transform: translateX(-50%); text-align: center; }
+        .rope-line { width: 4px; height: 350px; background: linear-gradient(#222, #8B4513); margin: 0 auto; }
+        .pull-handle { width: 50px; height: 50px; border: 5px solid var(--gold); border-radius: 50%; background: #000; margin: -5px auto 0; cursor: pointer; box-shadow: 0 0 15px var(--gold); }
+
+        /* 3. MAIN STAGE */
+        #main-stage { display: none; height: 100vh; width: 100vw; position: relative; background: radial-gradient(circle, #1a1a2e, #0a0a0a); overflow: hidden; }.h-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem; /* Larger and bolder */
+    color: #ffd700;
+    margin-bottom: 50px; /* Creates breathing room between text and cake */
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 
+                 0 0 30px rgba(255, 215, 0, 0.4),
+                 2px 2px 5px rgba(0,0,0,0.8);
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 100;
+    /* Animated Gradient effect */
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShimmer 5s linear infinite;
+    background-size: 200% auto;
+}
+
+@keyframes goldShimmer {
+    to { background-position: 200% center; }
+}
+
+/* For Mobile: Ensure it doesn't look too big */
+@media (max-width: 600px) {
+    .h-title {
+        font-size: 2.8rem;
+        margin-bottom: 30px;
+        padding: 0 10px;
+    }
+}
+        /* 1. Centering the whole zone */
+#cake-zone {
+    height: 100vh; /* Full screen height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertical Center */
+    align-items: center;    /* Horizontal Center */
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    gap: 20px;
+}
+
+/* 2. Premium Animated Cake */
+.cake-container {
+    position: relative;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+    animation: cakeFloat 4s infinite ease-in-out; /* Makes it feel alive */
+}
+
+@keyframes cakeFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(1deg); }
+}
+
+/* 3. Real "Frosting" Look */
+.cake-layer {
+    position: relative;
+    border-radius: 12px 12px 4px 4px;
+    box-shadow: inset 0 5px 10px rgba(255,255,255,0.3), 
+                inset 0 -10px 20px rgba(0,0,0,0.2);
+    border: none;
+}
+
+/* Bottom Tier - Rich Chocolate/Red Velvet */
+.tier1 { 
+    width: 180px; height: 60px; 
+    background: linear-gradient(to bottom, #ff7eb3, #ff758c); /* Strawberry Cream */
+    z-index: 1;
+}
+
+/* Middle Tier - Creamy Vanilla */
+.tier2 { 
+    width: 140px; height: 50px; 
+    background: linear-gradient(to bottom, #feca57, #ff9f43); /* Orange/Peach Cream */
+    z-index: 2;
+    margin-bottom: -5px; /* Removes gap */
+}
+
+/* Top Tier - Premium Frosting */
+.tier3 { 
+    width: 100px; height: 40px; 
+    background: linear-gradient(to bottom, #ff9f43, #ee5253); /* Rich Cherry/Berry */
+    z-index: 3;
+    margin-bottom: -5px;
+}
+
+/* Adding "Drip" effect highlights */
+.cake-layer::after {
+    content: '';
+    position: absolute;
+    top: 5px; left: 10%;
+    width: 80%; height: 10px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+}
+
+/* Candle Styling */
+.candle { 
+    width: 10px; height: 40px; 
+    background: linear-gradient(to right, #e0e0e0, #ffffff, #e0e0e0); 
+    border-radius: 3px;
+    position: relative;
+    z-index: 4;
+}
+
+/* Keep your existing flame styles - they are perfect */
+        .flame-wrapper { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 20px; height: 30px; cursor: pointer; z-index: 100; }
+        .flame-src { width: 15px; height: 25px; background: #ff9f43; border-radius: 50% 50% 20% 20%; box-shadow: 0 0 20px #ff9f43; animation: flicker 0.1s infinite alternate; margin: 0 auto; }
+        @keyframes flicker { from { transform: scale(1); } to { transform: scale(1.1); } }
+        #continueBtn { display: none; margin: 30px auto; padding: 12px 35px; background: var(--gold); border: none; border-radius: 50px; font-weight: bold; cursor: pointer; opacity: 0; }
+
+        /* 4. 3D STACKED CARDS */
+        #stack-box { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; max-width: 320px; height: 380px; }
+        .m-card { position: absolute; inset: 0; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(15px); border-radius: 20px; padding: 30px; display: flex; flex-direction: column; justify-content: center; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .card1 { z-index: 3; } .card2 { z-index: 2; transform: scale(0.9) translateY(15px); } .card3 { z-index: 1; transform: scale(0.8) translateY(30px); }
+        .m-card h3 { color: var(--gold); font-family: 'Dancing Script'; font-size: 2rem; margin-bottom: 10px; }
+        #nextBtn { position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%); padding: 10px 25px; border-radius: 50px; border: none; font-weight: bold; cursor: pointer; z-index: 100; }
+
+        #postman-zone {
+    display: none; 
+    position: fixed; 
+    inset: 0; 
+    background: #000; 
+    z-index: 9500; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+}
+
+#deliveryText {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    opacity: 0; /* JS will fade this in */
+}
+
+.postman {
+    font-size: 50px;
+    position: absolute;
+    bottom: 30%;
+    left: -100px; /* Start outside left */
+    z-index: 100;
+    transform: scaleX(-1); /* Face right */
+}
+
+#mailbox {
+    font-size: 50px;
+    position: absolute;
+    bottom: 30%;
+    right: 15%;
+    opacity: 0;
+}
+
+/* The Road Line */
+#postman-zone::after {
+    content: '';
+    position: absolute;
+    bottom: 30%;
+    width: 100%;
+    height: 1px;
+    background: repeating-linear-gradient(to right, transparent, transparent 15px, #333 15px, #333 30px);
+}
+/* 1. Cinematic Final Screen Background */
+/* 1. Force the image to be the Full Screen Base */
+#final-screen { 
+    display: none; 
+    position: fixed; 
+    inset: 0; 
+    z-index: 9999; 
+    width: 100vw;
+    height: 100vh;
+    /* CHANGE THIS URL TO YOUR IMAGE */
+    background-image: url('https://res.cloudinary.com/doxabh7af/image/upload/v1772472122/phoyo0010_ygdqtv.jpg') !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-attachment: fixed;
+}
+
+/* 2. Clearer Overlay (Adjust 0.3 to make it even brighter if you want) */
+#final-screen::before { 
+    content: ''; 
+    position: absolute; 
+    inset: 0; 
+    background: rgba(0,0,0,0.3) !important; 
+    z-index: -1; /* Puts the darkness BEHIND the text but in front of the photo */
+}
+
+
+
+/* 2. Engraved Golden Title */
+#finalTitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem !important;
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    margin-bottom: 5px;
+    animation: goldShimmer 5s linear infinite;
+    background-size: 200% auto;
+}
+
+#finalSubtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+}
+
+/* 3. The 3D Professional Envelope */
+#finalEnv {
+    width: 300px; height: 180px;
+    background: #c0392b; /* Deep Premium Red/Orange */
+    position: absolute; top: 55%; left: 50%; 
+    transform: translate(-50%, -50%);
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+    box-shadow: 0 20px 60px rgba(0,0,0,1);
+    perspective: 1000px; /* Crucial for 3D flip */
+    transition: 0.5s;
+}
+
+/* The Envelope Flap (3D) */
+#finalEnv::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 0; height: 0;
+    border-top: 110px solid #e74c3c; /* Brighter red for flap */
+    border-left: 150px solid transparent; border-right: 150px solid transparent;
+    transform-origin: top; 
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+}
+
+/* The Wax Seal (Heart) */
+#finalEnv::after {
+    content: '❤️';
+    position: absolute; top: 80px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    background: #ffd700;
+    width: 50px; height: 50px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 15;
+    animation: sealPulse 2s infinite;
+}
+
+@keyframes sealPulse {
+    0%, 100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 10px rgba(255,215,0,0.4); }
+    50% { transform: translateX(-50%) scale(1.1); box-shadow: 0 0 25px rgba(255,215,0,0.7); }
+}
+
+/* When the Envelope Opens */
+#finalEnv.open::before {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+#finalEnv.open::after {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+
+
+.letter-box {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 90%; 
+    height: 80vh; 
+    max-width: 500px; 
+    /* BOX REMOVED: Background and border are now transparent */
+    background: transparent; 
+    border: none; 
+    box-shadow: none;
+    z-index: 1000; 
+    display: none; 
+    flex-direction: column; 
+    padding: 10px; 
+    border-radius: 0;
+}
+
+    
+
+    .letter-scroll-container {
+    flex-grow: 1; 
+    height: 100%; /* Fixes the height for scrolling */
+    overflow-y: auto; 
+    padding-bottom: 50px; /* Space for the button at the end */
+    scrollbar-width: none; 
+}
+.letter-scroll-container::-webkit-scrollbar { display: none; }
+
+    
+
+    #readAgainBtn {
+        margin-top: 20px; padding: 12px 25px; width: 100%;
+        background: var(--gold); color: black; border: none; 
+        font-weight: 600; border-radius: 50px; cursor: pointer;
+    }
+    #rope-scene { 
+    display: none; position: fixed; inset: 0; z-index: 9000; background: #000; 
+    touch-action: none; /* Crucial for Mobile: prevents scrolling while pulling */
+}
+.rope-wrapper { 
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%); 
+    display: flex; flex-direction: column; align-items: center;
+}
+.pull-ring {
+    width: 65px; height: 65px; border: 6px solid var(--gold); border-radius: 50%;
+    background: rgba(0,0,0,0.5); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    cursor: grab; display: flex; align-items: center; justify-content: center;
+    position: relative; transition: box-shadow 0.2s;
+}
+.pull-ring::after {
+    content: 'PULL'; font-size: 10px; font-weight: bold; color: var(--gold);
+}
+.pull-ring:active { cursor: grabbing; box-shadow: 0 0 40px var(--gold); }
+       
+
+.sparkle { position: absolute; color: var(--gold); pointer-events: none; animation: floatUp 3s infinite linear; opacity: 0; }
+@keyframes floatUp { 0% { transform: translateY(0); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-100px); opacity: 0; } }
+
+/* 1. Starry Ambient Background */
+#main-stage {
+    background: radial-gradient(circle at center, #1a1a2e 0%, #050505 100%) !important;
+}
+
+/* 2. Magical Cake Aura */
+.cake-container::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+    z-index: -1;
+    animation: auraPulse 4s infinite ease-in-out;
+}
+@keyframes auraPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+}
+
+/* 3. Glowing Wish Text */
+#wishMsg {
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    animation: textGlow 2s infinite alternate;
+}
+@keyframes textGlow {
+    from { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); transform: scale(1); }
+    to { text-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.3); transform: scale(1.05); }
+}
+
+/* 4. High-End Glassmorphism Button */
+#continueBtn {
+    background: rgba(255, 215, 0, 0.1) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* iPhone Support */
+    border: 1px solid rgba(255, 215, 0, 0.4) !important;
+    color: var(--gold) !important;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+/* 5. Button Shimmer Effect */
+#continueBtn::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -150%;
+    width: 50%; height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    transform: rotate(30deg);
+    animation: shimmer 4s infinite;
+}
+@keyframes shimmer {
+    0% { left: -150%; }
+    20% { left: 150%; }
+    100% { left: 150%; }
+}
+
+/* 6. Twinkling Stars */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* Styling the new BFF Button */
+#bffBtn {
+    margin-top: 15px;
+    padding: 12px 25px;
+    width: 100%;
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* The Full Screen Reveal Overlay */
+#bff-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 12000; /* Above everything */
+    background: black;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+#final-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures no distortion on mobile */
+    filter: grayscale(100%); /* Starts in B&W */
+    transform: scale(1.1); /* Starts slightly zoomed in */
+    transition: filter 1.5s ease, transform 6s linear;
+}
+
+/* The Magic Light Swipe */
+#light-swipe {
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right, 
+        transparent, 
+        rgba(255, 215, 0, 0.4), 
+        rgba(255, 255, 255, 0.8), 
+        rgba(255, 215, 0, 0.4), 
+        transparent
+    );
+    transform: skewX(-20deg);
+    z-index: 12001;
+    pointer-events: none;
+}
+
+#close-final {
+    position: fixed; 
+    top: 30px; 
+    right: 30px; 
+    width: 60px; 
+    height: 60px; 
+    background: rgba(0, 0, 0, 0.8) !important; 
+    color: #fff !important; 
+    border: 2px solid #fff !important; 
+    border-radius: 50% !important; 
+    z-index: 200000 !important; /* Maximum z-index */
+    cursor: pointer !important; 
+    display: flex !important; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 28px; 
+    font-weight: bold;
+    pointer-events: auto !important;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+#rope-hint {
+    position: fixed; 
+    bottom: 12%; /* Slightly higher for better thumb reach */
+    width: 100%; 
+    text-align: center; 
+    color: var(--gold); 
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem; 
+    letter-spacing: 4px; 
+    font-weight: 300; 
+    text-transform: uppercase;
+    line-height: 1.8;
+    z-index: 100;
+    pointer-events: none;
+    /* Luxury Text Shadow */
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    /* The Elegant Pulse */
+    animation: hintBreathe 3s infinite ease-in-out; 
+}
+
+@keyframes hintBreathe {
+    0%, 100% { 
+        opacity: 0.4; 
+        transform: scale(1); 
+        filter: blur(0.5px);
+    }
+    50% { 
+        opacity: 0.9; 
+        transform: scale(1.03); 
+        filter: blur(0px);
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    }
+}
+
+
+
+#orbit-title {
+    position: absolute; top: 10%; width: 100%; text-align: center;
+    color: var(--gold); font-family: 'Dancing Script', cursive; font-size: 2.5rem;
+    text-shadow: 0 0 20px rgba(255,215,0,0.5); z-index: 100;
+}
+
+#orbit-container {
+    position: relative; width: 100%; height: 100%;
+    transform-style: preserve-3d;
+}
+
+#orbit-center {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--gold);
+    box-shadow: 0 0 50px var(--gold); z-index: 50; overflow: hidden;
+}
+#orbit-center img { width: 100%; height: 100%; object-fit: cover; }
+
+#orbit-ring {
+    position: absolute; top: 50%; left: 50%; width: 0; height: 0;
+    transform-style: preserve-3d; animation: slowSpin 20s infinite linear;
+}
+
+@keyframes slowSpin {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+.orbit-item {
+    position: absolute; width: 80px; height: 110px;
+    background: rgba(255,255,255,0.1); border: 2px solid var(--gold);
+    border-radius: 10px; overflow: hidden; box-shadow: 0 0 20px rgba(255,215,0,0.3);
+    /* The Y rotation will be set by JS */
+}
+.orbit-item img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+
+#orbit-stage {
+    display: none; position: fixed; inset: 0; z-index: 14000;
+    background: #050505; overflow-y: auto; padding: 40px 20px;
+    flex-direction: column; align-items: center;
+}
+
+#gallery-header { text-align: center; margin-bottom: 40px; }
+#gallery-title { font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--gold); }
+#gallery-subtitle { color: #888; letter-spacing: 2px; font-size: 0.8rem; text-transform: uppercase; }
+
+/* The Bento Grid Logic */
+#bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-auto-rows: 140px;
+    gap: 15px;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 100px;
+}
+
+.gallery-item {
+    position: relative; border-radius: 15px; overflow: hidden;
+    border: 1px solid rgba(255,215,0,0.2); cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Make some items big/wide for that 'Bento' look */
+.gallery-item.wide { grid-column: span 2; }
+.gallery-item.tall { grid-row: span 2; }
+.gallery-item.big { grid-column: span 2; grid-row: span 2; }
+
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.gallery-item:hover img { transform: scale(1.1); }
+
+/* Lightbox Styling */
+#lightbox {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+    z-index: 15000; align-items: center; justify-content: center; padding: 20px;
+}
+#lightbox-img { max-width: 100%; max-height: 90vh; border-radius: 10px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+
+#close-orbit {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.8); color: white; border: 1px solid var(--gold);
+    padding: 12px 40px; border-radius: 50px; z-index: 14500; cursor: pointer;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    #bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 120px; gap: 10px; }
+    #gallery-title { font-size: 2.2rem; }
+}
+/* For Mobile: Shrink the orbit distance */
+@media (max-width: 600px) {
+    .orbit-item { width: 60px; height: 85px; }
+    #orbit-title { font-size: 1.8rem; }
+}
+
+#preloader {
+    position: fixed; inset: 0; background: #000; z-index: 10000;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+
+.lock-container {
+    display: flex; align-items: center; justify-content: center;
+    height: 120px; overflow: hidden;
+    /* This creates the "Vault Drum" look */
+    mask-image: linear-gradient(to bottom, transparent, black 40%, black 60%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 40%, black 60%, transparent);
+}
+
+.lock-col {
+    width: 60px; height: 100%; position: relative;
+    text-align: center; font-family: 'Poppins', sans-serif;
+}
+.year-col { width: 100px; } /* Years need more width */
+
+.lock-strip {
+    display: flex; flex-direction: column;
+    font-size: 2.5rem; font-weight: 600; color: var(--gold);
+    line-height: 120px; /* Matches container height */
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.lock-separator {
+    font-size: 3rem; color: var(--gold); margin: 0 5px;
+    font-weight: bold; opacity: 0.5;
+}
+
+#lock-status {
+    margin-top: 30px; letter-spacing: 5px; font-size: 0.7rem;
+    color: #444; font-weight: 300;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .lock-strip { font-size: 1.8rem; }
+    .lock-col { width: 45px; }
+    .year-col { width: 85px; }
+}
+    </style>
+</head>
+<body>
+    <!-- Hidden Audio Element -->
+<audio id="birthdaySong" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+
+<!-- Tiny Elegant Music Toggle (Bottom Left) -->
+<div id="musicControl" onclick="toggleMusic()" style="position: fixed; bottom: 20px; left: 20px; z-index: 20000; cursor: pointer; font-size: 20px; opacity: 0.5; transition: 0.3s;">
+    <span id="musicIcon">🔇</span>
+</div>
+
+    <!-- 1. CELESTIAL LOCK PRELOADER -->
+<div id="preloader">
+    <div class="lock-container">
+        <!-- Day Column -->
+        <div class="lock-col">
+            <div class="lock-strip" id="day-strip">
+                <div>08</div><div>15</div><div>22</div><div>30</div><div>03</div>
+            </div>
+        </div>
+        <span class="lock-separator">.</span>
+        <!-- Month Column -->
+        <div class="lock-col">
+            <div class="lock-strip" id="month-strip">
+                <div>10</div><div>12</div><div>08</div><div>01</div><div>03</div>
+            </div>
+        </div>
+        <span class="lock-separator">.</span>
+        <!-- Year Column -->
+        <div class="lock-col year-col">
+            <div class="lock-strip" id="year-strip">
+                <div>1998</div><div>2005</div><div>1995</div><div>2010</div><div>2002</div>
+            </div>
+        </div>
+    </div>
+    <div id="lock-status">ACCESSING MEMORIES...</div>
+</div>
+
+    <!-- STAGE 2: THE ROPE (Physics Based) -->
+<div id="rope-scene">
+    <!-- The SVG Rope -->
+    <svg id="rope-svg" style="position: absolute; width: 100%; height: 100%; pointer-events: none;">
+        <defs>
+            <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                    <feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <!-- This path will "bow" dynamically -->
+        <path id="rope-path" d="" stroke="#ffd700" stroke-width="4" fill="none" filter="url(#glow)" stroke-linecap="round"/>
+    </svg>
+
+    <div class="rope-wrapper" id="ropeDraggable">
+        <!-- The Pull Ring -->
+        <div class="pull-ring" id="pull-ring"></div>
+    </div>
+    
+    <h4 id="rope-hint">
+    WANT A SURPRISE?<br>
+    <span style="font-size: 0.7rem; opacity: 0.7; letter-spacing: 5px;">PULL THE ROPE</span>
+</h4>
+</div>          
+
+
+    <div id="main-stage">
+        <div id="cake-zone">
+            <h1 class="h-title">Happy Birthday Chinnu!</h1>
+            <div class="cake-container">
+                <div class="flame-wrapper" id="flameTap"><div class="flame-src"></div></div>
+                <div class="candle"></div>
+                <div class="cake-layer tier3"></div><div class="cake-layer tier2"></div><div class="cake-layer tier1"></div>
+            </div>
+            <p id="wishMsg">Tap the flame to wish!</p>
+            <button id="continueBtn">Chinnu Tap me →</button>
+        </div>
+
+        <div id="stack-box">
+            <div class="m-card card3" id="c3"><h3>Forever ♾️</h3><p>You believe friendship is for a lifetime. You stayed even when things were tough. Your words healed me like nothing else.</p></div>
+            <div class="m-card card2" id="c2"><h3>The Mimic 😂</h3><p>200% exactly! Your imitations make me laugh until my stomach hurts. You see me like no one else does.</p></div>
+            <div class="m-card card1" id="c1"><h3>The Bay 🏢</h3><p>It started at the office, you sitting right in front of me. Your pleasant way of talking always made my day brighter.</p></div>
+            <button id="nextBtn">Next Memory</button>
+        </div>
+    </div>
+
+    <!-- 4. POSTMAN DELIVERY (ELEGANT VERSION) -->
+<div id="postman-zone">
+    <h3 id="deliveryText">Special Delivery for Chinnu...</h3>
+    <div id="postman-rider" class="postman">🚴‍♂️</div>
+    <div id="mailbox">📮</div>
+</div>
+
+    <div id="final-screen">
+    <!-- Tap to Open Section -->
+    <div id="envelope-wrapper-final">
+        <h2 style="font-family:'Dancing Script'; color:var(--gold); font-size: 2.5rem; text-align: center; margin-top: 15vh;" id="finalTitle">The Final Message</h2>
+        <p style="text-align: center; color: #ccc;" id="finalSubtitle">Tap to Read Your Special Letter</p>
+        <div id="finalEnv"></div>
+    </div>
+
+    <!-- The Actual Letter Content -->
+    <div class="letter-box" id="letterBox">
+        <div class="letter-scroll-container" id="autoScrollContainer">
+            <div class="final-text" id="typed-text"></div>
+        </div>
+        <button id="readAgainBtn">Read Again from Heart</button>
+        <button id="bffBtn">Best Friends Forever ❤️</button>
+    </div>
+</div>
+
+    <script>
+
+        // 1. DATA: Add your photos and their "type" (wide, tall, or big)
+const memoryPhotos = [
+    { src: "https://res.cloudinary.com/doxabh7af/image/upload/v1772467018/photo004_graqfs.jpg", type: "big" },   // Your best photo
+    { src: "https://res.cloudinary.com/doxabh7af/image/upload/v1772467018/photooo002_hiwu4f.jpg", type: "wide" },  // Landscape photo
+    { src: "https://res.cloudinary.com/doxabh7af/image/upload/v1772467019/phottooo001_bdowkh.jpg", type: "tall" },  // Portrait photo
+    { src: "https://res.cloudinary.com/doxabh7af/image/upload/v1772368569/IMG_20260115_150404.jpg_zkab0k.jpg", type: "normal" },
+    { src: "https://res.cloudinary.com/doxabh7af/image/upload/v1772467018/photo003_jq67sm.jpg", type: "tall" },
+    { src: "https://res.cloudinary.com/doxabh7af/image/upload/v1772467018/photooo05_blyc7u.jpg", type: "wide" }
+];
+
+// 2. THE NEW GALLERY LOGIC
+window.openOrbit = function() {
+    const stage = document.getElementById('orbit-stage');
+    const grid = document.getElementById('bento-grid');
+    const bffOverlay = document.getElementById('bff-overlay');
+    
+    if(bffOverlay) bffOverlay.style.display = 'none';
+    stage.style.display = 'flex';
+    grid.innerHTML = ''; // Clear
+
+    memoryPhotos.forEach((photo, i) => {
+        const item = document.createElement('div');
+        item.className = `gallery-item ${photo.type}`;
+        
+        const img = document.createElement('img');
+        img.src = photo.src;
+        
+        // Add click to zoom feature
+        item.onclick = () => {
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lightbox-img');
+            lbImg.src = photo.src;
+            lb.style.display = 'flex';
+            gsap.from(lbImg, { scale: 0.8, opacity: 0, duration: 0.4 });
+        };
+
+        item.appendChild(img);
+        grid.appendChild(item);
+    });
+
+    // Staggered Entrance Animation
+    gsap.from(".gallery-item", { 
+        y: 50, opacity: 0, stagger: 0.1, duration: 0.8, ease: "power2.out" 
+    });
+};
+
+// Lightbox Close
+window.closeLightbox = function() {
+    document.getElementById('lightbox').style.display = 'none';
+};
+
+// Back Button
+window.closeOrbit = function() {
+    gsap.to("#orbit-stage", { opacity: 0, duration: 0.5, onComplete: () => {
+        document.getElementById('orbit-stage').style.display = 'none';
+        document.getElementById('orbit-stage').style.opacity = '1';
+        document.getElementById('bff-overlay').style.display = 'flex';
+    }});
+};
+       window.onload = () => {
+    // 1. Initial Lock Setup
+    const tl = gsap.timeline();
+
+    // 2. The Spinning Sequence
+    tl.to("#day-strip", {
+        y: -480, // Moves to '02' (the 5th item)
+        duration: 2,
+        ease: "back.out(1.2)",
+        delay: 0.5
+    })
+    .to("#month-strip", {
+        y: -480, // Moves to '04' (the 5th item)
+        duration: 2,
+        ease: "back.out(1.2)"
+    }, "-=1.5") // Starts slightly before day finishes
+    .to("#year-strip", {
+        y: -480, // Moves to '2002' (the 5th item)
+        duration: 2.5,
+        ease: "back.out(1.2)"
+    }, "-=1.5");
+
+    // 3. The "Success" Pulse
+    tl.to(".lock-strip", {
+        color: "#fff",
+        textShadow: "0 0 30px #ffd700",
+        duration: 0.5,
+        repeat: 1,
+        yoyo: true
+    })
+    .to("#lock-status", {
+        text: "IDENTITY VERIFIED", // Requires GSAP TextPlugin, or just change innerHTML:
+        onStart: () => { document.getElementById('lock-status').innerHTML = "IDENTITY VERIFIED"; },
+        color: "var(--gold)",
+        opacity: 1,
+        duration: 0.5
+    });
+
+    // 4. The Exit & Rope Reveal
+    tl.to("#preloader", {
+        y: "-100%",
+        duration: 1.2,
+        ease: "power4.inOut",
+        delay: 0.8,
+        onComplete: () => {
+            document.getElementById('preloader').style.display = 'none';
+            // Show the rope scene
+            const rope = document.getElementById('rope-scene');
+            if(rope) rope.style.display = 'block';
+            
+            // Start Music if you have it
+            if(typeof playBirthdayMusic === 'function') playBirthdayMusic();
+        }
+    });
+};
+
+        const ropeScene = document.getElementById('rope-scene');
+const ropePath = document.getElementById('rope-path');
+const ring = document.getElementById('ropeDraggable');
+const hint = document.getElementById('rope-hint');
+
+let isDragging = false;
+let startY = 0;
+let currentY = 0;
+const threshold = 350; // Distance to trigger surprise
+
+// Update the SVG Path to "Bow"
+function updateRopePath(y) {
+    const width = window.innerWidth;
+    const startX = width / 2;
+    // The curve logic: Start(Center-Top) -> Control(Mouse position) -> End(Ring Center)
+    const curveY = y / 2; 
+    const d = `M ${startX} 0 Q ${startX} ${curveY} ${startX} ${y}`;
+    ropePath.setAttribute('d', d);
+    
+    // Increase glow based on tension
+    const glowIntensity = (y / threshold) * 20;
+    ropePath.style.filter = `drop-shadow(0 0 ${glowIntensity}px #ffd700)`;
+}
+
+// Event Listeners for Mouse and Touch
+const startEvent = (e) => {
+    isDragging = true;
+    startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+    ring.style.transition = "none";
+};
+
+const moveEvent = (e) => {
+    if (!isDragging) return;
+    const y = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+    currentY = Math.max(0, y - startY);
+
+    if (currentY < threshold + 50) {
+        gsap.set(ring, { y: currentY });
+        updateRopePath(currentY);
+        // Fade hint based on distance
+        gsap.set(hint, { opacity: 1 - (currentY / threshold) });
+    }
+    
+    // Trigger point
+    if (currentY > threshold) {
+        finishPull();
+    }
+};
+
+const endEvent = () => {
+    if (!isDragging) return;
+    isDragging = false;
+    
+    // If not pulled far enough, snap back with Elastic effect
+    if (currentY < threshold) {
+        gsap.to(ring, { y: 0, duration: 0.8, ease: "elastic.out(1, 0.3)" });
+        // Animate the rope path back too
+        let obj = { val: currentY };
+        gsap.to(obj, { 
+            val: 0, duration: 0.8, ease: "elastic.out(1, 0.3)", 
+            onUpdate: () => updateRopePath(obj.val) 
+        });
+    }
+};
+
+function finishPull() {
+    isDragging = false;
+    // 1. The Snap Animation
+    gsap.to(ropePath, { opacity: 0, duration: 0.1 });
+    gsap.to(ring, { scale: 0, opacity: 0, duration: 0.2 });
+    
+    // 2. White Flash Reveal (The Wow Factor)
+    const flash = document.createElement('div');
+    flash.style = "position:fixed; inset:0; background:white; z-index:11000; opacity:0;";
+    document.body.appendChild(flash);
+    
+    gsap.to(flash, { 
+        opacity: 1, 
+        duration: 0.1, 
+        yoyo: true, 
+        repeat: 1, 
+        onComplete: () => {
+            flash.remove();
+            startMusic(); 
+            // CALL THE REVEAL FUNCTION HERE
+            showTheParty(); 
+        }
+    });
+}
+
+// Attach Events
+ring.addEventListener('mousedown', startEvent);
+window.addEventListener('mousemove', moveEvent);
+window.addEventListener('mouseup', endEvent);
+
+ring.addEventListener('touchstart', startEvent, {passive: false});
+window.addEventListener('touchmove', moveEvent, {passive: false});
+window.addEventListener('touchend', endEvent);
+
+// Initial State
+updateRopePath(0);
+
+        // --- MEGA THICK CONFETTI ---
+        document.getElementById('flameTap').addEventListener('click', () => {
+            document.getElementById('flameTap').style.display = 'none';
+            document.getElementById('wishMsg').innerHTML = "YOUR WISH IS GRANTED! ✨";
+            
+            const count = 300;
+            const defaults = { origin: { y: 0.7 }, colors: ['#ffd700', '#ff4757', '#ffffff'] };
+            function fire(particleRatio, opts) {
+                confetti({ ...defaults, ...opts, particleCount: Math.floor(count * particleRatio) });
+            }
+            fire(0.25, { spread: 26, startVelocity: 55, scalar: 2 });
+            fire(0.2, { spread: 60, scalar: 1.5 });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 1.2 });
+            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 2 });
+
+            gsap.to("#continueBtn", { display: "block", opacity: 1, y: -10, duration: 0.5, delay: 0.8 });
+        });
+
+        document.getElementById('continueBtn').addEventListener('click', () => {
+            gsap.to("#cake-zone", { opacity: 0, scale: 0.8, duration: 0.5, onComplete: () => {
+                document.getElementById('cake-zone').style.display = 'none';
+                document.getElementById('stack-box').style.display = 'block';
+                gsap.from(".m-card", { scale: 0, stagger: 0.2, duration: 0.8 });
+            }});
+        });
+
+        let cur = 1;
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if(cur <= 3) {
+                gsap.to("#c" + cur, { x: 500, rotation: 30, opacity: 0, duration: 0.7 });
+                cur++;
+                if(cur === 2) gsap.to("#c2", { scale: 1, y: 0, duration: 0.4 });
+                else if(cur === 3) {
+                    gsap.to("#c3", { scale: 1, y: 0, duration: 0.4 });
+                    document.getElementById('nextBtn').innerHTML = "Wait for Surprise...";
+                } else {
+                    startPostman();
+                }
+            }
+        });
+
+        function startPostman() {
+    // 1. Hide the cards stage and show the delivery stage
+    gsap.to("#main-stage", { opacity: 0, duration: 0.5 });
+    
+    const zone = document.getElementById('postman-zone');
+    zone.style.display = 'flex';
+    zone.style.opacity = '1';
+
+    // 2. Force reset positions
+    gsap.set("#deliveryText", { opacity: 0, y: 0 });
+    gsap.set("#postman-rider", { x: 0, opacity: 1 });
+    gsap.set("#mailbox", { opacity: 0 });
+
+    // 3. START ANIMATION
+    const tl = gsap.timeline();
+
+    tl.to("#deliveryText", { opacity: 1, duration: 1.5, ease: "power2.out" })
+      .to("#mailbox", { opacity: 1, duration: 1 }, "-=1")
+      .to("#postman-rider", { 
+          x: window.innerWidth * 0.8, // Ride to the mailbox
+          duration: 4, 
+          ease: "none" 
+      })
+      .to("#postman-rider", { y: -20, duration: 0.2, yoyo: true, repeat: 1 }) // Small bounce at stop
+      .to("#postman-zone", { 
+          opacity: 0, 
+          duration: 1, 
+          delay: 1,
+          onComplete: () => {
+              zone.style.display = 'none';
+              // Move to the final letter
+              document.getElementById('final-screen').style.display = 'block';
+              if (typeof createSparkles === 'function') createSparkles();
+          }
+      });
+}
+
+        const env = document.getElementById('finalEnv');
+
+env.addEventListener('click', () => {
+    if(!env.classList.contains('open')) {
+        // 1. Flip the flap and hide title
+        env.classList.add('open');
+        gsap.to(["#finalTitle", "#finalSubtitle"], { opacity: 0, y: -20, duration: 0.5 });
+        
+        // 2. Wait for flap animation, then rise the letter
+        setTimeout(() => {
+            gsap.to(env, { y: 600, opacity: 0, duration: 1, ease: "power2.in" }); // Envelope sinks
+            
+            document.getElementById('letterBox').style.display = 'flex';
+            gsap.from("#letterBox", { 
+                y: 400, 
+                scale: 0.8, 
+                opacity: 0, 
+                duration: 1.2, 
+                ease: "power3.out",
+                onComplete: () => {
+                    startFinalType(); // Triggers your emotional story
+                }
+            });
+        }, 800); // 800ms matches the CSS transition of the flap
+    }
+});
+
+        if (typeof typed === 'undefined') {
+    var typed; 
+}
+function startFinalType() {
+    const container = document.getElementById('autoScrollContainer');
+    if(typed) typed.destroy();
+    
+    typed = new Typed('#typed-text', {
+        strings: [
+            "Dearest Chinnu, ❤️<br><br>" +
+            "I was just thinking about how we met... Remember that office bay? Fate sat us right in front of each other. " +
+            "From day one, your pleasant way of talking and your kind approach became the highlight of my work life. ^1000<br><br>" +
+            "And oh, those imitations! 😂 No one sees me as clearly as you do—mimicking me 200% exactly! You brought so much laughter into my world. ^800<br><br>" +
+            "But what I cherish most is your heart. You’ve always believed that friendship isn't a temporary stop, but a 'Forever' journey. ^1000<br><br>" +
+            "When we moved bays after 4 months, I missed you so badly. But strangely, the distance only made us closer. Our bond became unbreakable. ^800<br><br>" +
+            "I'll never forget our biggest battle. I was ready to walk away and stop talking, but you? **You never gave up on me.** " +
+            "You stayed at any cost. Your words didn't just reach me; they healed me like nothing else ever could. ^1000<br><br>" +
+            "You know my struggles, you’ve seen my hardest days, and yet you support my future with a strength that leaves me speechless. ^800<br><br>" +
+            "Thank you for being the one who stays. Thank you for being my peace. <br><br>" +
+            "**Happy Birthday to my Forever Best Friend!** ✨"
+        ],
+        typeSpeed: 45,
+        showCursor: false,
+        // THE GENIUS SCROLL FIX
+        preStringTyped: () => {
+            const scrollInterval = setInterval(() => {
+                if (container) {
+                    // This creates a smooth "Follow" effect
+                    container.scrollTo({
+                        top: container.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                }
+                // Automatically stop scrolling when typing is finished
+                if (typed && typed.cursor && typed.cursor.isDone) {
+                    clearInterval(scrollInterval);
+                }
+            }, 100);
+        },
+        onComplete: () => {
+            if (typeof window.fireConfettiGun === 'function') {
+                window.fireConfettiGun();
+            }
+        }
+    });
+}
+
+        document.getElementById('readAgainBtn').addEventListener('click', startFinalType);
+
+        function createSparkles() {
+            for(let i=0; i<15; i++) {
+                let s = document.createElement('div');
+                s.className = 'sparkle'; s.innerHTML = "✨";
+                s.style.left = Math.random() * 100 + "vw"; s.style.top = Math.random() * 100 + "vh";
+                s.style.animationDelay = Math.random() * 3 + "s";
+                document.getElementById('final-screen').appendChild(s);
+            }
+        }
+        window.fireConfettiGun = function() {
+    var end = Date.now() + (7 * 1000); // Firing for 7 seconds
+    var colors = ['#ffd700', '#ff4757', '#ffffff', '#ff9f43'];
+
+    (function frame() {
+        // Left Side Gun (Thick stream)
+        confetti({
+            particleCount: 5,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0, y: 0.9 },
+            colors: colors,
+            scalar: 1.5, // Larger pieces
+            zIndex: 11000
+        });
+        // Right Side Gun (Thick stream)
+        confetti({
+            particleCount: 5,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1, y: 0.9 },
+            colors: colors,
+            scalar: 1.5,
+            zIndex: 11000
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    }());
+};
+
+function showTheParty() {
+    // Hide the rope scene entirely
+    document.getElementById('rope-scene').style.display = 'none';
+    
+    // Show the main party stage
+    const mainStage = document.getElementById('main-stage');
+    mainStage.style.display = 'block';
+    initStarryNight(); 
+    
+    // Animate the title and cake coming in
+    gsap.from(".h-title", { 
+        scale: 0, 
+        rotation: 720, 
+        duration: 1.5, 
+        ease: "elastic.out(1, 0.3)" 
+    });
+    
+    // Start the background balloons
+    if (typeof createBalloons === 'function') {
+        createBalloons();
+    }
+}
+function initStarryNight() {
+    const stage = document.getElementById('main-stage');
+    for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 2 + 1; // 1px to 3px
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        
+        // Random twinkle speeds
+        gsap.to(star, {
+            opacity: Math.random(),
+            duration: 1 + Math.random() * 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+        
+        stage.appendChild(star);
+    }
+}
+
+document.getElementById('bffBtn').addEventListener('click', () => {
+    const overlay = document.getElementById('bff-overlay');
+    const photo = document.getElementById('final-photo');
+    const swipe = document.getElementById('light-swipe');
+
+    overlay.style.display = 'flex';
+    overlay.style.opacity = '0';
+    
+    // 1. Fade in the screen
+    gsap.to(overlay, { opacity: 1, duration: 1 });
+
+    // 2. Start the Slow Zoom (Ken Burns Effect)
+    gsap.to(photo, { scale: 1, duration: 6, ease: "none" });
+
+    // 3. The Light Swipe & Color Reveal
+    setTimeout(() => {
+        // Swipe across the screen
+        gsap.to(swipe, { left: '150%', duration: 1.5, ease: "power2.inOut" });
+        
+        // As the swipe passes, reveal color
+        setTimeout(() => {
+            photo.style.filter = "grayscale(0%)";
+            // Inside your bffBtn click logic:
+setTimeout(() => {
+    const orbitBtn = document.getElementById('openOrbitBtn');
+    if(orbitBtn) {
+        orbitBtn.style.display = 'block';
+        gsap.from(orbitBtn, { y: 20, opacity: 0, duration: 1 });
+    }
+}, 4000); // Shows up 4 seconds after the photo reveal
+            // Extra Celebration Burst
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ffd700', '#ffffff']
+            });
+        }, 400); 
+    }, 1000);
+});
+
+
+
+// PUT THIS AT THE VERY TOP OF YOUR SCRIPT TAG
+window.closeBffOverlay = function(event) {
+    console.log("Close button clicked!"); // Check your console to see this
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+
+    const overlay = document.getElementById('bff-overlay');
+    const photo = document.getElementById('final-photo');
+    const finalScreen = document.getElementById('final-screen');
+    const letterBox = document.getElementById('letterBox');
+
+    // Cinematic Fade Out using GSAP
+    gsap.to(overlay, { 
+        opacity: 0, 
+        duration: 0.6, 
+        ease: "power2.inOut",
+        onComplete: () => {
+            overlay.style.display = 'none';
+            
+            // Reset photo for next time
+            if (photo) {
+                photo.style.filter = "grayscale(100%)";
+                gsap.set(photo, { scale: 1.1 });
+            }
+            gsap.set("#light-swipe", { left: "-150%" });
+
+            // Ensure the background note is visible
+            if (finalScreen) finalScreen.style.display = 'block';
+            if (letterBox) letterBox.style.display = 'flex';
+            
+            console.log("Returned to Final Note");
+        }
+    });
+};
+
+const song = document.getElementById('birthdaySong');
+const musicIcon = document.getElementById('musicIcon');
+
+function startMusic() {
+    song.play().then(() => {
+        musicIcon.innerHTML = "🎵";
+        gsap.to("#musicControl", { opacity: 1, duration: 1 });
+    }).catch(err => console.log("Autoplay blocked, waiting for interaction."));
+}
+
+function toggleMusic() {
+    if (song.paused) {
+        song.play();
+        musicIcon.innerHTML = "🎵";
+    } else {
+        song.pause();
+        musicIcon.innerHTML = "🔇";
+    }
+}
+
+
+    </script>
+    <!-- THE CINEMATIC PHOTO REVEAL -->
+<div id="bff-overlay">
+    <div id="light-swipe"></div>
+    <img id="final-photo" src="https://res.cloudinary.com/doxabh7af/image/upload/v1772368569/IMG_20260115_150404.jpg_zkab0k.jpg" alt="Us">
+    <!-- Update your button tag like this -->
+<button id="close-final" onclick="closeBffOverlay(event)" style="pointer-events: auto !important;">✕</button>
+</div>
+<!-- 7. THE MEMORY GALLERY (BENTO GRID) -->
+<div id="orbit-stage">
+    <div id="gallery-header">
+        <h2 id="gallery-title">Our Journey in Frames</h2>
+        <p id="gallery-subtitle">Every frame tells a story of us...</p>
+    </div>
+    
+    <!-- The Grid Container -->
+    <div id="bento-grid">
+        <!-- Photos will be injected here by JS -->
+    </div>
+
+    <!-- Hidden Lightbox for Full View -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Full View">
+    </div>
+
+    <button id="close-orbit" onclick="window.closeOrbit()">Back to Us</button>
+</div>
+
+<!-- Add a button to your bff-overlay to trigger this -->
+<!-- Find your <div id="bff-overlay"> and paste this button inside it at the bottom -->
+<button id="openOrbitBtn" onclick="openOrbit()" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 13000; background: rgba(0,0,0,0.6); border: 2px solid var(--gold); color: white; padding: 12px 25px; border-radius: 50px; cursor: pointer; display: none; font-weight: bold; font-family: 'Poppins', sans-serif;">Explore Our Orbit →</button></body>
+</html>

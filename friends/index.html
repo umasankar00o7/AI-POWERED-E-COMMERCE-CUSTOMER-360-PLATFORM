@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R S Sisters</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- UPDATE THIS HTML BLOCK -->
+
+  <!-- ===== "WOW" FACTOR PRELOADER ===== -->
+  <div id="preloader">
+    <div class="preloader-curtain left"></div>
+    <div class="preloader-curtain right"></div>
+
+    <div class="preloader-logo-container">
+      <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1751815308/IMG_20250706_204202_suylf5.jpg" alt="Loading..." />
+      
+      <!-- ADD THIS ONE LINE -->
+      <div class="preloader-ring"></div>
+      
+    </div>
+  </div>
+  <!-- ===== END PRELOADER ===== -->
+
+
+<!-- Your <nav> and all other content follows here... -->
+  <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="#" data-bs-toggle="offcanvas" data-bs-target="#profileMenuOffcanvas">
+        <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1751815308/IMG_20250706_204202_suylf5.jpg" alt="Profile Photo" class="navbar-profile-pic"/>
+        <!-- DYNAMIC BRAND NAME for RS Sisters -->
+        <div class="navbar-brand-container">
+          <span class="navbar-brand-initials" id="dynamicBrandInitials">R S</span>
+          <span class="navbar-brand-fullname">Sisters</span>
+        </div>
+      </a>
+    
+    <!-- Mobile Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible wrapper for links and theme toggle -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Main Nav Links -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#my-shop">Shop</a></li>
+
+        <li class="nav-item"><a class="nav-link" href="#creations">Creations</a></li>
+        <li class="nav-item"><a class="nav-link" href="#guestbook">Guestbook</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      
+      <!-- Theme Toggle -->
+      <div class="theme-toggle-container ms-lg-4 ms-0 mt-3 mt-lg-0">
+        <input type="checkbox" class="theme-checkbox" id="themeToggleCheckbox" aria-label="Toggle theme">
+        <label for="themeToggleCheckbox" class="theme-toggle-label">
+          <i class="fas fa-moon"></i><i class="fas fa-sun"></i>
+          <span class="theme-ball"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <!-- HERO SECTION (Unchanged) -->
+  <section class="hero-section" id="hero">
+    <div class="container text-center" data-aos="fade-in">
+      <h1 class="hero-title">Welcome to the world of  <br><span class="highlight" id="typed-text-hero"></span></h1>
+      <p class="hero-subtitle lead">Weaving stories, one thread at a time.</p>
+      <a href="#creations" class="btn btn-hero-cta">View My Work</a>
+    </div>
+  </section>
+  
+  <!-- ABOUT SECTION (Unchanged) -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">My Story</h2>
+      <div class="row align-items-center justify-content-center gy-5">
+        <div class="col-lg-5 text-center" data-aos="fade-right">
+          <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1751815308/IMG_20250706_204202_suylf5.jpg" alt="Fashion Designer" class="img-fluid about-image" />
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <h2 class="about-headline">Passion sewn into every stitch.</h2>
+          <div class="about-me-text-wrapper" id="aboutMeTextWrapper">
+            <p class="about-text">We are Ramya and Sailu (RS Sisters). From a young age, we believed in hard work and independence. Rather than being dependents, we chose to carve our own path, turning our passion for fashion. Our YouTube journey began during the Covid period, to teach maggam work to empower others.</p>
+            <p class="about-text collapsible-content">This  is truly DIY (Do it Your self) channel dedicated to those who are passionate to create something new and creative design</p>
+          </div>
+          <button class="btn btn-link btn-read-more" id="readMoreAboutToggle">Read More <i class="fas fa-chevron-down ms-1"></i></button>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="https://youtube.com/@the_world_of_rssisters?si=jh3ZUqgU_TEgLD9G" target="_blank" class="btn btn-social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com/style_rack_jewellery?igsh=MWwxOWcwaDd3N3ZsMg%3D%3D&utm_source=qr" target="_blank" class="btn btn-social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+
+ <!-- === "MY SHOP" PROMOTIONAL SECTION (FINAL) === -->
+<section id="my-shop" class="my-shop-section">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            <!-- Left Side: Text Content -->
+            <div class="col-lg-6 order-lg-1 order-2">
+                <div class="my-shop-content" data-aos="fade-right">
+                    <h2 class="section-title text-start">Discover My Shop</h2>
+                    <p class="my-shop-subtitle text-muted">
+                        Step into a curated world of handcrafted jewelry and exclusive apparel. Each piece tells a story, waiting to become a part of yours.
+                    </p>
+                    <div class="my-shop-features mt-4">
+                        <div class="feature-item"><i class="bi bi-gem"></i><span>Exclusive Designs</span></div>
+                        <div class="feature-item"><i class="bi bi-shield-check"></i><span>Premium Quality</span></div>
+                        <div class="feature-item"><i class="bi bi-whatsapp"></i><span>Personal Service</span></div>
+                    </div>
+                    <a href="shop.html" class="btn btn-hero-cta mt-4">Enter The Shop <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
+            <!-- Right Side: Image -->
+            <div class="col-lg-6 order-lg-2 order-1">
+                <div class="my-shop-image-wrapper" data-aos="fade-left">
+                    <a href="shop.html" class="my-shop-image-link">
+                        <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1755833875/updated_ryz5ty.png" alt="RS Sisters Shop" class="my-shop-image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- END OF HTML BLOCK TO ADD -->
+  <!-- FEATURED CREATIONS SECTION (Unchanged) -->
+  <section id="creations" class="bg-alt">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Featured Creations</h2>
+      <div id="creations-container" class="row g-4 g-lg-5"></div>
+    </div>
+  </section>
+  <!-- === WALL OF FAME TESTIMONIALS CAROUSEL (NEW) === -->
+<section id="testimonials-section" class="bg-alt">
+    <div class="container-fluid px-0">
+        <h2 class="section-title" data-aos="fade-up">What Our Learners Say</h2>
+        
+        <div class="horizontal-scroll-container" style="overflow-x: hidden;">
+            <div id="testimonials-row" class="marquee-row">
+                <!-- Testimonial cards will be loaded here by JavaScript -->
+                <div class="text-center p-5 text-muted">Loading inspiring feedback...</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+
+  <!-- GUESTBOOK SECTION (Unchanged) -->
+  <section id="guestbook">
+      <div class="container">
+          <h2 class="section-title" data-aos="fade-up">Guestbook</h2>
+          <p class="lead text-center text-muted mb-5" data-aos="fade-up">Enjoyed my work? Leave a note for me and other visitors!</p>
+          <div class="row justify-content-center">
+              <div class="col-lg-8">
+                  <div class="guestbook-form-wrapper" data-aos="fade-up">
+                      <form id="guestbook-form">
+                          <div class="mb-3"><input type="text" class="form-control" id="guestbook-name" placeholder="Your Name" required></div>
+                          <div class="mb-3"><textarea class="form-control" id="guestbook-message" rows="3" placeholder="Your kind words..." required></textarea></div>
+                          <div class="text-end"><button type="submit" class="btn btn-submit-guestbook">Leave a Note</button></div>
+                      </form>
+                  </div>
+                  <hr class="my-5">
+                  <h3 class="text-center mb-4 recent-visitors-title">Recent Notes</h3>
+                  <div id="guestbook-entries-container"><div class="text-center"><div class="spinner-border text-accent" role="status"></div></div></div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- CONTACT SECTION (Unchanged) -->
+  <section id="contact" class="bg-alt">
+    <div class="container text-center">
+      <h2 class="section-title" data-aos="fade-up">Let's Create Together</h2>
+      <p class="lead text-muted mx-auto" style="max-width: 600px;" data-aos="fade-up">
+        Have a project in mind or a collaboration idea? I'd love to hear from you.
+      </p>
+      <div class="mt-4" data-aos="fade-up">
+        <button class="btn btn-hero-cta" data-bs-toggle="modal" data-bs-target="#contactModal"><i class="fas fa-paper-plane me-2"></i>Send a Message</button>
+      </div>
+      <div class="mt-5" data-aos="fade-up">
+          <p class="text-muted mb-3">Or connect directly via:</p>
+          <div class="d-flex justify-content-center gap-3">
+              <a href="https://wa.me/7893316959" target="_blank" class="btn-social-icon-small" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+              <a href="https://www.instagram.com/style_rack_jewellery?igsh=MWwxOWcwaDd3N3ZsMg%3D%3D&utm_source=qr" target="_blank" class="btn-social-icon-small" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BE THE INSIDER SECTION (Unchanged) -->
+  <section id="insider">
+      <div class="container">
+          <div class="insider-card" data-aos="fade-up">
+              <div class="row align-items-center">
+                  <div class="col-lg-7">
+                    
+                      <h2 class="insider-title">Be The Insider</h2>
+                      <p class="insider-text text-muted">Join my creative journey. Get exclusive content and a front-row seat to my latest creations by following my accounts.</p>
+                  </div>
+                  <div class="col-lg-5 text-lg-end text-center mt-4 mt-lg-0">
+                      <div class="insider-button-group">
+                          <a href="https://youtube.com/@the_world_of_rssisters?si=jh3ZUqgU_TEgLD9G" target="_blank" class="btn btn-insider-account">Go through</a>
+                          <small class="insider-account-name d-block mb-3">rs sisters</small>
+                      </div>
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- PORTFOLIO STATS SECTION (Unchanged) -->
+  <section id="portfolio-stats" class="bg-alt">
+    <div class="container">
+      <div class="row justify-content-center align-items-center gy-4">
+        <div class="col-6 col-md-auto text-center"><div class="stat-number" id="animatedViewsCount">0</div><div class="stat-label">Portfolio Views</div></div>
+        <div class="col-md-auto d-none d-md-block"><div class="stat-divider"></div></div>
+        <div class="col-6 col-md-auto text-center"><div class="stat-number" id="animatedLikesCount">0</div><div class="stat-label">Likes</div></div>
+        <div class="col-md-auto d-none d-md-block"><div class="stat-divider"></div></div>
+        <div class="col-6 col-md-auto text-center"><div class="stat-number" id="animatedSharesCount">0</div><div class="stat-label">Shares</div></div>
+        <div class="col-md-auto d-none d-md-block"><div class="stat-divider"></div></div>
+        <div class="col-6 col-md-auto text-center"><div class="stat-number" id="animatedGuestbookCount">0</div><div class="stat-label">Guestbook Notes</div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER (Unchanged) -->
+  <footer class="py-4 text-center">
+    <div id="portfolio-stats-hidden" class="d-none">
+        <span id="views-count">0</span><span id="shares-count">0</span><span id="guestbook-count">0</span><span id="likes-count">0</span>
+    </div>
+    <p class="mb-1">© <span id="currentYear"></span> <span class="navbar-brand-initials" id="dynamicBrandInitials">R S</span>
+          <span class="navbar-brand-fullname">Sisters</span>. All Rights Reserved.</p>
+  </footer>
+
+  <!-- UTILITY BUTTONS & MODALS (Off-canvas Unchanged) -->
+  <div id="appToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="appToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header"><strong id="toastTitle" class="me-auto"></strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div>
+      <div id="toastBody" class="toast-body"></div>
+    </div>
+  </div>
+  <button id="backToTopBtn" class="fab" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+  <button id="fabPortfolioShareButton" class="fab fab-portfolio-share" title="Share This Portfolio"><i class="fas fa-share-alt"></i></button>
+  <button id="fabPortfolioLikeButton" class="fab fab-portfolio-like" title="Like this Portfolio"><i class="fas fa-heart"></i></button>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="profileMenuOffcanvas"><div class="offcanvas-header"><h5 class="offcanvas-title"><span class="navbar-brand-initials" id="dynamicBrandInitials">R S</span>
+          <span class="navbar-brand-fullname">Sisters</span></h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div><div class="offcanvas-body d-flex flex-column"><div class="text-center mb-4"><img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1751815308/IMG_20250706_204202_suylf5.jpg" alt="Profile" class="offcanvas-profile-pic" data-bs-toggle="modal" data-bs-target="#profileImageModal"/><h6 class="mt-3 mb-0">Designers & Creators</h6><small class="text-muted">Fashion | Style Rack | Art</small></div><ul class="navbar-nav offcanvas-nav"><li class="nav-item"><a class="nav-link" href="#about"><i class="bi bi-person-circle me-3"></i>About</a></li><li class="nav-item"><a class="nav-link" href="#my-shop"><i class="bi bi-gem me-3"></i>Shop</a></li><li class="nav-item"><a class="nav-link" href="#creations"><i class="bi bi-images me-3"></i>Creations</a></li><li class="nav-item"><a class="nav-link" href="#guestbook"><i class="bi bi-chat-right-text-fill me-3"></i>Guestbook</a></li></ul><div class="mt-auto"><hr><div class="text-center mb-3"><a href="https://youtube.com/@the_world_of_rssisters?si=jh3ZUqgU_TEgLD9G" target="_blank" class="btn btn-social-icon-offcanvas" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a><a href="https://www.instagram.com/style_rack_jewellery?igsh=MWwxOWcwaDd3N3ZsMg%3D%3D&utm_source=qr" target="_blank" class="btn btn-social-icon-offcanvas" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></div><div class="d-grid"><a href="#contact" class="btn btn-primary-offcanvas"><i class="bi bi-envelope-fill me-2"></i>Get In Touch</a></div></div></div></div>
+  <div class="modal fade" id="profileImageModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content bg-transparent border-0"><div class="modal-body text-center p-0"><img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1751815308/IMG_20250706_204202_suylf5.jpg" class="img-fluid rounded shadow-lg" alt="Profile Full View"></div></div></div></div>
+  <div class="modal fade" id="contactModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content contact-modal-content"><div class="modal-body"><div id="contactFormContainer"><div class="contact-modal-icon-wrapper"><i class="fas fa-paper-plane"></i></div><h5 class="modal-title contact-modal-title">Send a Message</h5><p class="contact-modal-text">Your feedback, questions, and ideas are welcome.</p><form id="portfolioContactForm"><div class="mb-3"><input type="text" class="form-control" id="contactName" placeholder="Your Name" required></div><div class="mb-3"><input type="email" class="form-control" id="contactEmail" placeholder="Your Email" required></div><div class="mb-3"><textarea class="form-control" id="contactMessage" rows="4" placeholder="Your message..." required></textarea></div><div class="contact-modal-actions"><button type="submit" id="contactSubmitButton" class="btn btn-submit-contact"><span class="btn-text">Send Message</span></button><div id="contactFormStatus"></div><button type="button" class="btn btn-link btn-contact-cancel" data-bs-dismiss="modal">Cancel</button></div></form></div><div id="contactSuccessContainer" style="display: none;"><div class="contact-modal-icon-wrapper success-icon-wrapper"><i class="fas fa-check"></i></div><h5 class="modal-title contact-modal-title">Message Sent!</h5><p class="contact-modal-text">Thank you for reaching out. I'll get back to you soon.</p><div class="success-modal-actions"><button type="button" class="btn btn-submit-contact" data-bs-dismiss="modal">Close</button></div></div></div></div></div></div>
+
+  
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+    <div id="appToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong id="toastTitle" class="me-auto">Notification</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div id="toastBody" class="toast-body">
+        Hello, world! This is a toast message.
+      </div>
+    </div>
+  </div>
+  <!-- ====================================================== -->
+<!--              NEW: DOUBTS SESSION MODAL                 -->
+<!-- ====================================================== -->
+<!-- ====================================================== -->
+<!--             CORRECTED: DOUBTS SESSION MODAL            -->
+<!-- ====================================================== -->
+<!-- THE ID HERE MUST MATCH THE BUTTON'S data-bs-target -->
+<!-- ADD THIS HTML BLOCK -->
+
+
+
+<!-- END OF HTML BLOCK TO ADD -->
+  <style>
+    
+  /*
+    This comprehensive block corrects all visual aspects of modals and the
+    off-canvas menu for a flawless dark mode transition. It fixes backgrounds,
+    text colors, links, and buttons, ensuring full consistency with your theme.
+  */
+
+  /* --- 1. THEME-AWARE BACKDROP --- */
+  /* This part creates the stylish blurred background for all pop-ups. */
+  .modal-backdrop.show,
+  .offcanvas-backdrop.show {
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    opacity: 1;
+  }
+  /* In dark mode, we use a slightly darker, more immersive overlay. */
+  body.dark-mode .modal-backdrop.show,
+  body.dark-mode .offcanvas-backdrop.show {
+    background-color: rgba(10, 10, 10, 0.6);
+  }
+
+  /* --- 2. CORE COMPONENT STYLING (THE MAIN FIX) --- */
+  /* This is the most important rule. It forces the components to adopt your dark theme variables. */
+  body.dark-mode .offcanvas,
+  body.dark-mode .modal-content {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--primary-text); /* This sets the default text color to be light. */
+  }
+
+  /* --- 3. FIXING THE CONTENT INSIDE --- */
+  /* Ensure titles and sub-text use the correct dark mode colors. */
+  body.dark-mode .offcanvas-title,
+  body.dark-mode .modal-title {
+    color: var(--primary-text);
+  }
+  body.dark-mode .offcanvas-body .text-muted,
+  body.dark-mode .contact-modal-text {
+    color: var(--secondary-text);
+  }
+
+  /* Make sure the close 'X' button is white and visible on the dark header. */
+  body.dark-mode .offcanvas-header .btn-close,
+  body.dark-mode .modal-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+  }
+
+  /* Fix for the Off-canvas navigation links specifically */
+  body.dark-mode .offcanvas-nav .nav-link {
+      color: var(--secondary-text);
+  }
+  body.dark-mode .offcanvas-nav .nav-link:hover {
+      color: var(--primary-text);
+      background-color: var(--accent-color-light);
+  }
+  
+</style>
+
+  <!-- JS Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+  
+
+  <!-- === BRANDED CURSOR LOGIC START === -->
+<!-- === BRANDED CURSOR LOGIC START === -->
+<style>
+  /* --- BRANDED CURSOR STYLES --- */
+
+  /* Hide the default system cursor on non-touch devices */
+  @media (pointer: fine) {
+    * {
+      cursor: none;
+    }
+    
+    /* Style interactive elements to show a custom pointer */
+    a, button, [data-bs-toggle], .service-card, .creation-card, .theme-toggle-label {
+      cursor: none;
+    }
+  }
+
+  /* The main cursor dot */
+  .cursor-dot {
+    --cursor-size: 8px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Allows clicks to pass through */
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+  }
+  
+  /* The outline/follower cursor */
+  .cursor-outline {
+    --cursor-size: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Allows clicks to pass through */
+    transition: all 0.15s ease-out; /* Makes the follow effect smooth */
+  }
+
+  /* --- DARK MODE ADAPTATIONS --- */
+  body.dark-mode .cursor-dot {
+    background-color: #FFD700; /* Brighter gold for dark mode */
+  }
+  body.dark-mode .cursor-outline {
+    border-color: #FFD700; /* Brighter gold for dark mode */
+  }
+
+  /* --- HOVER STATES --- */
+
+  /* General hover state for any link or button */
+  .cursor-dot.hovered {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .cursor-outline.hovered {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 0.5;
+  }
+  
+  /* Specific state for hovering over text input fields */
+  .cursor-dot.text-hovered {
+    --cursor-size: 4px;
+    background-color: var(--primary-text);
+  }
+  .cursor-outline.text-hovered {
+    --cursor-size: 25px;
+    height: 4px; /* Flattens into a text-cursor shape */
+    border-radius: 2px;
+    border-color: var(--primary-text);
+    background-color: var(--primary-text);
+    opacity: 0.5;
+  }
+  
+  /* Hide the custom cursor on touch devices */
+  @media (pointer: coarse) {
+    .cursor-dot, .cursor-outline {
+      display: none !important;
+    }
+  }
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // --- BRANDED CURSOR LOGIC ---
+
+  // First, check if we're on a touch device. If so, do nothing.
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (isTouchDevice) return;
+
+  // Create the cursor elements and add them to the body
+  const cursorDot = document.createElement('div');
+  cursorDot.className = 'cursor-dot';
+  document.body.appendChild(cursorDot);
+
+  const cursorOutline = document.createElement('div');
+  cursorOutline.className = 'cursor-outline';
+  document.body.appendChild(cursorOutline);
+
+  let mouseX = 0, mouseY = 0;
+  let dotX = 0, dotY = 0;
+  let outlineX = 0, outlineY = 0;
+
+  // Listen for mouse movement
+  window.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  // Use requestAnimationFrame for smooth, performant animation
+  const animateCursor = () => {
+    // Dot cursor moves instantly
+    dotX = mouseX;
+    dotY = mouseY;
+    cursorDot.style.transform = `translate(${dotX}px, ${dotY}px)`;
+    
+    // Outline cursor "lags" behind for a smooth follow effect
+    outlineX += (mouseX - outlineX) * 0.1;
+    outlineY += (mouseY - outlineY) * 0.1;
+    cursorOutline.style.transform = `translate(${outlineX}px, ${outlineY}px)`;
+
+    requestAnimationFrame(animateCursor);
+  };
+  
+  animateCursor();
+
+  // --- Handle hover states ---
+  const addHoverClass = () => {
+    cursorDot.classList.add('hovered');
+    cursorOutline.classList.add('hovered');
+  };
+
+  const removeHoverClass = () => {
+    cursorDot.classList.remove('hovered');
+    cursorOutline.classList.remove('hovered');
+  };
+  
+  const addTextHoverClass = () => {
+    cursorDot.classList.add('text-hovered');
+    cursorOutline.classList.add('text-hovered');
+  };
+  
+  const removeTextHoverClass = () => {
+    cursorDot.classList.remove('text-hovered');
+    cursorOutline.classList.remove('text-hovered');
+  };
+
+  // Add event listeners to all interactive elements
+  const interactiveElements = document.querySelectorAll('a, button, [data-bs-toggle], .service-card, .creation-card, .theme-toggle-label');
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', addHoverClass);
+    el.addEventListener('mouseleave', removeHoverClass);
+  });
+  
+  // Add special listeners for text fields
+  const textElements = document.querySelectorAll('input[type="text"], input[type="email"], textarea');
+  textElements.forEach(el => {
+    el.addEventListener('mouseenter', addTextHoverClass);
+    el.addEventListener('mouseleave', removeTextHoverClass);
+  });
+});
+</script>
+<!-- === BRANDED CURSOR LOGIC END === -->
+
+<!-- === TESTIMONIALS CAROUSEL LOGIC (FINAL & ISOLATED) === -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- 1. DATA (Updated with specific YouTube Video Links) ---
+    const testimonialData = [
+        { 
+            comment: "The tailoring class videos are incredibly detailed and easy to follow. I finally mastered the perfect sleeve setting! Highly recommend this channel for professional guidance.", 
+            author: "Ramya K.", 
+            affiliation: "Boutique Owner", 
+            photoUrl: "https://i.pravatar.cc/150?img=49", 
+            sourceLink: "https://www.youtube.com/watch?v=R3n0V7qWvjY", // Example link to a specific video
+            rating: 5 
+        },
+        { 
+            comment: "I used to pay hundreds for custom dresses. Thanks to RS Sisters' guidance, I'm confident enough to alter my own clothes now. True value for money!", 
+            author: "Garrett K.", 
+            affiliation: "Entrepreneur", 
+            photoUrl: "https://i.pravatar.cc/150?img=64",
+            sourceLink: "https://www.youtube.com/watch?v=R3n0V7qWvjY",
+            rating: 5 
+        },
+        { 
+            comment: "This portfolio is stunning. The attention to detail in the creation section inspired me to rethink my own professional presentation. A masterclass in branding.", 
+            author: "Marion C.", 
+            affiliation: "Creative Consultant", 
+            photoUrl: "https://i.pravatar.cc/150?img=50",
+            sourceLink: "https://www.youtube.com/watch?v=R3n0V7qWvjY",
+            rating: 4 
+        },
+        { 
+            comment: "A very well done class that now works exactly as advertised. Leaps and bounds above any other online tutorial I've ever worked with! Highly recommend.", 
+            author: "Ruby K.", 
+            affiliation: "Student & Hobbyist", 
+            photoUrl: "https://i.pravatar.cc/150?img=25",
+            sourceLink: "https://www.youtube.com/watch?v=R3n0V7qWvjY",
+            rating: 5
+        },
+         { 
+            comment: "I finally mastered the perfect sleeve setting! The advanced maggam work classes are incredibly detailed and easy to follow. Best tutorial channel on YouTube.", 
+            author: "Ramya K.", 
+            affiliation: "Master Tailor", 
+            photoUrl: "https://res.cloudinary.com/doxabh7af/image/upload/v1757233662/dvrbycxveppehlbvr3qh.jpg",
+            sourceLink: "https://youtube.com/@the_world_of_rssisters?si=jh3ZUqgU_TEgLD9G",
+            rating: 3
+        },
+    ];
+
+    const MarqueeRow = document.getElementById('testimonials-row');
+
+    function renderTestimonials() {
+        if (!MarqueeRow) return;
+
+        // 1. Create seamless loop data (3x the original array)
+        const marqueeData = [...testimonialData, ...testimonialData, ...testimonialData];
+        
+        if (testimonialData.length === 0) {
+             MarqueeRow.innerHTML = `<p class="text-center p-5 text-muted">No testimonials loaded.</p>`;
+             return;
+        }
+
+        MarqueeRow.innerHTML = marqueeData.map(t => {
+            const stars = '★'.repeat(t.rating) + '☆'.repeat(5 - t.rating);
+            
+            // --- UPDATED HTML TO USE FA-YOUTUBE ICON AND SOURCE LINK ---
+            const sourceHTML = t.sourceLink 
+                ? `<a href="${t.sourceLink}" target="_blank" class="source-link-icon" title="View Comment Source"><i class="fa-brands fa-youtube"></i></a>` 
+                : '';
+            // -----------------------------------------------------------
+
+            return `
+                <div class="testimonial-card-wrapper">
+                    <div class="testimonial-card">
+                        <div class="author-header">
+                            <img src="${t.photoUrl}" alt="${t.author}" class="author-photo">
+                            <div class="author-meta">
+                                <h6 class="author-name">${t.author}</h6>
+                                <p class="author-affiliation">${t.affiliation}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="star-rating">${stars}</div>
+                        <p class="comment-text">"${t.comment}"</p>
+                        <div class="source-logo-container">${sourceHTML}</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        // 2. Initialize the Marquee Effect
+        initializeMarquee();
+    }
+
+    function initializeMarquee() {
+        // Wait for the DOM and images to render before calculating width
+        setTimeout(() => {
+            const firstCard = MarqueeRow.querySelector('.testimonial-card-wrapper');
+            if (!firstCard) return;
+
+            // Calculate the width of one full set of original testimonials
+            const cardWidthWithGap = firstCard.offsetWidth + 24; // Card width + roughly 1.5rem gap (24px)
+            const singleSetWidth = testimonialData.length * cardWidthWithGap; 
+            
+            // Set the row width to 3x the single set width for the loop
+            const totalWidth = singleSetWidth * 3 + 100;
+            
+            // We need to move exactly one set's worth of distance to create a perfect loop
+            const scrollDistance = singleSetWidth; 
+
+            // Update the CSS keyframes with the calculated scroll distance
+            // Injecting a style tag for dynamic animation keyframes
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes scroll-testimonials {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-${scrollDistance}px); }
+                }
+            `;
+            // Remove previous style tag if it exists to prevent duplication
+            document.head.querySelectorAll('style[data-testimonial-keyframes]').forEach(el => el.remove());
+            style.setAttribute('data-testimonial-keyframes', 'true');
+            document.head.appendChild(style);
+
+            // Apply the width and start the animation
+            MarqueeRow.style.width = `${totalWidth}px`;
+            MarqueeRow.classList.add('animated-scroll');
+
+        }, 1000); // 1 second delay to ensure all content is measured
+    }
+
+    // --- EXECUTION ---
+    // Ensure this runs only after the main script logic has loaded
+    window.addEventListener('load', renderTestimonials); 
+});
+</script>
+<!-- === CONFETTI CANVAS FOR BURST EFFECT (NEW) === -->
+<canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1065; pointer-events: none; opacity: 0;"></canvas>
+<!-- === SHOP INVITATION MODAL (GOLDEN TICKET) === -->
+<div class="modal fade" id="goldenTicketModal" tabindex="-1">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content shop-invitation-modal-content">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close shop-invitation-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center pt-0">
+                <!-- Use the RS Sisters Profile Pic as the icon -->
+                <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1755829980/updated_py5htw.jpg" alt="RS Sisters Logo" class="modal-logo-icon mb-3">
+                
+                <h5 class="modal-title shop-invitation-title">Your Golden Ticket Awaits</h5>
+                <p class="text-muted shop-invitation-text">Explore our full collection of handcrafted jewellery and garments.</p>
+                
+                <!-- The Shining CTA Button -->
+                <a href="../shop.html" class="btn btn-hero-cta btn-lg mt-3 shining-shop-cta">
+                    Shop Now <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- === PERSISTENT BREATHING FAB (Bottom Left) === -->
+<button id="fabShopInvitation" class="fab fab-shop-invitation" title="Visit Shop"><i class="bi bi-bag"></i></button>
+
+<!-- === ANIMATED LOGO ELEMENT (The Flying Ticket) === -->
+<!-- This element is initially hidden and used for the flight animation -->
+<img id="flyingShopLogo" src="https://res.cloudinary.com/dljmxltfr/image/upload/v1755829980/updated_py5htw.jpg" alt="Flying Logo" style="display: none;">
+
+<!-- === GOLDEN TICKET SHOP INVITATION LOGIC (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const fabShopInvitation = document.getElementById('fabShopInvitation');
+    const flyingLogo = document.getElementById('flyingShopLogo');
+    const goldenTicketModal = new bootstrap.Modal(document.getElementById('goldenTicketModal'));
+    
+    // Check if the user has already seen the modal in this session
+    const SESSION_KEY = 'golden_ticket_seen_v1';
+    if (sessionStorage.getItem(SESSION_KEY)) {
+        // If seen, just show the persistent FAB immediately
+        if (fabShopInvitation) fabShopInvitation.style.display = 'flex';
+        return;
+    }
+
+    // --- 1. COORDINATE CALCULATION & ANIMATION SETUP (UPDATED FOR LONGER SPIN) ---
+
+    function calculateAnimationPath(startElement, endPointX, endPointY) {
+        // Find the starting position of the logo element (e.g., the offcanvas profile pic)
+        const startRect = startElement.getBoundingClientRect();
+        
+        // Use the center of the element as the start point
+        const startX = startRect.left + (startRect.width / 2);
+        const startY = startRect.top + (startRect.height / 2);
+        
+        // Final resting coordinate (center of the screen)
+        const landX = endPointX;
+        const landY = endPointY;
+
+        // Midpoint coordinates (Overshoots the center to the bottom right for dramatic swing)
+        const midX = landX * 1.25; 
+        const midY = landY + 150;  
+
+        // Path Definition:
+        const flightPathCSS = `
+            @keyframes golden-flight {
+                0% { 
+                    transform: translate(${startX}px, ${startY}px) scale(1) rotate(0deg) skewX(0deg); 
+                    opacity: 1; 
+                }
+                50% { 
+                    /* Orbital Swing: Overshoot the center dramatically */
+                    transform: translate(${midX}px, ${midY}px) scale(1.2) rotate(180deg) skewX(-15deg);
+                    opacity: 1; 
+                }
+                80% { 
+                    /* Snaps back towards the center, slowing down */
+                    transform: translate(${landX}px, ${landY}px) scale(1.05) rotate(360deg) skewX(0deg);
+                    opacity: 1; 
+                }
+                85% {
+                    /* Unlocking Spin Start: Stationary center point, rapid rotation begins */
+                    /* We shift the start of the rapid spin forward to 85% (was 90%) and reduce the speed slightly for a smoother ramp up */
+                    transform: translate(${landX}px, ${landY}px) scale(1.05) rotate(720deg); 
+                }
+                100% { 
+                    /* Unlocking Spin End/Burst Trigger: Finishes rotation */
+                    /* Significantly increase rotation degrees for a longer, faster spin feeling */
+                    transform: translate(${landX}px, ${landY}px) scale(0.9) rotate(1800deg); 
+                    opacity: 1; 
+                }
+            }
+        `;
+        
+        // Inject the dynamic keyframes into the head
+        // Remove existing style tag to prevent conflicts
+        document.head.querySelectorAll('style[data-golden-flight]').forEach(el => el.remove());
+
+        const style = document.createElement('style');
+        style.innerHTML = flightPathCSS;
+        style.setAttribute('data-golden-flight', 'true'); // Add identifier
+        document.head.appendChild(style);
+        
+        return { startX, startY };
+    }
+    // --- 2. THE FLIGHT SEQUENCE (UPDATED FOR LINGERING BURST) ---
+
+    function startGoldenFlight() {
+        if (!flyingLogo || !fabShopInvitation) return;
+        
+        const startElement = document.querySelector('.offcanvas-profile-pic');
+        if (!startElement) return;
+
+        const endX = window.innerWidth / 2;
+        const endY = window.innerHeight / 2;
+        
+        const { startX, startY } = calculateAnimationPath(startElement, endX, endY);
+        
+        flyingLogo.style.left = '0';
+        flyingLogo.style.top = '0';
+        flyingLogo.style.transform = `translate(${startX}px, ${startY}px)`;
+        flyingLogo.style.display = 'block';
+        
+        void flyingLogo.offsetWidth; 
+
+        flyingLogo.style.animation = 'golden-flight 2s ease-in-out forwards';
+
+        // --- 3. LANDING AND MODAL TRIGGER ---
+        
+        flyingLogo.addEventListener('animationend', () => {
+            // Calculate the landing coordinates (center of the screen)
+            const burstX = window.innerWidth / 2;
+            const burstY = window.innerHeight / 2;
+            
+            // 1. Hide the flying logo immediately
+            flyingLogo.style.display = 'none';
+            flyingLogo.style.animation = 'none';
+            
+            // 2. Prepare and show the canvas
+            const canvas = document.getElementById('confetti-canvas');
+            if (canvas) {
+                 canvas.style.opacity = 1;
+                 canvas.classList.add('active');
+
+                 // 3. Trigger the Confetti Burst (LONGER DURATION FOR LINGERING EFFECT)
+                 // We don't use window.confetti() directly, we use the library's burst generator
+                 const burstHandler = window.confetti.create(canvas, { resize: true });
+                 
+                 burstHandler({
+                    particleCount: 300, 
+                    spread: 120, 
+                    startVelocity: 65,
+                    origin: { x: burstX / window.innerWidth, y: burstY / window.innerHeight },
+                    scalar: 1.5, // Larger particles for premium feel
+                    decay: 0.9, // Slower decay for particles to linger longer
+                    gravity: 0.8,
+                    // Using Gold/Accent color and other vibrant colors
+                    colors: ['#E6C34E', '#D4AF37', '#ffffff', '#FF0000', '#28a745', '#1a1a1a'] 
+                 });
+            }
+
+            // 4. Open the modal *immediately* (0ms delay) so the burst overlaps the opening animation
+            goldenTicketModal.show();
+            sessionStorage.setItem(SESSION_KEY, 'true');
+
+            // 5. Cleanup Confetti: Wait 2.5 seconds *after* the modal is open before stopping the visual burst.
+            setTimeout(() => {
+                if (canvas) {
+                    canvas.style.opacity = 0;
+                    // Remove active class after animation fades
+                    setTimeout(() => canvas.classList.remove('active'), 500); 
+                }
+            }, 2500); // LINGERING EFFECT DURATION: 2.5 seconds
+
+            // 6. PERSISTENT FAB REVEAL
+            if (fabShopInvitation) {
+                 fabShopInvitation.style.display = 'flex';
+            }
+        }, { once: true });
+    }
+    
+    // --- 5. EVENT LISTENERS AND TIMING (Unchanged) ---
+    
+    // Initial delay before starting the flight (6 seconds total loading time)
+    setTimeout(() => {
+        const startElement = document.querySelector('.offcanvas-profile-pic');
+        // Ensure the starting element is available before checking scroll/starting the animation
+        if (!startElement) return; 
+
+        if (window.scrollY < 300) { 
+            startGoldenFlight();
+        } else {
+             if (fabShopInvitation) fabShopInvitation.style.display = 'flex';
+        }
+    }, 6000); 
+
+    // Click handler for the persistent FAB
+    if (fabShopInvitation) {
+        fabShopInvitation.addEventListener('click', () => {
+            goldenTicketModal.show();
+        });
+    }
+});
+</script>
+</body>
+</html>

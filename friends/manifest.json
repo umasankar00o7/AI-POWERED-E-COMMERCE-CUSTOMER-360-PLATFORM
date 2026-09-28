@@ -1,0 +1,21 @@
+{
+  "name": "RS Sisters Boutique",
+  "short_name": "RS Sisters",
+  "start_url": "/shop.html",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#1a1a1a",
+  "description": "Discover handcrafted jewelry and exclusive apparel from RS Sisters.",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/doxabh7af/image/upload/v1772557115/launchericon-192x192_fx5zjw.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://res.cloudinary.com/doxabh7af/image/upload/v1772328990/launchericon-512x512_qvpwhu.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 

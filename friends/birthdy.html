@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday Madam</title>
+    <!-- Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root {
+            --gold-leaf: #d4af37;
+            --champagne: #f7e7ce;
+            --heart-red: #ff3e6c;
+        }
+
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background: #000; color: white; overflow: hidden;
+        }
+
+        /* 1. HEART LOADER */
+        #loading-screen {
+            position: fixed; inset: 0; background: #000;
+            z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+        }
+        .heart-loader {
+            position: relative; width: 70px; height: 60px;
+            animation: heartBeat 1.2s infinite;
+            filter: drop-shadow(0 0 15px var(--heart-red));
+        }
+        .heart-loader:before, .heart-loader:after {
+            content: ""; position: absolute; left: 35px; top: 0;
+            width: 35px; height: 55px; background: var(--heart-red);
+            border-radius: 35px 35px 0 0; transform: rotate(-45deg);
+            transform-origin: 0 100%;
+            background: linear-gradient(to bottom, #ff3e6c, #8b0000);
+        }
+        .heart-loader:after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
+        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+        /* 2. BALLOONS */
+        .balloon {
+            position: absolute; width: 40px; height: 50px;
+            border-radius: 50%; z-index: 1; pointer-events: none; opacity: 0.5;
+        }
+
+        /* 3. CAKE SECTION */
+        .cake-container { position: relative; height: 200px; width: 180px; margin: 20px auto; z-index: 5; }
+        .tier {
+            position: absolute; left: 50%; transform: translateX(-50%);
+            border-radius: 10px 10px 4px 4px;
+            background: linear-gradient(to right, #f4aeba, #ffd1dc, #f4aeba);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .tier-1 { width: 160px; height: 60px; bottom: 0; }
+        .tier-2 { width: 120px; height: 50px; bottom: 60px; }
+        .tier-3 { width: 80px; height: 40px; bottom: 110px; }
+        .icing { position: absolute; top: 0; width: 100%; height: 15px; background: #fff; border-radius: 10px; opacity: 0.8; }
+        .candle {
+            position: absolute; bottom: 150px; left: 50%; transform: translateX(-50%);
+            width: 10px; height: 35px; background: repeating-linear-gradient(45deg, #fff, #fff 5px, var(--gold-leaf) 5px, var(--gold-leaf) 10px);
+        }
+        .flame {
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            width: 14px; height: 20px; background: orange; border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 15px orange; animation: flicker 0.6s infinite alternate;
+        }
+        @keyframes flicker { 0% { transform: translateX(-50%) scale(1); } 100% { transform: translateX(-50%) scale(1.2); } }
+
+        /* 4. NOTES SECTION */
+        .notes-container {
+            position: relative; width: 100%; height: 450px;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+        }
+        .card-zone {
+            position: relative; width: 100%; height: 280px;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .premium-card {
+            position: absolute; width: 85%; max-width: 320px;
+            background: linear-gradient(135deg, #fffcf5 0%, #f7e7ce 100%);
+            color: #443415; padding: 30px 20px; border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            display: none; text-align: center;
+            border: 2px solid var(--gold-leaf);
+            font-size: 1rem; font-style: italic; z-index: 20;
+            cursor: pointer;
+        }
+        .envelope-btn {
+            width: 80px; height: 55px; background: var(--gold-leaf);
+            border-radius: 4px; cursor: pointer; position: relative;
+            margin-top: 20px; box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+            display: flex; justify-content: center; align-items: center; z-index: 10;
+        }
+        .envelope-btn::after {
+            content: ''; position: absolute; top: 0;
+            border-left: 40px solid transparent; border-right: 40px solid transparent;
+            border-top: 30px solid #e6be8a;
+        }
+
+        /* 5. ROYAL LETTER BOX */
+        /* 5. IMMERSIVE FLOATING LETTER (NO BORDERS) */
+.letter-content {
+    /* No Border, No Blur, No Box Shadow - Pure Immersive Feel */
+    background: transparent !important; /* Makes the card base invisible */
+    border: none !important; /* Removes the gold border line */
+    box-shadow: none !important; /* Removes the card shadow */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    
+    /* Strong Text Shadow - CRITICAL for reading floating text over an image */
+    color: #ffffff; 
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1), 0px 0px 10px rgba(0,0,0,0.5); 
+    
+    padding: 20px;
+    text-align: left; 
+    max-width: 500px;
+    width: 95%; 
+    height: 65vh; 
+    overflow-y: auto;
+    
+    font-family: 'Playfair Display', serif; 
+    line-height: 1.8;
+    display: none; 
+    position: relative; 
+    z-index: 30;
+}
+
+/* Ensure bold text and strong highlights pop without a border */
+.letter-content strong {
+    color: #f7e7ce;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 1);
+}
+
+/* Adjust the Read Again button to float neatly at the bottom */
+.letter-content .btn-outline-dark {
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    text-shadow: none;
+    margin-top: 20px;
+    backdrop-filter: blur(5px); /* Just for the button so it's easy to find */
+}
+
+/* Bold text inside the letter should shine in gold */
+.letter-content strong {
+    color: #f7e7ce;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+        /* 5. FINAL LETTER SCREEN BACKGROUND FIX */
+#letter-screen {
+    position: absolute; 
+    inset: 0; 
+    display: none;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    padding: 15px; 
+    text-align: center;
+    /* This keeps the dark theme as a base */
+    background: radial-gradient(circle at center, #1a1a2e 0%, #000 100%);
+    overflow: hidden;
+}
+
+/* 1. Breathing Background Effect */
+#letter-screen::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('https://res.cloudinary.com/doxabh7af/image/upload/v1768635830/IMG_20260115_131808_vw3duv.jpg'); 
+    background-size: cover;
+    background-position: center;
+    opacity: 0.25;
+    z-index: 0;
+    pointer-events: none;
+    /* This makes the image "breathe" slowly */
+    animation: backgroundBreathe 20s ease-in-out infinite;
+}
+
+@keyframes backgroundBreathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* 2. Magic Touch Heart Style */
+.magic-heart {
+    position: fixed;
+    font-size: 20px;
+    color: var(--gold-leaf);
+    pointer-events: none;
+    z-index: 9999;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+}
+
+/* 3. Handwriting Signature Style */
+#secret-signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--gold-leaf);
+    opacity: 0; /* Starts hidden */
+    margin-top: 30px;
+    text-align: right;
+    display: block;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* Ensure the Heart and Letter stay ABOVE the background image */
+#envelope-last, #letter-box {
+    position: relative;
+    z-index: 10;
+}
+
+        .particle {
+            position: absolute; color: var(--gold-leaf); pointer-events: none;
+            z-index: 1; text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+        }
+
+        /* LAYOUT & UTILS */
+        .full-screen {
+            position: absolute; inset: 0; display: none;
+            flex-direction: column; justify-content: center;
+            align-items: center; padding: 15px; text-align: center;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #000 100%);
+        }
+        .btn-elegant {
+            background: linear-gradient(45deg, #d4af37, #b76e79);
+            border: none; padding: 12px 35px; color: white;
+            border-radius: 50px; font-weight: 600; margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        .gold-text {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #aa771c);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: 2.8rem;
+        }
+        /* Leader Badge Style */
+/* Center-Top Badge Styling */
+.leader-badge {
+    /* Removed absolute positioning for perfect flex centering */
+    width: 70px;
+    height: 70px;
+    background: radial-gradient(circle, #fcf6ba, #bf953f);
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    color: #443415;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.7);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* Adds professional spacing above the 'Royal Surprise' text */
+    margin-bottom: 25px; 
+    
+    /* Keeps the smooth pulse animation */
+    animation: heartBeat 1.5s infinite; 
+}
+
+/* Dashboard Overlay */
+.stats-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.stats-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--gold-leaf);
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 350px;
+    text-align: left;
+}
+
+/* Stat Bars Animation */
+.stat-row { margin-bottom: 20px; }
+.stat-row span { display: block; font-size: 0.9rem; margin-bottom: 5px; color: var(--gold-leaf); }
+.bar-bg { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin-bottom: 3px;}
+.bar-fill { 
+    height: 100%; 
+    background: linear-gradient(to right, var(--gold-leaf), #fff); 
+    width: 0; /* Starts at 0 for animation */
+    transition: width 2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+.stat-row small { font-size: 0.7rem; color: #fff; opacity: 0.8; }
+
+/* Mosaic Gallery Styling */
+.mosaic-grid {
+    column-count: 2; /* 2 columns for mobile */
+    column-gap: 15px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .mosaic-grid { column-count: 3; } /* 3 columns for desktop */
+}
+
+.memory-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: #111;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    cursor: pointer;
+}
+
+.memory-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.memory-item:hover img {
+    transform: scale(1.1);
+}
+
+.memory-item.reveal {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+.gallery-container {
+    padding-top: 100px; /* Adjust this if the header is taller */
+    width: 100%;
+    padding-bottom: 50px;
+}
+/* Updated Header to be truly fixed and not overlap */
+.gallery-header {
+    width: 100%;
+    padding: 15px 0;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(15px);
+    position: fixed; /* Changed to fixed for better mobile stability */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+#gallery-screen {
+    background: #000 !important;
+    display: none;
+    flex-direction: column;
+    overflow-y: auto !important;
+    height: 100vh;
+}
+
+/* Lightbox Overlay - High Z-Index Fix */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    display: none; /* Controlled by JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 3000; /* Must be higher than header (1000) */
+    padding: 20px;
+    touch-action: none; /* Prevents background scrolling on mobile */
+}
+
+.lightbox-overlay.active {
+    display: flex !important;
+}
+
+.lightbox-overlay img {
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-overlay.active img {
+    transform: scale(1);
+}
+
+/* Close button positioning */
+.close-lightbox {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #fff;
+    font-size: 45px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 3100;
+}
+.close-lightbox:hover { transform: scale(1.2); color: #fff; }
+
+/* Ensure gallery screen allows scrolling correctly */
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. LOADER -->
+    <div id="loading-screen">
+        <div class="heart-loader"></div>
+        <h4 class="mt-4 gold-text" style="font-size: 1.4rem;">For Madam...</h4>
+    </div>
+
+    <!-- 2. INTRO SCREEN (Updated with Stats) -->
+<div id="intro-screen" class="full-screen">
+    
+    <!-- 1. The Badge (Now at the top center) -->
+    <div class="leader-badge animate__animated animate__pulse animate__infinite" onclick="openStats()">
+        <span style="font-size: 10px; display: block; margin-top: 10px; font-weight: 600;">VIEW</span>
+        <span style="font-weight: 900; font-size: 13px;">STATS</span>
+    </div>
+
+    <!-- 2. The Title -->
+    <h1 class="animate__animated animate__fadeInDown gold-text">A Royal Surprise</h1>
+    
+    <!-- 3. The Subtitle -->
+    <p class="text-muted" style="margin-top: -10px;">Designed specifically for our Team Lead</p>
+    
+    <!-- 4. The Main Button -->
+    <button class="btn-elegant" onclick="startCelebration()">Enter Now</button>
+
+    <!-- Hidden Stats Dashboard -->
+    <div id="stats-dashboard" class="stats-overlay">
+        <div class="stats-card">
+            <h2 class="gold-text" style="font-size: 1.8rem;">Leader Profile</h2>
+            <hr style="border-color: var(--gold-leaf);">
+            
+        <div class="stat-row">
+    <span>Partner in Crime</span>
+    <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
+    <small>100% SYNCED</small>
+</div>
+<div class="stat-row">
+    <span>Vibe Check</span>
+    <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
+    <small>ELITE</small>
+</div>
+<div class="stat-row">
+    <span>Tolerance for my Drama</span>
+    <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+    <small>LEGENDARY PATIENCE</small>
+</div>
+<div class="stat-row">
+    <span>Mentorship</span>
+    <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
+    <small>GOAT (Greatest of all time)</small>
+</div>
+            <div class="stat-row">
+                <span>Kindness</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
+                <small>LEGENDARY</small>
+            </div>
+            <div class="stat-row">
+                <span>Anger</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
+                <small>200 %</small>
+            </div>
+            <div class="stat-row">
+                <span>Memory</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
+                <small>0.000%</small>
+            </div>
+            
+
+            <button class="btn btn-outline-light btn-sm mt-4" onclick="closeStats()">Close Profile</button>
+        </div>
+    </div>
+</div>
+<div id="gallery-screen" class="full-screen">
+    <div class="gallery-header text-center">
+        <h1 class="gold-text m-0" style="font-size: 1.8rem;">Our Last 48 Hours</h1>
+        <p class="text-muted m-0" style="font-size: 0.8rem;">Memories made with you...</p>
+    </div>
+    
+    <!-- Added this wrapper div for spacing -->
+    <div class="gallery-container container">
+        <div class="mosaic-grid" id="photo-grid"></div>
+        <div class="text-center">
+            <button class="btn-elegant mt-5 mb-5" onclick="location.reload()">Back to Start</button>
+        </div>
+    </div>
+</div>
+
+<!-- Updated Lightbox with X Button -->
+<div id="lightbox" class="lightbox-overlay">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="Zoomed Memory">
+</div>
+
+    <!-- 3. CAKE SCREEN -->
+    <div id="cake-screen" class="full-screen">
+        <div id="balloon-container"></div>
+        <h1 class="gold-text animate__animated animate__fadeIn">Happy Birthday Madam!</h1>
+        <div class="cake-container" onclick="blowCandle()">
+            <div class="tier tier-1"><div class="icing"></div></div>
+            <div class="tier tier-2"><div class="icing"></div></div>
+            <div class="tier tier-3"><div class="icing"></div></div>
+            <div class="candle" id="candle"><div class="flame" id="flame"></div></div>
+        </div>
+        <p id="cake-instruction" class="mt-4">Tap the candle to blow it! 🕯️</p>
+        <button id="btn-continue-1" class="btn-elegant d-none" onclick="showMessages()">Continue</button>
+    </div>
+
+    <!-- 4. NOTES SCREEN -->
+    <div id="messages-screen" class="full-screen">
+        <h2 class="mb-4 gold-text" style="font-size: 2rem;">Notes of Appreciation</h2>
+        <div class="notes-container">
+            <div class="card-zone">
+                <div id="card-1" class="premium-card" onclick="nextCard()">"To my favorite Madam and even better friend. Work is 100x better with you!"<br><br><small>(Tap card for next)</small></div>
+                <div id="card-2" class="premium-card" onclick="nextCard()">"Thank you for not just being a lead, but for being the person I can always talk to."<br><br><small>(Tap card for next)</small></div>
+                <div id="card-3" class="premium-card" onclick="nextCard()">"Happy Birthday to the one who handles my chaos with such grace and a smile!"<br><br><small>(Tap card for next)</small></div>
+                <div id="card-4" class="premium-card" onclick="nextCard()">"It's rare to find a boss who feels like family. I'm so lucky I found you."<br><br><small>(Tap card for final)</small></div>
+            </div>
+            <div id="msg-envelope" class="envelope-btn" onclick="nextCard()">
+                <small style="color:white; margin-top:18px; font-weight:bold;">TAP</small>
+            </div>
+            <p class="mt-3" id="tap-instruction" style="color: var(--gold-leaf); font-weight: 600;">Message (0/4)</p>
+            <button id="btn-final" class="btn-elegant d-none" onclick="showLetterSection()">One Last Thing...</button>
+        </div>
+    </div>
+
+    <!-- 5. FINAL LETTER SCREEN (HEART CENTERING FIXED HERE) -->
+    <div id="letter-screen" class="full-screen">
+        <!-- Added Flex centering styles below to fix the heart alignment -->
+        <div id="envelope-last" onclick="openLetter()" style="cursor: pointer; display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <div class="heart-loader mb-4"></div>
+            <h4 class="gold-text">The Final Message</h4>
+            <p>Tap to Read Your Special Letter</p>
+        </div>
+        <div id="letter-box" class="letter-content">
+    <div id="typed-letter"></div>
+    <br><br>
+    <div class="d-flex flex-wrap gap-2">
+        <button class="btn btn-outline-dark btn-sm" onclick="location.reload()">Read Again</button>
+        <!-- The button is now hidden (opacity 0) and will appear after typing -->
+        <button id="btn-show-gallery" class="btn-elegant btn-sm m-0" style="opacity: 0; pointer-events: none;" onclick="showGallery()">Our Last 48 Hours 📸</button>
+    </div>
+</div>    
+</div>
+    </div>
+
+    <audio id="bg-music" loop><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <script>
+        function transition(from, to) {
+            gsap.to(`#${from}`, { opacity: 0, duration: 0.5, onComplete: () => {
+                document.getElementById(from).style.display = 'none';
+                document.getElementById(to).style.display = 'flex';
+                gsap.fromTo(`#${to}`, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+            }});
+        }
+
+        window.onload = () => {
+            setTimeout(() => {
+                gsap.to("#loading-screen", { opacity: 0, duration: 1, onComplete: () => {
+                    document.getElementById('loading-screen').style.display = 'none';
+                    document.getElementById('intro-screen').style.display = 'flex';
+                }});
+            }, 3000);
+        };
+
+        function startCelebration() {
+            document.getElementById('bg-music').play().catch(() => {});
+            transition('intro-screen', 'cake-screen');
+            createBalloons();
+        }
+
+        function createBalloons() {
+            const container = document.getElementById('balloon-container');
+            const colors = ['#ff3e6c', '#d4af37', '#ffffff'];
+            for(let i=0; i<12; i++) {
+                let b = document.createElement('div');
+                b.className = 'balloon';
+                b.style.left = Math.random() * 90 + 'vw';
+                b.style.top = '-80px';
+                b.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                container.appendChild(b);
+                gsap.to(b, { y: window.innerHeight + 200, duration: 7 + Math.random() * 5, delay: Math.random() * 5, repeat: -1, ease: "none" });
+            }
+        }
+        // This defines the function that was missing, stopping your signature from appearing
+function thickConfetti() {
+    var end = Date.now() + 3000;
+    (function frame() {
+        confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0, y: 0.7 }, colors: ['#d4af37', '#ff3e6c'] });
+        confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1, y: 0.7 }, colors: ['#d4af37', '#ff3e6c'] });
+        if (Date.now() < end) requestAnimationFrame(frame);
+    }());
+}
+
+        function blowCandle() {
+            gsap.to("#flame", { scale: 0, opacity: 0, duration: 0.5 });
+            document.getElementById('cake-instruction').innerHTML = "✨ Your Wish Is Granted! ✨";
+            var end = Date.now() + 3000;
+            (function frame() {
+                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0, y: 0.7 }, colors: ['#d4af37', '#ff3e6c'] });
+                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1, y: 0.7 }, colors: ['#d4af37', '#ff3e6c'] });
+                if (Date.now() < end) requestAnimationFrame(frame);
+            }());
+            setTimeout(() => { document.getElementById('btn-continue-1').classList.remove('d-none'); }, 1000);
+        }
+
+        function showMessages() { transition('cake-screen', 'messages-screen'); }
+
+        let currentCard = 0;
+        function nextCard() {
+            if(currentCard < 4) {
+                if(currentCard > 0) gsap.to(`#card-${currentCard}`, { x: 500, rotation: 20, opacity: 0, duration: 0.5 });
+                currentCard++;
+                const card = document.getElementById(`card-${currentCard}`);
+                card.style.display = 'block';
+                gsap.fromTo(card, { y: 200, scale: 0.5, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.5)" });
+                document.getElementById('tap-instruction').innerText = `Message (${currentCard}/4)`;
+                confetti({ particleCount: 20, origin: { y: 0.7 } });
+                document.getElementById('msg-envelope').style.visibility = 'hidden';
+                if(currentCard === 4) {
+                    setTimeout(() => {
+                        gsap.to(`#card-4`, { opacity: 0.3, duration: 1 });
+                        document.getElementById('btn-final').classList.remove('d-none');
+                    }, 1000);
+                }
+            }
+        }
+
+        function showLetterSection() { transition('messages-screen', 'letter-screen'); }
+
+        function openLetter() {
+            document.getElementById('envelope-last').style.display = 'none';
+            const letterBox = document.getElementById('letter-box');
+            letterBox.style.display = 'block';
+            setInterval(() => {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.innerHTML = '✨';
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.bottom = '-20px';
+                document.getElementById('letter-screen').appendChild(p);
+                gsap.to(p, { y: -window.innerHeight, x: "+="+(Math.random()*100-50), opacity: 0, duration: 4, onComplete: () => p.remove() });
+            }, 300);
+            const observer = new MutationObserver(() => { letterBox.scrollTo({ top: letterBox.scrollHeight, behavior: 'smooth' }); });
+            observer.observe(document.getElementById('typed-letter'), { childList: true, subtree: true });
+            new Typed('#typed-letter', {
+    strings: [`Dear Madam... or should I say, my Best Friend, ❤️<br><br>
+    Happy Birthday! ✨ Today is all about you, but honestly, I'm the one who feels gifted because I have you in my life.<br><br>
+    They say you shouldn't get too close to your boss, but with you, it was impossible not to. You’ve been my mentor, my guide, and the person who made even the most stressful work days feel like a breeze because we were in it together.<br><br>
+    <strong>I need to be honest with you...</strong><br><br>
+    Knowing that you are leaving the team in just one month is breaking my heart. 💔 It feels like I’m losing my 'Work Soulmate.' I’m already wondering who I’ll share my jokes with, or who will guide me when I’m lost. It’s going to be so incredibly empty without your presence.<br><br>
+    But even though you're moving on to bigger things ( which you totally deserve! ), I want you to know that the bond we have isn't tied to a desk or a team. You’ve made a permanent impact on my life.<br><br>
+    I’m going to cherish every single day of this last month we have left. Let's make it the best month ever! 🥂<br><br>
+    Keep shining, keep being your amazing self, and never forget that you have a friend in me forever.<br><br>
+    With all my respect and love,<br>
+    <strong>Yours Truly</strong> 🌹`],
+    typeSpeed: 50,
+    showCursor: false,
+    onComplete: () => { 
+    observer.disconnect(); 
+    thickConfetti(); 
+    
+    // 1. Add the Signature
+    const sig = document.createElement('div');
+    sig.id = 'secret-signature';
+    sig.innerHTML = "— Your Favorite 'Troublemaker' ❤️";
+    document.getElementById('typed-letter').appendChild(sig);
+
+    // 2. Fade in BOTH the Signature and the Gallery Button
+    gsap.to("#secret-signature", { opacity: 1, y: -10, duration: 1.5 });
+    
+    gsap.to("#btn-show-gallery", { 
+        opacity: 1, 
+        y: 0, 
+        duration: 1, 
+        delay: 1, // Button appears slightly after signature
+        pointerEvents: "auto", // Makes it clickable only when visible
+        ease: "power2.out" 
+    });
+
+    // 3. Final scroll to show everything
+    setTimeout(() => {
+        const letterBox = document.getElementById('letter-box');
+        letterBox.scrollTo({ top: letterBox.scrollHeight, behavior: 'smooth' });
+    }, 800);
+}
+            });
+        }
+        // Magic Touch Logic
+document.addEventListener('click', function(e) {
+    for (let i = 0; i < 5; i++) { // Spawns 5 hearts per tap
+        const heart = document.createElement('div');
+        heart.className = 'magic-heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = e.clientX + 'px';
+        heart.style.top = e.clientY + 'px';
+        document.body.appendChild(heart);
+
+        // Animate them flying outwards and upwards
+        gsap.to(heart, {
+            y: e.clientY - 100 - Math.random() * 100,
+            x: e.clientX + (Math.random() * 100 - 50),
+            opacity: 0,
+            scale: Math.random() * 2,
+            duration: 1 + Math.random(),
+            onComplete: () => heart.remove()
+        });
+    }
+});
+function openStats() {
+    const overlay = document.getElementById('stats-dashboard');
+    overlay.style.display = 'flex';
+    gsap.fromTo(".stats-card", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5 });
+    
+    // Animate the bars filling up
+    setTimeout(() => {
+        document.querySelectorAll('.bar-fill').forEach(bar => {
+            const finalWidth = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => bar.style.width = finalWidth, 100);
+        });
+    }, 500);
+}
+
+function closeStats() {
+    gsap.to(".stats-card", { scale: 0.8, opacity: 0, duration: 0.4, onComplete: () => {
+        document.getElementById('stats-dashboard').style.display = 'none';
+    }});
+}
+
+// 1. ADD YOUR 25 PHOTO LINKS HERE
+const memoryPhotos = [
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768642014/IMG_20260115_131904_tloodc.jpg",
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768635854/IMG_20260115_131615_1_xfjwef.jpg",
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768641722/IMG_20260115_131930_ovasdm.jpg",
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768641722/IMG_20260115_131930_ovasdm.jpg",
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768641354/IMG_20260115_131907_jsrgnl.jpg",
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768641394/IMG_20260115_131936_ivlqaz.jpg",
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768637069/IMG_20260116_131430_bakfpy.jpg",
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768637046/IMG_20260116_131422_jxugvs.jpg", // Photo 1
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768636921/IMG_20260116_131417_ut362f.jpg", // Photo 2
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768636926/IMG_20260116_131423_zzl51n.jpg", // Photo 3
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768635851/IMG_20260115_131822_md49ws.jpg",
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768635662/IMG_20260115_131615_yv9skk.jpg",
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768635830/IMG_20260115_131808_vw3duv.jpg",
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768640296/000002_kmfzjn.jpg",
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768640293/00001_bu0fdb.jpg",
+    "https://res.cloudinary.com/doxabh7af/image/upload/v1768640296/00005_y6q01e.jpg"
+    
+    
+     
+];
+
+// Injecting photos into the mosaic
+const photoGrid = document.getElementById('photo-grid');
+memoryPhotos.forEach(url => {
+    const div = document.createElement('div');
+    div.className = 'memory-item';
+    div.innerHTML = `<img src="${url}" loading="lazy">`;
+    div.onclick = () => openLightbox(url);
+    photoGrid.appendChild(div);
+});
+
+// Intersection Observer to reveal photos on scroll
+const observerOptions = { threshold: 0.1 };
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.memory-item').forEach(item => revealObserver.observe(item));
+
+// 1. REVERT Start Celebration to go to Cake
+function startCelebration() {
+    document.getElementById('bg-music').play().catch(() => {});
+    transition('intro-screen', 'cake-screen'); 
+}
+
+// 2. NEW: Function to open Gallery from Letter Page
+function showGallery() {
+    // We hide the letter box first for a smooth transition
+    gsap.to("#letter-box", { opacity: 0, duration: 0.5, onComplete: () => {
+        transition('letter-screen', 'gallery-screen');
+        // Trigger photo reveal after transition
+        setTimeout(() => {
+            document.querySelectorAll('.memory-item').forEach(item => revealObserver.observe(item));
+        }, 500);
+    }});
+}
+
+function openLightbox(url) {
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    
+    lbImg.src = url;
+    lb.style.display = 'flex'; // Force display
+    
+    // Smooth entrance
+    setTimeout(() => {
+        lb.classList.add('active');
+    }, 10);
+}
+
+function closeLightbox() {
+    const lb = document.getElementById('lightbox');
+    lb.classList.remove('active');
+    setTimeout(() => {
+        lb.style.display = 'none';
+    }, 300);
+}
+        
+    </script>
+    <!-- Lightbox at the bottom of body -->
+<div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="Memory Zoomed">
+</div>
+</body>
+</html>

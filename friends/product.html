@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details - RS Sisters</title>
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+    <!-- Preloader (Same as shop.html for consistency) -->
+    <div id="preloader">
+        <div class="preloader-ring-container">
+            <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1755829980/updated_py5htw.jpg" alt="Profile" class="preloader-profile-pic">
+            <div class="preloader-ring"></div>
+        </div>
+    </div>
+
+<!-- === PASTE THIS NEW GREETING CONTAINER HERE === -->
+<div id="product-greeting-container" class="product-greeting-container">
+    <h2 id="product-greeting-text" class="product-greeting-text"></h2>
+</div>
+
+   
+
+    <!-- Shop Navbar (Same as shop.html) -->
+    <nav class="navbar navbar-expand-lg fixed-top shop-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="shop.html">RS Sisters</a>
+            <div class="d-flex align-items-center ms-auto ms-lg-0 order-lg-3">
+                <div class="navbar-icons d-flex align-items-center gap-3 me-3">
+                    <!-- === PASTE THIS NEW INQUIRY HUB BUTTON HERE === -->
+    <button class="btn action-btn d-none" id="my-inquiries-hub-btn" title="My Inquiries">
+        <i class="bi bi-chat-left-dots-fill"></i>
+        <span class="hub-badge" id="inquiries-badge"></span>
+    </button>
+    <!-- === END OF NEW BUTTON === -->
+                    
+                    <div class="dropdown">
+                        <span id="user-profile-icon" data-bs-toggle="dropdown" style="cursor: pointer;">
+                            <i class="bi bi-person-circle nav-icon"></i>
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-end" id="user-dropdown-menu"></ul>
+                    </div>
+                    
+                </div>
+                <div id="theme-toggle" class="theme-toggle">
+                    <div class="theme-toggle-ball"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Product Detail Content -->
+    <main class="shop-main-container">
+        <section class="product-detail-section">
+            <div class="container" id="product-detail-content">
+                <!-- Product details will be dynamically loaded here -->
+                <div class="text-center p-5">
+                    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"></div>
+                    <p class="mt-3 text-secondary">Loading Product...</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- === YOU MAY ALSO LIKE SECTION === -->
+<section id="you-may-also-like-section" class="shop-product-section d-none">
+    <div class="container-fluid px-0">
+        <div class="category-section-wrapper">
+            <h2 class="section-title">You May Also Like</h2>
+            <!-- === THIS IS THE NEW, CORRECTED STRUCTURE === -->
+<!-- Add this new wrapper div -->
+<div class="horizontal-scroll-wrapper">
+    <div class="horizontal-scroll-container">
+        <div id="related-products-row" class="horizontal-scroll-row"></div>
+    </div>
+    <!-- The arrow buttons will be added here by JavaScript -->
+</div>
+        </div>
+    </div>
+</section>
+
+<!-- === CUSTOMERS ALSO VIEWED SECTION (FINAL) === -->
+<section id="customers-also-viewed-section" class="shop-product-section d-none">
+    <div class="container-fluid px-lg-5">
+        <h2 class="section-title">Customers Also Viewed</h2>
+        <div class="horizontal-scroll-container">
+            <div id="also-viewed-products-row" class="horizontal-scroll-row mini-carousel">
+                <!-- Recommended products will be loaded here -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- === CUSTOMER REVIEWS SHOWCASE (NEW) === -->
+<section id="customer-reviews-section" class="shop-product-section pt-0">
+    <a id="review-section" style="display: block; visibility: hidden; position: relative; top: -80px;"></a>
+    <div class="container">
+        <h2 class="section-title">Customer Reviews</h2>
+        <div id="reviews-summary" class="text-center mb-4"></div>
+        <div id="reviews-list">
+            <!-- Approved reviews will be loaded here -->
+        </div>
+        <div class="text-center mt-4">
+            <button class="btn btn-main" id="write-review-btn">
+                <i class="bi bi-pencil-square me-2"></i>Write Your Own Review
+            </button>
+        </div>
+    </div>
+</section>
+<!-- === "OUR PROMISE" & FOOTER SECTIONS (FINAL) === -->
+
+<!-- "Our Promise" / "Why Choose Us" Section -->
+<section class="promise-section">
+    <div class="container">
+        <h2 class="section-title">The RS Sisters Difference</h2>
+        <div class="row">
+            <div class="col-md-6 col-lg-3">
+                <div class="promise-item">
+                    <div class="promise-item-icon"><i class="bi bi-shield-check"></i></div>
+                    <h4>Secure Sign-In</h4>
+                    <p>Your account is protected by Google's secure login system. We never see or handle your password.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="promise-item">
+                    <div class="promise-item-icon"><i class="bi bi-whatsapp"></i></div>
+                    <h4>Personal & Secure Inquiries</h4>
+                    <p>We handle all purchase inquiries directly with you on WhatsApp for a private and personal experience.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="promise-item">
+                    <div class="promise-item-icon"><i class="bi bi-truck"></i></div>
+                    <h4>Tracked Shipping</h4>
+                    <p>Every order is shipped with a tracking ID via trusted partners, so you always know its status.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="promise-item">
+                    <div class="promise-item-icon"><i class="bi bi-gem"></i></div>
+                    <h4>Authentic Quality</h4>
+                    <p>Every piece is curated and verified for its quality and craftsmanship by our designers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Professional Site Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-4 col-md-12 text-center text-lg-start">
+                <div class="footer-brand">
+                    <!-- Add the new logo image here -->
+    <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1755829980/updated_py5htw.jpg" alt="RS Sisters Logo" class="footer-logo">
+                    <p class="brand-name">RS Sisters</p>
+                    <p class="brand-tagline">Style Rack</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="footer-col">
+                    <h5>About us</h5>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">Home</a></li>
+                        <li><a href="index.html">About</a></li>
+                        <li><a href="#contact-section">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="footer-col">
+                    <h5>Shop</h5>
+                    <ul class="footer-links">
+                        <li><a href="category.html?category=Neck%20Sets">Neck Sets</a></li>
+                        <li><a href="category.html?category=Bracelets">Bracelets</a></li>
+                        <li><a href="category.html?category=Bangles">Bangles</a></li>
+                        <li><a href="category.html?category=Earring">Earrings</a></li>
+                        <li><a href="category.html?category=Clothes">Clothes</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="col-lg-3 col-md-4">
+                
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="mb-0">Copyright © 2025 RS Sisters | All Rights Reserved</p>
+        </div>
+    </div>
+</footer>
+    </main>
+    
+   
+    
+    
+    
+    <!-- Toast Notification Container (Same as shop.html) -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="appToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i id="toast-icon" class="bi me-2"></i>
+                <strong class="me-auto" id="toastTitle"></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body" id="toastBody"></div>
+        </div>
+    </div>
+    <!-- === WHATSAPP INQUIRY MODAL (FINAL) === -->
+<div class="modal fade" id="inquiryModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-heading">Confirm Details to Inquire</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-secondary mb-4">We'll use these details to start a WhatsApp chat and assist you with your purchase of <strong id="inquiryProductName" class="text-accent"></strong>.</p>
+                <form id="inquiry-form" novalidate>
+                    <input type="hidden" id="inquiryProductId">
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="inquiryName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">WhatsApp Phone Number</label>
+                        <input type="tel" class="form-control" id="inquiryPhone" placeholder="10-digit mobile number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Full Shipping Address</label>
+                        <textarea class="form-control" id="inquiryAddress" rows="3" placeholder="House No, Street, Landmark..." required></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3"><input type="text" class="form-control" id="inquiryCity" placeholder="City*" required></div>
+                        <div class="col-md-6 mb-3"><input type="text" class="form-control" id="inquiryPincode" placeholder="Pincode*" required></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="submit-inquiry-btn" class="btn btn-main-whatsapp">
+                    <i class="bi bi-whatsapp me-2"></i>Save & Start Chat
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- === ADD REVIEW MODAL (NEW) === -->
+<div class="modal fade" id="addReviewModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-heading">Share Your Thoughts</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="review-form" novalidate>
+                    <div class="mb-3 text-center">
+                        <label class="form-label">Your Rating*</label>
+                        <div class="star-rating-container">
+                            <i class="bi bi-star" data-rating="1"></i>
+                            <i class="bi bi-star" data-rating="2"></i>
+                            <i class="bi bi-star" data-rating="3"></i>
+                            <i class="bi bi-star" data-rating="4"></i>
+                            <i class="bi bi-star" data-rating="5"></i>
+                        </div>
+                        <input type="hidden" id="reviewRating" value="0" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Your Name*</label>
+                        <input type="text" class="form-control" id="reviewName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Your Review*</label>
+                        <textarea class="form-control" id="reviewText" rows="4" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="submit-review-btn" class="btn btn-main">Submit Review</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- === REVIEW SUBMITTED SUCCESS MODAL (NEW) === -->
+<div class="modal fade" id="reviewSuccessModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-body p-4 p-md-5">
+                <div class="success-icon mb-3">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <h3 class="font-heading">Thank You!</h3>
+                <p class="text-secondary">Your review has been submitted successfully. It will be visible on the page once it has been approved by our team.</p>
+                <button type="button" class="btn btn-main mt-3" data-bs-dismiss="modal">Got It</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- === SHOPPING BAG MODAL (FINAL) === -->
+<div class="modal fade" id="shoppingBagModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-heading">My Shopping Bag</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="shopping-bag-body">
+                <!-- Bag items will be loaded here -->
+            </div>
+            <div class="modal-footer justify-content-between">
+                <div class="bag-total">
+                    <strong>Total:</strong>
+                    <span id="bag-total-price" class="font-heading">₹0</span>
+                </div>
+                <button type="button" id="bag-inquiry-btn" class="btn btn-main" disabled>
+                    Continue to Inquiry
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- === SHOPPING BAG INQUIRY MODAL (NEW & SEPARATE) === -->
+<div class="modal fade" id="bagInquiryModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-heading">Confirm Details for Your Bag</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-secondary mb-4">Please confirm your shipping details to proceed with your inquiry for the items in your bag.</p>
+                <form id="bag-inquiry-form" novalidate>
+                    <div class="mb-3"><input type="text" class="form-control" id="bagInquiryName" placeholder="Full Name*" required></div>
+                    <div class="mb-3"><input type="tel" class="form-control" id="bagInquiryPhone" placeholder="WhatsApp Phone Number*" required></div>
+                    <div class="mb-3"><textarea class="form-control" id="bagInquiryAddress" rows="3" placeholder="Full Shipping Address*" required></textarea></div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3"><input type="text" class="form-control" id="bagInquiryCity" placeholder="City*" required></div>
+                        <div class="col-md-6 mb-3"><input type="text" class="form-control" id="bagInquiryPincode" placeholder="Pincode*" required></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="submit-bag-inquiry-btn" class="btn btn-main-whatsapp">
+                    <i class="bi bi-whatsapp me-2"></i>Save & Start Chat
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- === MY INQUIRIES HUB MODAL (FINAL) === -->
+<div class="modal fade" id="myInquiriesModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-heading">My Inquiries Hub</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+           <!-- === THIS IS THE NEW TABBED MODAL BODY === -->
+<div class="modal-body" id="my-inquiries-body">
+    <!-- Tab Navigation -->
+    <ul class="nav nav-pills nav-fill mb-4" id="inquiry-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="single-inquiries-tab" data-bs-toggle="tab" data-bs-target="#single-inquiries-pane" type="button" role="tab">Single Item Inquiries</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="bag-inquiries-tab" data-bs-toggle="tab" data-bs-target="#bag-inquiries-pane" type="button" role="tab">Shopping Bag Inquiries</button>
+        </li>
+    </ul>
+    <!-- Tab Content -->
+    <div class="tab-content" id="inquiry-tab-content">
+        <div class="tab-pane fade show active" id="single-inquiries-pane" role="tabpanel">
+            <!-- Single inquiries will be loaded here -->
+        </div>
+        <div class="tab-pane fade" id="bag-inquiries-pane" role="tabpanel">
+            <!-- Bag inquiries will be loaded here -->
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+    <!-- JS Libraries & Your Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- IMPORTANT: Link to the new product.js file -->
+    <script src="product.js"></script>
+
+   <!-- === WHATSAPP INQUIRY LOGIC (FINAL, v2 with Rich Data) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    const inquiryModalEl = document.getElementById('inquiryModal');
+    const inquiryModal = new bootstrap.Modal(inquiryModalEl);
+    const inquiryForm = document.getElementById('inquiry-form');
+    let currentProduct = {};
+    let allProductsCache = []; // Cache to find product images
+
+    // Fetch products once to get image URLs
+    const cacheAllProducts = async () => {
+        if (allProductsCache.length > 0) return;
+        try {
+            const snapshot = await db.collection('products').get();
+            allProductsCache = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        } catch (e) { console.error("Could not cache products:", e); }
+    };
+    cacheAllProducts();
+
+    document.body.addEventListener('click', (e) => {
+        const inquiryBtn = e.target.closest('.btn-whatsapp-inquiry');
+        if (inquiryBtn) {
+            e.preventDefault();
+            const user = auth.currentUser;
+            if (!user) {
+                if (window.showToast) window.showToast("Login Required", "Please sign in to make an inquiry.", "info");
+                return;
+            }
+            currentProduct = { id: inquiryBtn.dataset.productId, name: inquiryBtn.dataset.productName };
+            inquiryModal.show();
+        }
+    });
+
+    inquiryModalEl.addEventListener('show.bs.modal', async () => {
+        const user = auth.currentUser;
+        if (!user) return;
+
+        document.getElementById('inquiryProductName').textContent = currentProduct.name;
+        document.getElementById('inquiryProductId').value = currentProduct.id;
+        document.getElementById('inquiryName').value = user.displayName || '';
+        
+        const userRef = db.collection('users').doc(user.uid);
+        const userDoc = await userRef.get();
+        if (userDoc.exists && userDoc.data().shippingAddress) {
+            const addr = userDoc.data().shippingAddress;
+            document.getElementById('inquiryPhone').value = addr.phone || '';
+            document.getElementById('inquiryAddress').value = addr.address || '';
+            document.getElementById('inquiryCity').value = addr.city || '';
+            document.getElementById('inquiryPincode').value = addr.pincode || '';
+        } else {
+            inquiryForm.reset();
+            document.getElementById('inquiryName').value = user.displayName || '';
+        }
+    });
+
+    document.getElementById('submit-inquiry-btn').addEventListener('click', async () => {
+        if (!inquiryForm.checkValidity()) {
+            inquiryForm.reportValidity();
+            return;
+        }
+
+        const user = auth.currentUser;
+        if (!user) return;
+        
+        const btn = document.getElementById('submit-inquiry-btn');
+        if (window.setButtonLoading) window.setButtonLoading(btn, true, 'Saving...');
+        
+        // --- THIS IS THE UPGRADED DATA OBJECT ---
+        const shippingAddress = {
+            name: document.getElementById('inquiryName').value,
+            phone: document.getElementById('inquiryPhone').value,
+            address: document.getElementById('inquiryAddress').value,
+            city: document.getElementById('inquiryCity').value,
+            pincode: document.getElementById('inquiryPincode').value
+        };
+
+        const productForInquiry = allProductsCache.find(p => p.id === currentProduct.id);
+
+        const inquiryData = {
+            userId: user.uid,
+            customerName: shippingAddress.name,
+            customerPhone: shippingAddress.phone,
+            shippingAddress: shippingAddress, // Save the whole address object
+            productId: currentProduct.id,
+            productName: currentProduct.name,
+            productImage: (productForInquiry && productForInquiry.images && productForInquiry.images[0]) || '', // Save the first image URL
+            status: "New",
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+        // --- END OF UPGRADE ---
+
+         const friendPhoneNumber = "917893316959"; 
+            const message = `Hello RS Sisters! My name is ${inquiryData.customerName}. I'm interested in purchasing the "${inquiryData.productName}" (Product ID: ${inquiryData.productId}). Please confirm.`;
+            const whatsappUrl = `https://wa.me/${friendPhoneNumber}?text=${encodeURIComponent(message)}`;
+            // === PASTE THIS NEW BLOCK in the Single Inquiry Script ===
+
+// Show the confirmation modal
+const confirmationModal = new bootstrap.Modal(document.getElementById('inquiryConfirmationModal'));
+document.getElementById('confirmation-modal-subtitle').textContent = "Your inquiry for the item has been logged.";
+document.getElementById('confirmation-modal-whatsapp-link').href = whatsappUrl;
+confirmationModal.show();
+
+
+        try {
+            await db.collection('inquiries').add(inquiryData);
+             // --- ADD THIS LINE ---
+    if (window.logActivity) window.logActivity('newInquiry', { name: inquiryData.customerName, product: inquiryData.productName });
+    // --- END OF NEW LINE ---
+            await db.collection('users').doc(user.uid).set({ shippingAddress }, { merge: true });
+            // Your EmailJS keys (already provided)
+const EMAILJS_SERVICE_ID = 'service_xb31dq1';
+const EMAILJS_TEMPLATE_ID = 'template_dhyvd3e'; // Your new template ID
+const EMAILJS_PUBLIC_KEY = '3fI1nDsMPnxsjYz0N';
+
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+// === THIS IS THE CORRECTED EMAIL PARAMS OBJECT ===
+const emailParams = {
+    customer_name: inquiryData.customerName,
+    email: user.email,
+    product_name: inquiryData.productName,
+    product_id: inquiryData.productId // Use productId instead
+};
+
+emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, emailParams)
+    .then(function(response) {
+       console.log('Inquiry confirmation email sent!', response.status, response.text);
+    }, function(error) {
+       console.error('Failed to send inquiry email...', error);
+    });
+// === END OF NEW EMAIL-SENDING BLOCK ===
+
+            inquiryModal.hide();
+            if (window.showToast) window.showToast("Success!", "Your inquiry is submitted. Redirecting to WhatsApp...", "success");
+            
+           
+        } catch (error) {
+            console.error("Error submitting inquiry:", error);
+            if (window.showToast) window.showToast("Error", "Could not submit inquiry.", "danger");
+        } finally {
+            if (window.setButtonLoading) window.setButtonLoading(btn, false);
+        }
+    });
+});
+</script>
+
+<!-- === CUSTOMER REVIEWS LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+    
+    const productId = new URLSearchParams(window.location.search).get('id');
+    const addReviewModal = new bootstrap.Modal(document.getElementById('addReviewModal'));
+    // === PASTE THIS NEW BLOCK HERE ===
+const addReviewModalEl = document.getElementById('addReviewModal');
+if (addReviewModalEl) {
+    addReviewModalEl.addEventListener('show.bs.modal', () => {
+        // Find the button inside the modal and reset it
+        const btn = document.getElementById('submit-review-btn');
+        if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = 'Submit Review';
+        }
+    });
+}
+// === END OF NEW BLOCK ===
+
+    // === PASTE THIS NEW, CORRECTED fetchAndRenderReviews FUNCTION ===
+
+async function fetchAndRenderReviews() {
+    // Safety check: Ensure we have a productId from the URL
+    if (!productId) return;
+
+    const reviewsList = document.getElementById('reviews-list');
+    const reviewsSummary = document.getElementById('reviews-summary');
+    
+    // Show a loading state while we fetch
+    reviewsList.innerHTML = `<div class="text-center p-4"><div class="spinner-border text-accent"></div></div>`;
+    
+    try {
+        const snapshot = await db.collection('reviews')
+            .where('productId', '==', productId)  // This correctly filters for the current product
+            .where('isApproved', '==', true)     // This correctly filters for approved reviews
+            .orderBy('createdAt', 'desc')
+            .get();
+
+        if (snapshot.empty) {
+            reviewsList.innerHTML = `<p class="text-center text-secondary">No reviews yet for this product. Be the first!</p>`;
+            reviewsSummary.innerHTML = ''; // Clear summary if no reviews
+            return;
+        }
+
+        const reviews = snapshot.docs.map(doc => doc.data());
+        const totalRating = reviews.reduce((sum, r) => sum + r.rating, 0);
+        const avgRating = (totalRating / reviews.length).toFixed(1);
+
+        // Update the summary header
+        reviewsSummary.innerHTML = `<h4 class="font-heading">${avgRating} ★</h4><p class="text-secondary">Based on ${reviews.length} review(s)</p>`;
+
+        // Render the review cards
+        reviewsList.innerHTML = reviews.map(r => `
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="${r.userPhotoURL || 'https://via.placeholder.com/40'}" alt="${r.userName}">
+                    <div>
+                        <strong>${r.userName}</strong><br>
+                        <small class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</small>
+                    </div>
+                </div>
+                <p>"${r.text}"</p>
+            </div>
+        `).join('');
+
+    } catch (error) {
+        console.error("Error fetching reviews:", error);
+        // This error could mean an index is required. Check the console.
+        if (error.code === 'failed-precondition') {
+             reviewsList.innerHTML = `<p class="text-center text-danger">Error: The database needs a special index to show reviews. Please check the browser console for a link to create it automatically.</p>`;
+        } else {
+             reviewsList.innerHTML = `<p class="text-center text-danger">Could not load reviews at this time.</p>`;
+        }
+    }
+}
+    // Fetch reviews when the page loads
+    fetchAndRenderReviews();
+
+    // --- HANDLE REVIEW SUBMISSION ---
+    document.getElementById('write-review-btn').addEventListener('click', () => {
+        const user = auth.currentUser;
+        if (!user) {
+            if (window.showToast) window.showToast("Login Required", "Please sign in to write a review.", "info");
+            return;
+        }
+        document.getElementById('reviewName').value = user.displayName || '';
+        addReviewModal.show();
+    });
+
+    // Star rating interaction
+    const stars = document.querySelectorAll('.star-rating-container i');
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            const rating = star.dataset.rating;
+            document.getElementById('reviewRating').value = rating;
+            stars.forEach(s => {
+                s.classList.toggle('filled', s.dataset.rating <= rating);
+            });
+        });
+    });
+
+    // === REPLACE your old 'submit-review-btn' listener with this one ===
+document.getElementById('submit-review-btn').addEventListener('click', async () => {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const rating = Number(document.getElementById('reviewRating').value);
+    const reviewText = document.getElementById('reviewText').value.trim();
+    const reviewName = document.getElementById('reviewName').value.trim();
+
+    if (rating === 0 || !reviewText || !reviewName) {
+        if (window.showToast) window.showToast("Incomplete", "Please provide a rating, your name, and a review.", "info");
+        return;
+    }
+
+    const btn = document.getElementById('submit-review-btn');
+    
+    // --- THIS IS THE FIX ---
+    // We use the setButtonLoading function that now exists in product.js
+    setButtonLoading(btn, true, 'Submitting...');
+    // --- END OF FIX ---
+
+    const reviewData = {
+        productId: productId,
+        userId: user.uid,
+        userName: reviewName,
+        userPhotoURL: user.photoURL,
+        rating: rating,
+        text: reviewText,
+        isApproved: false,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+
+    try {
+        await db.collection('reviews').add(reviewData);
+        addReviewModal.hide();
+        document.getElementById('review-form').reset();
+        
+        const successModal = new bootstrap.Modal(document.getElementById('reviewSuccessModal'));
+        successModal.show();
+        
+    } catch (error) {
+        console.error("Error submitting review:", error);
+        if (window.showToast) window.showToast("Error", "Could not submit review.", "danger");
+    } finally {
+        // --- THIS IS THE FIX ---
+        // Always restore the button, whether it succeeds or fails
+        setButtonLoading(btn, false);
+        // --- END OF FIX ---
+    }
+});
+});
+</script>
+
+<!-- === READ MORE LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    function setupReadMore() {
+        const wrapper = document.getElementById('product-description-wrapper');
+        const text = document.getElementById('product-description-text');
+        const btn = document.getElementById('read-more-btn');
+
+        if (!wrapper || !text || !btn) return;
+
+        // Check if the actual text height is greater than the container's collapsed height
+        // We add a small buffer (e.g., 20px) to be safe
+        if (text.scrollHeight > (100 + 20)) { 
+            btn.style.display = 'block'; // Only show the button if the text is long
+        }
+
+        btn.addEventListener('click', () => {
+            wrapper.classList.toggle('expanded');
+            // Change the button text
+            if (wrapper.classList.contains('expanded')) {
+                btn.textContent = 'Read Less';
+            } else {
+                btn.textContent = 'Read More';
+            }
+        });
+    }
+
+    // We use the same robust observer to wait for the page to be ready
+    const observer = new MutationObserver((mutationsList, obs) => {
+        if (document.querySelector('.product-detail-info .product-name')) {
+            setupReadMore(); // Now we can safely run our setup function
+            obs.disconnect(); // Stop watching
+        }
+    });
+
+    const targetNode = document.getElementById('product-detail-content');
+    if (targetNode) {
+        observer.observe(targetNode, { childList: true, subtree: true });
+    }
+});
+</script>
+<div class="fab-container">
+    <!-- New Shopping Bag Button -->
+    <div class="fab-shopping-bag" id="shopping-bag-icon" title="My Shopping Bag">
+        <i class="bi bi-bag"></i>
+        <span id="bag-badge" class="cart-badge">0</span>
+    </div>
+<!-- === FAQ CHATBOT (FINAL) === -->
+<div class="chatbot-container">
+    <!-- The floating bubble that is always visible -->
+    <div class="chat-bubble" id="chat-bubble">
+        <i class="bi bi-chat-quote-fill"></i>
+    </div>
+
+    <!-- The main chat window, hidden by default -->
+    <div class="chat-window" id="chat-window">
+        <div class="chat-header">
+            <h5 class="font-heading mb-0">RS Sisters Assistant</h5>
+            <button class="btn-close" id="chat-close-btn"></button>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <!-- Messages will be injected here by JavaScript -->
+        </div>
+        <div class="chat-footer" id="chat-footer">
+            <!-- Question buttons will be injected here -->
+        </div>
+    </div>
+</div>
+</div>
+<!-- === FAQ CHATBOT LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // === PASTE THIS NEW, UPGRADED faqData OBJECT ===
+const faqData = {
+    // Main menu questions
+    main: {
+        text: "Hello! Welcome to RS Sisters Boutique. How can I assist you today?",
+        options: [
+            { text: "🛍️ Browse Products", key: "browse" },
+            { text: "✨ Why Shop With Us?", key: "why_us" },
+            { text: "🛡️ Is This Site Secure?", key: "secure" },
+            { text: "🚚 Shipping & Delivery", key: "shipping" }
+        ]
+    },
+    // Replies to the main menu questions
+   // === PASTE THIS CORRECTED 'browse' BLOCK ===
+browse: {
+    text: "Of course! Where would you like to start?",
+    options: [
+        // The href now correctly points to the shop page first
+        { text: "Neck Sets", isLink: true, href: "category.html?category=Neck%20Sets" },
+        { text: "Handmade Jewellery", isLink: true, href: "category.html?category=Bracelets" },
+        { text: "Bangles", isLink: true, href: "category.html?category=Bangles" },
+        { text: "Earrings", isLink: true, href: "category.html?category=Earring" },
+        { text: "Clothes", isLink: true, href: "category.html?category=Clothes" },
+        { text: "Back to Main Menu", key: "main" }
+    ]
+},
+    why_us: {
+        text: "We're proud to offer a premium experience!<br>• 💎 Premium Quality<br>• 📦 Secure Shipping<br>• 👩‍🎨 Designer Support",
+        options: [ { text: "Tell me about Shipping", key: "shipping" }, { text: "Is this site secure?", key: "secure" }, { text: "Back to Main Menu", key: "main" } ]
+    },
+    secure: {
+        text: "Absolutely. Your security is our priority. We use Google's secure sign-in system, so we never see or store your password. All inquiries are handled privately, and we will never share your personal information.",
+        options: [ { text: "How do I pay?", key: "payment" }, { text: "Back to Main Menu", key: "main" } ]
+    },
+    shipping: {
+        text: "We ship all orders via Delhivery within 2 business days. Delivery within India typically takes 3-5 days. You will receive tracking details as soon as your order is shipped!",
+        options: [ { text: "How do I pay?", key: "payment" }, { text: "Back to Main Menu", key: "main" } ]
+    },
+    payment: {
+        text: "Our payment process is 100% secure and personal. We handle all transactions directly via UPI or Bank Transfer through a private WhatsApp chat. We never ask for your card details on our website.",
+        options: [ { text: "Why should I shop here?", key: "why_us" }, { text: "Back to Main Menu", key: "main" } ]
+    },
+    human: {
+        text: "Of course! The best way to speak with our designer is via WhatsApp. You can start a conversation by clicking the 'Inquire & Order' button on any product page.",
+        options: [ { text: "Back to Main Menu", key: "main" } ]
+    }
+};
+
+    // --- 2. DOM ELEMENTS ---
+    const chatBubble = document.getElementById('chat-bubble');
+    const chatWindow = document.getElementById('chat-window');
+    const chatCloseBtn = document.getElementById('chat-close-btn');
+    const chatBody = document.getElementById('chat-body');
+    const chatFooter = document.getElementById('chat-footer');
+
+    if (!chatBubble) return; // Exit if the chatbot HTML isn't on the page
+
+    // === PASTE THIS NEW, CORRECTED FUNCTION ===
+function toggleChatWindow() {
+    const isOpen = chatWindow.classList.toggle('open');
+
+    // --- THIS IS THE CRITICAL FIX ---
+    if (isOpen) {
+        // If we are OPENING the window, reset the chat to its original state.
+        chatBody.innerHTML = ''; // Clear all previous messages
+        addMessage(faqData.main.text, 'bot'); // Add the welcome message again
+        showOptions(faqData.main.options); // Show the main options again
+    }
+    // --- END OF FIX ---
+}
+    
+    function addMessage(text, side) {
+        const avatarIcon = side === 'bot' ? 'RS' : '<i class="bi bi-person-fill"></i>';
+        const messageHTML = `
+            <div class="chat-message ${side}">
+                <div class="avatar">${avatarIcon}</div>
+                <div class="message-bubble">${text}</div>
+            </div>`;
+        chatBody.insertAdjacentHTML('beforeend', messageHTML);
+        chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll to bottom
+    }
+
+    function showTypingIndicator() {
+        const typingHTML = `<div class="chat-message bot typing-indicator-wrapper"><div class="avatar">RS</div><div class="message-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div></div>`;
+        chatBody.insertAdjacentHTML('beforeend', typingHTML);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+    
+    function removeTypingIndicator() {
+        const indicator = document.querySelector('.typing-indicator-wrapper');
+        if (indicator) indicator.remove();
+    }
+
+   // === PASTE THIS NEW, CORRECTED showOptions FUNCTION ===
+function showOptions(options) {
+    let optionsHTML = options.map(opt => {
+        if (opt.isLink) {
+            // If it's a link, create an <a> tag
+            return `<a href="${opt.href}" class="btn chat-option-btn chat-link-btn">${opt.text}</a>`;
+        } else {
+            // Otherwise, create a <button> tag
+            return `<button class="btn chat-option-btn" data-key="${opt.key}">${opt.text}</button>`;
+        }
+    }).join('');
+
+    // Add the "Need more help?" link at the bottom
+    optionsHTML += `<div class="text-center mt-2"><a href="#" class="chat-help-link" data-bs-toggle="modal" data-bs-target="#contactModal">Need more help?</a></div>`;
+    
+    chatFooter.innerHTML = optionsHTML;
+}
+
+    function handleOptionClick(key) {
+        const userQuestion = faqData.main.options.find(opt => opt.key === key)?.text || "...";
+        const response = faqData[key];
+        
+        addMessage(userQuestion, 'user');
+        chatFooter.innerHTML = ''; // Clear options
+        
+        showTypingIndicator();
+        setTimeout(() => {
+            removeTypingIndicator();
+            addMessage(response.text, 'bot');
+            if(response.options) {
+                showOptions(response.options);
+            }
+        }, 1000); // Simulate bot "thinking"
+    }
+
+    // --- 4. EVENT LISTENERS ---
+    chatBubble.addEventListener('click', toggleChatWindow);
+    chatCloseBtn.addEventListener('click', toggleChatWindow);
+
+    chatFooter.addEventListener('click', (e) => {
+        const btn = e.target.closest('.chat-option-btn');
+        if (btn && btn.dataset.key) {
+            handleOptionClick(btn.dataset.key);
+        }
+    });
+
+   
+});
+</script>
+<!-- === "YOU MAY ALSO LIKE" SCROLL BUTTONS LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // This function will be called only after the related products are rendered.
+    function initializeRelatedProductsScroll() {
+        // Find the specific wrapper for the "You May Also Like" section
+        const wrapper = document.querySelector('#you-may-also-like-section .horizontal-scroll-wrapper');
+        if (!wrapper) return;
+
+        const container = wrapper.querySelector('.horizontal-scroll-container');
+        if (!container) return;
+
+        // --- Create and add the arrow buttons ---
+        const leftArrow = document.createElement('div');
+        leftArrow.className = 'scroll-arrow left-arrow';
+        leftArrow.innerHTML = '<i class="bi bi-chevron-left"></i>';
+        wrapper.appendChild(leftArrow);
+
+        const rightArrow = document.createElement('div');
+        rightArrow.className = 'scroll-arrow right-arrow';
+        rightArrow.innerHTML = '<i class="bi bi-chevron-right"></i>';
+        wrapper.appendChild(rightArrow);
+
+        // --- Function to check if arrows should be disabled ---
+        function checkArrows() {
+            // Check if we are at the beginning
+            leftArrow.classList.toggle('disabled', container.scrollLeft < 10);
+            // Check if we are at the end
+            const maxScrollLeft = container.scrollWidth - container.clientWidth;
+            rightArrow.classList.toggle('disabled', container.scrollLeft >= maxScrollLeft - 10);
+        }
+
+        // --- Add click listeners for scrolling ---
+        leftArrow.addEventListener('click', () => {
+            container.scrollBy({ left: -container.clientWidth * 0.8, behavior: 'smooth' });
+        });
+
+        rightArrow.addEventListener('click', () => {
+            container.scrollBy({ left: container.clientWidth * 0.8, behavior: 'smooth' });
+        });
+
+        // Check arrow states whenever the user scrolls manually
+        container.addEventListener('scroll', checkArrows);
+        
+        // Initial check
+        checkArrows();
+    }
+    
+    // We need to wait for your main product.js to finish rendering the related products.
+    // A MutationObserver is the most reliable way to do this.
+    const relatedProductsRow = document.getElementById('related-products-row');
+    if (relatedProductsRow) {
+        const observer = new MutationObserver((mutationsList, obs) => {
+            // Check if product cards are now present inside the row
+            if (relatedProductsRow.querySelector('.product-card-wrapper')) {
+                initializeRelatedProductsScroll(); // Run our setup
+                obs.disconnect(); // Stop observing, we're done
+            }
+        });
+        // Start observing the target node for additions of children.
+        observer.observe(relatedProductsRow, { childList: true });
+    }
+});
+</script>
+<!-- === SHOPPING BAG LOGIC SCRIPT (FINAL & CORRECTED) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+    let bagState = {};
+    let allProducts = []; // This script has its OWN private product cache
+    // --- PASTE THIS NEW FUNCTION HERE ---
+function showToast(title, body, type = 'info') {
+    const toastEl = document.getElementById('appToast');
+    if (!toastEl) return;
+
+    const bsToast = new bootstrap.Toast(toastEl, { delay: 3500 });
+    const icons = { success: 'bi-check-circle-fill text-success', danger: 'bi-x-circle-fill text-danger', info: 'bi-info-circle-fill text-info' };
+    
+    document.getElementById('toastTitle').textContent = title;
+    document.getElementById('toastBody').textContent = body;
+    document.getElementById('toast-icon').className = `bi me-2 ${icons[type] || icons.info}`;
+    
+    bsToast.show();
+}
+// --- END OF NEW FUNCTION ---
+
+    // Get references to all modals
+    const shoppingBagModalEl = document.getElementById('shoppingBagModal');
+    const shoppingBagModal = shoppingBagModalEl ? new bootstrap.Modal(shoppingBagModalEl) : null;
+    const bagInquiryModalEl = document.getElementById('bagInquiryModal');
+    const bagInquiryModal = bagInquiryModalEl ? new bootstrap.Modal(bagInquiryModalEl) : null;
+    const bagInquiryForm = document.getElementById('bag-inquiry-form');
+
+    // This function fetches all products for this script to use
+    async function initializeBagSystem() {
+        try {
+            const productsSnap = await db.collection('products').get();
+            allProducts = productsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            
+            // Now that we have products, set up the user listener
+            auth.onAuthStateChanged(async (user) => {
+                if (user) {
+                    const bagSnap = await db.collection('users').doc(user.uid).collection('bag').get();
+                    bagState = {};
+                    bagSnap.forEach(doc => bagState[doc.id] = doc.data().quantity);
+                } else {
+                    bagState = {};
+                }
+                renderShoppingBag();
+            });
+        } catch (error) {
+            console.error("Shopping Bag initialization failed:", error);
+        }
+    }
+
+    function renderShoppingBag() {
+        const bagBadge = document.getElementById('bag-badge');
+        const bagBody = document.getElementById('shopping-bag-body');
+        const bagTotalPrice = document.getElementById('bag-total-price');
+        const bagInquiryBtn = document.getElementById('bag-inquiry-btn');
+        
+        if (!bagBadge || !bagBody) return;
+
+        const itemCount = Object.values(bagState).reduce((sum, qty) => sum + qty, 0);
+        bagBadge.textContent = itemCount;
+        bagBadge.classList.toggle('visible', itemCount > 0);
+        if (bagInquiryBtn) bagInquiryBtn.disabled = itemCount === 0;
+
+        if (itemCount === 0) {
+            bagBody.innerHTML = `<p class="text-center text-secondary p-4">Your shopping bag is empty.</p>`;
+            if (bagTotalPrice) bagTotalPrice.textContent = '₹0';
+            return;
+        }
+
+        let total = 0;
+        bagBody.innerHTML = Object.entries(bagState).map(([productId, quantity]) => {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) return '';
+            const itemTotal = (product.salePrice || product.price) * quantity;
+            total += itemTotal;
+            const imageUrl = (product.images && product.images[0]) || 'https://via.placeholder.com/70';
+            return `
+                <div class="bag-item" data-product-id="${productId}">
+                    <img src="${imageUrl}" class="bag-item-image" alt="${product.name}">
+                    <div class="bag-item-details">
+                        <div class="bag-item-name">${product.name}</div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" data-action="decrease">-</button>
+                            <span class="quantity-display">${quantity}</span>
+                            <button class="quantity-btn" data-action="increase">+</button>
+                        </div>
+                    </div>
+                    <div class="ms-auto text-end">
+                        <span class="bag-item-price d-block">₹${itemTotal.toLocaleString()}</span>
+                        <button class="bag-item-remove-btn" title="Remove"><i class="bi bi-trash"></i></button>
+                    </div>
+                </div>`;
+        }).join('');
+        if (bagTotalPrice) bagTotalPrice.textContent = `₹${total.toLocaleString()}`;
+    }
+
+    async function updateBagInFirestore(productId, newQuantity) {
+        const user = auth.currentUser;
+        if (!user) return;
+        const bagRef = db.collection('users').doc(user.uid).collection('bag').doc(productId);
+        if (newQuantity > 0) {
+            await bagRef.set({ quantity: newQuantity });
+        } else {
+            await bagRef.delete();
+        }
+    }
+
+    // --- Event Listeners ---
+    document.body.addEventListener('click', async e => {
+        const user = auth.currentUser;
+        const addToBagBtn = e.target.closest('.btn-add-to-bag, #add-to-bag-detail-btn');
+        const shoppingBagIcon = e.target.closest('#shopping-bag-icon');
+        const quantityBtn = e.target.closest('.quantity-btn');
+        const removeBtn = e.target.closest('.bag-item-remove-btn');
+        
+        // === PASTE THIS NEW, CORRECTED BLOCK ===
+if (addToBagBtn) {
+    e.preventDefault();
+    if (!user) {
+        // Use the local showToast function
+        return showToast("Login Required", "Please sign in to add items.", "info");
+    }
+    
+    const productId = addToBagBtn.dataset.productId;
+    const currentQtyInBag = bagState[productId] || 0;
+    
+    // --- THIS IS THE STOCK LIMIT FIX ---
+    const product = allProducts.find(p => p.id === productId);
+    if (product && currentQtyInBag >= product.stock) {
+        return showToast("Stock Limit Reached", `You already have the maximum available stock of "${product.name}" in your bag.`, "info");
+    }
+    // --- END OF FIX ---
+    
+    const newQty = currentQtyInBag + 1;
+    
+    bagState[productId] = newQty;
+    renderShoppingBag(); // Update UI instantly
+    await updateBagInFirestore(productId, newQty); // Update database
+    if(product) showToast("Added to Bag!", `"${product.name}" was added.`, "success");
+}
+
+        if (shoppingBagIcon) {
+            if(shoppingBagModal) shoppingBagModal.show();
+        }
+
+        // === PASTE THIS NEW, CORRECTED BLOCK ===
+if (quantityBtn) {
+    const productId = quantityBtn.closest('.bag-item').dataset.productId;
+    const currentQty = bagState[productId] || 0;
+    
+    // --- THIS IS THE STOCK LIMIT FIX ---
+    if (quantityBtn.dataset.action === 'increase') {
+        const product = allProducts.find(p => p.id === productId);
+        if (product && currentQty >= product.stock) {
+            // If current quantity is already at max stock, show a message and stop.
+           showToast("Stock Limit Reached", `Sorry, only ${product.stock} units of "${product.name}" are available.`, "info");
+            return; // Exit the function, do not increase quantity
+        }
+    }
+    // --- END OF FIX ---
+    
+    const newQty = quantityBtn.dataset.action === 'increase' ? currentQty + 1 : currentQty - 1;
+    
+    if (newQty > 0) {
+        bagState[productId] = newQty;
+    } else {
+        delete bagState[productId];
+    }
+    
+    renderShoppingBag();
+    await updateBagInFirestore(productId, newQty);
+}
+
+        if (removeBtn) {
+            const productId = removeBtn.closest('.bag-item').dataset.productId;
+            delete bagState[productId];
+            renderShoppingBag();
+            await updateBagInFirestore(productId, 0);
+        }
+    });
+
+    document.getElementById('bag-inquiry-btn')?.addEventListener('click', () => {
+        if (shoppingBagModal) shoppingBagModal.hide();
+        if (bagInquiryModal) {
+            const user = auth.currentUser;
+            if(user) {
+                document.getElementById('bagInquiryName').value = user.displayName || '';
+                // Add logic here to pre-fill address from user's profile if it exists
+            }
+            bagInquiryModal.show();
+        }
+    });
+    
+    document.getElementById('submit-bag-inquiry-btn')?.addEventListener('click', async () => {
+        if (!bagInquiryForm.checkValidity()) {
+            bagInquiryForm.reportValidity();
+            return;
+        }
+        const user = auth.currentUser;
+        if (!user) return;
+
+        const btn = document.getElementById('submit-bag-inquiry-btn');
+        if (window.setButtonLoading) window.setButtonLoading(btn, true, 'Saving...');
+
+        const shippingAddress = {
+            name: document.getElementById('bagInquiryName').value,
+            phone: document.getElementById('bagInquiryPhone').value,
+            address: document.getElementById('bagInquiryAddress').value,
+            city: document.getElementById('bagInquiryCity').value,
+            pincode: document.getElementById('bagInquiryPincode').value,
+        };
+
+        const itemsForInquiry = Object.entries(bagState).map(([id, qty]) => {
+            const product = allProducts.find(p => p.id === id);
+            if (!product) return null;
+            return { id, name: product.name, qty, imageUrl: (product.images && product.images[0]) || '' };
+        }).filter(item => item !== null);
+
+        const inquiryData = {
+            userId: user.uid,
+            customerName: shippingAddress.name,
+            customerPhone: shippingAddress.phone,
+            shippingAddress: shippingAddress,
+            items: itemsForInquiry,
+            status: "New",
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+        
+        const friendPhoneNumber = "917893316959";
+        // === PASTE THIS CORRECTED LINE in your Bag Logic Script ===
+        // Calculate the total price of the items in the bag
+const totalAmount = itemsForInquiry.reduce((sum, item) => {
+    const product = allProducts.find(p => p.id === item.id);
+    if (product) {
+        return sum + (product.salePrice || product.price) * item.qty;
+    }
+    return sum;
+}, 0);
+
+// --- END OF NEW BLOCK ---
+const message = `Hello RS Sisters! I would like to inquire about my shopping bag containing:\n\n${itemsForInquiry.map(i => `• ${i.name} (Qty: ${i.qty})`).join('\n')}\n\n*Total Amount: ₹${totalAmount.toLocaleString()}*\n\nMy name is ${inquiryData.customerName}. Please confirm.`;   
+        const whatsappUrl = `https://wa.me/${friendPhoneNumber}?text=${encodeURIComponent(message)}`;
+        
+        
+
+        try {
+            await db.collection('bag_inquiries').add(inquiryData);
+            bagInquiryModal.hide();
+            bagInquiryForm.reset();
+            // --- PASTE THIS NEW BLOCK HERE ---
+    // Show the confirmation modal instead of the old toast
+    const confirmationModal = new bootstrap.Modal(document.getElementById('inquiryConfirmationModal'));
+    const subtitle = document.getElementById('confirmation-modal-subtitle');
+    if (subtitle) {
+        subtitle.textContent = "Your inquiry for the items in your bag has been logged.";
+    }
+    const whatsappLink = document.getElementById('confirmation-modal-whatsapp-link');
+    if (whatsappLink) {
+        whatsappLink.href = whatsappUrl;
+    }
+    confirmationModal.show();
+    // --- END OF NEW BLOCK ---
+            if (window.showToast) window.showToast("Success!", "Your inquiry has been submitted.", "success");
+
+            const bagCollectionRef = db.collection('users').doc(user.uid).collection('bag');
+            const bagSnapshot = await bagCollectionRef.get();
+            const batch = db.batch();
+            bagSnapshot.docs.forEach(doc => batch.delete(doc.ref));
+            await batch.commit();
+            bagState = {};
+            renderShoppingBag();
+        } catch (error) {
+            console.error("Error submitting bag inquiry:", error);
+            if (window.showToast) window.showToast("Error", "Could not submit inquiry.", "danger");
+        } finally {
+            if (window.setButtonLoading) window.setButtonLoading(btn, false);
+        }
+    });
+
+    // Start the bag system
+    initializeBagSystem();
+});
+</script>
+<!-- === MY INQUIRIES HUB LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    const inquiriesModal = new bootstrap.Modal(document.getElementById('myInquiriesModal'));
+    const inquiriesBtn = document.getElementById('my-inquiries-hub-btn');
+    const inquiriesBadge = document.getElementById('inquiries-badge');
+    const inquiriesBadgeOffcanvas = document.getElementById('inquiries-badge-offcanvas');
+
+    // This function checks for new updates and shows the badge
+    // === PASTE THIS NEW, SIMPLER checkInquiryUpdates FUNCTION ===
+function checkInquiryUpdates(user) {
+    if (!user) {
+        if (inquiriesBtn) inquiriesBtn.classList.add('d-none');
+        updateBadge(); // Call updateBadge to hide the count
+        return;
+    }
+    if (inquiriesBtn) inquiriesBtn.classList.remove('d-none');
+    
+    // This is the single point of truth for updating the badge
+    updateBadge(); 
+
+    // Set up listeners to update the badge in real-time
+    db.collection('inquiries').where('userId', '==', user.uid).onSnapshot(updateBadge);
+    db.collection('bag_inquiries').where('userId', '==', user.uid).onSnapshot(updateBadge);
+}
+
+    // === PASTE THIS NEW, CORRECTED updateBadge FUNCTION ===
+async function updateBadge() {
+    const user = auth.currentUser;
+    if (!user) {
+        // If user is logged out, hide the badges
+        if (inquiriesBadge) inquiriesBadge.classList.remove('visible');
+        if (inquiriesBadgeOffcanvas) inquiriesBadgeOffcanvas.textContent = '';
+        return;
+    }
+
+    try {
+        // We only need to get the documents to count them.
+        // This is more efficient than fetching all the data.
+        const singleSnap = await db.collection('inquiries').where('userId', '==', user.uid).get();
+        const bagSnap = await db.collection('bag_inquiries').where('userId', '==', user.uid).get();
+        
+        // The .size property gives the correct count of documents.
+        const totalInquiries = singleSnap.size + bagSnap.size;
+        
+        if (inquiriesBadge) {
+            inquiriesBadge.textContent = totalInquiries;
+            inquiriesBadge.classList.toggle('visible', totalInquiries > 0);
+        }
+        if (inquiriesBadgeOffcanvas) {
+            inquiriesBadgeOffcanvas.textContent = totalInquiries > 0 ? totalInquiries : '';
+        }
+    } catch (error) {
+        console.error("Error updating inquiry badge count:", error);
+    }
+}
+    // === PASTE THIS NEW, CORRECTED showMyInquiries FUNCTION ===
+async function showMyInquiries(user) {
+    const modalBody = document.getElementById('my-inquiries-body');
+    const singlePane = document.getElementById('single-inquiries-pane');
+    const bagPane = document.getElementById('bag-inquiries-pane');
+
+    if (!singlePane || !bagPane) return; // Safety check
+
+    // Show the main modal
+    inquiriesModal.show();
+
+    // Show spinners in both panes initially
+    singlePane.innerHTML = `<div class="text-center p-5"><div class="spinner-border text-accent"></div></div>`;
+    bagPane.innerHTML = `<div class="text-center p-5"><div class="spinner-border text-accent"></div></div>`;
+
+    try {
+        const singlePromise = db.collection('inquiries').where('userId', '==', user.uid).orderBy('createdAt', 'desc').get();
+        const bagPromise = db.collection('bag_inquiries').where('userId', '==', user.uid).orderBy('createdAt', 'desc').get();
+        const [singleSnap, bagSnap] = await Promise.all([singlePromise, bagPromise]);
+
+        // --- Render Single Item Inquiries ---
+        if (singleSnap.empty) {
+            singlePane.innerHTML = '<p class="text-secondary text-center p-4">No single item inquiries found.</p>';
+        } else {
+            singlePane.innerHTML = singleSnap.docs.map(doc => {
+                const inquiry = doc.data();
+                return `
+                <div class="inquiry-item status-${inquiry.status}">
+                    <div class="inquiry-item-header">
+                        <span class="inquiry-item-product">${inquiry.productName}</span>
+                        <!-- === THIS IS THE CORRECTED LINE for Single Inquiries === -->
+                        <div>
+                            <small class="inquiry-item-date text-muted">${inquiry.createdAt.toDate().toLocaleDateString()}</small>
+                            <span class="inquiry-item-status">${inquiry.status}</span>
+                        </div>
+                    </div>
+                    ${inquiry.status === 'Shipped' ? `<div class="inquiry-details-content">Your order has shipped! Please check your WhatsApp for the tracking ID from our team.</div>` : ''}
+                </div>`;
+            }).join('');
+        }
+
+        // --- Render Shopping Bag Inquiries ---
+        if (bagSnap.empty) {
+            bagPane.innerHTML = '<p class="text-secondary text-center p-4">No shopping bag inquiries found.</p>';
+        } else {
+            bagPane.innerHTML = bagSnap.docs.map(doc => {
+                const inquiry = doc.data();
+                return `
+                <div class="inquiry-item status-${inquiry.status}">
+                    <div class="inquiry-item-header">
+                        <span class="inquiry-item-product">Bag (${inquiry.items.length} items)</span>
+                        <!-- === THIS IS THE CORRECTED LINE for Single Inquiries === -->
+                        <div>
+                            <small class="inquiry-item-date text-muted">${inquiry.createdAt.toDate().toLocaleDateString()}</small>
+                            <span class="inquiry-item-status">${inquiry.status}</span>
+                        </div>
+                    </div>
+                    ${inquiry.status === 'Shipped' ? `<div class="inquiry-details-content">Your order has shipped! Please check your WhatsApp for the tracking ID from our team.</div>` : ''}
+                </div>`;
+            }).join('');
+        }
+
+    } catch (error) {
+        console.error("Error fetching inquiries:", error);
+        singlePane.innerHTML = `<p class="text-center text-danger">Could not load inquiries.</p>`;
+        bagPane.innerHTML = `<p class="text-center text-danger">Could not load inquiries.</p>`;
+    }
+}
+
+    // --- Event Listeners ---
+    auth.onAuthStateChanged(checkInquiryUpdates);
+
+    document.body.addEventListener('click', e => {
+        if (e.target.closest('#my-inquiries-hub-btn')) {
+            const user = auth.currentUser;
+            if (user) showMyInquiries(user);
+        }
+        // Listener for the offcanvas hub link
+        const hubLink = e.target.closest('.hub-link');
+        if (hubLink && hubLink.dataset.action === 'showInquiries') {
+            const user = auth.currentUser;
+            if (user) showMyInquiries(user);
+        }
+    });
+});
+</script>
+
+
+
+<!-- === SUBTLE GREETING LOGIC SCRIPT (FINAL) === -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const greetingContainer = document.getElementById('product-greeting-container');
+    const greetingText = document.getElementById('product-greeting-text');
+
+    if (greetingContainer && greetingText) {
+        // Your list of random sentences
+        const greetings = [
+            "You've discovered a gem.",
+            "This piece is waiting to be yours.",
+            "Handpicked elegance, just for you.",
+            "This piece was made to complete your story.",
+            "A timeless treasure, ready to be yours."
+        ];
+
+        // --- The Animation Logic ---
+        function runGreetingAnimation() {
+            // 1. Pick a random sentence and show the container
+            const randomIndex = Math.floor(Math.random() * greetings.length);
+            greetingText.textContent = greetings[randomIndex];
+            greetingContainer.classList.add('show');
+
+            // 2. Trigger the confetti burst
+            confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: { y: 0.6 },
+                zIndex: 10002
+            });
+
+            // 3. After 2.5 seconds, fade the greeting text out
+            setTimeout(() => {
+                greetingContainer.classList.remove('show');
+            }, 2500);
+        }
+
+       // === PASTE THIS NEW, CORRECTED BLOCK ===
+
+// --- 3. RUN THE ANIMATION (The Correct Way) ---
+// We wait for the main product.js to finish its work and hide the preloader.
+const preloader = document.getElementById('preloader');
+if (preloader) {
+    // A MutationObserver is the most reliable way to watch for style changes.
+    const observer = new MutationObserver((mutationsList, obs) => {
+        for(const mutation of mutationsList) {
+            // We check if the 'display' style was changed to 'none'.
+            if (mutation.attributeName === 'style' && preloader.style.display === 'none') {
+                // The preloader is now hidden! Time to run our animation.
+                runGreetingAnimation();
+                obs.disconnect(); // Stop observing, our job is done.
+                return;
+            }
+        }
+    });
+
+    // Tell the observer to watch the preloader for attribute changes.
+    observer.observe(preloader, { attributes: true });
+} else {
+    // Fallback: If there's no preloader for some reason, run immediately.
+    runGreetingAnimation();
+}
+    }
+});
+</script>
+<!-- === INQUIRY SENT CONFIRMATION MODAL (FINAL) === -->
+<div class="modal fade" id="inquiryConfirmationModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-body p-4 p-md-5">
+                <div class="checkmark-wrapper mb-3">
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+                <h3 class="font-heading">Inquiry Submitted!</h3>
+                <p class="text-secondary" id="confirmation-modal-subtitle">Your details have been logged with our team.</p>
+                <hr class="my-4">
+                <p class="fw-bold">Next Step: Start the Conversation</p>
+                <a href="#" id="confirmation-modal-whatsapp-link" class="btn btn-main-whatsapp btn-lg mt-2" target="_blank">
+                    <i class="bi bi-whatsapp me-2"></i> Open WhatsApp Chat
+                </a>
+                <!-- === THIS IS THE CORRECTED BUTTON === -->
+<button type="button" class="btn btn-continue-shopping mt-3" data-bs-dismiss="modal">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- === CUSTOMERS ALSO VIEWED LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+    const currentProductId = new URLSearchParams(window.location.search).get('id');
+
+    async function trackProductView() {
+        const lastViewedId = sessionStorage.getItem('lastViewedProductId');
+        if (lastViewedId && lastViewedId !== currentProductId) {
+            const relationId = [lastViewedId, currentProductId].sort().join('_');
+            const relationRef = db.collection('product_relations').doc(relationId);
+            try {
+                await db.runTransaction(async (t) => {
+                    const doc = await t.get(relationRef);
+                    if (!doc.exists) {
+                        t.set(relationRef, { products: [lastViewedId, currentProductId], count: 1 });
+                    } else {
+                        t.update(relationRef, { count: firebase.firestore.FieldValue.increment(1) });
+                    }
+                });
+            } catch (e) { console.error("Error updating relation:", e); }
+        }
+        sessionStorage.setItem('lastViewedProductId', currentProductId);
+    }
+
+    async function showAlsoViewed() {
+        const section = document.getElementById('customers-also-viewed-section');
+        const container = document.getElementById('also-viewed-products-row');
+        if (!section || !container) return;
+
+        try {
+            const relationsSnap = await db.collection('product_relations')
+                .where('products', 'array-contains', currentProductId)
+                .orderBy('count', 'desc')
+                .limit(10).get();
+
+            if (relationsSnap.empty) return;
+
+            const relatedIds = new Set();
+            relationsSnap.forEach(doc => {
+                const products = doc.data().products;
+                const relatedId = products[0] === currentProductId ? products[1] : products[0];
+                relatedIds.add(relatedId);
+            });
+
+            const uniqueIds = Array.from(relatedIds);
+            if (uniqueIds.length === 0) return;
+
+            const productPromises = uniqueIds.map(id => db.collection('products').doc(id).get());
+            const productDocs = await Promise.all(productPromises);
+            const productsToDisplay = productDocs.filter(doc => doc.exists).map(doc => ({ id: doc.id, ...doc.data() }));
+
+            if (productsToDisplay.length > 0) {
+                container.innerHTML = productsToDisplay.map(p => {
+                    const imageUrl = (p.images && p.images[0]) || 'https://via.placeholder.com/120';
+                    return `<div class="product-card-wrapper"><a href="product.html?id=${p.id}" class="product-card-link"><div class="product-card"><div class="product-image-container"><img src="${imageUrl}" alt="${p.name}" class="product-image"></div><div class="product-info"><h5 class="product-name">${p.name}</h5></div></div></a></div>`;
+                }).join('');
+                section.classList.remove('d-none');
+            }
+        } catch (error) {
+            console.error("Error in showAlsoViewed. This may be an indexing issue. Please check the Firebase console for a link to create the required index.", error);
+        }
+    }
+
+    // Trigger the logic. A small delay ensures the main product.js has loaded.
+    setTimeout(() => {
+        trackProductView();
+        showAlsoViewed();
+    }, 1000);
+});
+</script>
+
+<!-- === CUSTOMER INTELLIGENCE TRACKER (V3 - FULL CONTEXT & NAME TRACKING) === -->
+<script>
+(function() {
+    async function initTracker() {
+        if (typeof firebase === 'undefined' || !firebase.apps.length) {
+            setTimeout(initTracker, 500); return;
+        }
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        auth.onAuthStateChanged(async user => {
+            if (!user) return;
+
+            const userRef = db.collection('user_intelligence').doc(user.uid);
+            const logRef = userRef.collection('activity_log');
+
+            // 1. Detect Device
+            const ua = navigator.userAgent;
+            let device = "Desktop";
+            if (/iPhone|iPad|iPod/.test(ua)) device = "iPhone";
+            else if (/Android/.test(ua)) device = "Android";
+
+            // 2. Define the Smart Logger Helper
+            const logUserAction = async (actionType, details = {}) => {
+                try {
+                    await logRef.add({
+                        type: actionType,
+                        details: details,
+                        path: window.location.pathname + window.location.search,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                } catch(e) { console.warn("Tracking event pending..."); }
+            };
+
+            // 3. Save User Profile Data (Bulletproof)
+            try {
+                await userRef.set({
+                    name: user.displayName || "Unknown Guest",
+                    email: user.email || "No Email",
+                    photo: user.photoURL || "",
+                    device: device,
+                    lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
+                    platform: navigator.platform || "Web Browser"
+                }, { merge: true });
+
+                // Log initial visit
+                logUserAction('page_view', { title: document.title });
+            } catch(e) { console.warn("Tracker profile sync pending."); }
+
+            // 4. THE INTERACTION LISTENERS (V5 - ROBUST MESSAGE DETECTION)
+            document.addEventListener('click', (e) => {
+                const favBtn = e.target.closest('.product-favorite-icon');
+                const cartBtn = e.target.closest('.btn-add-to-cart');
+                const inqBtn = e.target.closest('.btn-whatsapp-inquiry');
+                const reviewBtn = e.target.closest('#submit-review-btn') || e.target.closest('.submit-review-btn');
+                
+                // SMARTER CONTACT DETECTION: Looks for IDs, classes, or buttons containing "Send" or "Message"
+                const contactBtn = e.target.closest('#contact-submit-btn') || 
+                                   e.target.closest('.contact-submit-btn') || 
+                                   (e.target.tagName === 'BUTTON' && e.target.innerText.toLowerCase().includes('send'));
+
+                const getPName = (btn) => {
+                    const card = btn.closest('.product-card') || btn.closest('.product-detail-info');
+                    // Fallback: If not in a card, check if the page has a main product title (h1)
+                    return card ? (card.querySelector('h5')?.innerText || card.querySelector('h1')?.innerText || "Product") : (document.querySelector('h1')?.innerText || "Item");
+                };
+
+                if (favBtn) logUserAction('favorite_added', { product: getPName(favBtn) });
+                if (cartBtn) logUserAction('added_to_cart', { product: getPName(cartBtn) });
+                if (inqBtn) logUserAction('whatsapp_inquiry', { product: getPName(inqBtn) });
+                if (reviewBtn) logUserAction('review_submitted', { product: getPName(reviewBtn) });
+                
+                // THE FIX: Added "product" key even for messages so the Admin logic sees it
+                if (contactBtn) logUserAction('message_sent', { product: 'Contact Form' });
+
+                if (e.target.closest('#cart-icon')) logUserAction('checked_shopping_bag');
+            });
+        });
+    }
+    window.addEventListener('load', initTracker);
+})();
+</script>
+
+<!-- === CUSTOMER INTELLIGENCE TRACKER (V4 - HEARTBEAT & TIMER) === -->
+<script>
+(function() {
+    async function initTracker() {
+        if (typeof firebase === 'undefined' || !firebase.apps.length) {
+            setTimeout(initTracker, 500); return;
+        }
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        auth.onAuthStateChanged(async user => {
+            if (!user) return;
+
+            const userRef = db.collection('user_intelligence').doc(user.uid);
+            
+            // 1. Detect Device
+            const ua = navigator.userAgent;
+            let device = /iPhone|iPad|iPod/.test(ua) ? "iPhone" : (/Android/.test(ua) ? "Android" : "Desktop");
+
+            // --- SMART SESSION RESET LOGIC ---
+            const nowMs = Date.now();
+            const doc = await userRef.get();
+            const lastSeenMs = doc.exists && doc.data().lastSeen ? doc.data().lastSeen.toMillis() : 0;
+            
+            let sessionStart;
+            
+            // IF: User is new OR was away for more than 1 hour (3,600,000ms)
+            if (!lastSeenMs || (nowMs - lastSeenMs > 3600000)) {
+                // START A FRESH SESSION
+                sessionStart = nowMs;
+                sessionStorage.setItem('mc_session_start', sessionStart);
+            } else {
+                // CONTINUE RECENT SESSION
+                sessionStart = sessionStorage.getItem('mc_session_start') || lastSeenMs;
+            }
+
+            await userRef.set({
+                name: user.displayName || "Customer",
+                email: user.email || "",
+                device: device,
+                sessionStart: firebase.firestore.Timestamp.fromMillis(parseInt(sessionStart)),
+                lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
+            }, { merge: true });
+
+            // 4. The Live Heartbeat (Pings every 10 seconds)
+            setInterval(async () => {
+                if (document.visibilityState === 'visible') {
+                    await userRef.update({ lastSeen: firebase.firestore.FieldValue.serverTimestamp() });
+                }
+            }, 10000);
+
+            // 5. Context-Aware Interaction Logger
+            window.logUserAction = async (type, details = {}) => {
+                try {
+                    await userRef.collection('activity_log').add({
+                        type, details, path: window.location.pathname,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                } catch(e) {}
+            };
+        });
+    }
+    window.addEventListener('load', initTracker);
+})();
+</script>
+</body>
+</html>

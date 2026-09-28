@@ -1,0 +1,643 @@
+/* === category.css (Mobile-First Enhancements) === */
+
+/* --- Category Page Grid --- */
+#category-product-grid .product-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+#category-product-grid .product-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+}
+
+#category-product-grid .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+#category-product-grid .product-image-container {
+    height: 220px; /* Perfectly sized for mobile grid */
+}
+#category-product-grid .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#category-product-grid .product-info {
+    padding: 0.75rem;
+}
+#category-product-grid .product-name {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Prevent long names from breaking layout */
+}
+#category-product-grid .product-price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+#category-product-grid .product-favorite-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(5px);
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 5;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+#category-product-grid .product-favorite-icon.favorited {
+    color: #e74c3c;
+}
+
+/* --- Responsive Grid Adjustments --- */
+/* On mobile (default), we use col-6 for a 2-column layout */
+/* On medium screens and up, we can go to 3 columns */
+@media (min-width: 768px) {
+    #category-product-grid .col-md-4 {
+        flex: 0 0 auto;
+        width: 33.33333333%;
+    }
+}
+/* On large screens and up, we can go to 4 columns */
+@media (min-width: 992px) {
+    #category-product-grid .col-lg-3 {
+        flex: 0 0 auto;
+        width: 25%;
+    }
+}
+/* === CATEGORY CARD BUTTON SIZE FIX (FINAL) === */
+
+/* This targets the row containing the price and buttons */
+#category-product-grid .product-price-cart-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* This is the key fix: We are reducing the size of the buttons */
+#category-product-grid .btn-add-to-bag,
+#category-product-grid .btn-whatsapp-inquiry {
+    padding: 0.3rem 0.6rem; /* Reduce padding */
+    font-size: 0.8rem;     /* Reduce font size */
+    min-width: 38px;       /* Set a minimum width */
+    height: 38px;          /* Set a fixed height */
+    border-radius: 50%;    /* Make them perfectly circular */
+}
+/* === CATEGORY PAGE SCROLL FIX (FINAL) === */
+
+/*
+  This block ensures that the main page container is correctly positioned
+  below the fixed navbar, preventing content from being hidden.
+*/
+.shop-main-container {
+    padding-top: 72px; /* Standard height of your navbar */
+}
+
+/*
+  This is the most important rule. It tells the browser that even if another
+  stylesheet (like shop.css) says to hide the scrollbar, for this page,
+  the scrollbar MUST be visible after the preloader is gone.
+*/
+body:not(.preloading) {
+    overflow: visible !important;
+}
+
+html, body {
+    height: auto; /* Allow the page to grow beyond the screen height */
+}
+
+/* === FAQ CHATBOT STYLES (FINAL) === */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+.chat-bubble {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background-color 0.3s;
+}
+.chat-bubble:hover {
+    transform: scale(1.1);
+    background-color: var(--accent-hover);
+}
+
+/* === PASTE THIS CORRECTED RULE in shop.css === */
+.chat-window {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    width: 350px;
+    max-width: 90vw;
+    /* --- THIS IS THE KEY FIX --- */
+    max-height: calc(100vh - 100px); /* Max height is viewport height minus some padding */
+    height: 500px; /* Set a default height */
+    /* --- END OF FIX --- */
+    background-color: var(--bg-secondary);
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+.chat-window.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.chat-header {
+    background-color: var(--bg-card);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+/* === PASTE THIS CORRECTED RULE in shop.css === */
+.chat-body {
+    padding: 1rem;
+    flex-grow: 1; /* This makes the body take up all available space */
+    overflow-y: auto;
+}
+.chat-message {
+    display: flex;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fade-in 0.5s forwards;
+}
+@keyframes fade-in { to { opacity: 1; } }
+
+.chat-message .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    color: var(--accent-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+.chat-message.user .avatar {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.chat-message .message-bubble {
+    background-color: var(--bg-card);
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    max-width: 80%;
+}
+.chat-message.user {
+    justify-content: flex-end;
+}
+.chat-message.user .message-bubble {
+    background-color: var(--accent);
+    color: var(--accent-text);
+}
+.chat-message.user .avatar {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+.typing-indicator span {
+    height: 8px; width: 8px;
+    background-color: var(--text-secondary);
+    border-radius: 50%;
+    display: inline-block;
+    animation: typing-bounce 1s infinite;
+}
+.typing-indicator span:nth-of-type(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-of-type(3) { animation-delay: 0.4s; }
+@keyframes typing-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+.chat-footer {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.chat-option-btn {
+    width: 100%;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    text-align: left;
+}
+.chat-option-btn:hover {
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+}
+
+.chat-help-link {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+.chat-help-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+.chat-link-btn {
+    display: block; /* Make links take full width like buttons */
+}
+
+/* === BRAND TRUST & FOOTER SECTIONS (FINAL) === */
+
+/* --- "Our Promise" / "Why Choose Us" Section --- */
+.promise-section {
+    padding: 5rem 0;
+    background-color: var(--bg-primary); /* Use primary BG for slight contrast */
+    border-top: 1px solid var(--border-color);
+}
+
+.promise-item {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.promise-item-icon {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.promise-item h4 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.promise-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    max-width: 300px; /* Constrain line length for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Professional Site Footer --- */
+.site-footer {
+    background-color: var(--bg-card);
+    color: var(--text-secondary);
+    padding: 4rem 0 2rem 0;
+    font-size: 0.9rem;
+}
+
+.footer-brand .brand-name {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0;
+}
+.footer-brand .brand-tagline {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.footer-col h5 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding-left: 0;
+}
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+.footer-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border-color);
+    margin-top: 3rem;
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* === FOOTER LOGO STYLES (FINAL) === */
+
+/* === PASTE THIS CORRECTED RULE in shop.css === */
+.footer-logo {
+    display: block;
+    width: 100px;
+    height: 100px; /* Set a fixed height to ensure it's a perfect circle */
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    transition: filter 0.4s ease;
+    
+    /* --- THIS IS THE FIX --- */
+    border-radius: 50%;     /* This makes the image circular */
+    object-fit: cover;      /* This ensures the image fills the circle without stretching */
+    border: 3px solid var(--accent); /* Adds a sharp, themed border */
+    /* --- END OF FIX --- */
+}
+
+/* This is the magic for dark mode */
+body:not(.light-mode) .footer-logo {
+    /*
+     * This filter does two things:
+     * 1. invert(1): Flips all colors (black becomes white, white becomes black).
+     * 2. hue-rotate(180deg): The blue watercolor, when inverted, becomes a yellow/orange.
+     *    This rotates the color wheel 180 degrees to turn it back into a beautiful blue.
+     * The result is a perfect dark mode version of your logo with pure CSS.
+    */
+    filter: invert(1) hue-rotate(180deg);
+}
+
+
+/* On desktop, the container is left-aligned, so we reset the margins */
+@media (min-width: 992px) {
+    .footer-logo {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* === category.css (FINAL, with Dropdown Fix) === */
+
+/* --- 1. Category Hero Banner --- */
+.category-hero-banner {
+    width: 100%;
+    height: 300px;
+    background-color: var(--bg-card);
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+}
+.category-hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease-out;
+}
+.category-hero-banner:hover img {
+    transform: scale(1.05);
+}
+.category-hero-banner .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+.category-hero-banner .hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2rem;
+    text-align: left;
+}
+.category-hero-banner .hero-content h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    background-image: linear-gradient(110deg, #c39a32, #f5e6a3, #d4af37, #c39a32);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    animation: liquid-gold-shimmer 5s linear infinite;
+    display: inline-block;
+}
+body.light-mode .category-hero-banner .hero-content h1 {
+    background-image: linear-gradient(110deg, #b99330, #e6c34e, #d4af37, #b99330);
+}
+
+/* --- 2. Filter & Sort Bar --- */
+.filter-sort-bar {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.75rem 0;
+    margin-bottom: 2.5rem;
+}
+.item-count {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+.sort-by-container {
+    display: flex;
+    align-items: center;
+}
+.sort-by-container .form-label {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.filter-sort-bar .form-select {
+    background-color: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-weight: 600;
+    padding-right: 2rem;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e6c34e' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 16px 12px;
+}
+.filter-sort-bar .form-select:focus {
+    box-shadow: none;
+}
+body.light-mode .filter-sort-bar .form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* --- [THIS IS THE CRITICAL FIX] --- */
+/* Style the dropdown OPTIONS themselves for dark mode */
+.filter-sort-bar .form-select option {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+/* === FLOATING ACTION BUTTONS (FAB) STYLES (FINAL & CORRECTED) === */
+
+/* This is the main container for ALL floating buttons */
+.fab-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;
+    gap: 1rem; /* Space between buttons */
+}
+
+/* Style for the new Shopping Bag button */
+.fab-shopping-bag {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    position: relative; /* Needed for the badge */
+}
+.fab-shopping-bag:hover {
+    transform: scale(1.1);
+}
+.fab-shopping-bag .cart-badge {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: var(--danger);
+    color: #fff;
+    font-size: 0.8rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+.fab-shopping-bag .cart-badge.visible {
+    transform: scale(1);
+}
+
+/* We leave the existing chatbot styles alone and just make sure it fits */
+/* This ensures we do not break your chatbot */
+.chatbot-container {
+    position: static; /* It no longer needs to be fixed */
+}
+
+.inquiry-item-header .inquiry-item-date {
+    color: var(--text-secondary); /* Use your theme's secondary text color */
+}
+body:not(.light-mode) .inquiry-item-date {
+    /* 
+     * The !important flag is a "superpower" that tells the browser:
+     * "Ignore any other color rule for this element and use THIS ONE."
+     * This ensures our visible color wins the style war against Bootstrap.
+    */
+    color: var(--text-secondary) !important;
+}
+
+/* === ELEGANT CATEGORY HEADER STYLES (FINAL) === */
+.category-header {
+    margin-bottom: 2rem; /* Space between header and filter bar */
+}
+
+.category-intro-text,
+.category-tagline {
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+    opacity: 0; /* Hidden by default for animation */
+    transition: all 0.5s ease;
+}
+
+.category-intro-text {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    animation: fade-in-down 0.8s 0.2s forwards;
+}
+
+/* === PASTE THIS CORRECTED & UPGRADED RULE in category.css === */
+.category-header .section-title {
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fade-in-down 0.8s 0.4s forwards;
+
+    /* --- THIS IS THE "LIQUID GOLD" FIX --- */
+    display: inline-block; /* Important for the gradient to fit the text */
+    
+    /* The gradient for Dark Mode */
+    background-image: linear-gradient(110deg, #c39a32, #f5e6a3, #d4af37, #c39a32);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    animation: liquid-gold-shimmer 5s linear infinite, fade-in-down 0.8s 0.4s forwards; /* Combine animations */
+}
+
+/* The gradient for Light Mode */
+body.light-mode .category-header .section-title {
+    background-image: linear-gradient(110deg, #b99330, #e6c34e, #d4af37, #b99330);
+}
+
+.category-tagline {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-style: italic;
+    animation: fade-in-down 0.8s 0.6s forwards;
+}
+
+@keyframes fade-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes liquid-gold-shimmer {
+    to { background-position: -200% center; }
+}

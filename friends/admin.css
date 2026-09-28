@@ -1,0 +1,1644 @@
+/* === admin.css (Standalone & Production-Ready) === */
+
+/* === PASTE THIS NEW, CORRECTED BODY RULE in admin.css === */
+body {
+    background-color: #f8f9fa; /* A solid fallback color */
+    color: #212529;
+    position: relative; /* Needed for the pseudo-element */
+    z-index: 1; /* Ensure body content is on top */
+}
+
+/* This pseudo-element creates the background image layer */
+body::after {
+    content: '';
+    position: fixed; /* Fixes the image to the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Place it behind all content */
+    
+    /* The background image */
+    background-image: url('https://res.cloudinary.com/dljmxltfr/image/upload/v1755833875/updated_ryz5ty.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 500px; /* Control the size */
+    
+    /* --- THIS IS THE KEY FIX --- */
+    /* Control the darkness/visibility here. 0.1 is subtle, 0.2 is more visible */
+    opacity: 0.15; 
+}
+
+/* --- Login Screen --- */
+.admin-login-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #343a40;
+    color: #fff;
+}
+.login-box {
+    text-align: center;
+    padding: 2rem;
+    background-color: #495057;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.brand-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+}
+
+/* --- Main Admin Panel --- */
+.admin-main-content {
+    padding-top: 80px; /* Space for fixed navbar */
+    padding-left: 1rem;
+    padding-right: 1rem;
+     
+}
+.section-title {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 0.5rem;
+}
+
+/* --- Stat Cards --- */
+.stat-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.stat-card .stat-icon {
+    font-size: 2.5rem;
+    color: #0d6efd;
+    margin-bottom: 0.5rem;
+}
+.stat-card .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+}
+.stat-card .stat-label {
+    color: #6c757d;
+}
+
+/* --- Orders List --- */
+.order-list-container .card {
+    margin-bottom: 1.5rem;
+    border: 1px solid #dee2e6;
+}
+.order-list-container .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e9ecef;
+}
+.order-list-container .badge {
+    font-size: 0.9rem;
+}
+.order-item-details {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+.order-item-details:last-child {
+    border-bottom: none;
+}
+.order-item-details img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 1rem;
+}
+
+/* --- Mobile Friendliness --- */
+@media (max-width: 768px) {
+    .admin-main-content {
+        padding-top: 70px;
+    }
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    #admin-welcome {
+        display: none;
+    }
+}
+
+/* === INQUIRY LIST STYLES === */
+.inquiry-card {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-left: 5px solid #0d6efd; /* Blue for 'New' */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.2s;
+}
+.inquiry-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.inquiry-card.status-Contacted { border-left-color: #ffc107; } /* Yellow for 'Contacted' */
+.inquiry-card.status-Closed { border-left-color: #198754; } /* Green for 'Closed' */
+
+.inquiry-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background-color: #f8f9fa;
+}
+
+
+
+/* --- THE STATUS COLORS FIX --- */
+.inquiry-card.status-New { border-left-color: #0d6efd; } /* Blue */
+.inquiry-card.status-Contacted { border-left-color: #ffc107; } /* Yellow */
+.inquiry-card.status-Closed { border-left-color: #198754; } /* Green */
+
+.inquiry-card-header {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: #f8f9fa;
+}
+
+
+.inquiry-product-info img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.inquiry-product-info-top .dropdown {
+    margin-left: auto; /* Push dropdown to the right */
+}
+
+.card-footer {
+    background-color: #f8f9fa !important;
+}
+
+/* --- MOBILE VIEW (Larger than mobile) --- */
+@media (min-width: 768px) {
+    .inquiry-product-info {
+        flex-direction: row; /* Go back to horizontal layout */
+        align-items: center;
+    }
+}
+
+/* === MOBILE FRIENDLINESS (FINAL & ROBUST) === */
+
+@media (max-width: 767.98px) {
+    .admin-main-content {
+        padding-top: 70px; /* Adjust padding for a slightly smaller mobile navbar */
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem; /* Make brand text smaller on mobile */
+    }
+
+    /* --- THIS IS THE KEY FIX --- */
+    /* Hide the welcome message on small screens to save space */
+    #admin-welcome {
+        display: none;
+    }
+
+    /* Make the logout and menu buttons align properly */
+    .navbar .container-fluid {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .navbar-brand {
+        flex-grow: 1; /* Allow the brand to take up available space */
+    }
+
+    .navbar .d-flex {
+        margin-left: auto; /* Push the right-side icons to the end */
+    }
+    /* --- END OF KEY FIX --- */
+
+    /* Make inquiry card headers wrap more gracefully */
+    .inquiry-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Make product info more compact */
+    .inquiry-product-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .inquiry-product-info-top .dropdown {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+    .inquiry-product-info-top .dropdown button {
+        width: 100%;
+    }
+}
+
+/* === MANAGE REVIEWS STYLES === */
+.admin-review-card { margin-bottom: 1rem; background-color: #fff; border: 1px solid #dee2e6; border-radius: 8px; }
+.admin-review-card .card-body { padding: 1.25rem; }
+.admin-review-card .review-stars { color: #ffc107; }
+.admin-review-card .blockquote-footer { margin-top: 1rem; }
+.admin-review-card .product-link { font-size: 0.9rem; }
+
+/* === CUSTOMER MESSAGES STYLES === */
+.contact-message-card { margin-bottom: 1rem; border: 1px solid #dee2e6; }
+.contact-message-card.is-unread { border-left: 5px solid #0d6efd; background-color: #f8f9fa; }
+
+
+/* === MISSION CONTROL DASHBOARD STYLES (FINAL) === */
+
+/* Upgraded Stat Cards */
+.stat-card {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .75rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-color: #0d6efd;
+}
+.stat-card .stat-icon {
+    font-size: 2.5rem;
+    padding: 0.75rem;
+    border-radius: 50%;
+    background-color: #e7f1ff;
+    color: #0d6efd;
+}
+.stat-card .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+.stat-card .stat-label {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Quick Action Cards */
+.section-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.action-card {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .75rem;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    color: #0d6efd;
+    border-color: #0d6efd;
+}
+.action-card i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+/* === LIVE ACTIVITY FEED STYLES === */
+.activity-feed-container {
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .75rem;
+    padding: 0.5rem;
+}
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #f1f1f1;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slide-in 0.5s forwards;
+}
+@keyframes slide-in {
+    to { opacity: 1; transform: translateX(0); }
+}
+.activity-item:last-child {
+    border-bottom: none;
+}
+.activity-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+.activity-time {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+/* === WHATSAPP REPLY BUTTON STYLE === */
+.btn-whatsapp-reply {
+    background-color: #25D366; /* Official WhatsApp Green */
+    color: #fff;
+    border: none;
+}
+.btn-whatsapp-reply:hover {
+    background-color: #128C7E; /* Darker green on hover */
+    color: #fff;
+}
+
+
+/* === BAG INQUIRY STYLES === */
+.bag-inquiry-item-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+.bag-inquiry-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+}
+.bag-inquiry-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+/* === SMART FILTER BUTTONS STYLES (FINAL) === */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on mobile */
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.filter-btn {
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6;
+    color: #495057;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: #ced4da;
+}
+
+.filter-btn.active {
+    background-color: #0d6efd; /* Primary blue for active */
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+.filter-btn .badge {
+    margin-left: 0.5rem;
+}
+
+/* === STYLE SPOTLIGHT EDITOR STYLES === */
+
+.spotlight-editor-container {
+    max-width: 900px; /* Limit size for desktop editing clarity */
+    margin: 0 auto;
+    border: 3px solid #dee2e6;
+}
+
+/* The elegant price tag pin */
+.hotspot-pin.editor {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #0d6efd; /* Blue primary color */
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: grab;
+    transform: translate(-50%, -50%); /* Center the pin exactly on the click point */
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s;
+}
+
+.hotspot-pin.editor:hover {
+    background-color: #0b5ed7;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.hotspot-list-item {
+    padding: 0.75rem;
+    border: 1px solid #f1f1f1;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* === STYLE SPOTLIGHT CAROUSEL ADMIN STYLES (NEW) === */
+
+.spotlight-look-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    background-color: #fff;
+}
+.spotlight-look-card-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+.spotlight-look-details {
+    flex-grow: 1;
+}
+.spotlight-look-actions {
+    flex-shrink: 0;
+}
+.order-input {
+    width: 60px;
+    text-align: center;
+}
+
+/* === STYLE SPOTLIGHT MOBILE LAYOUT FIX === */
+
+@media (max-width: 576px) {
+    /* Target the main container holding the title and the buttons */
+    #spotlight-section > .d-flex.justify-content-content-between {
+        flex-direction: column; /* Stack the title and the button group vertically */
+        align-items: flex-start !important;
+        gap: 1rem; /* Add some space between the stacked elements */
+    }
+
+    /* Target the inner div containing the Refresh and Create buttons */
+    #spotlight-section > .d-flex.justify-content-content-between > div {
+        display: flex; /* Ensure the buttons themselves are horizontal */
+        flex-wrap: wrap; /* Allow buttons to wrap if screen is very small */
+        width: 100%; /* Make the button container take full width */
+        gap: 0.5rem; /* Space between the buttons */
+    }
+    
+    /* Ensure buttons stack neatly if they must wrap */
+    #spotlight-section .btn {
+        flex-grow: 1; /* Allow buttons to grow and fill space */
+    }
+}
+
+/* === STYLE SPOTLIGHT CARD MOBILE REFINEMENT FIX === */
+
+@media (max-width: 576px) {
+    /* 1. Force the main card content to stack, making the image and details take full width */
+    .spotlight-look-card {
+        flex-direction: column; 
+        align-items: flex-start;
+        gap: 0.75rem; /* Reduce gap when stacking */
+    }
+    
+    /* 2. Ensure the action container is visually separated and uses vertical flex */
+    .spotlight-look-actions {
+        display: flex;
+        flex-direction: column; /* Stack the buttons vertically */
+        gap: 0.5rem;
+        width: 100%; /* Action buttons take full card width */
+        margin-top: 0.5rem; /* Space between details and buttons */
+    }
+    
+    /* 3. Reduce the height and font size of the buttons to make them look less bulky */
+    .spotlight-look-actions button {
+        width: 100%;
+        padding-top: 0.4rem; /* Reduced padding */
+        padding-bottom: 0.4rem; /* Reduced padding */
+        font-size: 0.9rem; /* Slightly smaller text */
+        
+        /* Remove horizontal margins */
+        margin-left: 0 !important; 
+        margin-right: 0 !important;
+    }
+    
+    /* 4. Ensure details take full width above the buttons */
+    .spotlight-look-details {
+        width: 100%; 
+    }
+}
+
+/* === INVOICE HISTORY STYLES (PREMIUM TABLE LOOK) === */
+
+.invoice-table {
+    border-radius: 8px; /* Slightly rounded corners for the whole table */
+    overflow: hidden; /* Ensures rounded corners are applied cleanly */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle depth */
+    border: 1px solid #dee2e6; /* Clean light border */
+}
+
+.invoice-table th {
+    background-color: #e9ecef; /* Slightly darker header background */
+    color: #495057; /* Darker text for headers */
+    font-weight: 600;
+    padding: 1rem 0.75rem; /* Increased padding for spacious feel */
+    cursor: pointer; /* Keep cursor pointer for sorting indication */
+    /* Removed user-select: none; to avoid any issues */
+}
+
+.invoice-table th i {
+    font-size: 0.7rem;
+    margin-left: 8px;
+    vertical-align: middle;
+    transition: transform 0.2s;
+}
+
+.invoice-table td {
+    padding: 0.75rem; /* Spacious padding for rows */
+    font-size: 0.95rem;
+}
+
+/* Ensure the striped rows look good */
+.invoice-table tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa; 
+}
+.invoice-table tbody tr:hover {
+    background-color: #f1f1f1; /* Light hover effect */
+}
+
+/* Badge styling for quick readability */
+.invoice-table .badge-origin {
+    font-size: 0.7rem;
+    padding: 0.3em 0.6em;
+    font-weight: 700;
+    /* Customizing specific badge colors for clear distinction */
+}
+.invoice-table .badge-origin.bg-info {
+    background-color: #0dcaf0 !important;
+}
+.invoice-table .badge-origin.bg-primary {
+    background-color: #0d6efd !important;
+}
+.invoice-table .badge-origin.bg-secondary {
+    background-color: #6c757d !important;
+}
+/* === INVOICE HISTORY MOBILE FIX (Ensuring Horizontal Scroll) === */
+
+@media (max-width: 768px) {
+    /* 1. Ensure the table container uses 100% width and padding is accounted for */
+    #invoices-list-container {
+        width: 100%;
+        overflow-x: auto; /* Explicitly ensure scrolling */
+        -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
+    }
+    
+    /* 2. Ensure the table itself is wider than its container to force scroll */
+    .invoice-table {
+        min-width: 700px; /* Force a minimum width to ensure scrollability */
+    }
+    
+    /* 3. Reduce padding slightly on mobile rows for compactness */
+    .invoice-table td, .invoice-table th {
+        padding: 0.6rem 0.5rem; 
+        font-size: 0.9rem;
+    }
+}
+
+/* === MISSION CONTROL V2 STYLING (THE WOW FACTOR) === */
+
+/* Base Dashboard Card Styles (Adding light color backgrounds) */
+.dashboard-card {
+    background-color: #fff;
+    border-radius: 15px; 
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    height: 100%;
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease;
+}
+.dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.dashboard-card .card-title {
+    font-family: 'Playfair Display', serif; /* Use the premium font here */
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #343a40;
+    margin-bottom: 1.5rem;
+}
+/* Specific Card Color Overlays for Visual Segmentation */
+.sales-activity-card {
+    background-color: #f7f3ff; /* Light Lavender/Purple tint */
+}
+.chart-card {
+    background-color: #eff3ff; /* Light Blue tint */
+}
+.inventory-card {
+    background-color: #fffaee; /* Light Cream/Yellow tint */
+}
+.quick-stats-card {
+    background-color: #f0f8f0; /* Light Mint/Green tint */
+}
+
+/* 1. WORK QUEUE CARDS (Reference Image Colorful Style) */
+
+.work-queue-item {
+    padding: 1rem;
+    border-radius: 12px;
+    color: #343a40;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+.work-queue-item:hover {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.work-queue-item .icon-box {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    line-height: 1;
+}
+.work-queue-item .stat-badge {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Custom Colors for Work Queue based on function */
+.work-queue-item.new-inquiry {
+    background-color: #fce4ec; /* Light Pink */
+    border-left: 5px solid #e91e63; /* Pink Accent */
+}
+.work-queue-item.new-reviews {
+    background-color: #fffde7; /* Light Yellow */
+    border-left: 5px solid #ffc107; /* Yellow Accent */
+}
+.work-queue-item.low-stock {
+    background-color: #ffebee; /* Light Red */
+    border-left: 5px solid #f44336; /* Red Accent */
+}
+.work-queue-item.total-sales {
+    background-color: #e3f2fd; /* Light Blue */
+    border-left: 5px solid #2196f3; /* Blue Accent */
+}
+.work-queue-item.pending-rma {
+    background-color: #f5f0ff; /* Light Lavender/Purple */
+    border-left: 5px solid #673ab7; /* Deep Purple Accent */
+}
+
+/* 2. INVENTORY GAUGE STYLING */
+#stock-gauge-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+/* 2. INVENTORY GAUGE & BUTTON FIX */
+#inventory-status-display {
+    padding-top: 1rem;
+}
+.inventory-score {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #4CAF50; 
+}
+.inventory-status-text {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+/* Low Stock Modal Button Enhancement */
+.inventory-card .btn-outline-danger {
+    font-weight: 700;
+    border-color: #dc3545;
+    color: #dc3545;
+}
+.inventory-card .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+/* 3. ACTIVITY FEED STYLING */
+.sales-activity-card {
+    height: auto; /* Height auto to accommodate feed size */
+}
+#sales-activity-feed {
+    max-height: 250px; /* Constrain the height for the feed */
+    overflow-y: auto;
+}
+/* Ensure activity items look clean */
+.sales-activity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed #f1f1f1;
+}
+.sales-activity-item:last-child {
+    border-bottom: none;
+}
+.activity-time {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+/* 4. CUSTOMER ACTIVITY (Ensuring numbers are prominent) */
+#total-customers, #new-customers-month {
+    font-family: 'Playfair Display', serif; 
+}
+/* === PREMIUM OFFCANVAS & FIXED SIDEBAR STYLES === */
+
+/* Profile Card Styling (Mimicking Reference Image) */
+.admin-profile-card {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: #2c3136; /* Slightly lighter than navbar for contrast */
+    border-radius: 8px;
+    text-align: center;
+}
+.admin-profile-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    border: 3px solid #ffc107; /* Gold accent border */
+}
+.admin-profile-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.2rem;
+}
+.admin-profile-role {
+    font-size: 0.8rem;
+    color: #ccc;
+    display: block;
+}
+
+/* Desktop Fix: Force Offcanvas to act as a permanent sidebar */
+@media (min-width: 992px) {
+    /* 1. OFF CANVAS FIX: Make the offcanvas visible and fixed on large screens */
+    #offcanvasNavbar {
+        transform: none !important; /* Force visibility */
+        visibility: visible !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px; /* Fixed sidebar width */
+        height: 100vh;
+        border-right: 1px solid #495057;
+        padding-top: 56px; /* Space for fixed top navbar */
+    }
+
+    /* 2. MAIN CONTENT FIX: Shift content over to make space for the sidebar */
+    .admin-main-content {
+        margin-left: 250px; /* Must match the width of #offcanvasNavbar */
+        padding-top: 90px; /* Increase top padding slightly */
+    }
+    
+    
+    /* 4. NAVBAR FIX: Ensure the logout buttons align correctly */
+    .navbar .container-fluid {
+        padding-left: 265px; /* Shift remaining navbar elements */
+        width: 100%;
+        max-width: none;
+    }
+    
+    /* FIND THIS BLOCK (around line 108) */
+@media (min-width: 992px) {
+    /* 1. OFF CANVAS FIX: Make the offcanvas visible and fixed on large screens */
+    #offcanvasNavbar {
+        transform: none !important; 
+        visibility: visible !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px; 
+        height: 100vh;
+        border-right: 1px solid #495057;
+        padding-top: 56px; 
+    }
+
+    /* 2. MAIN CONTENT FIX: Shift content over to make space for the sidebar */
+    .admin-main-content {
+        margin-left: 250px; 
+        padding-top: 90px;
+    }
+    
+    /* 3. NAVBAR FIX: Hide the toggler button on desktop */
+    .navbar-toggler {
+        display: none;
+    }
+    
+    /* 4. NAVBAR FIX: Shift remaining navbar elements */
+    .navbar .container-fluid {
+        padding-left: 265px; 
+        width: 100%;
+        max-width: none;
+    }
+    
+    /* 5. OFFCANVAS HEADER FIX: Remove header elements ONLY on desktop, 
+       but preserve padding if needed */
+    .offcanvas-header {
+        height: 0;
+        padding: 0;
+        overflow: hidden; /* Hide the title and close button */
+        border-bottom: none;
+    }
+    .offcanvas-header .btn-close {
+        display: none;
+    }
+}
+}
+/* === SIDEBAR QUICK ACTIONS STYLES === */
+
+.sidebar-quick-action-card {
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    background-color: #343a40; /* Slightly lighter than sidebar background */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.sidebar-quick-action-card h6 {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #495057;
+    padding-bottom: 0.5rem;
+}
+.sidebar-action-btn {
+    width: 100%;
+    text-align: left;
+    color: #fff;
+    background-color: #495057;
+    border: 1px solid #6c757d;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+.sidebar-action-btn:hover {
+    background-color: #0d6efd; /* Blue primary color */
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+/* === WORK QUEUE SPACE FILLER CARD STYLES === */
+
+.instant-action-card {
+    background-color: #e6f7ff; /* Light Cyan for distinction */
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #90cdf4;
+    transition: box-shadow 0.2s;
+}
+.instant-action-card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+.instant-action-card .total-products-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0d6efd;
+    margin-bottom: 0.2rem;
+}
+
+/* === RMA MANAGER AESTHETIC ENHANCEMENT FIX === */
+
+/* Premium Filter Button Colors and Counters */
+#rma-filter-buttons .btn {
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+}
+#rma-filter-buttons .btn.active {
+    background-color: #343a40 !important;
+    color: #fff !important;
+    border-color: #343a40 !important;
+}
+
+/* Ensure status text inside the filter button is visible */
+#rma-filter-buttons .badge {
+    margin-left: 0.5rem;
+    background-color: #495057 !important;
+    color: #fff;
+}
+#rma-filter-buttons .btn.active .badge {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+/* Fixing the Table Button Group for mobile view consistency */
+.rma-list-container .process-rma-btn,
+.rma-list-container .delete-rma-btn {
+    width: auto; 
+    flex-grow: 0;
+}
+/* === RMA MANAGER MOBILE LAYOUT FIXES === */
+
+@media (max-width: 768px) {
+    /* 1. Ensure Filter Buttons Wrap Gracefully */
+    #rma-filter-buttons {
+        flex-wrap: wrap; 
+        width: 100%;
+    }
+    #rma-filter-buttons .btn {
+        flex-grow: 1; /* Allow buttons to take available space */
+        margin-bottom: 0.5rem;
+    }
+    
+    /* 2. Search Input Mobile Alignment */
+    #rma-section #rma-search-input {
+        width: 100% !important; /* Force search bar to full width */
+        max-width: none !important;
+        margin-top: 0.5rem;
+    }
+
+    /* 3. Force Horizontal Scroll for the Table */
+    #rma-list-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; 
+    }
+    .rma-list-container .invoice-table {
+        min-width: 900px; /* Force minimum width to ensure scrollability */
+    }
+    
+    /* 4. Compact Table Cells */
+    .rma-list-container .invoice-table td, 
+    .rma-list-container .invoice-table th {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Ensure Action buttons stack or shrink gracefully */
+    .rma-list-container .invoice-table .btn-sm {
+        padding: 0.2rem 0.4rem;
+    }
+}
+
+/* === STYLIST ADMIN UI - ULTIMATE DESKTOP ALIGNMENT FIX === */
+
+/* 1. Ensure the section container respects the sidebar */
+#lookbook-admin-section {
+    padding: 30px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+/* 2. THE CRITICAL FIX: Push content right on Desktop */
+@media (min-width: 992px) {
+    #lookbook-admin-section {
+        margin-left: 250px !important; /* Matches your sidebar width exactly */
+        width: calc(100% - 250px) !important;
+        padding: 50px !important; /* Give it premium breathing room */
+    }
+    
+    #mcAdminList {
+        max-width: 900px; /* Constrains cards so they don't stretch too thin */
+    }
+}
+
+/* 3. Refined Card Styling */
+.mc-admin-item {
+    background: #ffffff !important;
+    border: 1px solid #eef0f2 !important;
+    border-radius: 16px !important;
+    padding: 25px !important;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04) !important;
+    display: flex !important;
+    flex-direction: column;
+}
+
+/* 4. Fix for Header Buttons (Refresh) */
+#lookbook-admin-section .d-flex.justify-content-between {
+    max-width: 900px;
+    margin-bottom: 30px;
+}
+
+/* 5. Mobile Behavior (Reset margin for phones) */
+@media (max-width: 991px) {
+    #lookbook-admin-section {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 15px !important;
+    }
+}
+
+/* === PREMIUM STYLIST ANSWER TILES === */
+.mc-answers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.mc-answer-tile {
+    background: #ffffff;
+    border: 1px solid #edf2f7;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.mc-answer-tile:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(230, 195, 78, 0.15);
+}
+
+.mc-tile-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #a0aec0;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.mc-tile-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2d3748;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mc-tile-value i {
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+@media (max-width: 576px) {
+    .mc-answers-grid {
+        grid-template-columns: 1fr 1fr; /* 2 columns on mobile */
+    }
+}
+
+/* Make the product picker scrollable for 50+ items */
+#mcProductPickerContainer {
+    max-height: 400px; /* Limits height to show about 8-10 rows at a time */
+    overflow-y: auto;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+/* === WORK QUEUE: UNIQUE STYLIST CONSULT COLOR (CYAN/TEAL) === */
+.work-queue-item.pending-curation {
+    background-color: #e0f7fa !important; /* Soft Cyan/Light Teal */
+    border-left: 5px solid #00acc1 !important; /* Deep Teal Accent */
+    transition: all 0.3s ease;
+}
+
+.work-queue-item.pending-curation:hover {
+    background-color: #b2ebf2 !important;
+}
+/* === STYLIST COMMAND CENTER (SMART LIST UI) === */
+
+/* 1. Mini-Stat Header Bar */
+.mc-stats-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.mc-stat-pill {
+    background: #fff;
+    border: 1px solid #edf2f7;
+    padding: 8px 16px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 140px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.mc-stat-pill i { font-size: 1.2rem; }
+.mc-stat-pill .label { font-size: 0.75rem; color: #718096; font-weight: 600; text-transform: uppercase; }
+.mc-stat-pill .value { font-size: 1.1rem; font-weight: 700; color: #2d3748; margin-left: auto; }
+
+/* 2. Smart Action Bar */
+.mc-action-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 15px;
+    background: #f8fafc;
+    padding: 10px;
+    border-radius: 12px;
+}
+.mc-search-wrap { position: relative; flex: 1; }
+.mc-search-wrap i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #a0aec0; }
+.mc-search-wrap input { width: 100%; padding: 8px 12px 8px 35px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 0.9rem; outline: none; transition: border-color 0.3s; }
+.mc-search-wrap input:focus { border-color: var(--accent); }
+
+.mc-filter-pills { display: flex; gap: 8px; }
+.mc-filter-btn { padding: 6px 12px; border-radius: 20px; border: 1px solid #e2e8f0; background: #fff; font-size: 0.8rem; font-weight: 600; color: #64748b; transition: all 0.2s; }
+.mc-filter-btn.active { background: #334155; color: #fff; border-color: #334155; }
+
+/* 3. Compact Smart Rows */
+.mc-smart-row {
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 8px;
+    border: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.2s;
+}
+.mc-smart-row:hover { background: #f8fafc; border-color: var(--accent); }
+
+.mc-row-user { min-width: 180px; }
+.mc-row-user h6 { margin: 0; font-size: 0.95rem; font-weight: 700; color: #1e293b; }
+.mc-row-user span { font-size: 0.75rem; color: #94a3b8; }
+
+.mc-row-icons { display: flex; gap: 12px; flex: 1; justify-content: center; }
+.mc-row-icons i { font-size: 1.1rem; color: #94a3b8; cursor: help; position: relative; }
+.mc-row-icons i:hover { color: var(--accent); }
+
+.mc-note-indicator { cursor: pointer; color: #eab308; background: #fefce8; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+
+/* 4. Ghost Buttons */
+.mc-ghost-actions { display: flex; gap: 8px; }
+.btn-ghost-primary { background: transparent; border: 1px solid #e2e8f0; color: #0d6efd; font-weight: 600; font-size: 0.8rem; padding: 5px 12px; border-radius: 6px; }
+.btn-ghost-primary:hover { background: #0d6efd; color: #fff; }
+.btn-ghost-danger { background: transparent; border: 1px solid #fee2e2; color: #ef4444; padding: 5px 10px; border-radius: 6px; }
+.btn-ghost-danger:hover { background: #ef4444; color: #fff; }
+
+@media (max-width: 768px) {
+    .mc-smart-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .mc-row-icons { justify-content: flex-start; width: 100%; }
+    .mc-ghost-actions { width: 100%; }
+    .mc-ghost-actions button { flex: 1; }
+}
+/* === STYLIST COMMAND CENTER V4 (PREMIUM MODAL & DATA LABELS) === */
+
+/* Answer Items with Text Labels */
+.mc-answer-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #475569;
+}
+.mc-answer-tag i { color: var(--accent); font-size: 1rem; }
+
+/* Filter Pill with Count */
+.mc-filter-btn span {
+    margin-left: 5px;
+    opacity: 0.7;
+    font-size: 0.75rem;
+}
+
+/* Chat-Style Note Modal */
+#mcNoteModal .modal-content {
+    border-radius: 15px;
+    border: none;
+    overflow: hidden;
+}
+#mcNoteModal .modal-header {
+    background: var(--accent);
+    color: #000;
+    border: none;
+}
+.mc-chat-bubble {
+    background: #f0f2f5;
+    padding: 15px;
+    border-radius: 15px 15px 15px 0;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    border: 1px solid #e2e8f0;
+}
+.mc-chat-time {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin-top: 5px;
+    display: block;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .mc-row-icons {
+        flex-wrap: wrap;
+        justify-content: flex-start !important;
+        gap: 8px !important;
+    }
+}
+/* === REFINED STATUS TAGS (SOFT-UI STYLE) === */
+
+/* Base style for all status tags to match answer tags */
+.mc-status-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Professional Yellow for Pending */
+.mc-status-tag.status-pending {
+    background-color: #fffbeb !important; /* Soft Cream */
+    color: #b45309 !important; /* Deep Golden Brown */
+    border: 1px solid #fef3c7;
+}
+
+/* Professional Green for Curated */
+.mc-status-tag.status-curated {
+    background-color: #f0fdf4 !important; /* Soft Mint */
+    color: #15803d !important; /* Deep Emerald Green */
+    border: 1px solid #dcfce7;
+}
+
+/* Fix spacing for the row icons container */
+.mc-row-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px !important;
+}
+/* === PREMIUM HEADING GROUP (FIXED - NO OVERLAP) === */
+
+#lookbook-admin-section .section-title {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 800 !important;
+    color: #1a202c;
+    letter-spacing: -1px;
+    margin-bottom: 5px !important; /* Small space before sub-label */
+    border-bottom: none !important; /* REMOVES THE DISTURBING LINE */
+    padding-bottom: 0 !important;
+}
+
+.mc-header-sublabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+    position: relative;
+}
+
+/* THE NEW SHINING LINE (Sits below everything) */
+.mc-header-sublabel::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), #fef3c7);
+    border-radius: 2px;
+}
+
+.mc-status-dot-mini {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+    animation: mcPulseGreen 2s infinite;
+}
+
+@keyframes mcPulseGreen {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+/* === PREMIUM REFRESH BUTTON & HEADER ALIGNMENT === */
+
+/* Container to hold Title and Button side-by-side */
+.mc-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+/* The Professional Button Style */
+.mc-refresh-btn {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    color: #64748b !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 20px !important;
+    border-radius: 12px !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02) !important;
+    white-space: nowrap; /* Prevents text from wrapping on mobile */
+}
+
+.mc-refresh-btn:hover {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+    background: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(230, 195, 78, 0.2) !important;
+}
+
+.mc-refresh-btn i {
+    font-size: 1.1rem;
+    transition: transform 0.5s ease;
+}
+
+.mc-refresh-btn:active i {
+    transform: rotate(180deg);
+}
+
+/* Mobile Alignment Fix */
+@media (max-width: 576px) {
+    .mc-header-flex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .mc-refresh-btn {
+        width: 100%; /* Full width on mobile for easy clicking */
+        justify-content: center;
+    }
+}
+/* === BEHAVIORAL TIMELINE: PREMIUM MOTION PACK (FIXED VISIBILITY) === */
+
+/* === BEHAVIORAL TIMELINE: PREMIUM MOTION PACK (ULTRA-VISIBILITY FIX) === */
+
+.mc-timeline-heading {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 800 !important;
+    font-size: 1.25rem !important;
+    display: inline-block;
+    
+    /* FIX: Metallic Gold Gradient - replaced pure white with Light Gold (#fff9e6) */
+    background: linear-gradient(to right, #B8860B 10%, #E6C34E 30%, #fff9e6 50%, #E6C34E 70%, #B8860B 90%);
+    background-size: 200% auto;
+    
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* FIX: The "Anti-Washout" Shadow. This keeps text visible on white backgrounds */
+    filter: drop-shadow(0px 1px 1px rgba(184, 134, 11, 0.2));
+    
+    animation: mcShimmer 4s linear infinite;
+}
+
+@keyframes mcShimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Ensure the live badge container is perfectly aligned */
+.mc-live-badge-wrapper {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
+/* 2. LIVE Badge - Fixed centering and spacing */
+.mc-live-badge {
+    background-color: #22c55e !important;
+    color: #fff !important;
+    padding: 4px 12px 4px 22px !important; /* Extra padding for the dot */
+    font-size: 0.7rem !important;
+    font-weight: 800 !important;
+    border-radius: 50px !important;
+    position: relative;
+    vertical-align: middle;
+    margin-left: 10px;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* The Pulsing White Dot */
+.mc-live-badge::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    width: 6px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #fff;
+    animation: mcBreathe 1.5s infinite ease-in-out;
+}
+
+@keyframes mcBreathe {
+    0%, 100% { transform: scale(0.8); opacity: 0.5; }
+    50% { transform: scale(1.3); opacity: 1; }
+}
+
+/* === CRM RETENTION COMMAND CENTER STYLES === */
+
+/* 1. Diamond Glow Heading */
+.crm-title-wow {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 900 !important;
+    font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+    background: linear-gradient(135deg, #B8860B 0%, #E6C34E 25%, #ffffff 50%, #E6C34E 75%, #B8860B 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 2px rgba(184, 134, 11, 0.2));
+    animation: crmDiamondGlow 4s linear infinite;
+}
+@keyframes crmDiamondGlow { to { background-position: 200% center; } }
+
+/* 2. Stats Ticker Bar */
+.crm-stats-ticker {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+.ticker-item { font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+
+/* 3. Luxury Filter Pills */
+.crm-filter-group { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+.crm-pill {
+    padding: 8px 18px;
+    border-radius: 50px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.crm-pill.active { background: #1e293b; color: #fff; border-color: #1e293b; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.crm-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+/* 4. User Status Dot */
+.status-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+.status-live { background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: crmPulse 1.5s infinite; }
+.status-offline { background: #cbd5e1; }
+
+@keyframes crmPulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+
+@media (max-width: 768px) {
+    .crm-stats-ticker { flex-direction: column; border-radius: 15px; gap: 10px; }
+    .crm-pill { flex: 1; text-align: center; }
+}
+
+/* === PREMIUM LIVE TIMER & OFFLINE STATUS (STUNNING UI) === */
+
+.mc-live-timer {
+    /* High-end digital typography */
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    
+    /* Elegant "Smart" Look: Light Blue/Indigo */
+    background-color: #f8fafc !important;
+    color: #3b82f6 !important;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1.5px solid #e2e8f0;
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 110px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Style for the "Offline" state Specifically */
+.mc-live-timer.is-offline {
+    background-color: #f1f5f9 !important; /* Soft Slate Gray */
+    color: #94a3b8 !important;
+    border-color: #e2e8f0;
+    font-family: 'Inter', sans-serif; /* Use clean font for text */
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* === THE GOLDEN LEAD (VIP) PRO-STYLE === */
+.mc-live-timer.vip {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%) !important;
+    color: #b45309 !important;
+    border: 1.5px solid var(--accent);
+    box-shadow: 0 4px 15px rgba(230, 195, 78, 0.3);
+    transform: scale(1.05);
+    animation: mcTimerGlowPulse 2s infinite ease-in-out;
+}
+
+@keyframes mcTimerGlowPulse {
+    0%, 100% { box-shadow: 0 4px 15px rgba(230, 195, 78, 0.2); }
+    50% { box-shadow: 0 4px 25px rgba(230, 195, 78, 0.5); }
+}
+
+/* Tweak icons inside the timer */
+.mc-live-timer i {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+@media (max-width: 576px) {
+    .mc-live-timer { min-width: 100px; padding: 5px 10px; font-size: 0.85rem; }
+}
+/* === LIFECYCLE BADGE STYLES (NEW VS LOYAL) === */
+.mc-lifecycle-badge {
+    font-size: 0.65rem;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-bottom: 8px;
+    border: 1px solid transparent;
+}
+
+/* New Explorer: Soft Blue Theme */
+.mc-lifecycle-badge.new {
+    background-color: #e0f2fe !important;
+    color: #0369a1 !important;
+    border-color: #bae6fd;
+}
+
+/* Loyal Member: Soft Amber/Gold Theme */
+.mc-lifecycle-badge.loyal {
+    background-color: #fef3c7 !important;
+    color: #92400e !important;
+    border-color: #fde68a;
+}
+/* === SMART OFFER EDITOR FOCUS === */
+#offer-message-input {
+    transition: all 0.3s ease;
+}
+#offer-message-input:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 0.25rem rgba(230, 195, 78, 0.2) !important;
+    background-color: #fff;
+}

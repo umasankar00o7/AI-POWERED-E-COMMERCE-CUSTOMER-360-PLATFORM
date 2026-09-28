@@ -1,0 +1,3727 @@
+/* === shop.css (Standalone & Production-Ready) === */
+
+/* --- 1. CORE SETUP & THEME VARIABLES --- */
+:root {
+  /* Default: Dark Theme (High-Fashion, High-Contrast) */
+  --bg-primary: #121212;
+  --bg-secondary: #1E1E1E;
+  --bg-card: #2A2A2A;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a9a9a9;
+  --accent: #E6C34E;
+  --accent-hover: #D4AF37;
+  --accent-text: #121212;
+  --border-color: #383838;
+  --success: #28a745;
+  --danger: #dc3545;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+body.light-mode {
+  /* Light Theme Override */
+  --bg-primary: #F8F7FA;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --text-primary: #222222;
+  --text-secondary: #5a5a5a;
+  --border-color: #e0e0e0;
+  --accent-text: #FFFFFF;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap');
+
+/* --- 2. GLOBAL STYLES & PRELOADER --- */
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  
+}
+/* === SCROLLING FIX (FINAL) === */
+/* This new rule ensures the page always allows vertical scrolling */
+/* and correctly hides horizontal overflow */
+html {
+    overflow-x: hidden;
+}
+body {
+    overflow-y: auto;
+}
+body.preloading { overflow: hidden; }
+
+#preloader {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;
+  background-color: var(--bg-primary);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 1; transition: opacity 0.8s ease 0.5s;
+  pointer-events: none;
+}
+#preloader.loaded { opacity: 0; }
+.preloader-ring-container { position: relative; width: 100px; height: 100px; }
+.preloader-profile-pic { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; position: absolute; top: 10px; left: 10px; }
+.preloader-ring {
+    width: 100px; height: 100px; border: 4px solid transparent; border-top-color: var(--accent);
+    border-radius: 50%; position: absolute; top: 0; left: 0;
+    animation: spin 1.5s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+
+
+
+
+
+
+/* --- 3. NAVBAR & ICONS --- */
+.shop-navbar {
+  background: var(--bg-primary-translucent, rgba(18, 18, 18, 0.75));
+  backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 0; transition: all 0.4s ease;
+  position: fixed; /* Changed to fixed */
+  width: 100%; top: 0; left: 0; z-index: 1040;
+  transition: top 0.5s ease;
+}
+body.light-mode .shop-navbar { --bg-primary-translucent: rgba(248, 247, 250, 0.75); }
+
+.shop-navbar .navbar-brand { font-family: var(--font-heading); font-size: 1.8rem; color: var(--text-primary); }
+.shop-navbar .nav-link { color: var(--text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; transition: color 0.3s ease; }
+.shop-navbar .nav-link:hover, .shop-navbar .nav-link.active { color: var(--accent); }
+.nav-welcome-message { color: var(--text-secondary); margin-right: 1.5rem; font-size: 0.9rem; }
+
+.navbar-icons .nav-icon { font-size: 1.3rem; color: var(--text-primary); cursor: pointer; position: relative; transition: color 0.3s ease; }
+.navbar-icons .nav-icon:hover { color: var(--accent); }
+.navbar-icons .nav-icon .cart-badge {
+    position: absolute; top: -5px; right: -10px; background-color: var(--accent); color: var(--accent-text);
+    font-size: 0.7rem; font-weight: 700; border-radius: 50%; width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center; transform: scale(0); transition: transform 0.3s ease;
+}
+.navbar-icons .nav-icon .cart-badge.visible { transform: scale(1); }
+#user-profile-icon img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+
+/* --- 4. THEME TOGGLE --- */
+.theme-toggle {
+    width: 44px; height: 22px; background-color: #333; border-radius: 50px;
+    cursor: pointer; position: relative; transition: background-color 0.3s;
+}
+.theme-toggle-ball {
+    width: 18px; height: 18px; background-color: white; position: absolute;
+    top: 2px; left: 2px; border-radius: 50%; transition: transform 0.3s ease;
+}
+.theme-toggle.light .theme-toggle-ball { transform: translateX(22px); }
+body.light-mode .theme-toggle { background-color: #ccc; }
+
+/* --- 5. HERO & SHOP CONTENT --- */
+.shop-main-container { padding-top: 80px; } /* Space for fixed navbar */
+
+.shop-hero-section {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+.hero-background-image {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background-image: url('https://res.cloudinary.com/doxabh7af/image/upload/v1756399695/elegance_redefined_hzsez8.png');
+
+    background-size: cover;
+    background-position: center;
+    
+}
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
+.hero-content { position: relative; z-index: 2; }
+.btn-main-hero {
+    padding: 0.8rem 2.5rem; background-color: var(--accent); color: var(--accent-text);
+    border: none; border-radius: 50px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    transition: all 0.3s; text-decoration: none;
+}
+.btn-main-hero:hover { background-color: var(--accent-hover); transform: translateY(-3px); }
+
+.shop-product-section { background-color: var(--bg-secondary); padding: 5rem 0; }
+.section-title { font-family: var(--font-heading); text-align: center; font-weight: 700; margin-bottom: 3rem; font-size: clamp(2.2rem, 5vw, 3rem); position: relative; }
+
+/* --- 6. PRODUCT CARD & DETAIL PAGE --- */
+.product-card-link { text-decoration: none; }
+.product-card {
+    background-color: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: 12px; overflow: hidden; transition: all 0.3s ease;
+}
+.product-card-link:hover .product-card { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-color: var(--accent); }
+.product-image-container { position: relative; background-color: #000; }
+.product-image { width: 100%; height: 320px;object-fit: cover; transition: opacity 0.4s ease; }
+.product-card-link:hover .product-image { opacity: 0.85; }
+.product-favorite-icon {
+    position: absolute; top: 15px; right: 15px; font-size: 1.5rem; color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5); padding: 0.5rem; border-radius: 50%;
+    line-height: 1; transition: all 0.2s ease; cursor: pointer;
+}
+.product-favorite-icon.favorited { color: #e74c3c; transform: scale(1.1); }
+.product-info { padding: 1.25rem; }
+.product-category { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; }
+.product-name { font-family: var(--font-heading); font-size: 1.3rem; color: var(--text-primary); margin: 0.25rem 0 0.5rem; }
+.product-price { font-size: 1.2rem; font-weight: 600; color: var(--accent); }
+
+/* Product Detail Page */
+.product-detail-section { padding: 5rem 0; }
+.product-detail-gallery { position: sticky; top: 120px; }
+.product-detail-gallery .main-image { width: 100%; height: auto; max-height: 550px; object-fit: cover; border-radius: 12px; margin-bottom: 1rem; }
+.product-thumbnail-container { display: flex; gap: 10px; flex-wrap: wrap; }
+.product-thumbnail { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.3s; }
+.product-thumbnail.active { border-color: var(--accent); }
+.product-detail-info .product-name { font-size: 2.5rem; }
+.product-detail-info .product-price { font-size: 2rem; }
+
+/* --- 7. SIDE CART & CHECKOUT MODAL --- */
+.side-cart {
+    position: fixed; top: 0; right: 0; width: 100%; max-width: 400px; height: 100%;
+    background-color: var(--bg-primary); z-index: 1060; transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex; flex-direction: column; border-left: 1px solid var(--border-color);
+}
+.side-cart.open { transform: translateX(0); box-shadow: -10px 0 30px rgba(0,0,0,0.2); }
+.cart-header { padding: 1rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+.cart-header h5 { font-family: var(--font-heading); margin: 0; }
+.cart-body { flex-grow: 1; overflow-y: auto; padding: 1rem; }
+.cart-footer { padding: 1.5rem; border-top: 1px solid var(--border-color); background-color: var(--bg-secondary); }
+
+.cart-item { display: flex; align-items: center; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
+.cart-item-image { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; margin-right: 1rem; }
+.cart-item-details { flex-grow: 1; }
+.cart-item-name { font-weight: 600; }
+.cart-item-quantity { display: flex; align-items: center; margin-top: 0.5rem; }
+.quantity-btn { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); width: 28px; height: 28px; cursor: pointer; border-radius: 4px; }
+.quantity-display { padding: 0 1rem; }
+.cart-total, .checkout-summary-line { display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 0.5rem; }
+.cart-total { font-weight: bold; font-size: 1.2rem; }
+.checkout-summary-line.total { border-top: 1px solid var(--border-color); padding-top: 0.5rem; font-weight: bold; }
+.discount-toggle { text-decoration: none; color: var(--accent); font-weight: 500; }
+
+.btn-main {
+    width: 100%; padding: 0.8rem; background-color: var(--accent); color: var(--accent-text);
+    border: none; border-radius: 8px; font-weight: 600; transition: all 0.3s;
+}
+.btn-main:hover:not(:disabled) { background-color: var(--accent-hover); }
+.btn-main:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.modal-content { background-color: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); }
+.modal-header, .modal-footer { border-color: var(--border-color); }
+.form-control { background-color: var(--bg-secondary); border-color: var(--border-color); color: var(--text-primary); }
+.form-control:focus { background-color: var(--bg-primary); border-color: var(--accent); box-shadow: 0 0 0 0.25rem rgba(230, 195, 78, 0.2); color: var(--text-primary); }
+.form-control::placeholder { color: var(--text-secondary); }
+
+.btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+body.light-mode .btn-close { filter: none; }
+
+/* --- 8. TOAST NOTIFICATIONS --- */
+.toast-container { z-index: 1100; }
+.toast { background-color: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 8px; }
+.toast-header { background-color: var(--bg-secondary); border-bottom: 1px solid var(--border-color); }
+.toast-header .text-success { color: var(--success) !important; }
+.toast-header .text-danger { color: var(--danger) !important; }
+.toast-header .text-info { color: #3498db !important; }
+
+/* --- 9. RESPONSIVENESS --- */
+@media (max-width: 991.98px) {
+    .shop-navbar .navbar-collapse {
+        position: absolute; top: 100%; left: 0; right: 0;
+        background-color: var(--bg-primary); padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+    .nav-welcome-message { display: none !important; }
+}
+
+@media (max-width: 767.98px) {
+    .product-detail-gallery { position: static; margin-bottom: 2rem; }
+}
+
+/* === HORIZONTAL SECTIONS & CREATIVE PRODUCT CARD STYLES === */
+
+.shop-product-section .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.category-section-wrapper {
+    margin-bottom: 3rem;
+}
+
+.category-section-wrapper .section-title {
+    text-align: left;
+    padding-left: 5vw; /* Align title with scrolling content */
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+.category-section-wrapper .section-title::after {
+    left: 5vw; /* Adjust underline position */
+    transform: translateX(0);
+}
+
+
+.horizontal-scroll-container {
+    overflow-x: auto;
+    padding-bottom: 1.5rem; /* Space for scrollbar on some OS */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.horizontal-scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.horizontal-scroll-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    /* Add padding to the start and end of the scroll area */
+    padding-left: 5vw; 
+    padding-right: 5vw;
+}
+
+.product-card-wrapper {
+    flex: 0 0 80%; /* On mobile, show 1 and a bit of the next */
+    max-width: 280px;
+    transition: transform 0.3s ease;
+}
+.product-card-wrapper:hover {
+    transform: translateY(-5px);
+}
+
+/* Redesigned Product Card */
+/* === PASTE THIS CORRECTED RULE in shop.css === */
+.product-card {
+    background-color: var(--bg-card); /* Added for consistency */
+    border: 1px solid var(--border-color);
+    border-radius: 12px; /* This is a key missing property */
+    overflow: hidden; /* This is the main fix to contain the image */
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Needed for the favorite icon */
+}
+.product-image-container {
+    height: 295px; /* Taller image for better look */
+    overflow: hidden;
+}
+.product-image {
+    transition: transform 0.4s ease;
+}
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+.product-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.product-name {
+    font-size: 1.1rem;
+    flex-grow: 1; /* Pushes price to the bottom */
+}
+.product-price-cart-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+.btn-add-to-cart {
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+.btn-add-to-cart:hover {
+    background-color: var(--accent-hover);
+    transform: scale(1.05);
+}
+.btn-add-to-cart .spinner-border {
+    width: 1rem;
+    height: 1rem;
+}
+
+
+/* Responsive adjustments for horizontal scroll */
+@media (min-width: 576px) {
+    .product-card-wrapper { flex: 0 0 45%; max-width: 320px; }
+}
+@media (min-width: 768px) {
+    .product-card-wrapper { flex: 0 0 35%; }
+}
+@media (min-width: 992px) {
+    .product-card-wrapper { flex: 0 0 28%; }
+}
+@media (min-width: 1200px) {
+    .product-card-wrapper { flex: 0 0 22%; }
+}
+/* === MY ACCOUNT MODAL STYLES (FINAL) === */
+
+/* My Orders Modal Styling */
+.order-item-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.order-item-card:last-child {
+    border-bottom: none;
+}
+.order-item-card-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.order-item-card-details {
+    flex-grow: 1;
+}
+.order-item-card-details .badge {
+    font-size: 0.8rem;
+    padding: 0.4em 0.6em;
+}
+.order-item-card-details strong {
+    color: var(--text-primary);
+}
+
+/* My Favorites Modal Styling */
+#my-favorites-grid .product-card {
+    box-shadow: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#my-favorites-grid .product-card .product-info {
+    padding: 0.75rem;
+    flex-grow: 1;
+}
+#my-favorites-grid .product-card .product-name {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+#my-favorites-grid .product-card .product-price {
+    font-size: 1rem;
+}
+#my-favorites-grid .product-image-container {
+    height: 200px;
+}
+#my-favorites-grid .product-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+/* === SIGN-IN PROMPT GLOW EFFECT (FINAL) === */
+
+/* The .prompt-glow class will be added by JavaScript ONLY when a user is logged out */
+#user-icon-wrapper.prompt-glow {
+    animation: pulse-glow 2s infinite ease-in-out;
+    border-radius: 50%; /* Make the glow circular around the icon */
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(230, 195, 78, 0.7); /* Your --accent color with opacity */
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(230, 195, 78, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(230, 195, 78, 0);
+    }
+}
+/* === ELEGANT HERO SEARCH & MODAL STYLES (FINAL) === */
+
+.hero-search-trigger {
+    max-width: 500px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.hero-search-trigger:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+.hero-search-trigger .search-icon {
+    font-size: 1.2rem;
+    margin-right: 0.75rem;
+}
+
+/* Search Modal Styles */
+#searchModal .modal-header {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+#searchModal .form-control {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+#searchModal .form-control:focus {
+    box-shadow: none;
+}
+#searchModal .input-group-text {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+#search-modal-results-grid .product-card {
+    box-shadow: none;
+    height: 100%;
+}
+#search-modal-results-grid .product-image-container {
+    height: 200px;
+}
+/* === SEARCH MODAL CLEAR BUTTON STYLES === */
+.search-modal-input-wrapper {
+    position: relative;
+}
+
+.search-clear-btn {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.search-clear-btn:hover {
+    opacity: 1;
+}
+
+/* === HORIZONTAL SECTIONS & VIEW ALL CARD STYLES === */
+.category-section-wrapper { margin-bottom: 3rem; }
+.category-section-wrapper .section-title { text-align: left; padding-left: 5vw; margin-bottom: 1.5rem; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+.horizontal-scroll-container { overflow-x: auto; padding-bottom: 1.5rem; -ms-overflow-style: none; scrollbar-width: none; }
+.horizontal-scroll-container::-webkit-scrollbar { display: none; }
+.horizontal-scroll-row { display: flex; flex-wrap: nowrap; gap: 1.5rem; padding-left: 5vw; padding-right: 5vw; }
+.product-card-wrapper { flex: 0 0 80%; max-width: 280px; }
+@media (min-width: 576px) { .product-card-wrapper { flex: 0 0 45%; max-width: 320px; } }
+@media (min-width: 992px) { .product-card-wrapper { flex: 0 0 30%; } }
+
+.view-all-card {
+    height: 100%; display: flex; align-items: center; justify-content: center;
+    background-color: var(--bg-card); border-radius: 12px; border: 2px dashed var(--border-color);
+    text-align: center; color: var(--text-secondary); transition: all 0.3s ease;
+}
+.view-all-card:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.03); }
+.view-all-card i { font-size: 3rem; }
+.view-all-card p { font-weight: 600; font-size: 1.2rem; margin-top: 0.5rem; }
+
+/* === SALE & SOLD OUT BADGE STYLES (FINAL) === */
+
+.product-card .product-image-container {
+    position: relative; /* Ensure the container can position child elements */
+}
+
+.product-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 50px;
+    z-index: 4;
+    color: #fff;
+}
+
+.product-badge.sale-badge {
+    background-color: var(--danger); /* Red for sale */
+}
+
+.product-badge.sold-out-badge {
+    background-color: #343a40; /* Dark grey for sold out */
+}
+
+/* Make the product card look "unavailable" when sold out */
+.product-card.is-sold-out .product-image {
+    filter: grayscale(80%);
+    opacity: 0.6;
+}
+
+.product-card.is-sold-out .btn-add-to-cart {
+    background-color: #6c757d; /* Muted grey */
+    cursor: not-allowed;
+}
+
+/* Adjust price display for sales */
+.product-price .original-price {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    margin-right: 0.5rem;
+}
+
+/* === WHATSAPP BUTTON STYLES (FINAL) === */
+.btn-whatsapp-inquiry {
+    background-color: #25D366;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+.btn-whatsapp-inquiry:hover {
+    background-color: #128C7E;
+    color: #fff;
+    transform: scale(1.05);
+}
+.btn-main-whatsapp {
+    background-color: #25D366;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+}
+.btn-main-whatsapp:hover {
+    background-color: #128C7E;
+    color: #fff;
+}
+
+/* You May Also Like Section Title */
+#you-may-also-like-section .section-title {
+    text-align: center;
+    padding-left: 0;
+}
+
+/* === TRUST BADGES SECTION (FINAL) === */
+
+.trust-badges-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between icon and text */
+    margin-bottom: 1.5rem;
+}
+
+.trust-badge-icon {
+    font-size: 2rem;
+    color: var(--accent);
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.trust-badge-text strong {
+    color: var(--text-primary);
+    display: block; /* Puts the title on its own line */
+    font-size: 1.1rem;
+}
+
+.trust-badge-text span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* === CUSTOMER REVIEWS STYLES (FINAL) === */
+.review-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.review-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.review-stars { color: var(--accent); }
+.review-card p {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+.star-rating-container i {
+    font-size: 2.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    margin: 0 0.25rem;
+}
+.star-rating-container i:hover {
+    transform: scale(1.1);
+}
+.star-rating-container i.filled {
+    color: var(--accent);
+}
+
+/* === SUCCESS MODAL STYLES === */
+#reviewSuccessModal .modal-content {
+    border-radius: 1rem; /* Softer corners */
+    border: none;
+}
+
+#reviewSuccessModal .success-icon {
+    font-size: 4rem; /* Big, friendly icon */
+    color: var(--success);
+}
+
+#reviewSuccessModal .btn-main {
+    padding: 0.6rem 2rem;
+    width: auto; /* Don't make the button full-width */
+}
+
+/* === BREADCRUMB NAVIGATION STYLES (FINAL) === */
+
+.breadcrumb-nav {
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+.breadcrumb-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-nav a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.breadcrumb-nav .separator {
+    margin: 0 0.5rem;
+    color: var(--text-secondary);
+}
+
+.breadcrumb-nav .current-page {
+    color: var(--text-primary);
+    font-weight: 500;
+    /* For long product names on mobile */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px; /* Adjust as needed for mobile */
+}
+
+/* On larger screens, allow more space for the product name */
+@media (min-width: 576px) {
+    .breadcrumb-nav .current-page {
+        max-width: none;
+    }
+}
+
+/* === SOCIAL SHARE BUTTONS (FINAL, STYLED VERSION) === */
+
+.product-share-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between the text and the button */
+}
+
+.product-share-label {
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+.share-buttons-container {
+    display: flex;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px; /* Slightly larger for a better touch target */
+    height: 44px;
+    border-radius: 50%;
+    /* Use the main card background for a sleek look */
+    background-color: var(--bg-card); 
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary); /* Muted color by default */
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* --- "Wow" Hover Effect --- */
+.share-btn:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    transform: translateY(-4px) scale(1.05); /* Add a lift effect */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    border-color: var(--accent);
+}
+
+/* === READ MORE DESCRIPTION STYLES (FINAL) === */
+
+.product-description-wrapper {
+    position: relative;
+    max-height: 100px; /* Adjust this value to control how many lines are shown initially (approx 4-5 lines) */
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.product-description-wrapper.expanded {
+    max-height: 1000px; /* A large value to ensure all content is visible when expanded */
+}
+
+/* This creates the nice fade-out effect at the bottom of the collapsed text */
+.product-description-wrapper:not(.expanded)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, var(--bg-secondary));
+    pointer-events: none; /* Allows clicks to pass through to the text */
+}
+
+.read-more-btn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-weight: 600;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    display: none; /* Hidden by default, shown only by JS if needed */
+}
+
+.read-more-btn:hover {
+    text-decoration: underline;
+}
+
+/* === CONTACT SECTION STYLES (FINAL) === */
+.contact-section {
+    background-color: var(--bg-primary);
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-color);
+}
+.contact-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.contact-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+}
+.contact-icon-wrapper {
+    font-size: 3rem;
+    color: var(--accent);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-whatsapp-contact {
+    background-color: #25D366;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 0.6rem 1.5rem;
+    text-decoration: none;
+}
+.btn-whatsapp-contact:hover {
+    background-color: #128C7E;
+    color: #fff;
+}
+.contact-card .btn-main {
+    width: auto;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+}
+
+/* === CONTACT SUCCESS MODAL STYLES === */
+#contactSuccessModal .modal-content {
+    border-radius: 1rem;
+    border: none;
+}
+#contactSuccessModal .btn-main {
+    padding: 0.6rem 2rem;
+    width: auto; /* Don't make the button full-width */
+}
+/* === PASTE THIS NEW, CORRECTED BLOCK in shop.css === */
+
+/* Animated Checkmark CSS */
+.checkmark-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
+.checkmark {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 3;
+    stroke: #fff; /* The checkmark itself should be white */
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 0px 0px var(--success);
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+.checkmark-circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 3;
+    stroke-miterlimit: 10;
+    stroke: var(--success);
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+.checkmark-check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke-check 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+/* Corrected Keyframes */
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes stroke-check {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes scale {
+    0%, 100% {
+        transform: none;
+    }
+    50% {
+        transform: scale3d(1.1, 1.1, 1);
+    }
+}
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 40px var(--success);
+    }
+}
+
+/* === ELEGANT FEATURE BANNER STYLES (FINAL) === */
+
+.feature-banner {
+    position: relative; /* This is the anchor for the overlay */
+    width: 100%;
+    height: 350px;
+    background-color: var(--bg-card);
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+    color: #fff; /* Default text color for dark overlay */
+}
+
+.feature-banner-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease-out;
+}
+.feature-banner:hover .feature-banner-img {
+    transform: scale(1.03);
+}
+
+/* The dark gradient overlay that makes text readable */
+.feature-banner-overlay {
+    position: absolute;
+    inset: 0; /* shortcut for top, bottom, left, right = 0 */
+    background: linear-gradient(90deg, rgba(18,18,18,0.85) 0%, rgba(18,18,18,0.7) 35%, rgba(18,18,18,0) 100%);
+}
+body.light-mode .feature-banner-overlay {
+    background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.75) 35%, rgba(255,255,255,0) 100%);
+}
+
+/* Rule for when the text is on the right */
+.feature-banner.text-align-right .feature-banner-overlay {
+    background: linear-gradient(-90deg, rgba(18,18,18,0.85) 0%, rgba(18,18,18,0.7) 35%, rgba(18,18,18,0) 100%);
+}
+body.light-mode .feature-banner.text-align-right .feature-banner-overlay {
+    background: linear-gradient(-90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.75) 35%, rgba(255,255,255,0) 100%);
+}
+
+.feature-banner-content {
+    position: relative; /* Place it on top of the overlay */
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Default to left alignment */
+    padding: 2rem 5vw;
+    text-align: left;
+}
+
+/* Rule for when the text is on the right */
+.feature-banner.text-align-right .feature-banner-content {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.feature-banner-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+}
+.feature-banner-subtitle {
+    font-size: 1.2rem;
+    max-width: 400px;
+    margin-top: 0.5rem;
+    color: #e0e0e0; /* Slightly lighter than secondary text */
+}
+/* === PASTE THIS CORRECTED RULE in shop.css === */
+
+/* For light mode, we only need to change the gradient for better contrast.
+   The color should remain transparent. */
+body.light-mode .feature-banner-title {
+    background-image: linear-gradient(
+        110deg,
+        var(--accent),
+        var(--text-primary),
+        #888888, /* A medium gray highlight for light mode */
+        var(--accent)
+    );
+    /* We DO NOT set the color property here. We let it stay transparent. */
+}body.light-mode .feature-banner-subtitle { color: var(--text-secondary); }
+
+.feature-banner-btn {
+    margin-top: 1.5rem;
+    padding: 0.7rem 2.2rem;
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.feature-banner-btn:hover {
+    background-color: var(--accent-hover);
+    transform: scale(1.05);
+}
+
+/* === ANIMATED GRADIENT TEXT EFFECT (FINAL) === */
+
+/* Target the main title inside any feature banner */
+.feature-banner-title {
+    /* --- The Magic Starts Here --- */
+
+    /* 1. Create a wide, beautiful gradient background */
+    background-image: linear-gradient(
+        110deg,
+        var(--accent),
+        #ffffff, /* A bright highlight */
+        var(--text-primary),
+        var(--accent)
+    );
+
+    /* 2. Set the background to be much wider than the text */
+    background-size: 250% auto;
+
+    /* 3. Clip the background to the shape of the text */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* 4. Make the text color transparent to reveal the gradient behind it */
+    color: transparent;
+
+    /* 5. Apply the animation */
+    animation: shimmer-text 8s linear infinite;
+}
+
+/* For light mode, we need to adjust the gradient colors for better contrast */
+body.light-mode .feature-banner-title {
+    background-image: linear-gradient(
+        110deg,
+        var(--accent),
+        var(--text-primary),
+        #a0a0a0, /* A darker highlight for light mode */
+        var(--accent)
+    );
+}
+
+
+/* The animation that slides the background gradient */
+@keyframes shimmer-text {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* === ELEGANT UNDERLINE REVEAL (FINAL) === */
+
+.category-section-wrapper .section-title {
+    position: relative; /* Needed for the ::after element */
+    padding-bottom: 0.75rem; /* Add some space for the underline */
+}
+
+/* This is the underline element itself */
+/* === PASTE THIS CORRECTED RULE in shop.css === */
+.category-section-wrapper .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 5vw; /* Position it from the left, matching the title's padding */
+    /* transform: translateX(-50%); <-- We REMOVE this */
+    height: 3px;
+    background-color: var(--accent);
+    width: 0; /* Start with zero width */
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* When the .in-view class is added by JavaScript, the animation runs */
+.category-section-wrapper .section-title.in-view::after {
+    width: 80px; /* The final width of the underline */
+}
+
+/* === LIQUID GOLD NAVBAR BRAND (FINAL) === */
+
+.navbar-brand {
+    /* --- The Magic Starts Here --- */
+
+    /* 1. Create a wide, beautiful gradient background for the text */
+    /* This gradient is designed for your DARK MODE */
+    background-image: linear-gradient(
+        110deg,
+        #c39a32, /* Darker Gold */
+        #f5e6a3, /* Light Shimmer Gold */
+        #d4af37, /* Main Accent Gold */
+        #c39a32  /* Darker Gold */
+    );
+
+    /* 2. Set the background to be much wider than the text */
+    background-size: 200% auto;
+
+    /* 3. Clip the background to the shape of the text */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* 4. Make the text color transparent to reveal the gradient behind it */
+    color: transparent !important; /* Use !important to override Bootstrap's default color */
+
+    /* 5. Apply the animation */
+    animation: liquid-gold-shimmer 5s linear infinite;
+}
+
+/* For light mode, we use a slightly different, more saturated gradient for better contrast */
+body.light-mode .navbar-brand {
+    background-image: linear-gradient(
+        110deg,
+        #b99330,
+        #e6c34e, /* Accent Gold */
+        #d4af37,
+        #b99330
+    );
+    /* We must re-declare these properties for the override to work */
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    animation: liquid-gold-shimmer 5s linear infinite;
+}
+
+/* The animation that slides the background gradient */
+@keyframes liquid-gold-shimmer {
+    to {
+        background-position: -200% center;
+    }
+}
+
+/* === FAVORITE ICON VISIBILITY FIX (FINAL) === */
+
+.product-card {
+    position: relative; /* Ensure the card is the positioning parent */
+}
+
+.product-favorite-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10; /* Make sure it's on top of everything */
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.product-favorite-icon.favorited {
+    color: #e74c3c;
+    transform: scale(1.1);
+}
+
+/* === SEARCH MODAL CLEAR BUTTON STYLES === */
+.search-modal-input-wrapper {
+    position: relative; /* Needed for positioning */
+}
+
+.search-clear-btn {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease-in-out;
+}
+.search-clear-btn:hover {
+    opacity: 1;
+}
+
+/* === FAQ CHATBOT STYLES (FINAL) === */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+.chat-bubble {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background-color 0.3s;
+}
+.chat-bubble:hover {
+    transform: scale(1.1);
+    background-color: var(--accent-hover);
+}
+
+/* === PASTE THIS CORRECTED RULE in shop.css === */
+.chat-window {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    width: 350px;
+    max-width: 90vw;
+    /* --- THIS IS THE KEY FIX --- */
+    max-height: calc(100vh - 100px); /* Max height is viewport height minus some padding */
+    height: 500px; /* Set a default height */
+    /* --- END OF FIX --- */
+    background-color: var(--bg-secondary);
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+.chat-window.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.chat-header {
+    background-color: var(--bg-card);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+/* === PASTE THIS CORRECTED RULE in shop.css === */
+.chat-body {
+    padding: 1rem;
+    flex-grow: 1; /* This makes the body take up all available space */
+    overflow-y: auto;
+}
+.chat-message {
+    display: flex;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fade-in 0.5s forwards;
+}
+@keyframes fade-in { to { opacity: 1; } }
+
+.chat-message .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    color: var(--accent-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+.chat-message.user .avatar {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.chat-message .message-bubble {
+    background-color: var(--bg-card);
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    max-width: 80%;
+}
+.chat-message.user {
+    justify-content: flex-end;
+}
+.chat-message.user .message-bubble {
+    background-color: var(--accent);
+    color: var(--accent-text);
+}
+.chat-message.user .avatar {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+.typing-indicator span {
+    height: 8px; width: 8px;
+    background-color: var(--text-secondary);
+    border-radius: 50%;
+    display: inline-block;
+    animation: typing-bounce 1s infinite;
+}
+.typing-indicator span:nth-of-type(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-of-type(3) { animation-delay: 0.4s; }
+@keyframes typing-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+.chat-footer {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.chat-option-btn {
+    width: 100%;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    text-align: left;
+}
+.chat-option-btn:hover {
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+}
+
+.chat-help-link {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+.chat-help-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+.chat-link-btn {
+    display: block; /* Make links take full width like buttons */
+}
+
+/* === BRAND TRUST & FOOTER SECTIONS (FINAL) === */
+
+/* --- "Our Promise" / "Why Choose Us" Section --- */
+.promise-section {
+    padding: 5rem 0;
+    background-color: var(--bg-primary); /* Use primary BG for slight contrast */
+    border-top: 1px solid var(--border-color);
+}
+
+.promise-item {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.promise-item-icon {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.promise-item h4 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.promise-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    max-width: 300px; /* Constrain line length for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Professional Site Footer --- */
+.site-footer {
+    background-color: var(--bg-card);
+    color: var(--text-secondary);
+    padding: 4rem 0 2rem 0;
+    font-size: 0.9rem;
+}
+
+.footer-brand .brand-name {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0;
+}
+.footer-brand .brand-tagline {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.footer-col h5 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding-left: 0;
+}
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+.footer-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: var(--accent);
+}
+zz
+.footer-bottom {
+    border-top: 1px solid var(--border-color);
+    margin-top: 3rem;
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* === FOOTER LOGO STYLES (FINAL) === */
+
+/* === PASTE THIS CORRECTED RULE in shop.css === */
+.footer-logo {
+    display: block;
+    width: 100px;
+    height: 100px; /* Set a fixed height to ensure it's a perfect circle */
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    transition: filter 0.4s ease;
+    
+    /* --- THIS IS THE FIX --- */
+    border-radius: 50%;     /* This makes the image circular */
+    object-fit: cover;      /* This ensures the image fills the circle without stretching */
+    border: 3px solid var(--accent); /* Adds a sharp, themed border */
+    /* --- END OF FIX --- */
+}
+
+/* This is the magic for dark mode */
+body:not(.light-mode) .footer-logo {
+    /*
+     * This filter does two things:
+     * 1. invert(1): Flips all colors (black becomes white, white becomes black).
+     * 2. hue-rotate(180deg): The blue watercolor, when inverted, becomes a yellow/orange.
+     *    This rotates the color wheel 180 degrees to turn it back into a beautiful blue.
+     * The result is a perfect dark mode version of your logo with pure CSS.
+    */
+    filter: invert(1) hue-rotate(180deg);
+}
+
+
+/* On desktop, the container is left-aligned, so we reset the margins */
+@media (min-width: 992px) {
+    .footer-logo {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* === BRAND STORY WELCOME SECTION (FINAL) === */
+
+/* === PASTE THIS NEW BLOCK in shop.css === */
+
+/* --- Brand Story Height Fix for Desktop --- */
+@media (min-width: 992px) {
+    .brand-story-section .row {
+        min-height: 500px; /* Set a minimum height for the row on large screens */
+    }
+}
+.brand-story-section {
+    padding: 5rem 0;
+    background-color: var(--bg-primary);
+    overflow: hidden; /* Important for the fluid shape */
+}
+.brand-story-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+.brand-story-subtitle {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    max-width: 500px;
+}
+.brand-story-section .btn-main {
+    width: auto;
+    padding: 0.7rem 2rem;
+    border-radius: 50px;
+}
+.share-site-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+.share-site-btn:hover {
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* --- Auto-Typing Shimmer Effect --- */
+#typed-brand-name {
+    background-image: linear-gradient(110deg, #c39a32, #f5e6a3, #d4af37, #c39a32);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: liquid-gold-shimmer 4s linear infinite;
+}
+body.light-mode #typed-brand-name {
+    background-image: linear-gradient(110deg, #b99330, #e6c34e, #d4af37, #b99330);
+}
+@keyframes liquid-gold-shimmer { to { background-position: -200% center; } }
+.typed-cursor {
+    font-weight: 300;
+    color: var(--accent);
+}
+
+/* === PASTE THIS NEW, CORRECTED STYLING BLOCK === */
+
+/* This is the container for our new image card */
+.story-image-card-wrapper {
+    max-width: 400px; /* Control the max size on desktop */
+    margin: 0 auto; /* Center it in the column */
+    border-radius: 1.5rem; /* Creates the rounded corners */
+    overflow: hidden; /* This is crucial to make the corners work */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    
+}
+
+
+.story-image-card {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.story-image-card-wrapper:hover .story-image-card {
+    transform: scale(1.05); /* A subtle zoom on hover */
+}
+
+/* This is the magic for dark mode */
+body:not(.light-mode) .story-image-card {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* === PASTE THIS NEW BLOCK in shop.css === */
+
+/* This is the magic for dark mode image background */
+body:not(.light-mode) .fluid-shape-svg image {
+    /*
+     * This filter does two things to the PNG:
+     * 1. invert(1): Flips all colors. The white background becomes black.
+     * 2. hue-rotate(180deg): The blue watercolor, when inverted, becomes yellow/orange.
+     *    This rotates the color wheel 180 degrees to turn it back into a beautiful blue.
+     * The result is a perfect dark mode version of your image.
+    */
+    filter: invert(1) hue-rotate(180deg);
+    transition: filter 0.4s ease;
+    
+}
+
+/* === HORIZONTAL SCROLL ARROW BUTTONS (FINAL) === */
+.horizontal-scroll-wrapper {
+    position: relative; /* This is the anchor for the buttons */
+}
+
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 45px;
+    height: 45px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    opacity: 0; /* Hidden by default */
+    pointer-events: none; /* Not clickable when hidden */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.horizontal-scroll-wrapper:hover .scroll-arrow {
+    opacity: 1; /* Show on hover */
+    pointer-events: auto;
+}
+
+.scroll-arrow.left-arrow {
+    left: 10px;
+}
+.scroll-arrow.right-arrow {
+    right: 10px;
+}
+
+.scroll-arrow:hover {
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.scroll-arrow.disabled {
+    opacity: 0.2 !important;
+    cursor: not-allowed;
+    transform: translateY(-50%);
+}
+
+/* Hide arrows on touch devices where they are not needed */
+@media (pointer: coarse) {
+    .scroll-arrow {
+        display: none;
+    }
+}
+
+/* === INTERACTIVE BRAND VALUES STYLES (FINAL) === */
+.brand-values-section {
+    padding: 5rem 0;
+    background-color: var(--bg-primary);
+    position: relative; /* Add this line */
+    overflow: hidden; /* And this line to contain the blob */
+}
+
+.value-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 2.5rem 2rem;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d; /* Enable 3D transformations */
+    transition: all 0.4s ease;
+}
+
+.value-card-content {
+    transition: transform 0.4s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    border-color: var(--accent);
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    transform: translate(-50%, -50%) scale(0);
+    width: 300px;
+    height: 300px;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+    opacity: 0;
+}
+body.light-mode .value-card::before {
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.value-card:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.value-card-icon {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.value-card-title {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.value-card-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* === FAVORITES SHORTCUT BUTTON STYLES (FINAL) === */
+.fav-shortcut-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+.fav-shortcut-btn:hover {
+    background-color: #e74c3c; /* Red for favorites */
+    border-color: #e74c3c;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+
+/* === STARDUST BURST & REVEAL STYLES (FINAL) === */
+.guiding-comet-container {
+    position: fixed; bottom: 20px; left: 20px; z-index: 1060;
+    pointer-events: none; opacity: 0;
+}
+.guiding-comet-container.animate {
+    opacity: 1; animation: fly-comet 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.comet-particle {
+    width: 15px; height: 15px; background-color: var(--accent);
+    border-radius: 50%; box-shadow: 0 0 15px var(--accent);
+    position: absolute; bottom: 0; left: 0;
+}
+@keyframes fly-comet {
+    0% { transform: translate(0, 0) scale(0.5); }
+    100% { transform: translate(calc(95vw - 150px), calc(-95vh + 100px)) scale(1); }
+}
+@media (max-width: 991.98px) {
+    @keyframes fly-comet { 100% { transform: translate(calc(90vw - 80px), calc(-95vh + 100px)) scale(1); } }
+}
+
+/* Stardust Burst Effect */
+.stardust {
+    position: absolute; width: 5px; height: 5px; background: var(--accent);
+    border-radius: 50%; top: 50%; left: 50%; opacity: 0;
+}
+.guiding-comet-container.burst .stardust { animation: burst 0.8s ease-out forwards; }
+.guiding-comet-container.burst .comet-particle { display: none; }
+.stardust:nth-child(2) { animation-delay: 0s; }
+.stardust:nth-child(3) { animation-delay: 0.1s; }
+.stardust:nth-child(4) { animation-delay: 0.2s; }
+.stardust:nth-child(5) { animation-delay: 0.3s; }
+.stardust:nth-child(6) { animation-delay: 0.4s; }
+.stardust:nth-child(7) { animation-delay: 0.5s; }
+/* === PASTE THIS NEW BLOCK to add more variety to the burst === */
+
+/* Give the new particles different animation delays */
+.stardust:nth-child(8) { animation-delay: 0.05s; }
+.stardust:nth-child(9) { animation-delay: 0.15s; }
+.stardust:nth-child(10) { animation-delay: 0.25s; }
+.stardust:nth-child(11) { animation-delay: 0.35s; }
+.stardust:nth-child(12) { animation-delay: 0.45s; }
+.stardust:nth-child(13) { animation-delay: 0.08s; }
+.stardust:nth-child(14) { animation-delay: 0.18s; }
+.stardust:nth-child(15) { animation-delay: 0.28s; }
+.stardust:nth-child(16) { animation-delay: 0.38s; } /* Corresponds to the 15th stardust div */
+
+/* Make the burst bigger and more varied */
+@keyframes burst {
+    0% { transform: translate(0,0) scale(0.5); opacity: 1; }
+    100% {
+        /* Now the particles will fly out much further (250px vs 150px) */
+        transform: translate(var(--x), var(--y)) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes burst {
+    0% { transform: translate(0,0) scale(0.5); opacity: 1; }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Custom Popover Styling */
+.popover.signin-popover {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: .75rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.signin-popover .popover-header {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    border-bottom: 1px solid var(--border-color);
+}
+.signin-popover .popover-body {
+    color: var(--text-secondary);
+    padding: 1rem;
+}
+.signin-popover .btn-popover-signin {
+    width: 100%;
+    margin-top: 0.5rem;
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border: none;
+}
+
+/* === UNIFIED BRAND MENU (OFFCANVAS) STYLES (FINAL) === */
+
+.offcanvas-body {
+    display: flex;
+    flex-direction: column;
+}
+.offcanvas-subtitle {
+    font-family: var(--font-heading);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+.offcanvas-nav .nav-link {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    padding: 0.75rem 0;
+    transition: all 0.3s ease;
+}
+.offcanvas-nav .nav-link:hover {
+    color: var(--accent);
+    padding-left: 10px;
+}
+.offcanvas-profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+}
+.offcanvas-profile-name {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+.offcanvas-footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    text-align: center;
+}
+.social-icons-offcanvas {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.social-icons-offcanvas .social-icon {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    transition: color 0.3s, transform 0.3s;
+}
+.social-icons-offcanvas .social-icon:hover {
+    color: var(--accent);
+    transform: scale(1.2);
+}
+.offcanvas-footer .btn-main {
+    width: 100%;
+}
+
+/* Fullscreen Profile Image Viewer */
+.profile-image-viewer {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+.profile-image-viewer.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+#fullscreen-profile-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 1rem;
+    transform: scale(0.8);
+    transition: transform 0.4s ease;
+}
+.profile-image-viewer.show #fullscreen-profile-img {
+    transform: scale(1);
+}
+.close-viewer-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 200;
+    line-height: 1;
+    cursor: pointer;
+}
+/* === PASTE THIS NEW BLOCK at the end of shop.css === */
+
+/* --- Dark Mode Fix for Offcanvas --- */
+/* By default, Bootstrap's offcanvas is light. We need to override it. */
+.offcanvas {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.offcanvas .btn-close {
+    /* This makes the 'x' button visible in dark mode */
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+body.light-mode .offcanvas .btn-close {
+    /* Reset the filter for light mode */
+    filter: none;
+}
+
+/* === UPGRADED BRAND HUB (OFFCANVAS) STYLES (FINAL & CORRECTED) === */
+
+/* Profile Section - THIS IS THE FIX */
+#offcanvas-profile-section {
+    text-align: center; /* This centers the image and text block */
+}
+
+/* Shimmering Welcome Text */
+.offcanvas-welcome-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background-image: linear-gradient(110deg, #c39a32, #f5e6a3, #d4af37, #c39a32);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    animation: liquid-gold-shimmer 5s linear infinite;
+}
+body.light-mode .offcanvas-welcome-title {
+    background-image: linear-gradient(110deg, #b99330, #e6c34e, #d4af37, #b99330);
+}
+
+/* User Hub Links */
+.user-hub-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.user-hub-links a:hover {
+    color: var(--accent);
+}
+.user-hub-links .badge {
+    background-color: var(--accent) !important;
+    color: var(--accent-text) !important;
+}
+
+/* Recently Viewed Item */
+.offcanvas-subtitle.small {
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.offcanvas-recent-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--bg-card);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+}
+.offcanvas-recent-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+.offcanvas-recent-item span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Featured Collection Card - THIS IS THE FIX */
+.offcanvas-featured-collection {
+    margin-top: auto;
+    padding-top: 1.5rem;
+}
+.featured-item-card-link {
+    text-decoration: none;
+}
+.featured-item-card {
+    background-color: var(--bg-card);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+.featured-item-card-link:hover .featured-item-card {
+    border-color: var(--accent);
+    transform: scale(1.02);
+}
+.featured-item-card img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+.featured-item-card strong {
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+.featured-item-card span {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    display: block;
+}
+.featured-item-card .featured-cta {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+/* === PASTE THIS NEW BLOCK in shop.css === */
+
+/* --- Offcanvas Logout Button Styles (FINAL) --- */
+#offcanvas-logout-btn {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#offcanvas-logout-btn:hover {
+    background-color: var(--danger); /* A professional red for logout */
+    border-color: var(--danger);
+    color: #fff;
+    transform: scale(1.02); /* A subtle pop on hover */
+}
+/* === HANGING BRAND CHARM with SVG (FINAL) === */
+
+.navbar-brand-wrapper {
+    position: relative;
+}
+
+.hanging-charm-container {
+    position: absolute;
+    top: 85%;
+    right: -10px; /* Adjusted position for the larger size */
+    
+    /* Make the whole container bigger */
+    width: 45px;
+    height: 70px;
+    
+    transform-origin: top center;
+    animation: gentle-swing-svg 5s ease-in-out infinite;
+    pointer-events: none;
+}
+.hanging-charm-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible; /* Allow elements to be seen outside the box */
+}
+
+.charm-chain {
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    fill: none;
+}
+
+.charm-circle {
+    fill: var(--accent);
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    /* Position the circle lower down in the new, taller container */
+    cx: 22.5; 
+    cy: 50; 
+    /* Increase the circle's radius */
+    r: 16;  
+}
+
+.charm-image {
+    clip-path: circle(50% at center);
+    /* Make the image larger and position it inside the new, larger circle */
+    x: 7.5;
+    y: 35;
+    width: 30px;
+    height: 30px;
+}
+
+/* Apply the dark mode filter to the image inside the charm */
+body:not(.light-mode) .charm-image {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* A more realistic and fluid swing animation */
+@keyframes gentle-swing-svg {
+    0% { transform: rotate(5deg); }
+    50% { transform: rotate(-5deg); }
+    100% { transform: rotate(5deg); }
+}
+
+/* Adjust for mobile view */
+@media (max-width: 991.98px) {
+    .hanging-charm-container {
+        width: 30px; /* Adjust size for mobile */
+        height: 45px;
+        left: auto; /* Unset the left property */
+        right: -2px; /* Position from the right on mobile too */
+        top: 80%;
+    }
+}
+
+/* === ANIMATED SVG BLOB BACKGROUND (FINAL) === */
+
+.blob-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; /* Make it large */
+    max-width: 150%;
+    z-index: 0; /* Place it behind the content */
+    opacity: 0.1; /* Make it very subtle */
+    pointer-events: none; /* Make it unclickable */
+}
+
+body.light-mode .blob-background {
+    opacity: 0.05; /* Even more subtle in light mode */
+}
+
+#blobPath {
+    /* The fill color will be a subtle version of your theme colors */
+    fill: var(--accent);
+    transition: fill 0.4s ease;
+}
+
+/* === CUSTOM PROFILE PICTURE UPLOAD STYLES (FINAL) === */
+.offcanvas-profile-img-container {
+    position: relative;
+    width: 80px; /* Match the image size */
+    height: 80px;
+    margin: 0 auto; /* Center the container */
+    margin-bottom: 0.5rem;
+}
+
+.profile-edit-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 2px solid var(--bg-secondary);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.offcanvas-profile-img-container:hover .profile-edit-button {
+    opacity: 1; /* Show on hover */
+}
+/* === PASTE THIS NEW BLOCK in shop.css === */
+
+/* --- MOBILE FIX for Edit Button --- */
+/* On touch screens or small screens, make the edit button always visible */
+@media (max-width: 991.98px) or (pointer: coarse) {
+    .profile-edit-button {
+        opacity: 1;
+    }
+}
+
+.profile-upload-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.profile-upload-overlay.uploading {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* === SUBTLE CHEVRON FOR NAVBAR BRAND (FINAL, v2) === */
+
+/* We still use flexbox to align the icon and the text */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* --- THIS IS THE KEY FIX --- */
+/* We use ::before to place the icon at the beginning */
+.navbar-brand::before {
+    content: '›'; /* A more subtle, side-facing chevron */
+    font-size: 2rem; /* Make it a bit larger to be a clear target */
+    color: var(--accent);
+    line-height: 1;
+    font-weight: 200; /* Make it thinner and more elegant */
+    transition: transform 0.3s ease;
+    
+    /* Apply the gentle bobbing animation */
+    animation: bob-gentle 2s ease-in-out infinite;
+}
+
+/* On hover, we can make the chevron react */
+.navbar-brand:hover::before {
+    transform: translateX(3px); /* A subtle nudge-right effect */
+}
+
+/* The animation that makes the chevron gently bob up and down */
+@keyframes bob-gentle {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* === SMART REFRESH BUTTON STYLES (FINAL) === */
+
+
+
+/* Animation for the spinning icon */
+.btn-refresh-hero.refreshing i {
+    animation: spin 1s linear infinite;
+}
+
+/* === ELEGANT CATEGORY TABS STYLES (FINAL) === */
+.category-tabs-container {
+    display: flex;
+    overflow-x: auto; /* Allow scrolling on mobile */
+    padding-bottom: 1rem;
+    margin-bottom: -1rem; /* Hide scrollbar visually */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    border-bottom: 1px solid var(--border-color);
+}
+.category-tabs-container::-webkit-scrollbar { display: none; }
+
+.category-tab {
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    margin-bottom: -1px; /* Overlap the main border */
+}
+.category-tab:hover {
+    color: var(--text-primary);
+}
+.category-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* Tab content pane animation */
+#category-content-panes .category-section-wrapper {
+    display: none; /* Hide all sections by default */
+    animation: fade-in 0.6s ease;
+}
+#category-content-panes .category-section-wrapper.active {
+    display: block; /* Show only the active section */
+}
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === ELEGANT "PILL & UNDERLINE" TABS (FINAL) === */
+
+/* Remove the old, simple border-bottom style */
+/* === PASTE THIS CORRECTED & UPGRADED RULE in shop.css === */
+.category-tab {
+    padding: 0.75rem 1.5rem; /* Slightly more horizontal padding */
+    
+    /* --- THIS IS THE FONT FIX --- */
+    font-family: var(--font-heading); /* Use the elegant heading font */
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase; /* Make it look more intentional */
+    letter-spacing: 0.5px; /* Add a little breathing room */
+    /* --- END OF FONT FIX --- */
+    
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    margin-bottom: -1px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Style for the active tab's "pill" background */
+.category-tab.active {
+    background-color: var(--accent);
+    color: var(--accent-text);
+}
+
+/* --- The Magic Sliding Underline --- */
+.category-tabs-container {
+    position: relative; /* This is the anchor for the sliding line */
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* This creates the underline element */
+.category-tabs-container::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; /* Align with the container's bottom border */
+    left: 0;
+    height: 3px;
+    background-color: var(--accent);
+    
+    /* These CSS variables will be updated by a tiny script */
+    width: var(--underline-width, 0);
+    transform: translateX(var(--underline-offset, 0));
+    
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* === SHOPPING BAG STYLES (FINAL) === */
+.btn-add-to-bag {
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+.btn-add-to-bag:hover {
+    background-color: var(--accent-hover);
+    transform: scale(1.05);
+}
+
+/* Fly to cart animation */
+.fly-to-bag-image {
+    position: fixed;
+    z-index: 9999;
+    border-radius: 12px;
+    transition: all 0.7s cubic-bezier(0.5, 0, 1, 0.5);
+}
+
+/* Shopping Bag Modal */
+.bag-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border-color); }
+.bag-item-image { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; }
+.bag-item-details { flex-grow: 1; }
+.bag-item-name { font-weight: 600; }
+.quantity-controls { display: flex; align-items: center; margin-top: 0.5rem; }
+.quantity-btn { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); width: 28px; height: 28px; border-radius: 4px; }
+.bag-item-remove-btn { background: none; border: none; color: var(--danger); }
+.bag-total { font-size: 1.2rem; }
+#bag-total-price { color: var(--accent); }
+
+/* === FLOATING ACTION BUTTONS (FAB) STYLES (FINAL & CORRECTED) === */
+
+/* This is the main container for ALL floating buttons */
+.fab-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;
+    gap: 1rem; /* Space between buttons */
+}
+
+/* Style for the new Shopping Bag button */
+.fab-shopping-bag {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    position: relative; /* Needed for the badge */
+}
+.fab-shopping-bag:hover {
+    transform: scale(1.1);
+}
+.fab-shopping-bag .cart-badge {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: var(--danger);
+    color: #fff;
+    font-size: 0.8rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+.fab-shopping-bag .cart-badge.visible {
+    transform: scale(1);
+}
+
+/* We leave the existing chatbot styles alone and just make sure it fits */
+/* This ensures we do not break your chatbot */
+.chatbot-container {
+    position: static; /* It no longer needs to be fixed */
+}
+
+/* === MY INQUIRIES HUB STYLES (FINAL) === */
+.hub-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--danger);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 50%;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg-secondary);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+.hub-badge.visible {
+    transform: scale(1);
+}
+#my-inquiries-hub-btn {
+    position: relative; /* Needed for the badge */
+}
+
+/* Modal Layout */
+#my-inquiries-body .inquiry-column {
+    padding: 1rem;
+}
+#my-inquiries-body .inquiry-column h4 {
+    font-family: var(--font-heading);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+}
+.inquiry-item {
+    padding: 1rem;
+    background-color: var(--bg-card);
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid transparent;
+}
+.inquiry-item.status-New { border-left-color: #0d6efd; }
+.inquiry-item.status-Contacted { border-left-color: #ffc107; }
+.inquiry-item.status-Shipped { border-left-color: #198754; }
+.inquiry-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+.inquiry-item-product { font-weight: 600; color: var(--text-primary); }
+.inquiry-item-status { font-weight: 500; }
+/* === PASTE THIS CORRECTED RULE in shop.css === */
+.inquiry-details-content {
+    font-size: 0.9rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+
+    /* --- THIS IS THE FIX --- */
+    /* We use a semi-transparent version of your accent color */
+    background-color: rgba(212, 175, 55, 0.15); /* A soft, transparent gold */
+    border: 1px solid var(--accent);
+    color: var(--text-secondary); /* Use secondary text for a softer look */
+}
+/* === PASTE THIS NEW RULE in shop.css === */
+
+/* This targets the date text inside the inquiry header */
+.inquiry-item-header .inquiry-item-date {
+    color: var(--text-secondary); /* Use your theme's secondary text color */
+}
+/* === PASTE THIS NEW BLOCK in shop.css === */
+
+/* --- DARK MODE FIX for Inquiry Date --- */
+/* This rule is more powerful and will override Bootstrap's default */
+body:not(.light-mode) .inquiry-item-date {
+    /* 
+     * The !important flag is a "superpower" that tells the browser:
+     * "Ignore any other color rule for this element and use THIS ONE."
+     * This ensures our visible color wins the style war against Bootstrap.
+    */
+    color: var(--text-secondary) !important;
+}
+/* === BRAND STORY ACTIONS FIX (FINAL & CORRECTED) === */
+
+/* This is the new, unified style for all small icon buttons */
+.action-btn {
+    position: relative; /* Needed for the badge */
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.action-btn:hover {
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* Specific hover color for the favorite button */
+.action-btn#show-favorites-btn:hover {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+    color: #fff;
+}
+
+/* Make sure the main buttons don't take up the full width */
+.brand-story-actions .btn-main {
+    width: auto;
+    border-radius: 50px;
+}
+
+/* This is the badge that was missing its style */
+.hub-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--danger);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 50%;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg-secondary);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+.hub-badge.visible {
+    transform: scale(1);
+}
+
+/* === INQUIRY MODAL TABS STYLES (FINAL) === */
+#inquiry-tabs .nav-link {
+    color: var(--text-secondary);
+    font-weight: 600;
+    border: 1px solid transparent;
+    border-radius: 50px; /* Pill shape */
+}
+
+#inquiry-tabs .nav-link.active {
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+}
+
+#inquiry-tabs .nav-link:not(.active):hover {
+    color: var(--text-primary);
+}
+
+/* === CELEBRATORY CONFETTI BURST STYLES (FINAL) === */
+
+.welcome-animation-container {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+.welcome-animation-container.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.welcome-gift-box {
+    font-size: 5rem;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: gift-appear 0.5s forwards, gift-wiggle 1s 0.5s;
+}
+@keyframes gift-appear {
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes gift-wiggle {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+.welcome-animation-text {
+    position: relative; /* Changed from absolute */
+    font-family: var(--font-body); /* The base font is the simpler one */
+    color: #fff;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    font-size: clamp(1.5rem, 6vw, 2.5rem); /* Subtitle size */
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* This is the new part for the user's name */
+.welcome-animation-text .user-name {
+    display: block; /* Puts the name on a new line */
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 10vw, 4.5rem); /* Larger font for the name */
+    
+    /* Re-using the Liquid Gold effect */
+    background-image: linear-gradient(110deg, #c39a32, #f5e6a3, #d4af37, #c39a32);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: liquid-gold-shimmer 5s linear infinite;
+}
+body.light-mode .welcome-animation-text .user-name {
+    background-image: linear-gradient(110deg, #b99330, #e6c34e, #d4af37, #b99330);
+}
+.welcome-animation-text.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* === SUBTLE PRODUCT GREETING STYLES (FINAL) === */
+
+/* === PASTE THIS CORRECTED RULE in shop.css === */
+.product-greeting-container {
+    position: fixed;
+    top: 105px; /* A fixed position from the top, below the navbar */
+    left: 0;
+    width: 100%;
+    z-index: 10001;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.product-greeting-container.show {
+    opacity: 1;
+}
+
+.product-greeting-text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    text-align: center;
+    padding: 1rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+
+    /* Re-using the Liquid Gold effect */
+    background-image: linear-gradient(110deg, #c39a32, #f5e6a3, #d4af37, #c39a32);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: liquid-gold-shimmer 5s linear infinite;
+}
+
+body.light-mode .product-greeting-text {
+    background-image: linear-gradient(110deg, #b99330, #e6c34e, #d4af37, #b99330);
+}
+
+/* === INQUIRY SENT CONFIRMATION MODAL STYLES (FINAL) === */
+#inquiryConfirmationModal .modal-content {
+    border-radius: 1rem;
+    border: none;
+}
+#inquiryConfirmationModal .btn-main-whatsapp {
+    width: 100%;
+}
+/* Re-using the animated checkmark styles */
+.checkmark-wrapper { width: 80px; height: 80px; margin: 0 auto 1rem auto; }
+.checkmark { width: 80px; height: 80px; border-radius: 50%; display: block; stroke-width: 3; stroke: #fff; stroke-miterlimit: 10; box-shadow: inset 0px 0px 0px var(--success); animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both; }
+.checkmark-circle { stroke-dasharray: 166; stroke-dashoffset: 166; stroke-width: 3; stroke-miterlimit: 10; stroke: var(--success); fill: none; animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
+.checkmark-check { transform-origin: 50% 50%; stroke-dasharray: 48; stroke-dashoffset: 48; animation: stroke-check 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards; }
+@keyframes stroke-check { 100% { stroke-dashoffset: 0; } }
+
+/* === "CONTINUE SHOPPING" BUTTON STYLE (FINAL) === */
+
+.btn-continue-shopping {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    border-radius: 50px; /* Pill shape */
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    width: 100%; /* Make it full width */
+    transition: all 0.3s ease;
+}
+
+.btn-continue-shopping:hover {
+    background-color: var(--bg-card);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* === PWA INSTALL MODAL STYLES (FINAL) === */
+.pwa-install-modal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1060;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    transform: translateY(120%);
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.pwa-install-modal.show {
+    transform: translateY(0);
+}
+.pwa-modal-content {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 -5px 30px rgba(0,0,0,0.15);
+    position: relative;
+}
+.pwa-modal-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+.pwa-modal-content .btn-main {
+    width: 100%;
+}
+.pwa-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    line-height: 1;
+}
+.ios-install-guide {
+    margin-top: 1rem;
+    background-color: var(--bg-primary);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+}
+
+/* === STUNNING OFFCANVAS INSTALL BUTTON STYLES (FINAL) === */
+
+#offcanvas-install-container {
+    padding: 0.75rem 0;
+}
+
+#offcanvas-install-btn {
+    font-weight: 600;
+    color: #fff; /* Text should be white for contrast */
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    padding: 0.8rem 1rem;
+    position: relative; /* Needed for the glow effect */
+    overflow: hidden; /* Keep the glow contained */
+    z-index: 1;
+
+    /* A beautiful gradient background */
+    background: linear-gradient(110deg, var(--accent), #ffc107);
+    transition: all 0.3s ease;
+}
+
+#offcanvas-install-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+#offcanvas-install-btn:focus,
+#offcanvas-install-btn:active {
+    box-shadow: none !important;
+    outline: none !important;
+}
+/* This is the subtle pulsing glow effect */
+#offcanvas-install-btn::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: -3px;
+    background: inherit;
+    border-radius: inherit;
+    animation: pulse-glow-install 3s infinite ease-in-out;
+}
+
+@keyframes pulse-glow-install {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.15);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+/* === PWA INSTALL BANNER STYLES (FINAL) === */
+.pwa-install-banner-section {
+    padding: 4rem 0;
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.pwa-install-banner-section h3 {
+    color: var(--text-primary);
+}
+
+.pwa-install-banner-section .btn-main {
+    width: auto; /* Don't make it full width */
+    padding: 0.7rem 2rem;
+    border-radius: 50px;
+}
+
+/* === PREMIUM SPLASH SCREEN STYLES (FINAL) === */
+.splash-screen {
+    position: fixed; inset: 0; z-index: 10001;
+    background-color: var(--bg-primary);
+    display: none; align-items: center; justify-content: center;
+    transition: opacity 0.6s ease;
+}
+.splash-screen.show { display: flex; }
+.splash-screen.fade-out { opacity: 0; }
+
+.constellation-canvas {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    z-index: 0; /* Behind all splash content */
+}
+
+/* === PASTE THIS CORRECTED RULE in shop.css === */
+.splash-content {
+    position: absolute; /* This is the key change */
+    inset: 0; /* Make it cover the whole screen */
+    z-index: 2;
+    display: flex;
+    /* Center the main item (the logo) */
+    justify-content: center; 
+    align-items: center;
+}
+
+.splash-logo-wrapper {
+    width: 120px; height: 120px; border-radius: 1.5rem;
+    overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    opacity: 0; transform: scale(0.9);
+    animation: reveal-item 0.5s 0.8s forwards;
+}
+.splash-logo { width: 100%; height: 100%; object-fit: cover; }
+body:not(.light-mode) .splash-logo { filter: invert(1) hue-rotate(180deg); }
+
+.mask-bar-splash {
+    position: fixed; top: 0; height: 100%; width: 50.5%; /* Overlap slightly */
+    background-color: var(--bg-primary); z-index: 3;
+    animation: slide-apart-curtain 1.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+.mask-bar-splash.left { left: 0; }
+.mask-bar-splash.right { right: 0; }
+@keyframes slide-apart-curtain {
+    0% { width: 50.5%; }
+    100% { width: 0; }
+}
+
+@keyframes reveal-item { to { opacity: 1; transform: scale(1); } }
+
+
+/* === PASTE THIS NEW, UPGRADED RULE in shop.css === */
+.splash-text-sisters {
+    position: absolute; /* Position relative to the screen */
+    bottom: 50px; /* 50px from the bottom */
+    left: 50%;
+    transform: translateX(-50%); /* Perfectly center it horizontally */
+    
+    /* --- THIS IS THE FONT FIX --- */
+    font-family: var(--font-heading); /* Switch to the more elegant Playfair Display */
+    font-size: clamp(1.8rem, 7vw, 2.5rem); /* Significantly increase the size */
+    font-weight: 700; /* Make it bold and impactful */
+    text-transform: uppercase;
+    letter-spacing: 0.6rem; /* Adjust spacing for the new size */
+    /* --- END OF FONT FIX --- */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+/* === PASTE THIS NEW, UPGRADED RULE in shop.css === */
+.splash-text-sisters .letter {
+    display: inline-block;
+    opacity: 0; /* Initially hidden */
+    filter: blur(10px); /* Initially blurry */
+    
+    /* The Liquid Gold Shimmer Effect (remains the same) */
+    background-image: linear-gradient(110deg, #c39a32, #f5e6a3, #d4af37, #c39a32);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: liquid-gold-shimmer 5s linear infinite;
+}
+body.light-mode .splash-text-sisters .letter {
+    background-image: linear-gradient(110deg, #b99330, #e6c34e, #d4af37, );
+}
+
+
+
+/* === CUSTOMERS ALSO VIEWED MINI CAROUSEL (FINAL) === */
+.mini-carousel .product-card-wrapper {
+    flex: 0 0 30%; /* Show more items on mobile */
+    max-width: 140px; /* Smaller cards */
+}
+@media (min-width: 768px) {
+    .mini-carousel .product-card-wrapper {
+        flex: 0 0 15%;
+        max-width: 160px;
+    }
+}
+
+.mini-carousel .product-card {
+    background-color: transparent; border: none; box-shadow: none;
+}
+.mini-carousel .product-image-container {
+    height: 120px; width: 120px;
+    border-radius: 50%; /* Perfect circle */
+    border: 2px solid var(--border-color);
+    margin: 0 auto;
+    transition: border-color 0.3s;
+}
+.mini-carousel .product-card-link:hover .product-image-container {
+    border-color: var(--accent);
+}
+.mini-carousel .product-info {
+    padding: 0.75rem 0.25rem 0 0.25rem;
+    text-align: center;
+}
+.mini-carousel .product-name {
+    font-size: 0.8rem; font-weight: 500; color: var(--text-secondary);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+
+/* === STYLE SPOTLIGHT STYLES (SHOP SIDE) === */
+
+.spotlight-image-wrapper {
+    max-width: 800px; /* Limits the size of the preview */
+    cursor: pointer;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+.spotlight-image-wrapper:hover {
+    transform: translateY(-5px);
+}
+
+.spotlight-open-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent);
+    color: var(--accent-text);
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    z-index: 10;
+    transition: all 0.3s;
+    border: none;
+}
+.spotlight-open-button:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Modal Specific Styles */
+.spotlight-modal-content {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+.spotlight-interactive-image-container {
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+}
+#spotlight-modal-image {
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+/* The Responsive Hotspot Pin (The Price Tag) */
+.hotspot-pin.shop {
+    position: absolute;
+    z-index: 20;
+    width: 36px;
+    height: 36px;
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transform: translate(-50%, -50%); /* Ensures perfect centering on the percentage coordinate */
+    border: 3px solid var(--bg-primary); /* Border for dark mode contrast */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+
+    /* WOW Factor: Pulsing Animation */
+    animation: pulse-pin 1.5s infinite ease-out;
+}
+
+.hotspot-pin.shop:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+    animation: none;
+}
+
+@keyframes pulse-pin {
+    0% { box-shadow: 0 0 0 0 rgba(230, 195, 78, 0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(230, 195, 78, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(230, 195, 78, 0); }
+}
+
+/* === Mini-Modal Popover Styling === */
+.spotlight-popover {
+    position: absolute;
+    width: 240px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 30;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    display: flex;
+    gap: 10px;
+}
+
+.popover-image {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.popover-details {
+    flex-grow: 1;
+}
+.popover-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: var(--text-primary);
+}
+.popover-price {
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: bold;
+}
+.popover-btn {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    padding: 5px 0;
+    font-size: 0.85rem;
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+}
+.popover-btn:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Hide the close button on the main shop section if it is visible */
+#style-spotlight-section .btn-close {
+    display: none;
+}
+
+/* === STYLE SPOTLIGHT CAROUSEL CARD STYLES === */
+
+.spotlight-look-card-wrapper {
+    /* Use the same responsive widths as product cards */
+    flex: 0 0 80%;
+    max-width: 300px; 
+    transition: transform 0.3s ease;
+}
+@media (min-width: 576px) { .spotlight-look-card-wrapper { flex: 0 0 45%; max-width: 320px; } }
+@media (min-width: 992px) { .spotlight-look-card-wrapper { flex: 0 0 30%; } }
+
+.spotlight-look-card {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.spotlight-look-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+}
+
+.spotlight-look-image {
+    width: 100%;
+    height: 350px; /* Tall image for a striking look */
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.spotlight-look-card:hover .spotlight-look-image {
+    transform: scale(1.05);
+}
+
+.spotlight-look-info {
+    padding: 1rem;
+}
+.spotlight-look-title {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0;
+}
+.spotlight-look-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+/* === STYLE SPOTLIGHT CAROUSEL ANIMATION & ELEGANCE FIX === */
+
+/* 1. Global Carousel Wrapper Enhancement (To enable animation) */
+#spotlight-carousel-row {
+    /* Apply a continuous scrolling animation only if there are enough items */
+    /* We assume this animation will be toggled by JS if items > screen width */
+    animation: scroll-carousel 60s linear infinite; /* 60s for a slow, smooth loop */
+    padding-right: 5vw; /* Maintain padding */
+    padding-left: 5vw;
+}
+
+/* Pause animation on hover for user interaction */
+#spotlight-carousel-row:hover {
+    animation-play-state: paused;
+}
+
+/* 2. Keyframes for the Smooth Auto-Scroll */
+@keyframes scroll-carousel {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* This large negative translation value ensures the scroll loops smoothly */
+        /* JS will calculate the exact scroll distance needed for a seamless loop */
+        transform: translateX(-100%); 
+    }
+}
+
+/* 3. Typography and Elegance */
+
+/* The Main Heading */
+#spotlight-section-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--text-primary); /* Ensures dark/light mode compatibility */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    font-size: clamp(2.5rem, 6vw, 3.5rem) !important; /* Make it large and impressive */
+    padding-bottom: 0.5rem;
+    position: relative;
+}
+#spotlight-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 5vw;
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent); /* Shining gold line */
+}
+
+/* Look Card Text Styling */
+.spotlight-look-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    transition: color 0.3s;
+}
+
+/* --- THE PROFESSIONAL & CLEAN SUBTITLE FIX --- */
+.spotlight-look-subtitle {
+    font-family: var(--font-body); /* Reverting to clean, professional Inter font */
+    font-style: normal;             /* Remove italics */
+    font-weight: 500;               /* Medium weight for balance */
+    font-size: 1rem;                /* Clear and readable size */
+    color: var(--accent);           /* Keep the shining accent color */
+    text-transform: uppercase;      /* Use subtle uppercase for action text clarity */
+    letter-spacing: 0.5px;          /* Slight letter spacing for an expensive, premium feel */
+    margin-top: 5px;                /* Ensure separation from the title */
+}
+
+/* Hover effect for the card to enhance elegance */
+.spotlight-look-card:hover .spotlight-look-title {
+    color: var(--accent);
+}
+
+/* === FEATURED LOOK BADGE STYLES === */
+
+.spotlight-look-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--accent);
+    color: var(--accent-text); /* Ensures black text on the gold accent */
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* WOW Effect: Slight 3D rotation */
+    transform: rotate(3deg);
+}
+
+.spotlight-look-card {
+    position: relative; /* Essential for absolute positioning of the badge */
+}
+
+/* === IN STOCK CONFIDENCE BAR STYLES === */
+
+.confidence-bar {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Default state: High confidence / Reassurance */
+.confidence-bar.high-stock {
+    background-color: rgba(40, 167, 69, 0.15); /* light green background */
+    color: var(--success);
+    border: 1px solid var(--success);
+}
+
+/* Low stock state: Urgency and warning */
+.confidence-bar.low-stock {
+    background-color: rgba(255, 193, 7, 0.15); /* light yellow background */
+    color: #ffc107; /* Bootstrap yellow/warning */
+    border: 1px solid #ffc107;
+    
+    /* WOW Factor: Subtle Pulsing Animation */
+    animation: urgent-pulse 2s infinite alternate;
+}
+
+@keyframes urgent-pulse {
+    from { opacity: 1; }
+    to { opacity: 0.85; }
+}
+
+.confidence-bar i {
+    font-size: 1.2rem;
+}
+
+/* === REAL-TIME REVIEW COUNT TICKET STYLES === */
+
+.review-ticker-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px; /* Pill shape for a modern feel */
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.review-ticker-badge:hover {
+    border-color: var(--accent);
+}
+
+.review-ticker-rating {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--accent); /* Shining gold for the rating */
+    line-height: 1;
+}
+
+.review-ticker-stars {
+    color: #ffc107; /* Standard yellow/gold for stars */
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.review-ticker-count {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1;
+}
+/* === REVIEW TICKER EMPTY STATE/INVITATION STYLES (PREMIUM LOOK) === */
+
+.review-ticker-invitation {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    background-color: var(--bg-card);
+    border: 1px dashed var(--accent); /* Dotted border makes it stand out */
+    color: var(--accent); /* Use the accent color for prominence */
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer; /* Suggests it's clickable (to leave a review) */
+    transition: all 0.3s ease;
+}
+
+.review-ticker-invitation:hover {
+    background-color: rgba(230, 195, 78, 0.1); /* Subtle hover effect using the accent color */
+    box-shadow: 0 0 10px rgba(230, 195, 78, 0.4);
+}
+/* === HIGH-TRUST RETURNS CTA CARD STYLES === */
+
+.returns-cta-section {
+    padding: 3rem 0;
+    background-color: var(--bg-primary); /* Ensure it separates from footer/background */
+}
+
+.returns-cta-card {
+    background-color: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+}
+.returns-cta-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+/* REPLACE WITH THIS (Enhanced Typography and Contrast): */
+.returns-cta-details h4 {
+    font-family: 'Playfair Display', serif; /* Explicitly use premium font */
+    color: var(--accent); /* CRITICAL FIX: Make the title GOLD/SHINING in dark mode */
+    font-size: clamp(1.4rem, 4vw, 2rem); /* Slightly larger for drama */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+.returns-cta-details p {
+    font-family: var(--font-body);
+    color: var(--text-primary); /* Use primary text color for readability in dark mode */
+    font-size: 1rem;
+    margin: 0;
+}
+
+.returns-cta-btn {
+    padding: 0.75rem 1.8rem; /* Reduced vertical padding */
+    font-size: 0.95rem; /* Reduced font size */
+    font-weight: 700; /* Extra bold for authority */
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Wider spacing for premium look */
+    
+    /* --- CRITICAL FONT & TEXT DECORATION FIX --- */
+    text-decoration: none; /* REMOVES UNDERLINE */
+    font-family: var(--font-body), sans-serif; /* Use clear body font for CTA authority */
+
+    background: linear-gradient(145deg, var(--accent), var(--accent-hover)); 
+    color: var(--accent-text) !important; /* Ensure text color is fixed */
+    border: 1px solid #C4A13A;
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
+    
+    transition: all 0.3s;
+    
+    /* Breathing Effect */
+    animation: pulse-trust 2s infinite ease-out;
+}
+
+.returns-cta-btn:hover {
+    /* Subtle shift on hover */
+    text-decoration: none;
+    background: var(--accent-hover);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255, 255, 255, 0.2); /* Added inner shadow for "pressed" look */
+    transform: translateY(-1px);
+    animation: none;
+}
+
+/* Styling for the new clarity text line */
+.returns-cta-details .small-clarity-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent); /* Give it gold prominence */
+    margin-bottom: 0.5rem;
+    display: block;
+}
+/* Ensure the pulse animation uses the original color */
+@keyframes pulse-trust {
+    0% {
+        box-shadow: 0 0 0 0 rgba(230, 195, 78, 0.5); /* Use accent color for glow */
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(230, 195, 78, 0); /* Wider, more dramatic pulse */
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(230, 195, 78, 0);
+    }
+}
+
+@media (max-width: 576px) {
+    .returns-cta-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem; /* Maximize space saving */
+    }
+    .returns-cta-btn {
+        padding: 0.6rem 1.5rem; /* Very compact mobile button */
+        font-size: 0.9rem;
+        width: 80%; /* Don't let it take 100% width, leave margins for elegance */
+        margin-top: 1rem;
+        box-sizing: border-box;
+    }
+}
+
+/* === MOBILE SIDEBAR LOOKBOOK STYLING === */
+.mc-sidebar-link {
+    color: var(--accent) !important;
+    font-weight: 700 !important;
+    padding: 12px 20px !important;
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: rgba(230, 195, 78, 0.1) !important;
+    margin: 10px 15px !important;
+    border: 1px solid rgba(230, 195, 78, 0.3);
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+    margin-top: 20px !important; /* Adds space above the lookbook link */
+    margin-bottom: 5px !important;
+}
+
+.mc-sidebar-link:hover {
+    background: rgba(230, 195, 78, 0.2) !important;
+    box-shadow: 0 0 15px rgba(230, 195, 78, 0.4);
+}
+
+/* Pulsing dot for the sidebar */
+.mc-sidebar-dot {
+    height: 10px;
+    width: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #fff;
+    animation: mc-pulse-white 2s infinite;
+}
+
+@keyframes mc-pulse-white {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* === STYLE CONSULTATION SIDEBAR LINK === */
+.mc-consult-link {
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+    padding: 10px 20px !important;
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: transparent !important;
+    margin: 5px 15px !important;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+    font-size: 0.9rem;
+}
+
+.mc-consult-link:hover {
+    border-color: var(--accent);
+    color: var(--accent) !important;
+    background: rgba(230, 195, 78, 0.05) !important;
+}
+
+.mc-consult-link i {
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+/* === CINEMATIC LOOKBOOK: LUXURY UI (FIXED SIZING) === */
+
+#mcLookbookModal .modal-content {
+    max-height: 90vh; /* Prevents modal from going off-screen */
+}
+
+/* 1. Integrated Header Styling */
+.lb-header-section {
+    padding: 20px 20px 10px 20px;
+    background: var(--bg-card);
+}
+.lb-header-greeting { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin: 0; }
+.lb-header-sub { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); font-weight: 700; display: block; }
+
+/* 2. Optimized Slider Track */
+.lb-slider-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding: 10px 15px 20px 15px;
+    scrollbar-width: none;
+}
+.lb-slider-track::-webkit-scrollbar { display: none; }
+
+/* 3. Compact Luxury Card */
+.lb-product-card {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+/* FIX: Reduced Image Height to show everything at once */
+.lb-img-container { 
+    width: 100%; 
+    height: 220px; /* Perfectly sized for mobile */
+    position: relative; 
+    overflow: hidden; 
+}
+.lb-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 4. Designer Voice (More compact) */
+.lb-designer-note {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    color: #333;
+    border-left: 3px solid var(--accent);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.lb-price-shimmer {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+@media (min-width: 992px) {
+    .lb-product-card { flex: 0 0 45%; } /* 2 cards visible on desktop */
+    .lb-img-container { height: 300px; } /* Slightly taller for desktop monitors */
+    .lb-header-greeting { font-size: 2rem; }
+}
+/* === JEWELRY CONSTELLATION BACKGROUND (FIXED CONTRAST) === */
+#hero-canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0; 
+    overflow: hidden;
+    pointer-events: none;
+}
+
+#jewelry-constellation {
+    display: block;
+    width: 100%;
+    height: 100%;
+    /* Subtle brightness boost for Light Mode */
+    filter: contrast(1.1) brightness(1.05); 
+}
+
+body.light-mode #jewelry-constellation {
+    filter: saturate(1.5) contrast(1.2); /* Makes the gold look vivid on white */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}

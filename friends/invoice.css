@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- 1. CORE LAYOUT & RESPONSIVENESS --- */
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 0; /* Remove body padding */
+    color: #333333;
+    background-color: #f8f8f8;
+}
+
+/* The Main Content Container (Expands for PDF/Desktop) */
+.invoice-page-container {
+    width: 100%; /* Takes full width of the screen/PDF */
+    max-width: 794px; /* Clamps to near A4 width on large screens */
+    margin: 0 auto;
+    padding: 25px; /* Generous internal padding for the professional look */
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 0; /* No rounded corners for a bill */
+    
+    /* Ensure content flows onto multiple pages cleanly */
+    page-break-after: always;
+}
+.invoice-page-container:last-child {
+    page-break-after: avoid;
+}
+
+/* Mobile Responsiveness: Reduce padding on small devices */
+@media (max-width: 768px) {
+    .invoice-page-container {
+        padding: 20px 15px; /* Adjust padding for better mobile fit */
+        box-shadow: none; /* Hide shadow on mobile for clean look */
+    }
+}
+
+/* --- 2. TYPOGRAPHY & BRANDING --- */
+.rs-accent {
+    color: #E6C34E;
+}
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #E6C34E;
+}
+
+/* REPLACE WITH THIS (Making h1 generic and adding a new class for the large INVOICE text): */
+.invoice-header h1 {
+    font-size: 20px; /* Reduced size for the secondary header (RS Sisters) */
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+/* ADD THIS NEW CLASS for the main title */
+.invoice-main-title {
+    font-size: 30px !important; /* Huge size for impact */
+    font-weight: 900 !important;
+    letter-spacing: 0.5px;
+}
+
+/* REPLACE WITH THIS (Bigger Logo): */
+.invoice-logo-circle {
+    width: 80px; /* Significantly larger logo */
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #E6C34E; /* Thicker border for luxury look */
+}
+
+/* --- 3. ADDRESS SECTION (Two-Column Layout) --- */
+.address-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    border: 1px solid #ddd; /* Light border around the box */
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.address-box {
+    padding: 15px;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+/* Vertical separator line */
+.address-box:first-child {
+    border-right: 1px solid #ddd;
+}
+
+.address-box strong {
+    font-size: 15px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* --- 4. PRODUCT TABLE --- */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    font-size: 14px;
+    color: #333;
+    border: none; 
+}
+
+.product-table th, .product-table td {
+    padding: 10px 8px; /* More padding for wow factor */
+    border-bottom: 1px solid #eeeeee;
+    vertical-align: middle; /* Center vertical alignment */
+}
+
+.product-table th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+/* Specific alignment fixes */
+.product-table td:nth-child(3), /* Price column */
+.product-table td:nth-child(4), /* Qty column */
+.product-table th:nth-child(3),
+.product-table th:nth-child(4) {
+    text-align: center;
+    width: 15%; /* Allocate more predictable width */
+}
+.product-table td:last-child, /* Total column */
+.product-table th:last-child {
+    text-align: right;
+    width: 15%;
+}
+
+.product-table td:nth-child(2) {
+    width: 40%; /* Ensure product name has ample space */
+}
+
+.product-image-cell img {
+    width: 45px; /* Slightly larger images */
+    height: 45px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* --- 5. TOTALS SUMMARY --- */
+.total-summary {
+    width: 40%; /* Only take up the right side */
+    margin-left: auto;
+    font-size: 14px;
+}
+.total-summary td {
+    padding-top: 5px;
+}
+.total-summary tr:last-child {
+    border-top: 2px solid #ddd;
+    font-size: 15px;
+    font-weight: 700;
+}
+.total-summary tr td:last-child {
+    text-align: right;
+    width: 120px;
+}
+
+/* --- 6. CERTIFICATE OF AUTHENTICITY & TRUST --- */
+/* REPLACE WITH THIS (More vertical padding and margin): */
+.coa-section {
+    margin-top: 40px; /* Increased top margin */
+    padding-top: 20px; /* Increased top padding */
+    border-top: 2px solid #E6C34E;
+}
+
+/* REPLACE WITH THIS (Adding accent color and subtle shadow for shine): */
+.coa-header {
+    font-size: 24px;
+    font-weight: 700;
+    color: #E6C34E; /* <-- CRITICAL FIX: Gold accent color */
+    text-align: center;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shine */
+}
+
+/* REPLACE WITH THIS (Increased size and spacing): */
+.trust-point {
+    margin-bottom: 12px; /* Increased bottom spacing */
+    font-size: 14px; /* Slightly larger font */
+    line-height: 1.6; /* Increased line height for readability */
+    color: #555;
+}
+.trust-point strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* REPLACE WITH THIS (More separation from care guidelines): */
+.coa-seal-area {
+    text-align: center;
+    margin-top: 50px; /* Large space above signature area */
+}
+
+.coa-signature {
+    width: 150px;
+    height: 40px;
+    object-fit: contain;
+    border-bottom: 1px solid #333;
+    margin-bottom: 5px;
+}
+.coa-digital-seal {
+    width: 60px;
+    height: 60px;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* --- 7. FOOTER AND THANK YOU --- */
+.thank-you-message {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 20px;
+    color: #333;
+}
+.social-links {
+    text-align: center;
+    margin-top: 10px;
+}
+.social-links a {
+    color: #555;
+    margin: 0 8px;
+    font-size: 18px;
+}
+
+/* --- 8. CONTROLS BAR (Keep visible for PDF export on all screens) --- */
+.controls-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.controls-bar button {
+    background-color: #E6C34E;
+    color: #333;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* --- PDF Print Compatibility (Hides controls for final saved PDF) --- */
+@media print {
+    .controls-bar {
+        display: none !important;
+    }
+    body {
+        padding: 0;
+        background-color: #fff;
+    }
+    .invoice-page-container {
+        box-shadow: none;
+        margin: 0;
+        border-radius: 0;
+    }
+    /* Critical: Ensures proper spacing if PDF utility ignores @page rules */
+    .invoice-page-container {
+        padding: 20px;
+    }
+}
+
+/* === PREMIUM BRAND TEXT STYLING === */
+.rs-brand-title {
+    font-size: 28px !important; /* Stand out! */
+    font-weight: 900;
+    font-family: 'Playfair Display', serif; /* Use the elegant heading font */
+    color: #E6C34E !important; /* Shining Gold Accent */
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* === ELEGANT THANK YOU MESSAGE LINE FIX (NEW HIERARCHY) === */
+.thank-you-message-box {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #eeeeee; /* Keep the separator line */
+}
+
+/* REPLACE WITH THIS (Injecting the gold accent color for shine): */
+.thank-you-message-box h3 {
+    font-size: 28px; 
+    font-weight: 900;
+    color: #E6C34E; /* <-- CRITICAL FIX: Gold accent for wow factor */
+    margin-bottom: 5px; 
+}
+
+/* Secondary Gold Line Text (Subtitle/Elegant Line) */
+.thank-you-message-box .rs-accent-line {
+    font-size: 16px;
+    font-weight: 600;
+    color: #E6C34E;
+    display: block; /* Ensures it sits on its own line */
+    margin-bottom: 15px;
+}
+
+.thank-you-message-box p {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    color: #555;
+    margin: 0;
+}

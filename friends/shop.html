@@ -1,0 +1,4128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop - RS Sisters</title>
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="shop.css">
+    <!-- === PWA & APP INSTALL MANIFEST (FINAL) === -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a1a">
+</head>
+<body>
+    <!-- === PREMIUM SPLASH SCREEN (FINAL) === -->
+    <div id="splash-screen" class="splash-screen">
+        <!-- The Constellation Background -->
+        <canvas id="constellation-canvas" class="constellation-canvas"></canvas>
+        
+        <div class="splash-content">
+            <!-- The Logo (already centered) -->
+            <div class="splash-logo-wrapper">
+                <img src="https://res.cloudinary.com/doxabh7af/image/upload/v1760847419/refffff_cduvts.png" alt="RS Sisters Logo" class="splash-logo">
+            </div>
+            <!-- The "SISTERS" text, with each letter wrapped in a div for the animation -->
+            <h2 class="splash-text-sisters">
+                <div class="letter">S</div><div class="letter">I</div><div class="letter">S</div><div class="letter">T</div><div class="letter">E</div><div class="letter">R</div><div class="letter">S</div>
+            </h2>
+        </div>
+        <!-- The Masking Bars are now separate -->
+        <div class="mask-bar-splash left"></div>
+        <div class="mask-bar-splash right"></div>
+    </div>
+    <!-- === END OF SPLASH SCREEN === -->
+
+    <!-- Professional Preloader -->
+    <div id="preloader">
+        <div class="preloader-ring-container">
+            <!-- Use a relevant profile/brand image -->
+            <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1755829980/updated_py5htw.jpg" alt="Profile" class="preloader-profile-pic">
+            <div class="preloader-ring"></div>
+        </div>
+    </div>
+    
+    
+    
+
+    <!-- Shop Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top shop-navbar">
+        <div class="container">
+<!-- === HANGING BRAND CHARM STRUCTURE (FINAL) === -->
+    <div class="navbar-brand-wrapper">
+        <a class="navbar-brand" href="#" data-bs-toggle="offcanvas" data-bs-target="#brandMenuOffcanvas">RS Sisters</a>
+        <!-- === THIS IS THE NEW HANGING CHARM SVG === -->
+    <div class="hanging-charm-container">
+    <svg class="hanging-charm-svg" viewBox="0 0 50 80">
+        <!-- This is the curved path for the chain -->
+        <path class="charm-chain" d="M 25 0 Q 35 20 25 40" />
+        <!-- This is the circle for the charm -->
+        <circle class="charm-circle" cx="25" cy="55" r="15" />
+        <!-- This is the image that will be placed inside the circle -->
+        <image class="charm-image" href="https://res.cloudinary.com/dljmxltfr/image/upload/v1755833875/updated_ryz5ty.png" x="10" y="40" width="30" height="30" />
+    </svg>
+</div>
+</div>            <div class="d-flex align-items-center ms-auto ms-lg-0 order-lg-3">
+                <!-- Welcome Message (Visible on login) -->
+                <span id="welcome-message" class="nav-welcome-message d-none d-lg-block"></span>
+                <div class="navbar-icons d-flex align-items-center gap-3 me-3">
+                   <!-- === CORRECTED DROPDOWN WRAPPER === -->
+                   
+<div class="dropdown" id="user-icon-wrapper" data-bs-placement="bottom" data-bs-custom-class="signin-popover" data-bs-html="true" title="Join Our Community!"> <!-- Added ID here -->
+    <span id="user-profile-icon" data-bs-toggle="dropdown" style="cursor: pointer;">
+        <i class="bi bi-person-circle nav-icon"></i>
+    </span>
+    <ul class="dropdown-menu dropdown-menu-end" id="user-dropdown-menu"></ul>
+</div>
+                    
+                </div>
+                <div id="theme-toggle" class="theme-toggle">
+                    <div class="theme-toggle-ball"></div>
+                </div>
+                <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#shopNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse order-lg-2" id="shopNav">
+                <!-- === CORRECTED NAVBAR LINKS === -->
+<ul class="navbar-nav mx-auto mb-2 mb-lg-0" id="category-nav-links">
+    <li class="nav-item"><a class="nav-link" href="category.html?category=Neck%20Sets" data-filter="Neck Sets">Neck Sets</a></li>
+    <li class="nav-item"><a class="nav-link" href="category.html?category=Bracelets" data-filter="Bracelets">Handmade Jewellery</a></li>
+    <li class="nav-item"><a class="nav-link" href="category.html?category=Bangles" data-filter="Bangles">Bangles</a></li>
+    <li class="nav-item"><a class="nav-link" href="category.html?category=Earring" data-filter="Earring">Earrings</a></li>
+    <li class="nav-item"><a class="nav-link" href="category.html?category=Clothes" data-filter="Clothes">Clothes</a></li>
+    <li class="nav-item"><a class="nav-link" href="#contact-section" data-filter="Clothes">Contact</a></li>
+    <li class="nav-item">
+                        <!-- === LINK TO RMA PORTAL (NEW) === -->
+                        <a class="nav-link text-warning fw-bold" href="returns.html" style="color: var(--accent) !important;">
+                            <i class="bi bi-arrow-return-left me-1"></i> Start a Return
+                        </a>
+                    </li>
+     
+
+    
+
+</ul>
+            </div>
+        </div>
+    </nav>
+     <!-- === BRAND STORY WELCOME SECTION (FINAL) === -->
+<section class="brand-story-section">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            <!-- Left Side: Text Content -->
+            <div class="col-lg-6 order-lg-1 order-2">
+                <div class="brand-story-content">
+                    <h2 class="brand-story-title">Welcome to the world of<br><span id="typed-brand-name"></span></h2>
+                    <p class="brand-story-subtitle text-secondary">
+                        We bring together clothing, jewellery, and handmade designs — blending traditional, modern, and Korean influences — to create fashion that inspires confidence and celebrates individuality.
+                    </p>
+                    <!-- === CORRECTED BUTTON GROUP STRUCTURE (FINAL) === -->
+<div class="brand-story-actions mt-4 d-flex flex-wrap align-items-center gap-3">
+    
+    <!-- Main Buttons -->
+    <a href="#shop-product-section" class="btn btn-main">Explore Products</a>
+    <!-- === THE VIP MAILBOX TARGET (PASTE HERE) === -->
+<div id="vip-mailbox-container" style="display:none; vertical-align: middle; margin: 0 5px;">
+    <!-- The button will be rendered here by the script below -->
+</div>
+<div id="hero-canvas-container"><canvas id="jewelry-constellation"></canvas></div>
+                <!-- Secondary Icon Buttons -->
+                <div class="secondary-actions d-flex gap-3">
+                    <button class="btn action-btn d-none" id="my-inquiries-hub-btn" title="My Inquiries">
+                        <i class="bi bi-chat-left-dots-fill"></i>
+                        <span class="hub-badge" id="inquiries-badge"></span>
+                    </button>
+                    <button class="btn action-btn" id="show-favorites-btn" title="My Favorites">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button class="btn action-btn" id="share-site-btn" title="Share Our Shop">
+                        <i class="bi bi-share-fill"></i>
+                    </button>
+                    <button class="btn action-btn" id="smart-refresh-btn" title="Refresh for live updates">
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
+                    
+                </div>
+</div>
+                    
+                </div>
+            </div>
+            <!-- Right Side: Image with Fluid Shape -->
+<div class="col-lg-6 order-lg-2 order-1">
+    <div class="story-image-card-wrapper">
+        <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1755833875/updated_ryz5ty.png" alt="RS Sisters Brand" class="story-image-card">
+    </div>
+</div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Main Shop Content -->
+    <main class="shop-main-container">
+        <!-- Upgraded "Wow" Hero Section -->
+        <section class="shop-hero-section">
+            <div class="hero-background-image"></div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1 class="display-3 fw-bold font-heading">Elegance Redefined</h1>
+                <p class="lead text-light col-lg-6 mx-auto">Discover pieces that tell your story. Handcrafted with passion, designed for you.</p>
+                
+                <!-- === ELEGANT HERO SEARCH (FINAL) === -->
+<div class="hero-search-trigger mt-4 mx-auto" data-bs-toggle="modal" data-bs-target="#searchModal">
+    <i class="bi bi-search search-icon"></i>
+    <span class="search-placeholder">Search for Products..</span>
+</div>
+            </div>
+        </section>
+        
+        
+        <!-- === STYLE SPOTLIGHT CAROUSEL SECTION (NEW - Mobile Scroll) === -->
+<section id="style-spotlight-section" class="shop-product-section d-none" style="padding: 2rem 0 5rem 0; background-color: var(--bg-primary);">
+    <div class="container-fluid px-0">
+        <h2 class="section-title" id="spotlight-section-title" style="text-align: left; padding-left: 5vw;">Shop The Looks</h2>
+        
+        <div class="horizontal-scroll-container">
+            <!-- This container will hold the scrolling look cards -->
+            <div id="spotlight-carousel-row" class="horizontal-scroll-row">
+                <!-- Look Cards will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- === DYNAMIC PRODUCT SECTIONS (FINAL) === -->
+        <section id="shop-product-section" class="shop-product-section">
+            
+            <div class="container-fluid px-0">
+                 <div id="category-content-panes">
+                    <!-- === ELEGANT CATEGORY TABS (FINAL) === -->
+<div class="container mb-4">
+    <div class="category-tabs-container">
+        <button class="category-tab active" data-target="necklaces-section-container">Neck Sets</button>
+        <button class="category-tab" data-target="bracelets-section-container">Handmade Jewellery</button>
+        <button class="category-tab" data-target="bangles-section-container">Bangles</button>
+        <button class="category-tab" data-target="earrings-section-container">Earrings</button>
+        <button class="category-tab" data-target="clothes-section-container">Clothes</button>
+        <button class="category-tab" data-target="others-section-container">Others</button>
+
+    </div>
+</div>
+<!-- === END OF TABS === -->
+
+                <div id="necklaces-section-container" class="category-section-wrapper">
+                    <!-- === FEATURE BANNER SLOT (NECKLACES) === -->
+                    <div id="feature-banner-Neck Sets" class="feature-banner-container"></div>
+                    <h2 class="section-title">Neck Sets</h2>
+                     <!-- Add this new wrapper div -->
+                        <div class="horizontal-scroll-wrapper">
+                            <div class="horizontal-scroll-container">
+                                <div id="products-necklaces" class="horizontal-scroll-row"></div>
+                            </div>
+                            <!-- The arrow buttons will be added here by JavaScript -->
+                        </div>
+                    <div class="horizontal-scroll-container"><div id="products-necklaces" class="horizontal-scroll-row"></div></div>
+                </div>
+                <div id="bracelets-section-container" class="category-section-wrapper">
+                    <h2 class="section-title">Handmade Jewellery</h2>
+                     <!-- Add this new wrapper div -->
+                        <div class="horizontal-scroll-wrapper">
+                            <div class="horizontal-scroll-container">
+                                <div id="products-bracelets" class="horizontal-scroll-row"></div>
+                            </div>
+                            <!-- The arrow buttons will be added here by JavaScript -->
+                        </div>
+                    <div class="horizontal-scroll-container"><div id="products-bracelets" class="horizontal-scroll-row"></div></div>
+                </div>
+                <div id="bangles-section-container" class="category-section-wrapper">
+                    <!-- === FEATURE BANNER SLOT (BANGLES) === -->
+                    <div id="feature-banner-Bangles" class="feature-banner-container"></div>
+                    <h2 class="section-title">Bangles</h2>
+                     <!-- Add this new wrapper div -->
+    <div class="horizontal-scroll-wrapper">
+        <div class="horizontal-scroll-container">
+            <div id="products-bangles" class="horizontal-scroll-row"></div>
+        </div>
+        <!-- The arrow buttons will be added here by JavaScript -->     
+    </div>
+                    <div class="horizontal-scroll-container"><div id="products-bangles" class="horizontal-scroll-row"></div></div>
+                </div>
+                <div id="earrings-section-container" class="category-section-wrapper">
+                    <h2 class="section-title">Earrings</h2>
+                     <!-- Add this new wrapper div -->
+    <div class="horizontal-scroll-wrapper">
+        <div class="horizontal-scroll-container">
+            <div id="products-earrings" class="horizontal-scroll-row"></div>
+        </div>
+        <!-- The arrow buttons will be added here by JavaScript -->
+    </div>
+                    <div class="horizontal-scroll-container"><div id="products-earrings" class="horizontal-scroll-row"></div></div>
+                </div>
+                <div id="clothes-section-container" class="category-section-wrapper">
+                    <!-- === FEATURE BANNER SLOT (CLOTHES) === -->
+                    <div id="feature-banner-Clothes" class="feature-banner-container"></div>
+                    <h2 class="section-title">Apparel & Clothes</h2>
+                     <!-- Add this new wrapper div -->
+    <div class="horizontal-scroll-wrapper">
+        <div class="horizontal-scroll-container">
+            <div id="products-clothes" class="horizontal-scroll-row"></div>
+        </div>
+        <!-- The arrow buttons will be added here by JavaScript -->
+    </div>
+                    <div class="horizontal-scroll-container"><div id="products-clothes" class="horizontal-scroll-row"></div></div>
+                </div>
+                </div>
+            </div>
+            <!-- === OTHERS SECTION (NEW) === -->
+                <div id="others-section-container" class="category-section-wrapper">
+                    <h2 class="section-title">Others & Accessories</h2>
+                    <div class="horizontal-scroll-wrapper">
+                            <div class="horizontal-scroll-container">
+                                <div id="products-others" class="horizontal-scroll-row"></div>
+                            </div>
+                            <!-- The arrow buttons will be added here by JavaScript -->
+                        </div>
+                    <div class="horizontal-scroll-container"><div id="products-others" class="horizontal-scroll-row"></div></div>
+                    
+                </div>
+        </section>
+        
+        
+
+        <!-- === CONTACT SECTION (FINAL) === -->
+<section id="contact-section" class="contact-section">
+    <div class="container text-center">
+        <h2 class="section-title">Have a Question? Let's Chat.</h2>
+        <p class="lead text-secondary col-lg-7 mx-auto mb-5">We're a small boutique and love connecting with our customers. Choose the best way to reach out to us below.</p>
+        <div class="row justify-content-center g-4">
+            <div class="col-md-5">
+                <div class="contact-card h-100">
+                    <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1755829980/updated_py5htw.jpg" alt="Owner Photo" class="contact-photo">
+                    <h4 class="font-heading mt-3">Quick Inquiry via WhatsApp</h4>
+                    <p class="text-secondary">Best for questions about specific products or your order status.</p>
+                    <a href="https://wa.me/917893316959?text=Hello%20RS%20Sisters!%20I%20have%20a%20question." target="_blank" class="btn btn-whatsapp-contact mt-auto"><i class="bi bi-whatsapp me-2"></i>Chat Now</a>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="contact-card h-100">
+                    <div class="contact-icon-wrapper"><i class="bi bi-envelope-paper-heart"></i></div>
+                    <h4 class="font-heading mt-3">Send a Formal Message</h4>
+                    <p class="text-secondary">For detailed feedback, suggestions, or collaboration inquiries.</p>
+                    <button class="btn btn-main mt-auto" data-bs-toggle="modal" data-bs-target="#contactModal">Leave a Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- === "OUR PROMISE" & FOOTER SECTIONS (FINAL) === -->
+<!-- === INTERACTIVE BRAND VALUES SECTION (FINAL) === -->
+<section class="brand-values-section">
+    <div class="blob-background">
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" width="100%" id="blobSvg">
+            <path id="blobPath" d="M439.5,310Q425,370,379,403.5Q333,437,276.5,453Q220,469,165.5,444.5Q111,420,77,381.5Q43,343,30,281.5Q17,220,53,168.5Q89,117,137,79Q185,41,242.5,23.5Q300,6,361,41.5Q422,77,445.5,138.5Q469,200,453.5,255Q438,310,439.5,310Z">
+                <animate attributeName="d" dur="15s" repeatCount="indefinite" values="M439.5,310Q425,370,379,403.5Q333,437,276.5,453Q220,469,165.5,444.5Q111,420,77,381.5Q43,343,30,281.5Q17,220,53,168.5Q89,117,137,79Q185,41,242.5,23.5Q300,6,361,41.5Q422,77,445.5,138.5Q469,200,453.5,255Q438,310,439.5,310Z; M448,306.5Q426,363,382,402Q338,441,279,451Q220,461,165,442.5Q110,424,79.5,385Q49,346,24.5,283Q0,220,41,170Q82,120,128.5,88Q175,56,237.5,39Q300,22,357.5,56.5Q415,91,441.5,145.5Q468,200,457,253Q446,306,448,306.5Z; M439.5,310Q425,370,379,403.5Q333,437,276.5,453Q220,469,165.5,444.5Q111,420,77,381.5Q43,343,30,281.5Q17,220,53,168.5Q89,117,137,79Q185,41,242.5,23.5Q300,6,361,41.5Q422,77,445.5,138.5Q469,200,453.5,255Q438,310,439.5,310Z;"></animate>
+            </path>
+        </svg>
+    </div>
+    <!-- === END OF NEW BLOCK === -->
+    <div class="container">
+        <h2 class="section-title">Our Commitment to You</h2>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="value-card">
+                    <div class="value-card-content">
+                        <div class="value-card-icon"><i class="bi bi-gem"></i></div>
+                        <h4 class="value-card-title">Quality Craftsmanship</h4>
+                        <p class="value-card-text">Every piece is crafted with hypoallergenic, anti-tarnish materials, designed to last and shine.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="value-card">
+                    <div class="value-card-content">
+                        <div class="value-card-icon"><i class="bi bi-whatsapp"></i></div>
+                        <h4 class="value-card-title">Personal Service</h4>
+                        <p class="value-card-text">We handle all inquiries directly with you on WhatsApp, ensuring a private and personal experience.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="value-card">
+                    <div class="value-card-content">
+                        <div class="value-card-icon"><i class="bi bi-shield-check"></i></div>
+                        <h4 class="value-card-title">Secure & Trusted</h4>
+                        <p class="value-card-text">Your account is protected by Google's secure login, and all interactions are kept confidential.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- === PWA INSTALL BANNER SECTION (NEW) === -->
+<section id="pwa-install-banner-section" class="pwa-install-banner-section d-none">
+    <div class="container text-center">
+        <h3 class="font-heading">Get the RS Sisters App Experience</h3>
+        <p class="text-secondary">For faster browsing and a premium full-screen view, add our shop to your home screen.</p>
+        <button class="btn btn-main mt-2" id="pwa-banner-install-btn">
+            <i class="bi bi-download me-2"></i>Install The App Now
+        </button>
+    </div>
+</section>
+<!-- === DYNAMIC PRODUCT SECTIONS (FINAL) === -->
+
+        <!-- === HIGH-TRUST RETURNS CTA SECTION (NEW) === -->
+        <section class="returns-cta-section">
+            <div class="container">
+                <div class="returns-cta-card mx-auto">
+                    <div class="returns-cta-details">
+                        <h4>Your Purchase is Fully Guaranteed</h4>
+                        <!-- === NEW CLARITY LINE (Easy to Understand) === -->
+                        <span class="d-block text-secondary small-clarity-text">
+                            Hassle-free 7-Day Returns & Exchanges.
+                        </span>
+                        <!-- === END OF CLARITY LINE === -->
+                        <p class="mt-2">Need to return or exchange an item? We make the process simple and trustworthy.</p>
+                    </div>
+                    <a href="returns.html" class="returns-cta-btn">
+                        Start A Return
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+<!-- Professional Site Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-4 col-md-12 text-center text-lg-start">
+                <div class="footer-brand">
+                    <!-- Add the new logo image here -->
+    <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1755829980/updated_py5htw.jpg" alt="RS Sisters Logo" class="footer-logo">
+                    <p class="brand-name">RS Sisters</p>
+                    <p class="brand-tagline">Style Rack</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="footer-col">
+                    <h5>About us</h5>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">Home</a></li>
+                        <li><a href="index.html">About</a></li>
+                        <li><a href="#contact-section">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="footer-col">
+                    <h5>Shop</h5>
+                    <ul class="footer-links">
+                        <li><a href="category.html?category=Neck%20Sets">Neck Sets</a></li>
+                        <li><a href="category.html?category=Bracelets">Handmade Jewellery</a></li>
+                        <li><a href="category.html?category=Bangles">Bangles</a></li>
+                        <li><a href="category.html?category=Earring">Earrings</a></li>
+                        <li><a href="category.html?category=Clothes">Clothes</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="col-lg-3 col-md-4">
+                
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="mb-0">Copyright © 2025 RS Sisters | All Rights Reserved</p>
+        </div>
+    </div>
+</footer>
+    </main>
+   
+    
+   
+    <!-- Toast Notification Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="appToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i id="toast-icon" class="bi me-2"></i>
+                <strong class="me-auto" id="toastTitle"></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body" id="toastBody"></div>
+        </div>
+    </div>
+    <!-- === MY ACCOUNT MODALS (FINAL) === -->
+
+<!-- My Orders Modal -->
+<div class="modal fade" id="myOrdersModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-heading">My Orders</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="my-orders-list">
+                <!-- Orders will be dynamically loaded here by the new script -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- My Favorites Modal -->
+<div class="modal fade" id="myFavoritesModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-heading">My Favorites</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="my-favorites-grid" class="row g-3">
+                    <!-- Favorite products will be dynamically loaded here by the new script -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- === SEARCH MODAL (FINAL) === -->
+<div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- === SEARCH MODAL HEADER (with Clear Button) === -->
+<div class="modal-header">
+    <div class="input-group input-group-lg w-100 search-modal-input-wrapper">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+        <input type="text" id="modal-search-input" class="form-control" placeholder="Type to search products...">
+        <span class="input-group-text search-clear-btn" id="modal-search-clear-btn" style="display: none;">
+            <i class="bi bi-x-lg"></i>
+        </span>
+    </div>
+</div>
+            <div class="modal-body">
+                <div id="search-modal-results-grid" class="row g-3">
+                    <p class="text-secondary text-center">Start typing to see results.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- === WHATSAPP INQUIRY MODAL (FINAL) === -->
+<div class="modal fade" id="inquiryModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-heading">Confirm Details to Inquire</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-secondary mb-4">We'll use these details to start a WhatsApp chat and assist you with your purchase of <strong id="inquiryProductName" class="text-accent"></strong>.</p>
+                <form id="inquiry-form" novalidate>
+                    <input type="hidden" id="inquiryProductId">
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="inquiryName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">WhatsApp Phone Number</label>
+                        <input type="tel" class="form-control" id="inquiryPhone" placeholder="10-digit mobile number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Full Shipping Address</label>
+                        <textarea class="form-control" id="inquiryAddress" rows="3" placeholder="House No, Street, Landmark..." required></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3"><input type="text" class="form-control" id="inquiryCity" placeholder="City*" required></div>
+                        <div class="col-md-6 mb-3"><input type="text" class="form-control" id="inquiryPincode" placeholder="Pincode*" required></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="submit-inquiry-btn" class="btn btn-main-whatsapp">
+                    <i class="bi bi-whatsapp me-2"></i>Save & Start Chat
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- === CONTACT MODAL (FINAL) === -->
+<div class="modal fade" id="contactModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title font-heading">Leave a Message</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <form id="contact-form" novalidate>
+                    <p class="text-secondary">We'll get back to you as soon as possible.</p>
+                    <div class="mb-3"><input type="text" class="form-control" id="contactName" placeholder="Your Name*" required></div>
+                    <div class="mb-3"><input type="tel" class="form-control" id="contactPhone" placeholder="Your Wats app Number*" required></div>
+                    <div class="mb-3"><input type="email" class="form-control" id="contactEmail" placeholder="Your Email Address"></div>
+                    <div class="mb-3"><textarea class="form-control" id="contactMessage" rows="4" placeholder="Your message...*" required></textarea></div>
+                </form>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button><button type="button" id="send-contact-btn" class="btn btn-main">Send Message</button></div>
+        </div>
+    </div>
+</div>
+
+<!-- === CONTACT SUCCESS MODAL (NEW) === -->
+<div class="modal fade" id="contactSuccessModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-body p-4 p-md-5">
+                <div class="success-icon mb-3">
+                    <div class="checkmark-wrapper">
+                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="font-heading">Message Sent!</h3>
+                <p class="text-secondary">Thank you for reaching out. We have received your message and will get back to you as soon as possible.</p>
+                <button type="button" class="btn btn-main mt-3" data-bs-dismiss="modal">Awesome!</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- === SHOPPING BAG MODAL (FINAL) === -->
+<div class="modal fade" id="shoppingBagModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-heading">My Shopping Bag</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="shopping-bag-body">
+                <!-- Bag items will be loaded here -->
+            </div>
+            <div class="modal-footer justify-content-between">
+                <div class="bag-total">
+                    <strong>Total:</strong>
+                    <span id="bag-total-price" class="font-heading">₹0</span>
+                </div>
+                <button type="button" id="bag-inquiry-btn" class="btn btn-main" disabled>
+                    Continue to Inquiry
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- === SHOPPING BAG INQUIRY MODAL (NEW & SEPARATE) === -->
+<div class="modal fade" id="bagInquiryModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-heading">Confirm Details for Your Bag</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-secondary mb-4">Please confirm your shipping details to proceed with your inquiry for the items in your bag.</p>
+                <form id="bag-inquiry-form" novalidate>
+                    <div class="mb-3"><input type="text" class="form-control" id="bagInquiryName" placeholder="Full Name*" required></div>
+                    <div class="mb-3"><input type="tel" class="form-control" id="bagInquiryPhone" placeholder="WhatsApp Phone Number*" required></div>
+                    <div class="mb-3"><textarea class="form-control" id="bagInquiryAddress" rows="3" placeholder="Full Shipping Address*" required></textarea></div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3"><input type="text" class="form-control" id="bagInquiryCity" placeholder="City*" required></div>
+                        <div class="col-md-6 mb-3"><input type="text" class="form-control" id="bagInquiryPincode" placeholder="Pincode*" required></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="submit-bag-inquiry-btn" class="btn btn-main-whatsapp">
+                    <i class="bi bi-whatsapp me-2"></i>Save & Start Chat
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- === MY INQUIRIES HUB MODAL (FINAL) === -->
+<div class="modal fade" id="myInquiriesModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-heading">My Inquiries Hub</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- === THIS IS THE NEW TABBED MODAL BODY === -->
+<div class="modal-body" id="my-inquiries-body">
+    <!-- Tab Navigation -->
+    <ul class="nav nav-pills nav-fill mb-4" id="inquiry-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="single-inquiries-tab" data-bs-toggle="tab" data-bs-target="#single-inquiries-pane" type="button" role="tab">Single Item Inquiries</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="bag-inquiries-tab" data-bs-toggle="tab" data-bs-target="#bag-inquiries-pane" type="button" role="tab">Shopping Bag Inquiries</button>
+        </li>
+    </ul>
+    <!-- Tab Content -->
+    <div class="tab-content" id="inquiry-tab-content">
+        <div class="tab-pane fade show active" id="single-inquiries-pane" role="tabpanel">
+            <!-- Single inquiries will be loaded here -->
+        </div>
+        <div class="tab-pane fade" id="bag-inquiries-pane" role="tabpanel">
+            <!-- Bag inquiries will be loaded here -->
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<!-- === STYLE SPOTLIGHT IMMERSIVE MODAL (NEW) === -->
+<div class="modal fade" id="styleSpotlightModal" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content spotlight-modal-content">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title" id="spotlightModalTitle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body d-flex align-items-center justify-content-center p-0">
+                <!-- The responsive image and pins go here -->
+                <div class="spotlight-interactive-image-container position-relative">
+                    <img id="spotlight-modal-image" class="img-fluid" alt="Style Spotlight Look">
+                    <div id="spotlight-pins-container">
+                        <!-- Pins and Popovers will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- JS Libraries & Your Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="shop.js"></script>
+    
+    <!-- === MY ORDERS & FAVORITES LOGIC (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // We assume your shop.js has already initialized Firebase and Bootstrap
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    const myOrdersModal = new bootstrap.Modal(document.getElementById('myOrdersModal'));
+    const myFavoritesModal = new bootstrap.Modal(document.getElementById('myFavoritesModal'));
+
+    // This function will be called to show the user's orders
+    async function showMyOrders(user) {
+        const listEl = document.getElementById('my-orders-list');
+        listEl.innerHTML = `<div class="text-center p-4"><div class="spinner-border text-accent" role="status"></div></div>`;
+        myOrdersModal.show();
+
+        try {
+            const ordersRef = db.collection('orders').where('userId', '==', user.uid).orderBy('createdAt', 'desc');
+            const productsSnapshot = await db.collection('products').get();
+            const allProducts = productsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            const ordersSnapshot = await ordersRef.get();
+
+            if (ordersSnapshot.empty) {
+                listEl.innerHTML = `<p class="text-center text-secondary p-4">You have no past orders.</p>`;
+                return;
+            }
+
+            listEl.innerHTML = ordersSnapshot.docs.map(doc => {
+                const order = doc.data();
+                const orderDate = order.createdAt.toDate().toLocaleDateString();
+                const firstItem = order.items[0];
+                const product = allProducts.find(p => p.id === firstItem.id);
+                const imageUrl = (product && product.images && product.images[0]) ? product.images[0] : 'https://via.placeholder.com/80';
+                
+                return `
+                <div class="order-item-card">
+                    <img src="${imageUrl}" alt="${product ? product.name : 'Product'}" class="order-item-card-img">
+                    <div class="order-item-card-details">
+                        <div><strong>Order #${doc.id.substring(0,6)}</strong> <span class="text-secondary">on ${orderDate}</span></div>
+                        <div class="text-secondary">${order.items.length} item(s) - Total: ₹${order.finalPrice.toLocaleString()}</div>
+                        <div><span class="badge bg-${order.orderStatus === 'Shipped' ? 'success' : 'warning'}">${order.orderStatus}</span></div>
+                        ${order.trackingId ? `<small class="d-block mt-1">Tracking: ${order.trackingId}</small>` : ''}
+                    </div>
+                </div>`;
+            }).join('');
+        } catch (error) {
+            console.error("Error fetching my orders:", error);
+            listEl.innerHTML = `<p class="text-center text-danger p-4">Could not load your orders.</p>`;
+        }
+    }
+
+    // ===  NEW, CORRECTED renderMyFavorites FUNCTION ===
+async function showMyFavorites(user) {
+    const gridEl = document.getElementById('my-favorites-grid');
+    gridEl.innerHTML = `<div class="text-center p-4"><div class="spinner-border text-accent" role="status"></div></div>`;
+    myFavoritesModal.show();
+
+    try {
+        const favsRef = db.collection('users').doc(user.uid).collection('favorites');
+        const productsRef = db.collection('products');
+        const favsSnapshot = await favsRef.get();
+
+        if (favsSnapshot.empty) {
+            gridEl.innerHTML = `<p class="text-center text-secondary col-12 p-4">You haven't saved any items to your favorites yet.</p>`;
+            return;
+        }
+        
+        const favIds = favsSnapshot.docs.map(doc => doc.id);
+        const favProducts = [];
+        for (const id of favIds) {
+            const productDoc = await productsRef.doc(id).get();
+            if (productDoc.exists) {
+                favProducts.push({ id: productDoc.id, ...productDoc.data() });
+            }
+        }
+        //  NEW SORTING LOGIC HERE ---
+favProducts.sort((a, b) => {
+    const stockA = typeof a.stock === 'number' ? a.stock : 1;
+    const stockB = typeof b.stock === 'number' ? b.stock : 1;
+
+    if (stockA === 0 && stockB > 0) return 1;
+    if (stockB === 0 && stockA > 0) return -1;
+    
+    return 0;
+});
+        
+        gridEl.innerHTML = favProducts.map(p => {
+            const imageUrl = (p.images && p.images[0]) || 'https://via.placeholder.com/300';
+            
+            // --- THIS IS THE NEW LOGIC ---
+            let badgeHTML = '';
+            const stock = typeof p.stock === 'number' ? p.stock : 1;
+            const isSoldOut = stock === 0;
+
+            if (isSoldOut) {
+                badgeHTML = `<span class="product-badge sold-out-badge">Sold Out</span>`;
+            } else if (p.isOnSale && p.salePrice) {
+                badgeHTML = `<span class="product-badge sale-badge">On Sale</span>`;
+            }
+            // --- END OF NEW LOGIC ---
+
+            return `
+            <div class="col-lg-4 col-md-6 col-6">
+                <a href="product.html?id=${p.id}" class="product-card-link">
+                    <div class="product-card ${isSoldOut ? 'is-sold-out' : ''}">
+                        <div class="product-image-container">
+                            ${badgeHTML}
+                            <img src="${imageUrl}" alt="${p.name}" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-name">${p.name}</h5>
+                            <p class="product-price">₹${p.price.toLocaleString()}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>`;
+        }).join('');
+    } catch (error) {
+        console.error("Error fetching favorites:", error);
+        gridEl.innerHTML = `<p class="text-center text-danger p-4">Could not load your favorites.</p>`;
+    }
+}
+
+    // This is the listener that makes the buttons work.
+    // It waits for a click on the whole page and then checks what was clicked.
+    document.body.addEventListener('click', function(e) {
+        const user = auth.currentUser;
+
+        // Check if the "My Orders" button inside the dropdown was clicked
+        if (e.target.matches('#user-dropdown-menu a[href="#"]') && e.target.textContent === 'My Orders') {
+            e.preventDefault();
+            if (user) {
+                showMyOrders(user);
+            }
+        }
+
+        // Check if the "My Favorites" button inside the dropdown was clicked
+        if (e.target.matches('#user-dropdown-menu a[href="#"]') && e.target.textContent === 'My Favorites') {
+            e.preventDefault();
+            if (user) {
+                showMyFavorites(user);
+            }
+        }
+        
+        // Also check for the favorites icon in the navbar
+        if (e.target.id === 'favorites-icon') {
+            e.preventDefault();
+             if (user) {
+                showMyFavorites(user);
+            } else {
+                alert("Please sign in to view your favorites.");
+            }
+        }
+    });
+});
+</script>
+<!-- === SIGN-IN PROMPT LOGIC (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const auth = firebase.auth();
+    // This now correctly targets the div wrapping your dropdown.
+    const userIconWrapper = document.getElementById('user-icon-wrapper');
+
+    if (userIconWrapper) {
+        // Use the onAuthStateChanged listener to react to login/logout events
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                // User is logged IN, so REMOVE the glow effect.
+                userIconWrapper.classList.remove('prompt-glow');
+            } else {
+                // User is logged OUT, so ADD the glow effect to get their attention.
+                userIconWrapper.classList.add('prompt-glow');
+            }
+        });
+    }
+});
+</script>
+<!-- === ELEGANT SEARCH LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+
+    const searchModalInput = document.getElementById('modal-search-input');
+    const searchModalGrid = document.getElementById('search-modal-results-grid');
+    const searchModalEl = document.getElementById('searchModal');
+    const searchClearBtn = document.getElementById('modal-search-clear-btn');
+    let allProducts = []; // Local cache for products
+
+    // Fetch all products once to make search instant
+    async function cacheProducts() {
+        try {
+            const snapshot = await db.collection('products').get();
+            allProducts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            console.log("Product cache for search is ready.");
+        } catch (error) {
+            console.error("Failed to cache products for search:", error);
+        }
+    }
+    cacheProducts();
+
+    // The function that performs the search
+    function performSearch() {
+        const query = searchModalInput.value.trim().toLowerCase();
+         
+    // --- ADD THIS LINE ---
+    searchClearBtn.style.display = query.length > 0 ? 'inline-flex' : 'none';
+    // --- END OF NEW LINE ---
+        
+        if (query.length < 2) {
+            searchModalGrid.innerHTML = `<p class="text-secondary text-center">Keep typing to see results...</p>`;
+            return;
+        }
+
+        const results = allProducts.filter(p => 
+            p.name.toLowerCase().includes(query) ||
+            (p.category && p.category.toLowerCase().includes(query)) ||
+            (p.description && p.description.toLowerCase().includes(query))
+        );
+
+        if (results.length === 0) {
+            searchModalGrid.innerHTML = `<p class="text-center text-secondary col-12 p-4">No products found matching your search.</p>`;
+            return;
+        }
+
+        searchModalGrid.innerHTML = results.map(p => {
+            const imageUrl = (p.images && p.images[0]) || 'https://via.placeholder.com/300';
+            return `
+            <div class="col-lg-3 col-md-4 col-6">
+                <a href="product.html?id=${p.id}" class="product-card-link">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="${imageUrl}" alt="${p.name}" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-name">${p.name}</h5>
+                            <p class="product-price">₹${p.price.toLocaleString()}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            `;
+        }).join('');
+    }
+
+    // Listen for typing in the modal's search input
+    searchModalInput.addEventListener('input', performSearch);
+
+// Listen for when the modal is about to be shown
+if (searchModalEl) {
+    searchModalEl.addEventListener('show.bs.modal', () => {
+        // Automatically clear the input field and results every time it opens
+        searchModalInput.value = '';
+        // Rerun the search with an empty query to show the initial message
+        performSearch(); 
+    });
+}
+
+// Listen for clicks on the new clear button
+if (searchClearBtn) {
+    searchClearBtn.addEventListener('click', () => {
+        searchModalInput.value = '';
+        performSearch(); // Re-run search to show the initial message
+        searchModalInput.focus(); // Put the cursor back in the input
+    });
+}
+});
+</script>
+
+<!-- === WHATSAPP INQUIRY LOGIC (FINAL, v2 with Rich Data) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    const inquiryModalEl = document.getElementById('inquiryModal');
+    const inquiryModal = new bootstrap.Modal(inquiryModalEl);
+    const inquiryForm = document.getElementById('inquiry-form');
+    let currentProduct = {};
+    let allProductsCache = []; // Cache to find product images
+
+    // Fetch products once to get image URLs
+    const cacheAllProducts = async () => {
+        if (allProductsCache.length > 0) return;
+        try {
+            const snapshot = await db.collection('products').get();
+            allProductsCache = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        } catch (e) { console.error("Could not cache products:", e); }
+    };
+    cacheAllProducts();
+
+    document.body.addEventListener('click', (e) => {
+        const inquiryBtn = e.target.closest('.btn-whatsapp-inquiry');
+        if (inquiryBtn) {
+            e.preventDefault();
+            const user = auth.currentUser;
+            if (!user) {
+                if (window.showToast) window.showToast("Login Required", "Please sign in to make an inquiry.", "info");
+                return;
+            }
+            currentProduct = { id: inquiryBtn.dataset.productId, name: inquiryBtn.dataset.productName };
+            inquiryModal.show();
+        }
+    });
+
+    inquiryModalEl.addEventListener('show.bs.modal', async () => {
+        const user = auth.currentUser;
+        if (!user) return;
+
+        document.getElementById('inquiryProductName').textContent = currentProduct.name;
+        document.getElementById('inquiryProductId').value = currentProduct.id;
+        document.getElementById('inquiryName').value = user.displayName || '';
+        
+        const userRef = db.collection('users').doc(user.uid);
+        const userDoc = await userRef.get();
+        if (userDoc.exists && userDoc.data().shippingAddress) {
+            const addr = userDoc.data().shippingAddress;
+            document.getElementById('inquiryPhone').value = addr.phone || '';
+            document.getElementById('inquiryAddress').value = addr.address || '';
+            document.getElementById('inquiryCity').value = addr.city || '';
+            document.getElementById('inquiryPincode').value = addr.pincode || '';
+        } else {
+            inquiryForm.reset();
+            document.getElementById('inquiryName').value = user.displayName || '';
+        }
+    });
+
+    document.getElementById('submit-inquiry-btn').addEventListener('click', async () => {
+        if (!inquiryForm.checkValidity()) {
+            inquiryForm.reportValidity();
+            return;
+        }
+
+        const user = auth.currentUser;
+        if (!user) return;
+        
+        const btn = document.getElementById('submit-inquiry-btn');
+        if (window.setButtonLoading) window.setButtonLoading(btn, true, 'Saving...');
+
+        
+        
+        // --- THIS IS THE UPGRADED DATA OBJECT ---
+        const shippingAddress = {
+            name: document.getElementById('inquiryName').value,
+            phone: document.getElementById('inquiryPhone').value,
+            address: document.getElementById('inquiryAddress').value,
+            city: document.getElementById('inquiryCity').value,
+            pincode: document.getElementById('inquiryPincode').value
+        };
+
+        const productForInquiry = allProductsCache.find(p => p.id === currentProduct.id);
+
+        const inquiryData = {
+            userId: user.uid,
+            customerName: shippingAddress.name,
+            customerPhone: shippingAddress.phone,
+            shippingAddress: shippingAddress, // Save the whole address object
+            productId: currentProduct.id,
+            productName: currentProduct.name,
+            productImage: (productForInquiry && productForInquiry.images && productForInquiry.images[0]) || '', // Save the first image URL
+            status: "New",
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+        // --- END OF UPGRADE ---
+
+        const friendPhoneNumber = "917893316959"; 
+            const message = `Hello RS Sisters! My name is ${inquiryData.customerName}. I'm interested in purchasing the "${inquiryData.productName}" (Product ID: ${inquiryData.productId}). Please confirm.`;
+            const whatsappUrl = `https://wa.me/${friendPhoneNumber}?text=${encodeURIComponent(message)}`;
+            // === PASTE THIS NEW BLOCK in the Single Inquiry Script ===
+
+// Show the confirmation modal
+const confirmationModal = new bootstrap.Modal(document.getElementById('inquiryConfirmationModal'));
+document.getElementById('confirmation-modal-subtitle').textContent = "Your inquiry for the item has been logged.";
+document.getElementById('confirmation-modal-whatsapp-link').href = whatsappUrl;
+confirmationModal.show();
+
+        try {
+            await db.collection('inquiries').add(inquiryData);
+             // === THIS CALLS THE PUBLIC FUNCTION ===
+                if (window.logActivity) {
+                    window.logActivity('newInquiry', { name: inquiryData.customerName, product: inquiryData.productName });
+                }
+            await db.collection('users').doc(user.uid).set({ shippingAddress }, { merge: true });
+// This will send the confirmation email in the background
+
+// Your EmailJS keys (already provided)
+const EMAILJS_SERVICE_ID = 'service_xb31dq1';
+const EMAILJS_TEMPLATE_ID = 'template_dhyvd3e'; // Your new template ID
+const EMAILJS_PUBLIC_KEY = '3fI1nDsMPnxsjYz0N';
+
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+// === THIS IS THE CORRECTED EMAIL PARAMS OBJECT ===
+const emailParams = {
+    customer_name: inquiryData.customerName,
+    email: user.email,
+    product_name: inquiryData.productName,
+    product_id: inquiryData.productId // Use productId instead
+};
+
+emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, emailParams)
+    .then(function(response) {
+       console.log('Inquiry confirmation email sent!', response.status, response.text);
+    }, function(error) {
+       console.error('Failed to send inquiry email...', error);
+    });
+// === END OF NEW EMAIL-SENDING BLOCK ===
+
+            inquiryModal.hide();
+            if (window.showToast) window.showToast("Success!", "Your inquiry is submitted. Redirecting to WhatsApp...", "success");
+            
+            
+
+        } catch (error) {
+            console.error("Error submitting inquiry:", error);
+            if (window.showToast) window.showToast("Error", "Could not submit inquiry.", "danger");
+        } finally {
+            if (window.setButtonLoading) window.setButtonLoading(btn, false);
+        }
+    });
+});
+</script>
+
+<!-- === CONTACT MODAL LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+    const contactForm = document.getElementById('contact-form');
+    const sendContactBtn = document.getElementById('send-contact-btn');
+
+    // Pre-fill form if user is logged in
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            document.getElementById('contactName').value = user.displayName || '';
+            document.getElementById('contactEmail').value = user.email || '';
+        }
+    });
+
+const contactModalEl = document.getElementById('contactModal');
+if (contactModalEl) {
+    // This listener fires every time the modal is about to be shown
+    contactModalEl.addEventListener('show.bs.modal', () => {
+        // Find the button inside the modal
+        const btn = document.getElementById('send-contact-btn');
+        if (btn) {
+            // Reset the button to its original state
+            btn.disabled = false;
+            btn.innerHTML = 'Send Message';
+        }
+    });
+}
+// === END OF NEW BLOCK ===
+
+    sendContactBtn.addEventListener('click', async () => {
+        if (!contactForm.checkValidity()) {
+            contactForm.reportValidity();
+            return;
+        }
+         // --- THIS IS THE FIX ---
+    // We use your global setButtonLoading function from shop.js
+    if (window.setButtonLoading) {
+        window.setButtonLoading(sendContactBtn, true, 'Sending...');
+    } else {
+        // Fallback if the function isn't found
+        sendContactBtn.disabled = true;
+        sendContactBtn.textContent = 'Sending...';
+    }
+    // --- END OF FIX ---
+
+        // Assuming your shop.js has a global setButtonLoading function
+        if (window.setButtonLoading) window.setButtonLoading(sendContactBtn, true, 'Sending...');
+
+        const contactData = {
+            name: document.getElementById('contactName').value,
+            phone: document.getElementById('contactPhone').value,
+            email: document.getElementById('contactEmail').value,
+            message: document.getElementById('contactMessage').value,
+            isRead: false,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+
+        try {
+            await db.collection('contacts').add(contactData);
+            contactModal.hide();
+            contactForm.reset();
+            // Assuming your shop.js has a global showToast function
+              // --- THIS IS THE NEW LOGIC ---
+    // Create an instance of our new success modal and show it
+    const successModal = new bootstrap.Modal(document.getElementById('contactSuccessModal'));
+    successModal.show();
+    // --- END OF NEW LOGIC ---
+        } catch (error) {
+            console.error("Error sending contact message:", error);
+            if (window.showToast) window.showToast("Error", "Could not send your message. Please try again.", "danger");
+        } finally {
+            if (window.setButtonLoading) window.setButtonLoading(sendContactBtn, false);
+        }
+    });
+});
+</script>
+
+<!-- === FEATURE BANNER LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+
+    async function fetchAndRenderFeatureBanners() {
+        try {
+            const snapshot = await db.collection('category_features').get();
+            if (snapshot.empty) return;
+
+            const features = {};
+            snapshot.forEach(doc => {
+                features[doc.id] = doc.data();
+            });
+
+            // Now, inject banners where they belong
+            for (const category in features) {
+                const featureData = features[category];
+                const container = document.getElementById(`feature-banner-${category}`);
+                
+                if (container && featureData && featureData.isActive) {
+                    // === PASTE THIS NEW, TWO-COLUMN HTML STRUCTURE ===
+container.innerHTML = `
+    <div class="feature-banner split-layout">
+        <div class="row g-0 h-100">
+            <div class="col-lg-6 feature-banner-content-wrapper order-lg-${featureData.textAlignment === 'right' ? '2' : '1'}">
+                <div class="feature-banner-content">
+                    <h2 class="feature-banner-title">${featureData.title}</h2>
+                    <p class="feature-banner-subtitle">${featureData.subtitle}</p>
+                    <a href="${featureData.buttonLink}" class="feature-banner-btn">${featureData.buttonText}</a>
+                </div>
+            </div>
+            <div class="col-lg-6 feature-banner-image-wrapper order-lg-${featureData.textAlignment === 'right' ? '1' : '2'}">
+                <!-- === PASTE THIS NEW PICTURE BLOCK === -->
+<picture>
+    <!-- If screen is narrow (mobile), use the mobile image -->
+    <source media="(max-width: 768px)" srcset="${featureData.mobileImageUrl || featureData.imageUrl}">
+    <!-- Otherwise, use the desktop image -->
+    <source media="(min-width: 769px)" srcset="${featureData.imageUrl}">
+    <!-- Fallback image -->
+    <img src="${featureData.imageUrl}" alt="${featureData.title}" class="feature-banner-img">
+</picture>
+            </div>
+        </div>
+    </div>
+`;
+                }
+            }
+        } catch (error) {
+            console.error("Error fetching feature banners:", error);
+        }
+    }
+
+    // Run the function
+    fetchAndRenderFeatureBanners();
+});
+</script>
+
+<!-- === SECTION TITLE ANIMATION SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all the section titles we want to animate
+    const animatedTitles = document.querySelectorAll('.category-section-wrapper .section-title');
+
+    if (animatedTitles.length > 0) {
+        // The Intersection Observer is a modern browser API to detect when an element is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // If the title is on the screen (is intersecting)
+                if (entry.isIntersecting) {
+                    // Add the 'in-view' class to trigger the CSS animation
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, {
+            threshold: 0.5 // Trigger when 50% of the title is visible
+        });
+
+        // Tell the observer to watch each of our titles
+        animatedTitles.forEach(title => {
+            observer.observe(title);
+        });
+    }
+});
+</script>
+
+<!-- === FLOATING ACTION BUTTONS (FINAL) === -->
+<div class="fab-container">
+    <!-- New Shopping Bag Button -->
+    <div class="fab-shopping-bag" id="shopping-bag-icon" title="My Shopping Bag">
+        <i class="bi bi-bag"></i>
+        <span id="bag-badge" class="cart-badge">0</span>
+    </div>
+
+    <!-- Your existing chatbot bubble will be styled to fit next to it -->
+
+<!-- === END OF NEW BLOCK === -->
+<!-- === FAQ CHATBOT (FINAL) === -->
+<div class="chatbot-container">
+    <!-- The floating bubble that is always visible -->
+    <div class="chat-bubble" id="chat-bubble">
+        <i class="bi bi-chat-quote-fill"></i>
+    </div>
+
+    <!-- The main chat window, hidden by default -->
+    <div class="chat-window" id="chat-window">
+        <div class="chat-header">
+            <h5 class="font-heading mb-0">RS Sisters Assistant</h5>
+            <button class="btn-close" id="chat-close-btn"></button>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <!-- Messages will be injected here by JavaScript -->
+        </div>
+        <div class="chat-footer" id="chat-footer">
+            <!-- Question buttons will be injected here -->
+        </div>
+    </div>
+</div>
+</div>
+<!-- === FAQ CHATBOT LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // === PASTE THIS NEW, UPGRADED faqData OBJECT ===
+const faqData = {
+    // Main menu questions
+    main: {
+        text: "Hello! Welcome to RS Sisters Boutique. How can I assist you today?",
+        options: [
+            { text: "🛍️ Browse Products", key: "browse" },
+            { text: "✨ Why Shop With Us?", key: "why_us" },
+            { text: "🛡️ Is This Site Secure?", key: "secure" },
+            { text: "🚚 Shipping & Delivery", key: "shipping" }
+        ]
+    },
+    // Replies to the main menu questions
+    browse: {
+        text: "Of course! Where would you like to start?",
+        // These are now links that will scroll the user on the page
+        options: [
+            { text: "Neck Sets", isLink: true, href: "category.html?category=Neck%20Sets" },
+            { text: "Handmade Jewellery", isLink: true, href: "category.html?category=Bracelets" },
+            { text: "Bangles", isLink: true, href: "category.html?category=Bangles" },
+            { text: "Ear rings", isLink: true, href: "category.html?category=Earring" },
+            { text: "Clothes", isLink: true, href: "category.html?category=Clothes" },
+            { text: "Back to Main Menu", key: "main" }
+        ]
+    },
+    why_us: {
+        text: "We're proud to offer a premium experience!<br>• 💎 Premium Quality<br>• 📦 Secure Shipping<br>• 👩‍🎨 Designer Support",
+        options: [ { text: "Tell me about Shipping", key: "shipping" }, { text: "Is this site secure?", key: "secure" }, { text: "Back to Main Menu", key: "main" } ]
+    },
+    secure: {
+        text: "Absolutely. Your security is our priority. We use Google's secure sign-in system, so we never see or store your password. All inquiries are handled privately, and we will never share your personal information.",
+        options: [ { text: "How do I pay?", key: "payment" }, { text: "Back to Main Menu", key: "main" } ]
+    },
+    shipping: {
+        text: "We ship all orders via Delhivery within 2 business days. Delivery within India typically takes 3-5 days. You will receive tracking details as soon as your order is shipped!",
+        options: [ { text: "How do I pay?", key: "payment" }, { text: "Back to Main Menu", key: "main" } ]
+    },
+    payment: {
+        text: "Our payment process is 100% secure and personal. We handle all transactions directly via UPI or Bank Transfer through a private WhatsApp chat. We never ask for your card details on our website.",
+        options: [ { text: "Why should I shop here?", key: "why_us" }, { text: "Back to Main Menu", key: "main" } ]
+    },
+    human: {
+        text: "Of course! The best way to speak with our designer is via WhatsApp. You can start a conversation by clicking the 'Inquire & Order' button on any product page.",
+        options: [ { text: "Back to Main Menu", key: "main" } ]
+    }
+};
+
+    // --- 2. DOM ELEMENTS ---
+    const chatBubble = document.getElementById('chat-bubble');
+    const chatWindow = document.getElementById('chat-window');
+    const chatCloseBtn = document.getElementById('chat-close-btn');
+    const chatBody = document.getElementById('chat-body');
+    const chatFooter = document.getElementById('chat-footer');
+
+    if (!chatBubble) return; // Exit if the chatbot HTML isn't on the page
+
+    // === PASTE THIS NEW, CORRECTED FUNCTION ===
+function toggleChatWindow() {
+    const isOpen = chatWindow.classList.toggle('open');
+
+    // --- THIS IS THE CRITICAL FIX ---
+    if (isOpen) {
+        // If we are OPENING the window, reset the chat to its original state.
+        chatBody.innerHTML = ''; // Clear all previous messages
+        addMessage(faqData.main.text, 'bot'); // Add the welcome message again
+        showOptions(faqData.main.options); // Show the main options again
+    }
+    // --- END OF FIX ---
+}
+    
+    function addMessage(text, side) {
+        const avatarIcon = side === 'bot' ? 'RS' : '<i class="bi bi-person-fill"></i>';
+        const messageHTML = `
+            <div class="chat-message ${side}">
+                <div class="avatar">${avatarIcon}</div>
+                <div class="message-bubble">${text}</div>
+            </div>`;
+        chatBody.insertAdjacentHTML('beforeend', messageHTML);
+        chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll to bottom
+    }
+
+    function showTypingIndicator() {
+        const typingHTML = `<div class="chat-message bot typing-indicator-wrapper"><div class="avatar">RS</div><div class="message-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div></div>`;
+        chatBody.insertAdjacentHTML('beforeend', typingHTML);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+    
+    function removeTypingIndicator() {
+        const indicator = document.querySelector('.typing-indicator-wrapper');
+        if (indicator) indicator.remove();
+    }
+
+   // === PASTE THIS NEW, CORRECTED showOptions FUNCTION ===
+function showOptions(options) {
+    let optionsHTML = options.map(opt => {
+        if (opt.isLink) {
+            // If it's a link, create an <a> tag
+            return `<a href="${opt.href}" class="btn chat-option-btn chat-link-btn">${opt.text}</a>`;
+        } else {
+            // Otherwise, create a <button> tag
+            return `<button class="btn chat-option-btn" data-key="${opt.key}">${opt.text}</button>`;
+        }
+    }).join('');
+
+    // Add the "Need more help?" link at the bottom
+    optionsHTML += `<div class="text-center mt-2"><a href="#" class="chat-help-link" data-bs-toggle="modal" data-bs-target="#contactModal">Need more help?</a></div>`;
+    
+    chatFooter.innerHTML = optionsHTML;
+}
+
+    function handleOptionClick(key) {
+        const userQuestion = faqData.main.options.find(opt => opt.key === key)?.text || "...";
+        const response = faqData[key];
+        
+        addMessage(userQuestion, 'user');
+        chatFooter.innerHTML = ''; // Clear options
+        
+        showTypingIndicator();
+        setTimeout(() => {
+            removeTypingIndicator();
+            addMessage(response.text, 'bot');
+            if(response.options) {
+                showOptions(response.options);
+            }
+        }, 1000); // Simulate bot "thinking"
+    }
+
+    // --- 4. EVENT LISTENERS ---
+    chatBubble.addEventListener('click', toggleChatWindow);
+    chatCloseBtn.addEventListener('click', toggleChatWindow);
+
+    chatFooter.addEventListener('click', (e) => {
+        const btn = e.target.closest('.chat-option-btn');
+        if (btn && btn.dataset.key) {
+            handleOptionClick(btn.dataset.key);
+        }
+    });
+
+   
+});
+</script>
+
+<!-- === WELCOME EMAIL SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // We assume your shop.js has already initialized Firebase
+    const auth = firebase.auth();
+    
+    // Your keys from the EmailJS dashboard
+    const EMAILJS_SERVICE_ID = 'service_xb31dq1';
+    const EMAILJS_TEMPLATE_ID = 'template_rpipwtv';
+    const EMAILJS_PUBLIC_KEY = '3fI1nDsMPnxsjYz0N';
+
+    // Initialize EmailJS with your Public Key
+    (function(){
+       emailjs.init(EMAILJS_PUBLIC_KEY);
+    })();
+
+    // This function sends the welcome email
+    function sendWelcomeEmail(user) {
+        if (!user || !user.email) return;
+
+        // These are the variables that match your EmailJS template (e.g., {{{to_name}}})
+        const templateParams = {
+            to_name: user.displayName,
+            email: user.email,
+        };
+
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+            .then(function(response) {
+               console.log('SUCCESS! Welcome email sent.', response.status, response.text);
+               // Assuming showToast exists on the window from shop.js
+               if (window.showToast) {
+                   window.showToast("Check your inbox!", "We've sent you a welcome message.", "success");
+               }
+            }, function(error) {
+               console.error('FAILED to send welcome email...', error);
+            });
+    }
+
+    // This listener waits for a user to sign in
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            // A user has signed in. Check if they are brand new.
+            const metadata = user.metadata;
+            // creationTime and lastSignInTime are identical only on the very first login
+            if (metadata.creationTime === metadata.lastSignInTime) {
+                console.log("New user detected! Sending welcome email.");
+                // Use a small delay to ensure all user data is settled
+                setTimeout(() => {
+                    sendWelcomeEmail(user);
+                }, 2000); // 2-second delay
+            }
+        }
+    });
+});
+</script>
+<!-- === BRAND STORY LOGIC SCRIPT (FINAL) === -->
+<!-- Load the Typed.js library -->
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Auto-Typing Logic
+    const typedTarget = document.getElementById('typed-brand-name');
+    if (typedTarget) {
+        new Typed('#typed-brand-name', {
+            strings: ['RS Sisters', 'Style Rack'],
+            typeSpeed: 100,
+            backSpeed: 50,
+            backDelay: 2000,
+            loop: true,
+            smartBackspace: true,
+        });
+    }
+
+    // 2. Share Button Logic
+    const shareBtn = document.getElementById('share-site-btn');
+    if (shareBtn) {
+        shareBtn.addEventListener('click', async () => {
+            const shareData = {
+                title: 'RS Sisters Boutique',
+                text: 'Check out this beautiful collection from RS Sisters!',
+                url: window.location.origin + '/shop.html'
+            };
+
+            // Use the modern Web Share API if available (on mobile)
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.error("Share failed:", err.message);
+                }
+            } else {
+                // Fallback for desktop: Copy link to clipboard
+                try {
+                    await navigator.clipboard.writeText(shareData.url);
+                    // Assuming your shop.js has a global showToast function
+                    if (window.showToast) {
+                        window.showToast("Link Copied!", "Shop link copied to your clipboard.", "success");
+                    } else {
+                        alert("Shop link copied to clipboard!");
+                    }
+                } catch (err) {
+                    console.error("Copy failed:", err);
+                }
+            }
+        });
+    }
+});
+</script>
+<!-- === HORIZONTAL SCROLL BUTTONS LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    function initializeScrollButtons() {
+        const scrollWrappers = document.querySelectorAll('.horizontal-scroll-wrapper');
+
+        scrollWrappers.forEach(wrapper => {
+            const container = wrapper.querySelector('.horizontal-scroll-container');
+            if (!container) return;
+
+            // Create and add the arrow buttons
+            const leftArrow = document.createElement('div');
+            leftArrow.className = 'scroll-arrow left-arrow';
+            leftArrow.innerHTML = '<i class="bi bi-chevron-left"></i>';
+            wrapper.appendChild(leftArrow);
+
+            const rightArrow = document.createElement('div');
+            rightArrow.className = 'scroll-arrow right-arrow';
+            rightArrow.innerHTML = '<i class="bi bi-chevron-right"></i>';
+            wrapper.appendChild(rightArrow);
+
+            function checkArrows() {
+                // Check if we are at the beginning
+                leftArrow.classList.toggle('disabled', container.scrollLeft <= 0);
+                // Check if we are at the end
+                const maxScrollLeft = container.scrollWidth - container.clientWidth;
+                rightArrow.classList.toggle('disabled', container.scrollLeft >= maxScrollLeft - 1);
+            }
+
+            leftArrow.addEventListener('click', () => {
+                // Scroll left by about 80% of the container's width
+                container.scrollBy({ left: -container.clientWidth * 0.8, behavior: 'smooth' });
+            });
+
+            rightArrow.addEventListener('click', () => {
+                // Scroll right by about 80% of the container's width
+                container.scrollBy({ left: container.clientWidth * 0.8, behavior: 'smooth' });
+            });
+
+            // Check the arrow states whenever the user scrolls manually
+            container.addEventListener('scroll', checkArrows);
+
+            // Initial check when the page loads
+            // Use a small delay to ensure products have been rendered
+            setTimeout(checkArrows, 1000); 
+        });
+    }
+    
+    // We need to wait for your main shop.js to finish rendering products.
+    // A MutationObserver is the most reliable way to do this.
+    const productSection = document.getElementById('shop-product-section');
+    if (productSection) {
+        const observer = new MutationObserver((mutationsList, obs) => {
+            // Check if product cards are now present
+            if (document.querySelector('.product-card-wrapper')) {
+                initializeScrollButtons(); // Run our setup
+                obs.disconnect(); // Stop observing, we're done
+            }
+        });
+        observer.observe(productSection, { childList: true, subtree: true });
+    }
+});
+</script>
+
+<!-- === INTERACTIVE BRAND VALUES SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const valueCards = document.querySelectorAll('.value-card');
+
+    valueCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const cardWidth = rect.width;
+            const cardHeight = rect.height;
+            
+            // Calculate rotation values (e.g., from -10deg to 10deg)
+            const rotateX = (y / cardHeight - 0.5) * -20; // Invert for natural feel
+            const rotateY = (x / cardWidth - 0.5) * 20;
+
+            // Apply 3D tilt and light glint position
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+        });
+
+        card.addEventListener('mouseleave', () => {
+            // Reset to default state
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+        });
+    });
+});
+</script>
+
+<!-- === STARDUST BURST & REVEAL (FINAL HTML) === -->
+<div id="guiding-comet-container" class="guiding-comet-container">
+    <div class="comet-particle"></div>
+    <!-- === PASTE THIS NEW, LARGER BLOCK of 15 stardust particles === -->
+<div class="stardust"></div><div class="stardust"></div><div class="stardust"></div>
+<div class="stardust"></div><div class="stardust"></div><div class="stardust"></div>
+<div class="stardust"></div><div class="stardust"></div><div class="stardust"></div>
+<div class="stardust"></div><div class="stardust"></div><div class="stardust"></div>
+<div class="stardust"></div><div class="stardust"></div><div class="stardust"></div>
+</div>
+<!-- === STARDUST BURST & REVEAL LOGIC SCRIPT (FINAL, v2) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const auth = firebase.auth();
+    const cometContainer = document.getElementById('guiding-comet-container');
+    const userIconWrapper = document.getElementById('user-icon-wrapper');
+    
+    if (!userIconWrapper) return;
+
+    // Create the content for our popover
+    const popoverContent = `
+        <p class="mb-2">Save your favorites & view your inquiries.</p>
+        <button class="btn btn-sm btn-popover-signin w-100" onclick="document.getElementById('login-btn').click()">
+            Sign in with Google
+        </button>`;
+    
+    // Initialize the popover but control it MANUALLY with JavaScript
+    const popover = new bootstrap.Popover(userIconWrapper, {
+        content: popoverContent,
+        trigger: 'manual' // This is the key: we tell it not to open on its own
+    });
+
+    const hasBeenShown = sessionStorage.getItem('cometShown');
+
+    if (cometContainer && !hasBeenShown) {
+        auth.onAuthStateChanged(user => {
+            // This entire animation logic will only run ONCE per session if the user is logged out.
+            if (!user && !sessionStorage.getItem('cometShown')) { 
+                sessionStorage.setItem('cometShown', 'true'); // Mark as shown immediately
+
+                setTimeout(() => {
+                    cometContainer.classList.add('animate');
+
+                    // When the comet animation finishes...
+                    setTimeout(() => {
+                        const stardusts = cometContainer.querySelectorAll('.stardust');
+                        stardusts.forEach(star => {
+                            const x = (Math.random() - 0.5) * 150;
+                            const y = (Math.random() - 0.5) * 150;
+                            star.style.setProperty('--x', `${x}px`);
+                            star.style.setProperty('--y', `${y}px`);
+                        });
+                        cometContainer.classList.add('burst');
+
+                        // --- THIS IS THE FIX ---
+                        // Manually show the popover
+                        setTimeout(() => popover.show(), 200);
+
+                        // Manually hide the popover after 4 seconds
+                        setTimeout(() => popover.hide(), 4000); 
+                        // --- END OF FIX ---
+
+                        setTimeout(() => cometContainer.style.display = 'none', 1000);
+                    }, 3000); // Animation duration
+
+                }, 3000); // 2-second delay
+            }
+        });
+    }
+
+    // Hide the popover if the user logs in
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            popover.hide();
+        }
+    });
+});
+</script>
+<!-- === UNIFIED BRAND MENU (OFFCANVAS) & VIEWER (FINAL) === -->
+
+<!-- The Offcanvas Menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="brandMenuOffcanvas">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title font-heading">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <!-- === PASTE THIS NEW offcanvas-body === -->
+<div class="offcanvas-body">
+    <!-- Profile Section -->
+    <div id="offcanvas-profile-section" class="mb-4">
+        <!-- JS will populate this -->
+         <input type="file" id="profile-image-upload" accept="image/png, image/jpeg" style="display: none;">
+    </div>
+    <hr>
+
+    <!-- User Hub Section (for logged-in users) -->
+    <div id="offcanvas-user-hub" class="offcanvas-user-hub d-none">
+        <!-- JS will populate this with links and recently viewed -->
+    </div>
+    
+    <!-- Categories Section -->
+    <h5 class="offcanvas-subtitle">Shop by Category</h5>
+    <!-- === PASTE THIS NEW, UPGRADED LIST === -->
+<ul class="nav flex-column offcanvas-nav" id="offcanvas-category-links">
+    <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-3" href="category.html?category=Neck%20Sets">
+            <i class="bi bi-gem"></i> 
+            <span>Neck Sets</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-3" href="category.html?category=Bracelets">
+            <i class="bi bi-hand-thumbs-up"></i> <!-- A common icon for bracelets -->
+            <span>Handmade Jewellery</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-3" href="category.html?category=Bangles">
+            <i class="bi bi-circle-square"></i> <!-- Abstract icon for bangles -->
+            <span>Bangles</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-3" href="category.html?category=Earring">
+            <i class="bi bi-brightness-high"></i> <!-- Icon suggesting sparkle for earrings -->
+            <span>Earrings</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-3" href="category.html?category=Clothes">
+            <i class="bi bi-tags-fill"></i> 
+            <span>Clothes</span>
+        </a>
+    </li>
+</ul>
+    <hr>
+
+    <!-- Featured Collection Section -->
+    <div id="offcanvas-featured-collection" class="offcanvas-featured-collection mt-auto">
+        <!-- JS will populate this -->
+    </div>
+<hr>
+    <!-- Social & Contact Section -->
+    <div class="offcanvas-footer">
+        <div class="social-icons-offcanvas">
+            <a href="https://www.instagram.com/style_rack_jewellery?igsh=MWwxOWcwaDd3N3ZsMg%3D%3D&utm_source=qr" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="https://youtube.com/@the_world_of_rssisters?si=jh3ZUqgU_TEgLD9G" class="social-icon"><i class="bi bi-youtube"></i></a>
+            <a href="https://wa.me/7893316959" class="social-icon"><i class="bi bi-whatsapp"></i></a>
+        </div>
+        <!-- === PASTE THIS NEW INSTALL BUTTON BLOCK === -->
+<div id="offcanvas-install-container" class="d-none mt-3">
+    <button class="btn btn-outline-primary w-100" id="offcanvas-install-btn">
+        <i class="bi bi-download me-2"></i>Install App
+    </button>
+</div>
+<!-- === END OF NEW BLOCK === -->
+        <button class="btn btn-main mt-3" data-bs-toggle="modal" data-bs-target="#contactModal">Get in Touch</button>
+        <!-- === PASTE THIS NEW BLOCK HERE === -->
+            <div id="offcanvas-logout-container" class="mt-3 d-none">
+                <hr>
+                <button class="btn btn-outline-secondary w-100" id="offcanvas-logout-btn">Logout</button>
+            </div>
+            <!-- === END OF NEW BLOCK === -->
+    </div>
+</div>
+</div>
+
+<!-- The Fullscreen Profile Image Viewer -->
+<div id="profile-image-viewer" class="profile-image-viewer">
+    <button class="close-viewer-btn">&times;</button>
+    <img src="" alt="Profile Photo Fullscreen" id="fullscreen-profile-img">
+</div>
+
+<!-- === UNIFIED BRAND MENU LOGIC SCRIPT (FINAL, v2) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    // --- DOM Elements ---
+    const offcanvasProfileSection = document.getElementById('offcanvas-profile-section');
+    const offcanvasUserHub = document.getElementById('offcanvas-user-hub');
+    const offcanvasFeatured = document.getElementById('offcanvas-featured-collection');
+    const brandMenuOffcanvasEl = document.getElementById('brandMenuOffcanvas');
+    const brandMenuOffcanvas = new bootstrap.Offcanvas(brandMenuOffcanvasEl);
+    // === PASTE THIS NEW EVENT LISTENER HERE ===
+
+// === PASTE THIS NEW, CORRECTED EVENT LISTENER ===
+
+// This listener fires every time the offcanvas is about to be shown
+brandMenuOffcanvasEl.addEventListener('show.bs.offcanvas', () => {
+     // --- THIS IS THE FIX ---
+    // Find the body of the offcanvas and reset its scroll to the top
+    const offcanvasBody = brandMenuOffcanvasEl.querySelector('.offcanvas-body');
+    if (offcanvasBody) {
+        offcanvasBody.scrollTop = 0;
+    }
+    // --- END OF FIX ---
+    const user = auth.currentUser;
+    if (user) {
+        // If a user is logged in, re-fetch the hub data to get the latest counts
+        fetchHubData(user);
+    }
+});
+    
+    const imageViewer = document.getElementById('profile-image-viewer');
+    const fullscreenImg = document.getElementById('fullscreen-profile-img');
+    const closeViewerBtn = document.querySelector('.close-viewer-btn');
+
+    // --- Core Functions ---
+
+    async function fetchHubData(user) {
+        if (!user || !offcanvasUserHub) return;
+        
+        try {
+            const favPromise = db.collection('users').doc(user.uid).collection('favorites').get();
+            // REPLACE with just this one line
+            const favSnapshot = await favPromise;
+            
+            const favCount = favSnapshot.size;
+            
+            // Recently Viewed Logic
+            const recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+            let recentItemHTML = '';
+            if (recentlyViewed.length > 0) {
+                const lastViewed = recentlyViewed[0];
+                recentItemHTML = `
+                    <h5 class="offcanvas-subtitle small">Recently Viewed</h5>
+                    <a href="product.html?id=${lastViewed.id}" class="offcanvas-recent-item">
+                        <img src="${lastViewed.image}" alt="${lastViewed.name}">
+                        <span>${lastViewed.name}</span>
+                    </a>`;
+            }
+
+            offcanvasUserHub.innerHTML = `
+                <div class="user-hub-links">
+                    <a href="#" class="hub-link" data-action="showFavorites"><i class="bi bi-heart-fill"></i> My Favorites <span class="badge ms-auto">${favCount}</span></a>
+                </div>
+                ${recentItemHTML}
+                <hr>
+            `;
+            offcanvasUserHub.classList.remove('d-none');
+        } catch (error) {
+            console.error("Error fetching hub data:", error);
+        }
+    }
+
+    async function fetchFeaturedCollection() {
+        if (!offcanvasFeatured) return;
+        try {
+            const snapshot = await db.collection('category_features').where('isActive', '==', true).limit(1).get();
+            if (snapshot.empty) {
+                offcanvasFeatured.style.display = 'none';
+                return;
+            }
+            
+            const feature = snapshot.docs[0].data();
+            offcanvasFeatured.innerHTML = `
+                <h5 class="offcanvas-subtitle">Featured Collection</h5>
+                <a href="${feature.buttonLink}" class="featured-item-card-link">
+                    <div class="featured-item-card">
+                        <img src="${feature.imageUrl}" alt="${feature.title}">
+                        <div>
+                            <strong>${feature.title}</strong>
+                            <span>${feature.subtitle}</span>
+                            <span class="featured-cta">Shop Now &rarr;</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+        } catch (error) { console.error("Error fetching featured collection:", error); }
+    }
+
+   // === PASTE THIS NEW, UPGRADED populateOffcanvasProfile FUNCTION ===
+function populateOffcanvasProfile(user) {
+    if (!offcanvasProfileSection) return;
+    const offcanvasTitle = document.querySelector('#brandMenuOffcanvas .offcanvas-title');
+
+    if (user) {
+        // A user is logged in
+        if (offcanvasTitle) offcanvasTitle.innerHTML = `<span class="offcanvas-welcome-title">Welcome, ${user.displayName.split(' ')[0]}!</span>`;
+        
+        // This is the new part: We check for a custom URL first
+        const userRef = db.collection('users').doc(user.uid);
+        userRef.get().then(doc => {
+            const photoToDisplay = (doc.exists && doc.data().customPhotoURL) ? doc.data().customPhotoURL : user.photoURL;
+
+            // Update the main navbar icon as well
+            const mainNavbarIcon = document.querySelector('#user-profile-icon img');
+            if (mainNavbarIcon) mainNavbarIcon.src = photoToDisplay;
+
+            offcanvasProfileSection.innerHTML = `
+                <div class="offcanvas-profile-img-container">
+                    <img src="${photoToDisplay}" alt="Profile" class="offcanvas-profile-img" id="offcanvas-profile-img-btn">
+                    <div class="profile-edit-button" title="Change Picture"><i class="bi bi-pencil-fill"></i></div>
+                </div>
+                <p class="offcanvas-profile-name">${user.displayName}</p>
+                <input type="file" id="profile-image-upload" accept="image/png, image/jpeg" style="display: none;">
+            `;
+            // Inside the if (user) block of populateOffcanvasProfile
+fetchHubData(user);
+document.getElementById('offcanvas-logout-container').classList.remove('d-none'); // <-- ADD THIS LINE
+        });
+
+    } else {
+        // User is logged out
+        if (offcanvasTitle) offcanvasTitle.textContent = 'Menu';
+        offcanvasProfileSection.innerHTML = `<i class="bi bi-person-circle" style="font-size: 80px; color: var(--accent);"></i><button class="btn btn-main mt-3" id="offcanvas-signin-btn">Sign in with Google</button>`;
+        // Inside the else block of populateOffcanvasProfile
+if (offcanvasUserHub) offcanvasUserHub.classList.add('d-none');
+document.getElementById('offcanvas-logout-container').classList.add('d-none'); // <-- ADD THIS LINE
+    }
+}
+
+    // --- Event Listeners ---
+    auth.onAuthStateChanged(populateOffcanvasProfile);
+    fetchFeaturedCollection();
+
+    brandMenuOffcanvasEl.addEventListener('click', (e) => {
+        if (e.target.id === 'offcanvas-signin-btn') {
+            // Find the real sign-in button from the main navbar dropdown and "click" it
+            const mainSignInButton = document.querySelector('#user-dropdown-menu #login-btn');
+            if (mainSignInButton) mainSignInButton.click();
+            brandMenuOffcanvas.hide();
+        }
+
+        if (e.target.id === 'offcanvas-profile-img-btn') {
+            if (fullscreenImg && imageViewer) {
+                fullscreenImg.src = e.target.src;
+                imageViewer.classList.add('show');
+            }
+        }
+        // === PASTE THIS NEW IF BLOCK HERE ===
+if (e.target.id === 'offcanvas-logout-btn') {
+    // Find the real logout button from the main navbar dropdown and "click" it
+    const mainLogoutButton = document.querySelector('#user-dropdown-menu #logout-btn');
+    if (mainLogoutButton) {
+        mainLogoutButton.click();
+    }
+    brandMenuOffcanvas.hide();
+}
+
+        const hubLink = e.target.closest('.hub-link');
+        if (hubLink) {
+            e.preventDefault();
+            const action = hubLink.dataset.action;
+            const targetButtonId = action === 'showOrders' ? 'my-orders-btn' : 'my-favorites-btn';
+            const mainButton = document.getElementById(targetButtonId);
+            if (mainButton) mainButton.click();
+            brandMenuOffcanvas.hide();
+        }
+
+        if (e.target.closest('.offcanvas-nav a') || e.target.closest('.featured-item-card-link')) {
+            brandMenuOffcanvas.hide();
+        }
+    });
+
+    if (imageViewer) {
+        closeViewerBtn.addEventListener('click', () => imageViewer.classList.remove('show'));
+        imageViewer.addEventListener('click', (e) => {
+            if (e.target === imageViewer) imageViewer.classList.remove('show');
+        });
+    }
+});
+</script>
+
+<!-- === CUSTOM PROFILE PICTURE UPLOAD LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // We assume your other scripts have initialized Firebase
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    // Your actual Cloudinary details
+    const CLOUDINARY_CLOUD_NAME = 'doxabh7af';
+    const CLOUDINARY_UPLOAD_PRESET = 'rs_sisters_profiles';
+    const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
+
+    const offcanvasProfileSection = document.getElementById('offcanvas-profile-section');
+    const fileInput = document.getElementById('profile-image-upload');
+
+    async function handleProfilePictureUpload(event) {
+        const user = auth.currentUser;
+        if (!user) return;
+
+        const file = event.target.files[0];
+        if (!file) return;
+
+        // Create and show a loading spinner overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'profile-upload-overlay uploading';
+        overlay.innerHTML = `<div class="spinner-border text-light" role="status"></div>`;
+        
+        const profileImgContainer = offcanvasProfileSection.querySelector('.offcanvas-profile-img-container');
+        if (profileImgContainer) profileImgContainer.appendChild(overlay);
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        
+        try {
+            // 1. Upload to Cloudinary
+            const response = await fetch(CLOUDINARY_URL, {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            if (!data.secure_url) throw new Error('Image upload failed');
+            const newPhotoURL = data.secure_url;
+
+            // 2. Update Auth profile and Firestore in parallel
+            await Promise.all([
+                user.updateProfile({ photoURL: newPhotoURL }),
+                db.collection('users').doc(user.uid).update({ customPhotoURL: newPhotoURL })
+            ]);
+
+            // 3. Update UI instantly
+            // The onAuthStateChanged listener in your main scripts will automatically
+            // pick up the new photoURL and update the images.
+            // For an even faster feel, we can update them manually here too.
+            const mainNavbarIcon = document.querySelector('#user-profile-icon img');
+            const offcanvasImg = document.querySelector('.offcanvas-profile-img');
+            if(mainNavbarIcon) mainNavbarIcon.src = newPhotoURL;
+            if(offcanvasImg) offcanvasImg.src = newPhotoURL;
+
+            if (window.showToast) window.showToast("Success!", "Profile picture updated.", "success");
+
+        } catch (error) {
+            console.error("Profile picture upload failed:", error);
+            if (window.showToast) window.showToast("Upload Failed", "Could not update picture.", "danger");
+        } finally {
+            if (overlay) overlay.remove();
+            if (fileInput) fileInput.value = '';
+        }
+    }
+    
+    // Listen for clicks on the edit button
+    offcanvasProfileSection.addEventListener('click', (e) => {
+        if (e.target.closest('.profile-edit-button')) {
+            fileInput.click();
+        }
+    });
+
+    // Listen for when a new file is chosen
+    fileInput.addEventListener('change', handleProfilePictureUpload);
+});
+</script>
+
+<!-- === SMART REFRESH LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const refreshBtn = document.getElementById('smart-refresh-btn');
+
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', async () => {
+            // Check if the main 'main' function from shop.js is available
+            if (typeof main === 'function') {
+                
+                // Provide instant visual feedback
+                if (typeof showToast === 'function') {
+                    showToast("Refreshing...", "Getting the latest updates.", "info");
+                }
+                refreshBtn.classList.add('refreshing');
+                refreshBtn.disabled = true;
+
+                try {
+                    // Re-run the main initialization function to fetch all new data
+                    // and re-render the entire page.
+                    await main();
+                } catch (error) {
+                    console.error("Smart refresh failed:", error);
+                } finally {
+                    // Restore the button after the refresh is complete
+                    setTimeout(() => {
+                        refreshBtn.classList.remove('refreshing');
+                        refreshBtn.disabled = false;
+                    }, 1000); // A small delay for a smoother feel
+                }
+            } else {
+                // A simple fallback if the main function isn't found
+                console.log("Fallback: Reloading page...");
+                window.location.reload();
+            }
+        });
+    }
+});
+</script>
+
+<!-- === ELEGANT CATEGORY TABS LOGIC SCRIPT (FINAL, CORRECTED) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tabsContainer = document.querySelector('.category-tabs-container');
+    // Important: We select the parent container of all the sections
+    const contentPanesContainer = document.getElementById('category-content-panes'); 
+    
+    if (tabsContainer && contentPanesContainer) {
+        const contentPanes = contentPanesContainer.querySelectorAll('.category-section-wrapper');
+
+        // --- THIS IS THE FIX ---
+        // By default, show the first section.
+        const firstPaneId = tabsContainer.querySelector('.category-tab').dataset.target;
+        const firstPane = document.getElementById(firstPaneId);
+        if (firstPane) {
+            firstPane.classList.add('active');
+        }
+        // --- END OF FIX ---
+
+        tabsContainer.addEventListener('click', (e) => {
+            const tab = e.target.closest('.category-tab');
+            if (!tab) return;
+
+            // 1. Update the active state on the tab buttons
+            tabsContainer.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // --- PASTE THIS NEW AUTO-SCROLL LOGIC HERE ---
+    // This is the magic for the smooth auto-scroll on mobile
+    const tabRect = tab.getBoundingClientRect();
+    const containerRect = tabsContainer.getBoundingClientRect();
+
+    // Calculate the desired scroll position
+    // We want to scroll so the clicked tab is near the left, but not quite at the edge
+    const scrollAmount = tab.offsetLeft - containerRect.left - 30; // 30px offset from the left edge
+
+    tabsContainer.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+    });
+    // --- END OF NEW LOGIC ---
+
+            // 2. Hide all content panes
+            contentPanes.forEach(pane => {
+                pane.classList.remove('active');
+                // We add a direct style to ensure it's hidden, overriding other styles
+                pane.style.display = 'none';
+            });
+
+            // 3. Show the target content pane
+            const targetId = tab.dataset.target;
+            const targetPane = document.getElementById(targetId);
+            if (targetPane) {
+                // We add the class for the animation and also set display to block
+                targetPane.classList.add('active');
+                targetPane.style.display = 'block';
+            }
+        });
+    }
+});
+</script>
+
+<!-- === "PILL & UNDERLINE" TABS LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tabsContainer = document.querySelector('.category-tabs-container');
+    
+    if (tabsContainer) {
+        const magicUnderline = tabsContainer; // The container itself holds the underline
+
+        function updateUnderline(activeTab) {
+            if (!activeTab) return;
+            // Measure the active tab's width and position
+            const tabWidth = activeTab.offsetWidth;
+            const tabOffsetLeft = activeTab.offsetLeft;
+            
+            // Update the CSS variables to move the underline
+            magicUnderline.style.setProperty('--underline-width', `${tabWidth}px`);
+            magicUnderline.style.setProperty('--underline-offset', `${tabOffsetLeft}px`);
+        }
+
+        // Set the initial position for the first active tab
+        const initialActiveTab = tabsContainer.querySelector('.category-tab.active');
+        if (initialActiveTab) {
+            // Use a small delay to ensure rendering is complete
+            setTimeout(() => updateUnderline(initialActiveTab), 100);
+        }
+
+        // Listen for clicks on any tab
+        tabsContainer.addEventListener('click', (e) => {
+            const tab = e.target.closest('.category-tab');
+            if (tab) {
+                updateUnderline(tab);
+            }
+        });
+    }
+});
+</script>
+
+<!-- === SHOPPING BAG LOGIC SCRIPT (FINAL & CORRECTED) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+    let bagState = {};
+    let allProducts = []; // This script has its OWN private product cache
+    // --- PASTE THIS NEW FUNCTION HERE ---
+function showToast(title, body, type = 'info') {
+    const toastEl = document.getElementById('appToast');
+    if (!toastEl) return;
+
+    const bsToast = new bootstrap.Toast(toastEl, { delay: 3500 });
+    const icons = { success: 'bi-check-circle-fill text-success', danger: 'bi-x-circle-fill text-danger', info: 'bi-info-circle-fill text-info' };
+    
+    document.getElementById('toastTitle').textContent = title;
+    document.getElementById('toastBody').textContent = body;
+    document.getElementById('toast-icon').className = `bi me-2 ${icons[type] || icons.info}`;
+    
+    bsToast.show();
+}
+// --- END OF NEW FUNCTION ---
+
+    // Get references to all modals
+    const shoppingBagModalEl = document.getElementById('shoppingBagModal');
+    const shoppingBagModal = shoppingBagModalEl ? new bootstrap.Modal(shoppingBagModalEl) : null;
+    const bagInquiryModalEl = document.getElementById('bagInquiryModal');
+    const bagInquiryModal = bagInquiryModalEl ? new bootstrap.Modal(bagInquiryModalEl) : null;
+    const bagInquiryForm = document.getElementById('bag-inquiry-form');
+
+    // This function fetches all products for this script to use
+    async function initializeBagSystem() {
+        try {
+            const productsSnap = await db.collection('products').get();
+            allProducts = productsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            
+            // Now that we have products, set up the user listener
+            auth.onAuthStateChanged(async (user) => {
+                if (user) {
+                    const bagSnap = await db.collection('users').doc(user.uid).collection('bag').get();
+                    bagState = {};
+                    bagSnap.forEach(doc => bagState[doc.id] = doc.data().quantity);
+                } else {
+                    bagState = {};
+                }
+                renderShoppingBag();
+            });
+        } catch (error) {
+            console.error("Shopping Bag initialization failed:", error);
+        }
+    }
+
+    function renderShoppingBag() {
+        const bagBadge = document.getElementById('bag-badge');
+        const bagBody = document.getElementById('shopping-bag-body');
+        const bagTotalPrice = document.getElementById('bag-total-price');
+        const bagInquiryBtn = document.getElementById('bag-inquiry-btn');
+        
+        if (!bagBadge || !bagBody) return;
+
+        const itemCount = Object.values(bagState).reduce((sum, qty) => sum + qty, 0);
+        bagBadge.textContent = itemCount;
+        bagBadge.classList.toggle('visible', itemCount > 0);
+        if (bagInquiryBtn) bagInquiryBtn.disabled = itemCount === 0;
+
+        if (itemCount === 0) {
+            bagBody.innerHTML = `<p class="text-center text-secondary p-4">Your shopping bag is empty.</p>`;
+            if (bagTotalPrice) bagTotalPrice.textContent = '₹0';
+            return;
+        }
+
+        let total = 0;
+        bagBody.innerHTML = Object.entries(bagState).map(([productId, quantity]) => {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) return '';
+            const itemTotal = (product.salePrice || product.price) * quantity;
+            total += itemTotal;
+            const imageUrl = (product.images && product.images[0]) || 'https://via.placeholder.com/70';
+            return `
+                <div class="bag-item" data-product-id="${productId}">
+                    <img src="${imageUrl}" class="bag-item-image" alt="${product.name}">
+                    <div class="bag-item-details">
+                        <div class="bag-item-name">${product.name}</div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" data-action="decrease">-</button>
+                            <span class="quantity-display">${quantity}</span>
+                            <button class="quantity-btn" data-action="increase">+</button>
+                        </div>
+                    </div>
+                    <div class="ms-auto text-end">
+                        <span class="bag-item-price d-block">₹${itemTotal.toLocaleString()}</span>
+                        <button class="bag-item-remove-btn" title="Remove"><i class="bi bi-trash"></i></button>
+                    </div>
+                </div>`;
+        }).join('');
+        if (bagTotalPrice) bagTotalPrice.textContent = `₹${total.toLocaleString()}`;
+    }
+
+    async function updateBagInFirestore(productId, newQuantity) {
+        const user = auth.currentUser;
+        if (!user) return;
+        const bagRef = db.collection('users').doc(user.uid).collection('bag').doc(productId);
+        if (newQuantity > 0) {
+            await bagRef.set({ quantity: newQuantity });
+        } else {
+            await bagRef.delete();
+        }
+    }
+
+    // --- Event Listeners ---
+    document.body.addEventListener('click', async e => {
+        const user = auth.currentUser;
+        const addToBagBtn = e.target.closest('.btn-add-to-bag, #add-to-bag-detail-btn');
+        const shoppingBagIcon = e.target.closest('#shopping-bag-icon');
+        const quantityBtn = e.target.closest('.quantity-btn');
+        const removeBtn = e.target.closest('.bag-item-remove-btn');
+        
+       // === PASTE THIS NEW, CORRECTED BLOCK ===
+if (addToBagBtn) {
+    e.preventDefault();
+    if (!user) {
+        // Use the local showToast function
+        return showToast("Login Required", "Please sign in to add items.", "info");
+    }
+    
+    const productId = addToBagBtn.dataset.productId;
+    const currentQtyInBag = bagState[productId] || 0;
+    
+    // --- THIS IS THE STOCK LIMIT FIX ---
+    const product = allProducts.find(p => p.id === productId);
+    if (product && currentQtyInBag >= product.stock) {
+        return showToast("Stock Limit Reached", `You already have the maximum available stock of "${product.name}" in your bag.`, "info");
+    }
+    // --- END OF FIX ---
+    
+    const newQty = currentQtyInBag + 1;
+    
+    bagState[productId] = newQty;
+    renderShoppingBag(); // Update UI instantly
+    await updateBagInFirestore(productId, newQty); // Update database
+    if(product) showToast("Added to Bag!", `"${product.name}" was added.`, "success");
+}
+
+        if (shoppingBagIcon) {
+            if(shoppingBagModal) shoppingBagModal.show();
+        }
+
+        // === PASTE THIS NEW, CORRECTED BLOCK ===
+if (quantityBtn) {
+    const productId = quantityBtn.closest('.bag-item').dataset.productId;
+    const currentQty = bagState[productId] || 0;
+    
+    // --- THIS IS THE STOCK LIMIT FIX ---
+    if (quantityBtn.dataset.action === 'increase') {
+        const product = allProducts.find(p => p.id === productId);
+        if (product && currentQty >= product.stock) {
+            // If current quantity is already at max stock, show a message and stop.
+            showToast("Stock Limit Reached", `Sorry, only ${product.stock} units of "${product.name}" are available.`, "info");
+            return; // Exit the function, do not increase quantity
+        }
+    }
+    // --- END OF FIX ---
+    
+    const newQty = quantityBtn.dataset.action === 'increase' ? currentQty + 1 : currentQty - 1;
+    
+    if (newQty > 0) {
+        bagState[productId] = newQty;
+    } else {
+        delete bagState[productId];
+    }
+    
+    renderShoppingBag();
+    await updateBagInFirestore(productId, newQty);
+}
+
+        if (removeBtn) {
+            const productId = removeBtn.closest('.bag-item').dataset.productId;
+            delete bagState[productId];
+            renderShoppingBag();
+            await updateBagInFirestore(productId, 0);
+        }
+    });
+
+    document.getElementById('bag-inquiry-btn')?.addEventListener('click', () => {
+        if (shoppingBagModal) shoppingBagModal.hide();
+        if (bagInquiryModal) {
+            const user = auth.currentUser;
+            if(user) {
+                document.getElementById('bagInquiryName').value = user.displayName || '';
+                // Add logic here to pre-fill address from user's profile if it exists
+            }
+            bagInquiryModal.show();
+        }
+    });
+    
+    document.getElementById('submit-bag-inquiry-btn')?.addEventListener('click', async () => {
+        if (!bagInquiryForm.checkValidity()) {
+            bagInquiryForm.reportValidity();
+            return;
+        }
+        const user = auth.currentUser;
+        if (!user) return;
+
+        const btn = document.getElementById('submit-bag-inquiry-btn');
+        if (window.setButtonLoading) window.setButtonLoading(btn, true, 'Saving...');
+
+        const shippingAddress = {
+            name: document.getElementById('bagInquiryName').value,
+            phone: document.getElementById('bagInquiryPhone').value,
+            address: document.getElementById('bagInquiryAddress').value,
+            city: document.getElementById('bagInquiryCity').value,
+            pincode: document.getElementById('bagInquiryPincode').value,
+        };
+
+        const itemsForInquiry = Object.entries(bagState).map(([id, qty]) => {
+            const product = allProducts.find(p => p.id === id);
+            if (!product) return null;
+            return { id, name: product.name, qty, imageUrl: (product.images && product.images[0]) || '' };
+        }).filter(item => item !== null);
+
+        const inquiryData = {
+            userId: user.uid,
+            customerName: shippingAddress.name,
+            customerPhone: shippingAddress.phone,
+            shippingAddress: shippingAddress,
+            items: itemsForInquiry,
+            status: "New",
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+        
+        const friendPhoneNumber = "917893316959";
+        // === PASTE THIS CORRECTED LINE in your Bag Logic Script ===
+
+// Calculate the total price of the items in the bag
+const totalAmount = itemsForInquiry.reduce((sum, item) => {
+    const product = allProducts.find(p => p.id === item.id);
+    if (product) {
+        return sum + (product.salePrice || product.price) * item.qty;
+    }
+    return sum;
+}, 0);
+
+// --- END OF NEW BLOCK ---
+const message = `Hello RS Sisters! I would like to inquire about my shopping bag containing:\n\n${itemsForInquiry.map(i => `• ${i.name} (Qty: ${i.qty})`).join('\n')}\n\n*Total Amount: ₹${totalAmount.toLocaleString()}*\n\nMy name is ${inquiryData.customerName}. Please confirm.`;        
+const whatsappUrl = `https://wa.me/${friendPhoneNumber}?text=${encodeURIComponent(message)}`;
+        
+        
+
+        try {
+            await db.collection('bag_inquiries').add(inquiryData);
+            bagInquiryModal.hide();
+            bagInquiryForm.reset();
+            // --- PASTE THIS NEW BLOCK HERE ---
+    // Show the confirmation modal instead of the old toast
+    const confirmationModal = new bootstrap.Modal(document.getElementById('inquiryConfirmationModal'));
+    const subtitle = document.getElementById('confirmation-modal-subtitle');
+    if (subtitle) {
+        subtitle.textContent = "Your inquiry for the items in your bag has been logged.";
+    }
+    const whatsappLink = document.getElementById('confirmation-modal-whatsapp-link');
+    if (whatsappLink) {
+        whatsappLink.href = whatsappUrl;
+    }
+    confirmationModal.show();
+    // --- END OF NEW BLOCK ---
+            if (window.showToast) window.showToast("Success!", "Your inquiry has been submitted.", "success");
+
+            const bagCollectionRef = db.collection('users').doc(user.uid).collection('bag');
+            const bagSnapshot = await bagCollectionRef.get();
+            const batch = db.batch();
+            bagSnapshot.docs.forEach(doc => batch.delete(doc.ref));
+            await batch.commit();
+            bagState = {};
+            renderShoppingBag();
+        } catch (error) {
+            console.error("Error submitting bag inquiry:", error);
+            if (window.showToast) window.showToast("Error", "Could not submit inquiry.", "danger");
+        } finally {
+            if (window.setButtonLoading) window.setButtonLoading(btn, false);
+        }
+    });
+
+    // Start the bag system
+    initializeBagSystem();
+});
+</script>
+
+<!-- === MY INQUIRIES HUB LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    const inquiriesModal = new bootstrap.Modal(document.getElementById('myInquiriesModal'));
+    const inquiriesBtn = document.getElementById('my-inquiries-hub-btn');
+    const inquiriesBadge = document.getElementById('inquiries-badge');
+    const inquiriesBadgeOffcanvas = document.getElementById('inquiries-badge-offcanvas');
+
+    // This function checks for new updates and shows the badge
+    // === PASTE THIS NEW, SIMPLER checkInquiryUpdates FUNCTION ===
+function checkInquiryUpdates(user) {
+    if (!user) {
+        if (inquiriesBtn) inquiriesBtn.classList.add('d-none');
+        updateBadge(); // Call updateBadge to hide the count
+        return;
+    }
+    if (inquiriesBtn) inquiriesBtn.classList.remove('d-none');
+    
+    // This is the single point of truth for updating the badge
+    updateBadge(); 
+
+    // Set up listeners to update the badge in real-time
+    db.collection('inquiries').where('userId', '==', user.uid).onSnapshot(updateBadge);
+    db.collection('bag_inquiries').where('userId', '==', user.uid).onSnapshot(updateBadge);
+}
+
+    // === PASTE THIS NEW, CORRECTED updateBadge FUNCTION ===
+async function updateBadge() {
+    const user = auth.currentUser;
+    if (!user) {
+        // If user is logged out, hide the badges
+        if (inquiriesBadge) inquiriesBadge.classList.remove('visible');
+        if (inquiriesBadgeOffcanvas) inquiriesBadgeOffcanvas.textContent = '';
+        return;
+    }
+
+    try {
+        // We only need to get the documents to count them.
+        // This is more efficient than fetching all the data.
+        const singleSnap = await db.collection('inquiries').where('userId', '==', user.uid).get();
+        const bagSnap = await db.collection('bag_inquiries').where('userId', '==', user.uid).get();
+        
+        // The .size property gives the correct count of documents.
+        const totalInquiries = singleSnap.size + bagSnap.size;
+        
+        if (inquiriesBadge) {
+            inquiriesBadge.textContent = totalInquiries;
+            inquiriesBadge.classList.toggle('visible', totalInquiries > 0);
+        }
+        if (inquiriesBadgeOffcanvas) {
+            inquiriesBadgeOffcanvas.textContent = totalInquiries > 0 ? totalInquiries : '';
+        }
+    } catch (error) {
+        console.error("Error updating inquiry badge count:", error);
+    }
+}
+    
+    // === PASTE THIS NEW, CORRECTED showMyInquiries FUNCTION ===
+async function showMyInquiries(user) {
+    const modalBody = document.getElementById('my-inquiries-body');
+    const singlePane = document.getElementById('single-inquiries-pane');
+    const bagPane = document.getElementById('bag-inquiries-pane');
+
+    if (!singlePane || !bagPane) return; // Safety check
+
+    // Show the main modal
+    inquiriesModal.show();
+
+    // Show spinners in both panes initially
+    singlePane.innerHTML = `<div class="text-center p-5"><div class="spinner-border text-accent"></div></div>`;
+    bagPane.innerHTML = `<div class="text-center p-5"><div class="spinner-border text-accent"></div></div>`;
+
+    try {
+        const singlePromise = db.collection('inquiries').where('userId', '==', user.uid).orderBy('createdAt', 'desc').get();
+        const bagPromise = db.collection('bag_inquiries').where('userId', '==', user.uid).orderBy('createdAt', 'desc').get();
+        const [singleSnap, bagSnap] = await Promise.all([singlePromise, bagPromise]);
+
+        // --- Render Single Item Inquiries ---
+        if (singleSnap.empty) {
+            singlePane.innerHTML = '<p class="text-secondary text-center p-4">No single item inquiries found.</p>';
+        } else {
+            singlePane.innerHTML = singleSnap.docs.map(doc => {
+                const inquiry = doc.data();
+                return `
+                <div class="inquiry-item status-${inquiry.status}">
+                    <div class="inquiry-item-header">
+                        <span class="inquiry-item-product">${inquiry.productName}</span>
+                        <!-- === THIS IS THE CORRECTED LINE for Single Inquiries === -->
+                        <div>
+                            <small class="inquiry-item-date text-muted">${inquiry.createdAt.toDate().toLocaleDateString()}</small>
+                            <span class="inquiry-item-status">${inquiry.status}</span>
+                        </div>
+                    </div>
+                    ${inquiry.status === 'Shipped' ? `<div class="inquiry-details-content">Your order has shipped! Please check your WhatsApp for the tracking ID from our team.</div>` : ''}
+                </div>`;
+            }).join('');
+        }
+
+        // --- Render Shopping Bag Inquiries ---
+        if (bagSnap.empty) {
+            bagPane.innerHTML = '<p class="text-secondary text-center p-4">No shopping bag inquiries found.</p>';
+        } else {
+            bagPane.innerHTML = bagSnap.docs.map(doc => {
+                const inquiry = doc.data();
+                return `
+                <div class="inquiry-item status-${inquiry.status}">
+                    <div class="inquiry-item-header">
+                        <span class="inquiry-item-product">Bag (${inquiry.items.length} items)</span>
+                        <!-- === THIS IS THE CORRECTED LINE for Single Inquiries === -->
+                            <div>
+                                <small class="inquiry-item-date text-muted">${inquiry.createdAt.toDate().toLocaleDateString()}</small>
+                                <span class="inquiry-item-status">${inquiry.status}</span>
+                            </div>
+                    </div>
+                    ${inquiry.status === 'Shipped' ? `<div class="inquiry-details-content">Your order has shipped! Please check your WhatsApp for the tracking ID from our team.</div>` : ''}
+                </div>`;
+            }).join('');
+        }
+
+    } catch (error) {
+        console.error("Error fetching inquiries:", error);
+        singlePane.innerHTML = `<p class="text-center text-danger">Could not load inquiries.</p>`;
+        bagPane.innerHTML = `<p class="text-center text-danger">Could not load inquiries.</p>`;
+    }
+}
+
+    // --- Event Listeners ---
+    auth.onAuthStateChanged(checkInquiryUpdates);
+
+    document.body.addEventListener('click', e => {
+        if (e.target.closest('#my-inquiries-hub-btn')) {
+            const user = auth.currentUser;
+            if (user) showMyInquiries(user);
+        }
+        // Listener for the offcanvas hub link
+        const hubLink = e.target.closest('.hub-link');
+        if (hubLink && hubLink.dataset.action === 'showInquiries') {
+            const user = auth.currentUser;
+            if (user) showMyInquiries(user);
+        }
+    });
+});
+</script>
+<!-- === CELEBRATORY CONFETTI BURST (FINAL) === -->
+<div id="welcome-animation-container" class="welcome-animation-container">
+    <div id="welcome-gift-box" class="welcome-gift-box">🎁</div>
+    <h1 id="welcome-animation-text" class="welcome-animation-text"></h1>
+</div>
+<!-- === CELEBRATORY CONFETTI BURST LOGIC SCRIPT (FINAL) === -->
+<!-- Load the canvas-confetti library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const auth = firebase.auth();
+    
+    const container = document.getElementById('welcome-animation-container');
+    const giftBox = document.getElementById('welcome-gift-box');
+    const welcomeText = document.getElementById('welcome-animation-text');
+
+    if (!container) return;
+
+    // === PASTE THIS NEW, UPGRADED FUNCTION ===
+function runConfettiAnimation() {
+    const duration = 3 * 1000; // Let the animation last for 3 seconds
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 10001 };
+
+    function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+            return clearInterval(interval);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+        // Since we have a dark and light theme, we'll use a vibrant color set that works on both
+        const colors = ['#D4AF37', '#FFFFFF', '#FFC107', '#4E86E6'];
+
+        // Fire a burst from the left side
+        confetti({ ...defaults, particleCount, spread: 60, origin: { x: 0, y: randomInRange(0.4, 0.7) }, colors: colors });
+        // Fire a burst from the right side
+        confetti({ ...defaults, particleCount, spread: 60, origin: { x: 1, y: randomInRange(0.4, 0.7) }, colors: colors });
+
+    }, 250);
+}
+
+    // === REPLACE your old showWelcomeAnimation function with this one ===
+function showWelcomeAnimation(user) {
+    if (!user || !user.displayName) return;
+
+    // Determine the message parts
+    const metadata = user.metadata;
+    const isNewUser = metadata.creationTime === metadata.lastSignInTime;
+    const subtitleText = isNewUser ? "Welcome," : "Welcome Back,";
+    const userName = user.displayName.split(' ')[0] + "!"; // Get first name
+    
+    // --- THIS IS THE FIX ---
+    // We build the HTML with the two parts
+    welcomeText.innerHTML = `
+        ${subtitleText}
+        <span class="user-name">${userName}</span>
+    `;
+    // --- END OF FIX ---
+    
+    // The rest of the animation sequence is the same
+    container.classList.add('show');
+    setTimeout(() => {
+        giftBox.style.opacity = '0';
+        runConfettiAnimation();
+        setTimeout(() => {
+            welcomeText.classList.add('show');
+            setTimeout(() => {
+                container.classList.remove('show');
+            }, 2500);
+        }, 500);
+    }, 1500);
+}
+
+    // This listener waits for a user to sign in
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            // Check if the welcome animation has already been shown in this session
+            if (!sessionStorage.getItem('welcomeAnimationShown')) {
+                sessionStorage.setItem('welcomeAnimationShown', 'true');
+                
+                // Use a small delay to ensure the page is settled
+                setTimeout(() => {
+                    showWelcomeAnimation(user);
+                }, 1000);
+            }
+        } else {
+            // If user logs out, clear the flag so it can show again on next login
+            sessionStorage.removeItem('welcomeAnimationShown');
+        }
+    });
+});
+</script>
+
+<!-- === INQUIRY SENT CONFIRMATION MODAL (FINAL) === -->
+<div class="modal fade" id="inquiryConfirmationModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-body p-4 p-md-5">
+                <div class="checkmark-wrapper mb-3">
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+                <h3 class="font-heading">Inquiry Submitted!</h3>
+                <p class="text-secondary" id="confirmation-modal-subtitle">Your details have been logged with our team.</p>
+                <hr class="my-4">
+                <p class="fw-bold">Next Step: Start the Conversation</p>
+                <a href="#" id="confirmation-modal-whatsapp-link" class="btn btn-main-whatsapp btn-lg mt-2" target="_blank">
+                    <i class="bi bi-whatsapp me-2"></i> Open WhatsApp Chat
+                </a>
+                <!-- === THIS IS THE CORRECTED BUTTON === -->
+<button type="button" class="btn btn-continue-shopping mt-3" data-bs-dismiss="modal">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- === PWA INSTALL MODAL (FINAL) === -->
+<div id="pwa-install-modal" class="pwa-install-modal">
+    <div class="pwa-modal-content">
+        <button class="pwa-close-btn" id="pwa-close-btn">&times;</button>
+        <img src="https://res.cloudinary.com/dljmxltfr/image/upload/v1755829980/updated_py5htw.jpg" alt="RS Sisters Logo" class="pwa-modal-logo">
+        <h4 class="font-heading">Get the Full Experience</h4>
+        <p class="text-secondary">Install the RS Sisters app to your home screen for faster, full-screen browsing.</p>
+        
+        <!-- This button is for Android/Desktop -->
+        <button class="btn btn-main" id="pwa-install-btn">
+            <i class="bi bi-download me-2"></i> Install App
+        </button>
+
+        <!-- This is a guide for iPhone users, hidden by default -->
+        <div id="ios-install-guide" class="ios-install-guide d-none">
+            <p class="text-secondary">To install: <br>1. Tap the <i class="bi bi-box-arrow-up"></i> icon below. <br>2. Scroll down and tap 'Add to Home Screen'.</p>
+        </div>
+    </div>
+</div>
+
+<!-- === PWA INSTALL LOGIC SCRIPT (FINAL) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- PWA Service Worker Registration ---
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker registered successfully', reg))
+            .catch(err => console.error('Service Worker registration failed:', err));
+    }
+
+    // --- Install Prompt Logic ---
+    const installModal = document.getElementById('pwa-install-modal');
+    const installBtn = document.getElementById('pwa-install-btn');
+    const iosGuide = document.getElementById('ios-install-guide');
+    const closeBtn = document.getElementById('pwa-close-btn');
+    let deferredPrompt;
+    // --- ADD THESE TWO LINES ---
+    const pwaBannerSection = document.getElementById('pwa-install-banner-section');
+    const pwaBannerInstallBtn = document.getElementById('pwa-banner-install-btn');
+    const offcanvasInstallContainer = document.getElementById('offcanvas-install-container');
+    const offcanvasInstallBtn = document.getElementById('offcanvas-install-btn');
+    
+
+    // Listen for the browser's built-in install prompt
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault(); // Prevent the default browser banner
+        deferredPrompt = e; // Save the event so we can trigger it later
+        if (pwaBannerSection) pwaBannerSection.classList.remove('d-none'); // Show the banner
+        // --- ADD THIS LINE ---
+    if (offcanvasInstallContainer) offcanvasInstallContainer.classList.remove('d-none');
+    // --- END OF NEW LINE ---
+    
+        
+        // Show our custom modal after a short delay
+        setTimeout(() => {
+            if (installModal) installModal.classList.add('show');
+        }, 3000); // 3-second delay
+    });
+
+    // Handle Android/Desktop install button click
+    if (installBtn) {
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt(); // Show the official install prompt
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                deferredPrompt = null;
+                installModal.classList.remove('show');
+            }
+        });
+    }
+    // --- PASTE THIS NEW EVENT LISTENER BLOCK ---
+    if (offcanvasInstallBtn) {
+        offcanvasInstallBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                // Hide the offcanvas menu first for a better UX
+                const brandMenuOffcanvas = bootstrap.Offcanvas.getInstance(document.getElementById('brandMenuOffcanvas'));
+                if (brandMenuOffcanvas) brandMenuOffcanvas.hide();
+
+                // Show the official install prompt
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    // If user accepts, hide the button permanently
+                    if (offcanvasInstallContainer) offcanvasInstallContainer.classList.add('d-none');
+                }
+                deferredPrompt = null;
+            }
+        });
+    }
+    // --- END OF NEW BLOCK ---
+    // --- PASTE THIS NEW EVENT LISTENER BLOCK ---
+    if (pwaBannerInstallBtn) {
+        pwaBannerInstallBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                // Show the official install prompt
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    // If user accepts, hide the banner and other prompts
+                    if (pwaBannerSection) pwaBannerSection.classList.add('d-none');
+                    if (offcanvasInstallContainer) offcanvasInstallContainer.classList.add('d-none');
+                }
+                deferredPrompt = null;
+            } else if (isIOS) {
+                // If on iOS, just show an alert with instructions for now
+                alert("To install, tap the Share icon in Safari and then 'Add to Home Screen'.");
+            }
+        });
+    }
+    // --- END OF NEW BLOCK ---
+    
+    // Logic for iPhone/iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (isIOS && navigator.standalone !== true) {
+        // If it's an iPhone and not already a standalone app
+        setTimeout(() => {
+            if (installBtn) installBtn.classList.add('d-none'); // Hide the main install button
+            if (iosGuide) iosGuide.classList.remove('d-none'); // Show the iOS guide
+            if (installModal) installModal.classList.add('show');
+        }, 5000); // Show after a longer delay for iOS
+    }
+
+    // Close button for the modal
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            installModal.classList.remove('show');
+        });
+    }
+});
+</script>
+
+
+<!-- === PREMIUM SPLASH SCREEN LOGIC SCRIPT (FINAL) === -->
+<!-- Load the anime.js animation library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+<script>
+    // This script runs immediately and is self-contained.
+    (function() {
+        const splashScreen = document.getElementById('splash-screen');
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+        if (isStandalone && splashScreen && !sessionStorage.getItem('splashShown')) {
+            sessionStorage.setItem('splashShown', 'true');
+            const preloader = document.getElementById('preloader');
+            if (preloader) preloader.style.display = 'none';
+
+            splashScreen.style.display = 'flex';
+
+            // --- Constellation Background ---
+            const canvas = document.getElementById('constellation-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            let stars = [];
+            for (let i = 0; i < 100; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2.5,
+                    alpha: Math.random()
+                });
+            }
+            // === PASTE THIS NEW, UPGRADED drawStars FUNCTION ===
+function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // --- THIS IS THE GLOW FIX ---
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = 'rgba(212, 175, 55, 0.8)'; // Your gold accent color
+    // --- END OF FIX ---
+    stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = `rgba(212, 175, 55, ${star.alpha})`;
+        ctx.fill();
+        star.alpha += (Math.random() - 0.5) * 0.05;
+        if (star.alpha < 0) star.alpha = 0;
+        if (star.alpha > 1) star.alpha = 1;
+    });
+    requestAnimationFrame(drawStars);
+}
+            drawStars();
+
+            // --- Stardust Settle Animation ---
+            // === PASTE THIS NEW, UPGRADED anime.js BLOCK ===
+anime({
+    targets: '.splash-text-sisters .letter',
+    // --- THIS IS THE NEW ANIMATION RECIPE ---
+    scale: [0.5, 1],      // Animate from half size to full size
+    opacity: [0, 1],      // Fade in
+    filter: ['blur(10px)', 'blur(0px)'], // Animate from blurry to sharp
+    // --- END OF NEW RECIPE ---
+    easing: 'easeOutExpo',
+    duration: 1500,
+    delay: anime.stagger(120, {start: 1000}) // Stagger each letter's animation
+});
+            
+            // --- Overall Splash Screen Timing ---
+            setTimeout(() => {
+                splashScreen.classList.add('fade-out');
+                if (preloader) preloader.style.display = 'flex';
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                }, 600);
+            }, 4000); // Total splash screen duration
+        }
+    })();
+</script>
+
+
+
+<!-- === STYLE SPOTLIGHT CAROUSEL SHOP LOGIC (NEW) === -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const db = firebase.firestore();
+    const styleSpotlightModal = new bootstrap.Modal(document.getElementById('styleSpotlightModal'));
+    
+    const UI_SHOP = {
+        section: document.getElementById('style-spotlight-section'),
+        carouselRow: document.getElementById('spotlight-carousel-row'),
+        modalTitle: document.getElementById('spotlightModalTitle'),
+        modalImage: document.getElementById('spotlight-modal-image'),
+        pinsContainer: document.getElementById('spotlight-pins-container'),
+        allProductCache: null, // To store all products for quick lookups
+    };
+
+    let allLooks = []; // Stores all active looks
+    let currentLook = null; // Stores the look currently displayed in the modal
+    let currentPopover = null;
+
+    // --- UTILITIES ---
+
+    // 1. Fetch ALL products once (needed for the popover data)
+    async function fetchAllProductsForCache() {
+        if (UI_SHOP.allProductCache) return;
+        const snapshot = await db.collection('products').get();
+        UI_SHOP.allProductCache = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    }
+
+    // 2. Main function to fetch all active spotlights (UPDATED FOR AUTOSCROLL)
+    async function fetchAndRenderSpotlights() {
+        await fetchAllProductsForCache();
+
+        const snapshot = await db.collection('style_spotlight')
+            .where('isActive', '==', true)
+            .orderBy('order', 'asc')
+            .limit(8)
+            .get();
+        
+        allLooks = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+        if (allLooks.length === 0) {
+            UI_SHOP.section.classList.add('d-none');
+            return;
+        }
+
+        UI_SHOP.carouselRow.innerHTML = allLooks.map(look => {
+            const imageUrl = look.imageUrl || 'https://via.placeholder.com/300x350';
+            
+            // Check if a feature tag exists
+            const badgeHTML = look.featureTag 
+                ? `<span class="spotlight-look-badge">${look.featureTag}</span>` 
+                : '';
+
+            return `
+                <div class="spotlight-look-card-wrapper">
+                    <div class="spotlight-look-card open-spotlight-btn" data-look-id="${look.id}">
+                        ${badgeHTML}
+                        <img src="${imageUrl}" alt="${look.title}" class="spotlight-look-image">
+                        <div class="spotlight-look-info">
+                            <h5 class="spotlight-look-title">${look.title}</h5>
+                            <p class="spotlight-look-subtitle">Tap to Shop The Look</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        UI_SHOP.section.classList.remove('d-none');
+        
+        // --- AUTOSCROLL IMPLEMENTATION (The Live Effect) ---
+        
+        // 1. Duplicate the row content to enable seamless looping
+        if (allLooks.length >= 4) { // Only animate if there are enough cards to scroll
+            UI_SHOP.carouselRow.innerHTML += UI_SHOP.carouselRow.innerHTML;
+        }
+        
+        // 2. Wait for images to load, then apply a fixed width and the scroll class
+        // This makes the carousel behave like one long track that can be animated.
+        setTimeout(() => {
+            const firstCardWidth = UI_SHOP.carouselRow.querySelector('.spotlight-look-card-wrapper')?.offsetWidth || 0;
+            const gap = 24; // Corresponds to the 1.5rem gap in horizontal-scroll-row
+            
+            // Calculate the total width needed to contain all duplicated elements
+            const totalWidth = (firstCardWidth + gap) * (allLooks.length * 2) + 100;
+
+            // Apply the necessary width and activate the animation class
+            if (totalWidth > window.innerWidth) {
+                UI_SHOP.carouselRow.style.width = `${totalWidth}px`;
+                UI_SHOP.carouselRow.classList.add('scroll-ready'); 
+                // Note: The animation is controlled by the CSS class applied in Step 1.1
+            } else {
+                 UI_SHOP.carouselRow.classList.remove('scroll-ready'); 
+            }
+        }, 500); // Give the DOM a moment to calculate sizes
+    }
+    // ... rest of the script remains unchanged ...
+    
+    // 3. Sets the modal content based on the clicked look
+    function loadModalContent(lookId) {
+        currentLook = allLooks.find(l => l.id === lookId);
+        if (!currentLook) return;
+
+        UI_SHOP.modalTitle.textContent = currentLook.title;
+        UI_SHOP.modalImage.src = currentLook.imageUrl;
+
+        renderSpotlightPins();
+        styleSpotlightModal.show();
+    }
+    
+    // 4. Renders the interactive pins inside the modal
+    function renderSpotlightPins() {
+        if (!currentLook || !currentLook.hotspots) {
+            UI_SHOP.pinsContainer.innerHTML = '';
+            return;
+        }
+        UI_SHOP.pinsContainer.innerHTML = currentLook.hotspots.map((h, index) => {
+            return `
+                <div class="hotspot-pin shop" data-index="${index}" style="left: ${h.x}; top: ${h.y};">
+                    <i class="bi bi-tag-fill"></i>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // 5. Shows the mini-modal popover when a pin is clicked (Mobile-first logic preserved)
+    function showPopover(pinEl, index) {
+        if (currentPopover) currentPopover.remove();
+
+        const hotspot = currentLook.hotspots[index];
+        const product = UI_SHOP.allProductCache.find(p => p.id === hotspot.productId);
+        if (!product) {
+            console.error("Product not found for hotspot:", hotspot.productId);
+            return;
+        }
+
+        const imageUrl = (product.images && product.images[0]) || 'https://via.placeholder.com/70';
+
+        const popoverHTML = `
+            <div class="spotlight-popover" id="spotlight-popover-${index}">
+                <img src="${imageUrl}" alt="${product.name}" class="popover-image">
+                <div class="popover-details">
+                    <div class="popover-title">${product.name}</div>
+                    <div class="popover-price">₹${product.price.toLocaleString()}</div>
+                    <a href="product.html?id=${product.id}" class="popover-btn">Shop Now</a>
+                </div>
+            </div>
+        `;
+
+        pinEl.insertAdjacentHTML('afterend', popoverHTML);
+        currentPopover = document.getElementById(`spotlight-popover-${index}`);
+
+        // --- MOBILE-FIRST POPUP POSITIONING LOGIC ---
+        
+        const pinRect = pinEl.getBoundingClientRect();
+        const modalBody = document.getElementById('styleSpotlightModal').querySelector('.modal-body');
+        const modalRect = modalBody.getBoundingClientRect();
+        
+        const pinX = pinRect.left - modalRect.left;
+        const pinY = pinRect.top - modalRect.top;
+        
+        const popoverWidth = currentPopover.offsetWidth;
+        const popoverHeight = currentPopover.offsetHeight;
+        const padding = 20; 
+
+        let leftPos;
+        let topPos;
+
+        // A. Vertical Clamping
+        topPos = pinY - (popoverHeight / 2); 
+        topPos = Math.min(topPos, modalRect.height - popoverHeight - padding);
+        topPos = Math.max(topPos, padding); 
+
+        // B. Horizontal Flipping
+        const rightPosition = pinX + pinEl.offsetWidth + padding;
+        
+        if (rightPosition + popoverWidth < modalRect.width - padding) {
+            leftPos = rightPosition; // Fits on the right
+        } else {
+            const leftPosition = pinX - popoverWidth - padding;
+            
+            if (leftPosition > padding) {
+                leftPos = leftPosition; // Fits on the left
+            } else {
+                // Fails on both sides (very small screen/wide popover) - force right clamp
+                leftPos = Math.min(rightPosition, modalRect.width - popoverWidth - padding);
+            }
+        }
+        
+        currentPopover.style.left = `${leftPos}px`;
+        currentPopover.style.top = `${topPos}px`;
+    }
+
+    // 6. Click Handlers
+    function setupSpotlightListeners() {
+        // Open Modal (on card click)
+        UI_SHOP.carouselRow.addEventListener('click', (e) => {
+            const lookCard = e.target.closest('.open-spotlight-btn');
+            if (lookCard) {
+                e.preventDefault();
+                const lookId = lookCard.dataset.lookId;
+                loadModalContent(lookId);
+            }
+        });
+
+        // Pin Click (inside modal)
+        UI_SHOP.pinsContainer.addEventListener('click', (e) => {
+            const pinEl = e.target.closest('.hotspot-pin.shop');
+            if (pinEl) {
+                const index = parseInt(pinEl.dataset.index);
+                showPopover(pinEl, index);
+            }
+        });
+        
+        // Close Popover when clicking anywhere else inside the modal
+        document.getElementById('styleSpotlightModal').addEventListener('click', (e) => {
+            const isPin = e.target.closest('.hotspot-pin.shop');
+            const isPopover = e.target.closest('.spotlight-popover');
+            if (currentPopover && !isPin && !isPopover) {
+                currentPopover.remove();
+                currentPopover = null;
+            }
+        });
+        
+        // Close Popover when modal is hidden
+        document.getElementById('styleSpotlightModal').addEventListener('hide.bs.modal', () => {
+            if (currentPopover) currentPopover.remove();
+            currentPopover = null;
+            currentLook = null; // Clear active look data
+        });
+    }
+
+    // --- INITIAL RUN ---
+    setupSpotlightListeners();
+    fetchAndRenderSpotlights();
+});
+</script>
+<!-- === STYLE LOOKBOOK CONCIERGE (SHOP SIDE) === -->
+<style>
+    /* 1. Micro-Notification Styles */
+    .mc-toast-container { position: fixed; bottom: 85px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+    .mc-toast { pointer-events: auto; background: var(--bg-card); border-left: 5px solid var(--accent); padding: 15px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 12px; transform: translateX(120%); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); min-width: 280px; max-width: 350px; cursor: pointer; }
+    .mc-toast.show { transform: translateX(0); }
+    .mc-toast i { font-size: 1.5rem; color: var(--accent); }
+    .mc-toast .text { font-size: 0.9rem; color: var(--text-primary); font-weight: 500; }
+
+    /* 2. Premium Modal & Quiz Styles */
+    .mc-modal-blur { backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); background: rgba(0,0,0,0.7); }
+    .mc-quiz-card { border-radius: 20px; border: 1px solid var(--border-color); overflow: hidden; background: var(--bg-card); }
+    .mc-quiz-header { background: var(--bg-secondary); padding: 20px; border-bottom: 1px solid var(--border-color); text-align: center; }
+    .mc-step-container { padding: 30px; display: none; }
+    .mc-step-container.active { display: block; animation: mcFadeIn 0.4s ease; }
+    @keyframes mcFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* Quiz Options */
+    .mc-option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+    .mc-option-item { border: 1px solid var(--border-color); padding: 15px; border-radius: 12px; text-align: center; cursor: pointer; transition: all 0.3s; background: var(--bg-secondary); }
+    .mc-option-item:hover, .mc-option-item.selected { border-color: var(--accent); background: rgba(230, 195, 78, 0.1); transform: scale(1.03); }
+    .mc-option-item i { font-size: 1.8rem; display: block; margin-bottom: 8px; }
+    .mc-custom-text { width: 100%; padding: 12px; border-radius: 8px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); margin-top: 15px; }
+
+    /* 3. Luxury Lookbook Display Styles */
+    .lookbook-item-card { background: var(--bg-secondary); border-radius: 15px; margin-bottom: 20px; overflow: hidden; display: flex; flex-direction: column; }
+    .lookbook-img-box { width: 100%; height: 350px; overflow: hidden; }
+    .lookbook-img-box img { width: 100%; height: 100%; object-fit: cover; }
+    .lookbook-info-box { padding: 20px; text-align: center; }
+
+    @media (max-width: 768px) { .mc-option-grid { grid-template-columns: 1fr; } .lookbook-img-box { height: 280px; } }
+</style>
+
+<!-- Containers -->
+<div class="mc-toast-container" id="mc-toast-container"></div>
+
+<!-- Quiz Modal -->
+<div class="modal fade mc-modal-blur" id="mcQuizModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content mc-quiz-card">
+            <div class="mc-quiz-header">
+                <h4 class="mb-0 font-heading" id="mcQuizTitle">Style Concierge</h4>
+                <div class="progress mt-3" style="height: 6px;">
+                    <div id="mcQuizProgress" class="progress-bar bg-warning" style="width: 20%;"></div>
+                </div>
+            </div>
+            <div class="modal-body p-0">
+                <form id="mcQuizForm">
+                    <!-- Step 1: Occasion -->
+                    <div class="mc-step-container active" data-step="1" data-title="The Occasion">
+                        <p class="text-center">What is the occasion you are shopping for? ✨</p>
+                        <div class="mc-option-grid">
+                            <div class="mc-option-item" data-val="Wedding"><i>💍</i>Wedding / Celebration</div>
+                            <div class="mc-option-item" data-val="Formal"><i>🏛️</i>Office / Formal</div>
+                            <div class="mc-option-item" data-val="Casual"><i>👗</i>Casual Outing</div>
+                            <div class="mc-option-item" data-val="Gifting"><i>🎁</i>Gifting Someone</div>
+                        </div>
+                    </div>
+                    <!-- Step 2: Highlight -->
+                    <div class="mc-step-container" data-step="2" data-title="Your Focus Area">
+                        <p class="text-center">Which area do you want to highlight most?</p>
+                        <div class="mc-option-grid">
+                            <div class="mc-option-item" data-val="Neck"><i>📿</i>Neck (Statement Sets)</div>
+                            <div class="mc-option-item" data-val="Hands"><i>✨</i>Hands (Bangles/Bracelets)</div>
+                            <div class="mc-option-item" data-val="Ears"><i>👂</i>Ears (Elegant Earrings)</div>
+                            <div class="mc-option-item" data-val="Apparel"><i>💃</i>Full Ensemble (Clothes)</div>
+                        </div>
+                    </div>
+                    <!-- Step 3: Style -->
+                    <div class="mc-step-container" data-step="3" data-title="Style Personality">
+                        <p class="text-center">What is your Style Personality?</p>
+                        <div class="mc-option-grid">
+                            <div class="mc-option-item" data-val="Traditional"><i>🏛️</i>Classic Traditional</div>
+                            <div class="mc-option-item" data-val="Minimalist"><i>💎</i>Modern Minimalist</div>
+                            <div class="mc-option-item" data-val="Trendy"><i>🎨</i>Bold & Trendy</div>
+                            <div class="mc-option-item" data-val="Customized"><i>⚙️</i>Custom / Other</div>
+                        </div>
+                    </div>
+                    <!-- Step 4: Notes -->
+                    <div class="mc-step-container" data-step="4" data-title="Personal Notes">
+                        <p class="text-center">Anything specific our designer should know?</p>
+                        <textarea class="mc-custom-text" id="mcCustomNote" rows="4" placeholder="e.g., I'm wearing a Red Banarasi Saree, need matching stones..."></textarea>
+                        <div class="mt-3">
+                            <label class="small">Contact Phone (WhatsApp)*</label>
+                            <input type="tel" id="mcPhone" class="mc-custom-text" required placeholder="+91 98765 43210">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-0">
+                <button class="btn btn-secondary d-none" id="mcPrevBtn">Back</button>
+                <button class="btn btn-primary" id="mcNextBtn">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Luxury Lookbook Modal -->
+<div class="modal fade mc-modal-blur" id="mcLookbookModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal-content mc-quiz-card">
+            <div class="mc-quiz-header d-flex justify-content-between align-items-center">
+                <h4 class="mb-0 font-heading">Curated Just For You</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="mcLookbookBody">
+                <!-- Content Injected via JS -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- === STYLE LOOKBOOK CONCIERGE (SHOP SIDE - FIXED) === -->
+<script>
+(function() {
+    // This function handles the logic safely
+    async function runStylistConcierge() {
+        // 1. Check if Firebase is ready from your existing scripts
+        if (typeof firebase === 'undefined' || !firebase.apps.length) {
+            console.log("Waiting for Firebase...");
+            setTimeout(runStylistConcierge, 500); // Try again in half a second
+            return;
+        }
+
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+        
+        const quizModalEl = document.getElementById('mcQuizModal');
+        const lookbookModalEl = document.getElementById('mcLookbookModal');
+        
+        // Safety Check: Ensure Bootstrap and Modals exist
+        if (!quizModalEl || !lookbookModalEl) return;
+        
+        const quizModal = new bootstrap.Modal(quizModalEl);
+        const lookbookModal = new bootstrap.Modal(lookbookModalEl);
+        let currentStep = 1;
+        let quizData = { answers: {} };
+
+        // --- Helper: Toast Notification ---
+        function showToast(msg, icon = 'bi-stars', action = null) {
+            const container = document.getElementById('mc-toast-container');
+            if (!container) return;
+            const id = 'toast-' + Date.now();
+            const html = `<div class="mc-toast" id="${id}"><i class="bi ${icon}"></i><div class="text">${msg}</div></div>`;
+            container.insertAdjacentHTML('beforeend', html);
+            const el = document.getElementById(id);
+            setTimeout(() => el.classList.add('show'), 100);
+            if(action) el.onclick = action;
+            setTimeout(() => { if(el) el.classList.remove('show'); setTimeout(() => el?.remove(), 500); }, 6000);
+        }
+
+        // --- CINEMATIC LOOKBOOK: FIXED DUPLICATION & SIZING ---
+        window.openLookbook = async function(data) {
+            const modalContent = document.querySelector('#mcLookbookModal .modal-content');
+            const body = document.getElementById('mcLookbookBody');
+            
+            // 1. Clear everything first (Fixes the duplication bug)
+            const existingHeader = modalContent.querySelector('.lb-header-section');
+            if(existingHeader) existingHeader.remove();
+            body.innerHTML = `<div class="text-center p-5"><div class="spinner-border text-warning"></div></div>`;
+            
+            lookbookModal.show();
+
+            const products = [];
+            try {
+                for (let id of data.suggestions) {
+                    const pDoc = await db.collection('products').doc(id).get();
+                    if(pDoc.exists) products.push({id: pDoc.id, ...pDoc.data()});
+                }
+
+                const firstName = data.userName ? data.userName.split(' ')[0] : 'Guest';
+                const occasion = data.answers['The Occasion'] || 'Special Occasion';
+
+                // 2. Insert Clean Header once
+                modalContent.insertAdjacentHTML('afterbegin', `
+                    <div class="lb-header-section text-center">
+                        <span class="lb-header-sub">Bespoke Collection</span>
+                        <h2 class="lb-header-greeting">A Private Edit for ${firstName}</h2>
+                        <p class="small text-muted mt-1 mb-0">Curated for your ${occasion}</p>
+                    </div>
+                `);
+
+                const noteTemplates = [
+                    "Complements your style perfectly.",
+                    "Stunning choice for your big day.",
+                    "A timeless, graceful statement.",
+                    "The perfect high-end shine."
+                ];
+
+                // 3. Render Optimized Cards
+                body.innerHTML = `
+                    <div class="lb-slider-track" id="lbTrack">
+                        ${products.map((p, i) => `
+                            <div class="lb-product-card">
+                                <div class="lb-img-container">
+                                    <img src="${p.images[0]}" alt="${p.name}">
+                                    <div class="lb-designer-note">
+                                        <i class="bi bi-chat-quote-fill text-warning"></i> ${noteTemplates[i % noteTemplates.length]}
+                                    </div>
+                                </div>
+                                <div class="p-3 text-center">
+                                    <h6 class="font-heading mb-1" style="font-size:1rem;">${p.name}</h6>
+                                    <div class="lb-price-shimmer">₹${p.price.toLocaleString()}</div>
+                                    <a href="product.html?id=${p.id}" class="btn btn-primary btn-sm w-100 mt-2 rounded-pill">
+                                        Shop This Piece
+                                    </a>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="text-center small text-muted mt-1">
+                        <i class="bi bi-arrow-left-right me-1"></i> Swipe to explore
+                    </div>
+                `;
+
+            } catch (e) {
+                body.innerHTML = `<p class="text-center p-4">Error loading suggestions.</p>`;
+            }
+        }
+
+        // --- Step logic for Quiz ---
+        function updateStepUI() {
+            document.querySelectorAll('.mc-step-container').forEach(c => c.classList.remove('active'));
+            const activeStep = document.querySelector(`.mc-step-container[data-step="${currentStep}"]`);
+            if (activeStep) {
+                activeStep.classList.add('active');
+                document.getElementById('mcQuizTitle').innerText = activeStep.dataset.title;
+                document.getElementById('mcQuizProgress').style.width = (currentStep * 25) + '%';
+                document.getElementById('mcPrevBtn').classList.toggle('d-none', currentStep === 1);
+                document.getElementById('mcNextBtn').innerText = currentStep === 4 ? "Send to Stylist" : "Continue";
+            }
+        }
+
+        // --- FIXED SUBMISSION & MODAL CLOSING ---
+        document.getElementById('mcNextBtn').onclick = async () => {
+            if(currentStep < 4) {
+                const stepEl = document.querySelector(`.mc-step-container[data-step="${currentStep}"]`);
+                const selected = stepEl.querySelector('.mc-option-item.selected');
+                if(!selected) return alert("Please select an option!");
+                quizData.answers[stepEl.dataset.title] = selected.dataset.val;
+                currentStep++;
+                updateStepUI();
+            } else {
+                const phone = document.getElementById('mcPhone').value.trim();
+                if(!phone) return alert("Please provide your WhatsApp number.");
+                
+                const btn = document.getElementById('mcNextBtn');
+                btn.disabled = true; btn.innerText = "Sending...";
+
+                try {
+                    const user = auth.currentUser;
+                    await db.collection('style_lookbooks').doc(user.uid).set({
+                        userId: user.uid,
+                        userName: user.displayName,
+                        userPhone: phone,
+                        answers: quizData.answers,
+                        customNote: document.getElementById('mcCustomNote').value,
+                        status: 'pending',
+                        suggestions: [],
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+
+                    // --- THE FIX: CLOSE FIRST, THEN RESET ---
+                    const modalInstance = bootstrap.Modal.getInstance(document.getElementById('mcQuizModal'));
+                    if (modalInstance) modalInstance.hide(); // THIS CLOSES THE MODAL
+
+                    showToast("✓ Profile sent! Our designer is hand-picking your look.", "bi-check-circle-fill");
+
+                    // Reset variables for next time
+                    currentStep = 1;
+                    quizData = { answers: {} };
+                    document.getElementById('mcQuizForm').reset();
+                    document.querySelectorAll('.mc-option-item').forEach(i => i.classList.remove('selected'));
+                    updateStepUI();
+
+                } catch (error) {
+                    alert("Failed to send. Please try again.");
+                } finally {
+                    btn.disabled = false; btn.innerText = "Send to Stylist";
+                }
+            }
+        };
+
+        document.getElementById('mcPrevBtn').onclick = () => { currentStep--; updateStepUI(); };
+        
+        // --- 30 Second Logic ---
+        auth.onAuthStateChanged(async user => {
+            if (!user) return;
+            setTimeout(async () => {
+                try {
+                    const doc = await db.collection('style_lookbooks').doc(user.uid).get();
+                    if (!doc.exists) {
+                        showToast(`Hi ${user.displayName.split(' ')[0]}, want our designer to pick a look for you? ✨`, 'bi-magic', () => quizModal.show());
+                    } else {
+                        const data = doc.data();
+                        if (data.status === 'curated') {
+                            showToast(`🎉 ${user.displayName.split(' ')[0]}, your personal lookbook is ready!`, 'bi-award', () => openLookbook(data));
+                        }
+                    }
+                } catch (e) { console.error("Concierge check skipped."); }
+            }, 30000); 
+        });
+    }
+
+    // Initialize only when the window is fully loaded to avoid classList errors
+    window.addEventListener('load', runStylistConcierge);
+
+    // Global listener for option selection
+    document.addEventListener('click', e => {
+        const opt = e.target.closest('.mc-option-item');
+        if(opt) {
+            opt.parentElement.querySelectorAll('.mc-option-item').forEach(i => i.classList.remove('selected'));
+            opt.classList.add('selected');
+        }
+    });
+})();
+</script>
+<!-- === MOBILE SIDEBAR CONCIERGE TOOLS (UNIFIED & PERSISTENT) === -->
+<script>
+(function() {
+    async function injectConciergeTools() {
+        if (typeof firebase === 'undefined' || !firebase.apps.length) {
+            setTimeout(injectConciergeTools, 500);
+            return;
+        }
+
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        auth.onAuthStateChanged(async user => {
+            if (!user) return;
+
+            // Loop to ensure sidebar is rendered by shop.js before we try to inject
+            const interval = setInterval(async () => {
+                const sidebar = document.querySelector('.offcanvas-body') || document.querySelector('.sidebar-content');
+                if (!sidebar) return;
+
+                const allElements = Array.from(sidebar.querySelectorAll('a, div, span, li'));
+                const favoritesLink = allElements.find(el => el.textContent.includes('Favorites'));
+                if (!favoritesLink) return;
+
+                clearInterval(interval); // Menu found, stop looping
+
+                // 1. Create a container for our Concierge tools
+                if (!document.getElementById('mc-concierge-group')) {
+                    const group = document.createElement('div');
+                    group.id = 'mc-concierge-group';
+                    favoritesLink.parentNode.insertBefore(group, favoritesLink);
+                }
+                const groupContainer = document.getElementById('mc-concierge-group');
+
+                // 2. Fetch the latest Lookbook status
+                const doc = await db.collection('style_lookbooks').doc(user.uid).get();
+                const isCurated = doc.exists && doc.data().status === 'curated';
+
+                // 3. Clear and Rebuild (prevents buttons from disappearing)
+                groupContainer.innerHTML = '';
+
+                // --- ADD BUTTON 1: BESPOKE LOOKBOOK (If ready) ---
+                if (isCurated) {
+                    const lbBtn = document.createElement('div');
+                    lbBtn.innerHTML = `<a href="#" class="mc-sidebar-link">✨ Bespoke Lookbook <span class="mc-sidebar-dot"></span></a>`;
+                    groupContainer.appendChild(lbBtn);
+                    lbBtn.onclick = (e) => {
+                        e.preventDefault();
+                        const off = document.querySelector('.offcanvas.show');
+                        if (off) bootstrap.Offcanvas.getInstance(off).hide();
+                        if (typeof window.openLookbook === 'function') window.openLookbook(doc.data());
+                    };
+                }
+
+                // --- ADD BUTTON 2: NEW STYLE CONSULTATION (Always visible) ---
+                const consultBtn = document.createElement('div');
+                consultBtn.innerHTML = `<a href="#" class="mc-consult-link"><i class="bi bi-palette"></i> New Style Consultation</a>`;
+                groupContainer.appendChild(consultBtn);
+                consultBtn.onclick = (e) => {
+                    e.preventDefault();
+                    const off = document.querySelector('.offcanvas.show');
+                    if (off) bootstrap.Offcanvas.getInstance(off).hide();
+                    const modalEl = document.getElementById('mcQuizModal');
+                    if (modalEl) new bootstrap.Modal(modalEl).show();
+                };
+
+            }, 1000);
+        });
+    }
+    window.addEventListener('load', injectConciergeTools);
+})();
+</script>
+
+<!-- === JEWELRY CONSTELLATION ENGINE (HIGH-SPEED & VIBRANT LIVE EFFECT) === -->
+<script>
+(function() {
+    const canvas = document.getElementById('jewelry-constellation');
+    const ctx = canvas.getContext('2d');
+    const container = document.getElementById('hero-canvas-container');
+    
+    let particles = [];
+    let mouse = { x: null, y: null, radius: 150 };
+    
+    function getThemeColors() {
+        const isLight = document.body.classList.contains('light-mode');
+        return {
+            dot: "#E6C34E", 
+            line: isLight ? "rgba(200, 150, 20, 0.3)" : "rgba(255, 255, 255, 0.22)",
+            lineWeight: isLight ? 0.9 : 0.6
+        };
+    }
+
+    function resize() {
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = container.offsetHeight * dpr;
+        ctx.scale(dpr, dpr);
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = container.offsetHeight + 'px';
+        init();
+    }
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * window.innerWidth;
+            this.y = Math.random() * container.offsetHeight;
+            this.size = Math.random() * 1.5 + 1; // Slightly bigger for visibility at speed
+            
+            // --- THE TURBO SPEED FIX: Increased to 3.0 ---
+            // This creates high-velocity movement across the screen
+            this.speedX = (Math.random() - 0.5) * 3.0; 
+            this.speedY = (Math.random() - 0.5) * 3.0; 
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            // Bounce off edges with full velocity retention
+            if (this.x > window.innerWidth || this.x < 0) this.speedX *= -1;
+            if (this.y > container.offsetHeight || this.y < 0) this.speedY *= -1;
+
+            // Reactive Repulsion (Dodging the mouse at high speed)
+            if (mouse.x && mouse.y) {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < mouse.radius) {
+                    const force = (mouse.radius - distance) / mouse.radius;
+                    const directionX = dx / distance;
+                    const directionY = dy / distance;
+                    // Stronger push to counteract the faster base speed
+                    this.x -= directionX * force * 5; 
+                    this.y -= directionY * force * 5; 
+                }
+            }
+        }
+        draw(colors) {
+            ctx.fillStyle = colors.dot;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function init() {
+        particles = [];
+        // Dense particle count to keep the network full during fast motion
+        const count = window.innerWidth < 768 ? 60 : 130; 
+        for (let i = 0; i < count; i++) {
+            particles.push(new Particle());
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const colors = getThemeColors();
+
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw(colors);
+
+            for (let j = i + 1; j < particles.length; j++) {
+                let dx = particles[i].x - particles[j].x;
+                let dy = particles[i].y - particles[j].y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+
+                // Increased range to 180 to maintain connections during fast travel
+                if (distance < 180) {
+                    ctx.strokeStyle = colors.line;
+                    ctx.lineWidth = colors.lineWeight * (1 - distance / 180);
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+            
+            // Visual connection to mouse
+            if (mouse.x && mouse.y) {
+                let mdx = particles[i].x - mouse.x;
+                let mdy = particles[i].y - mouse.y;
+                let mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+                if (mDist < mouse.radius) {
+                    ctx.strokeStyle = colors.line;
+                    ctx.lineWidth = 0.4;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+
+    // Interaction Handlers
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+    window.addEventListener('touchmove', (e) => { mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; });
+    window.addEventListener('touchend', () => { mouse.x = null; mouse.y = null; });
+
+    window.addEventListener('resize', resize);
+    resize();
+    animate();
+})();
+</script>
+
+<!-- === CUSTOMER INTELLIGENCE TRACKER (V3 - FULL CONTEXT & NAME TRACKING) === -->
+<script>
+(function() {
+    async function initTracker() {
+        if (typeof firebase === 'undefined' || !firebase.apps.length) {
+            setTimeout(initTracker, 500); return;
+        }
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        auth.onAuthStateChanged(async user => {
+            if (!user) return;
+
+            const userRef = db.collection('user_intelligence').doc(user.uid);
+            const logRef = userRef.collection('activity_log');
+
+            // 1. Detect Device
+            const ua = navigator.userAgent;
+            let device = "Desktop";
+            if (/iPhone|iPad|iPod/.test(ua)) device = "iPhone";
+            else if (/Android/.test(ua)) device = "Android";
+
+            // 2. Define the Smart Logger Helper
+            const logUserAction = async (actionType, details = {}) => {
+                try {
+                    await logRef.add({
+                        type: actionType,
+                        details: details,
+                        path: window.location.pathname + window.location.search,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                } catch(e) { console.warn("Tracking event pending..."); }
+            };
+
+            // 3. Save User Profile Data (Bulletproof)
+            try {
+                await userRef.set({
+                    name: user.displayName || "Unknown Guest",
+                    email: user.email || "No Email",
+                    photo: user.photoURL || "",
+                    device: device,
+                    lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
+                    platform: navigator.platform || "Web Browser"
+                }, { merge: true });
+
+                // Log initial visit
+                logUserAction('page_view', { title: document.title });
+            } catch(e) { console.warn("Tracker profile sync pending."); }
+
+            // 4. THE INTERACTION LISTENERS (V5 - ROBUST MESSAGE DETECTION)
+            document.addEventListener('click', (e) => {
+                const favBtn = e.target.closest('.product-favorite-icon');
+                const cartBtn = e.target.closest('.btn-add-to-cart');
+                const inqBtn = e.target.closest('.btn-whatsapp-inquiry');
+                const reviewBtn = e.target.closest('#submit-review-btn') || e.target.closest('.submit-review-btn');
+                
+                // SMARTER CONTACT DETECTION: Looks for IDs, classes, or buttons containing "Send" or "Message"
+                const contactBtn = e.target.closest('#contact-submit-btn') || 
+                                   e.target.closest('.contact-submit-btn') || 
+                                   (e.target.tagName === 'BUTTON' && e.target.innerText.toLowerCase().includes('send'));
+
+                const getPName = (btn) => {
+                    const card = btn.closest('.product-card') || btn.closest('.product-detail-info');
+                    // Fallback: If not in a card, check if the page has a main product title (h1)
+                    return card ? (card.querySelector('h5')?.innerText || card.querySelector('h1')?.innerText || "Product") : (document.querySelector('h1')?.innerText || "Item");
+                };
+
+                if (favBtn) logUserAction('favorite_added', { product: getPName(favBtn) });
+                if (cartBtn) logUserAction('added_to_cart', { product: getPName(cartBtn) });
+                if (inqBtn) logUserAction('whatsapp_inquiry', { product: getPName(inqBtn) });
+                if (reviewBtn) logUserAction('review_submitted', { product: getPName(reviewBtn) });
+                
+                // THE FIX: Added "product" key even for messages so the Admin logic sees it
+                if (contactBtn) logUserAction('message_sent', { product: 'Contact Form' });
+
+                if (e.target.closest('#cart-icon')) logUserAction('checked_shopping_bag');
+            });
+        });
+    }
+    window.addEventListener('load', initTracker);
+})();
+</script>
+<!-- === CUSTOMER INTELLIGENCE TRACKER (V4 - HEARTBEAT & TIMER) === -->
+<script>
+(function() {
+    async function initTracker() {
+        if (typeof firebase === 'undefined' || !firebase.apps.length) {
+            setTimeout(initTracker, 500); return;
+        }
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        auth.onAuthStateChanged(async user => {
+            if (!user) return;
+
+            const userRef = db.collection('user_intelligence').doc(user.uid);
+            
+            // 1. Detect Device
+            const ua = navigator.userAgent;
+            let device = /iPhone|iPad|iPod/.test(ua) ? "iPhone" : (/Android/.test(ua) ? "Android" : "Desktop");
+
+            // --- SMART SESSION RESET LOGIC ---
+            const nowMs = Date.now();
+            const doc = await userRef.get();
+            const lastSeenMs = doc.exists && doc.data().lastSeen ? doc.data().lastSeen.toMillis() : 0;
+            
+            let sessionStart;
+            
+            // IF: User is new OR was away for more than 1 hour (3,600,000ms)
+            if (!lastSeenMs || (nowMs - lastSeenMs > 3600000)) {
+                // START A FRESH SESSION
+                sessionStart = nowMs;
+                sessionStorage.setItem('mc_session_start', sessionStart);
+            } else {
+                // CONTINUE RECENT SESSION
+                sessionStart = sessionStorage.getItem('mc_session_start') || lastSeenMs;
+            }
+
+            await userRef.set({
+                name: user.displayName || "Customer",
+                email: user.email || "",
+                device: device,
+                sessionStart: firebase.firestore.Timestamp.fromMillis(parseInt(sessionStart)),
+                lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
+            }, { merge: true });
+
+            // 4. The Live Heartbeat (Pings every 10 seconds)
+            setInterval(async () => {
+                if (document.visibilityState === 'visible') {
+                    await userRef.update({ lastSeen: firebase.firestore.FieldValue.serverTimestamp() });
+                }
+            }, 10000);
+
+            // 5. Context-Aware Interaction Logger
+            window.logUserAction = async (type, details = {}) => {
+                try {
+                    await userRef.collection('activity_log').add({
+                        type, details, path: window.location.pathname,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                } catch(e) {}
+            };
+        });
+    }
+    window.addEventListener('load', initTracker);
+})();
+</script>
+
+<!-- === VIP PERSONAL MAILBOX (SHOP SIDE) === -->
+<style>
+    /* 1. Floating Mailbox Icon Styles */
+    #vip-mailbox-container { margin-top: 15px; display: none; justify-content: center; }
+    /* === VIP MAILBOX: MATCHING SITE THEME === */
+.vip-gift-btn {
+    width: 45px;
+    height: 45px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.vip-gift-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* Red Notification Badge - Matching your '97' style */
+.vip-badge-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e74c3c; /* Red */
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg-primary);
+}
+
+/* Pulsing effect to catch attention */
+.vip-gift-btn.active-offer {
+    animation: vipPulseGlow 2s infinite;
+    border-color: var(--accent);
+}
+
+@keyframes vipPulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(230, 195, 78, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(230, 195, 78, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(230, 195, 78, 0); }
+}
+
+    /* 2. Premium VIP Modal Styling */
+    .vip-modal-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(0,0,0,0.8); }
+    .vip-offer-card { border-radius: 25px; border: 1.5px solid var(--accent); overflow: hidden; background: var(--bg-card); }
+    .vip-offer-header { background: linear-gradient(135deg, var(--accent), #fff9e6); padding: 30px; text-align: center; color: #000; }
+    .vip-offer-header i { font-size: 3rem; margin-bottom: 10px; display: block; }
+    .vip-offer-body { padding: 30px; text-align: center; }
+    .vip-offer-message { font-size: 1.1rem; color: var(--text-primary); line-height: 1.6; font-style: italic; margin-bottom: 25px; }
+</style>
+
+<!-- VIP Mailbox Button -->
+<div id="vip-mailbox-container">
+    <a href="#" class="vip-gift-btn" id="vip-open-modal">
+        <i class="bi bi-gift-fill"></i>
+        <span>A Special Gift for You</span>
+        <span class="vip-badge-count" id="vip-badge" style="display:none;">1</span>
+    </a>
+</div>
+
+<!-- === VIP OFFER MODAL (THE WOW CARD) === -->
+<div class="modal fade vip-modal-blur" id="vipOfferModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content vip-offer-card" style="border-radius:25px; border:1.5px solid var(--accent); overflow:hidden; background: var(--bg-card);">
+            <div class="vip-offer-header" style="background: linear-gradient(135deg, var(--accent), #fff9e6); padding: 30px; text-align: center; color: #000;">
+                <i class="bi bi-stars" style="font-size: 3rem; margin-bottom: 10px; display: block;"></i>
+                <h3 class="modal-title mb-0 fw-bold" style="font-family:'Playfair Display', serif;">Exclusive Offer</h3>
+            </div>
+            <div class="modal-body p-4 text-center">
+                <!-- THE MESSAGE TEXT GOES HERE -->
+                <p id="vip-message-display" style="font-size: 1.1rem; color: var(--text-primary); line-height: 1.6; font-style: italic; margin-bottom: 25px;"></p>
+                
+                <!-- THE WHATSAPP BUTTON -->
+                <a href="#" id="vip-whatsapp-link" target="_blank" class="btn btn-success btn-lg w-100 rounded-pill shadow-sm py-3 fw-bold">
+                    <i class="bi bi-whatsapp me-2"></i> Discuss this offer
+                </a>
+                
+                <button type="button" class="btn text-secondary mt-3 small" data-bs-dismiss="modal">I'll check this later</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- === VIP PERSONAL MAILBOX (V4 - NULL-SAFE MASTER) === -->
+<script>
+(function() {
+    async function initVipMailbox() {
+        if (typeof firebase === 'undefined' || !firebase.apps.length) {
+            setTimeout(initVipMailbox, 500); return;
+        }
+
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+        
+        // Wait for Bootstrap to be ready
+        const modalEl = document.getElementById('vipOfferModal');
+        if (!modalEl) {
+            console.warn("VIP Modal HTML not found yet.");
+            setTimeout(initVipMailbox, 1000); return;
+        }
+        const vipModal = new bootstrap.Modal(modalEl);
+
+        auth.onAuthStateChanged(async user => {
+            if (!user) return;
+
+            const container = document.getElementById('vip-mailbox-container');
+
+            db.collection('user_intelligence').doc(user.uid).onSnapshot(async doc => {
+                const data = doc.data();
+                if (data && data.personalOffer) {
+                    const offer = data.personalOffer;
+                    if (container) container.style.display = 'inline-block';
+
+                    // 1. Render the Gift Icon
+                    container.innerHTML = `
+                        <div class="vip-gift-btn ${offer.status === 'unread' ? 'active-offer' : ''}" id="vip-trigger">
+                            <i class="bi bi-gift-fill"></i>
+                            ${offer.status === 'unread' ? '<span class="vip-badge-count">1</span>' : ''}
+                        </div>
+                    `;
+
+                    // 2. Setup Modal Logic
+                    const userDoc = await db.collection('users').doc(user.uid).get();
+                    const isNew = (Date.now() - (userDoc.data()?.createdAt?.toMillis() || Date.now())) < 86400000;
+
+                    // THE FIX: Safe injection using variables
+                    const msgDisplay = document.getElementById('vip-message-display');
+                    const waLink = document.getElementById('vip-whatsapp-link');
+                    const titleDisplay = modalEl.querySelector('.modal-title');
+
+                    if (msgDisplay) msgDisplay.innerText = offer.message;
+                    if (titleDisplay) titleDisplay.innerText = isNew ? "A Welcome Gift for You" : "Exclusive Loyalty Access";
+                    
+                    // --- THE WHATSAPP MESSAGE FIX (NO MORE CUT-OFF OR ERRORS) ---
+                    if (waLink) {
+                        const btnText = isNew ? "Claim this offer now" : "Discuss with Designer";
+                        
+                        // We take the first 60 characters for context, but ensure it's a clean string
+                        const offerSnippet = offer.message.length > 60 ? offer.message.substring(0, 60) + "..." : offer.message;
+                        
+                        // Professional Pre-filled Message Template
+                        const waMsg = `Hi RS Sisters! ✨ I just opened my personal gift on your website and I'm very interested! 
+
+Offer Details: "${offerSnippet}"
+
+I'd like to discuss this with you! 💎`;
+                        
+                        // Use encodeURIComponent to ensure emojis and spaces work perfectly on iPhone/Android
+                        waLink.href = `https://wa.me/917893316959?text=${encodeURIComponent(waMsg)}`;
+                        waLink.innerHTML = `<i class="bi bi-whatsapp me-2"></i> ${btnText}`;
+                    }
+
+                    // 3. Handle Click
+                    const triggerBtn = document.getElementById('vip-trigger');
+                    if (triggerBtn) {
+                        triggerBtn.onclick = () => {
+                            vipModal.show();
+                            if (offer.status === 'unread') {
+                                db.collection('user_intelligence').doc(user.uid).update({ "personalOffer.status": "read" });
+                            }
+                        };
+                    }
+                } else {
+                    if (container) container.style.display = 'none';
+                }
+            });
+        });
+    }
+    window.addEventListener('load', initVipMailbox);
+})();
+</script>
+</body>
+</html>
